@@ -1,10 +1,13 @@
 ---
 /**
- * Hero.astro — Homepage philosophy-first hero.
+ * Hero.astro — Homepage hero. Consolidation hook.
  * This is the opening statement. Sets tone for the entire page.
  *
- * Content is placeholder — final copy TBD.
+ * Content is provisional — final copy TBD during beta.
  * Structure: tagline → headline → subtext → CTA → contextual angle links
+ *
+ * Narrative intent: "Stop juggling. One app does it all."
+ * Layered with calm, mindful tone — not hype.
  */
 
 import { APP_URL } from '@/data/pages';
@@ -15,22 +18,23 @@ import { APP_URL } from '@/data/pages';
 
     <!-- Eyebrow / Tagline -->
     <p class="text-sm font-medium text-emerald-700 uppercase tracking-widest">
-      {/* COPY PLACEHOLDER: A brief, calm tagline. "Financial mindfulness" or similar. */}
-      Financial mindfulness. Daily.
+      {/* COPY PLACEHOLDER: Brief positioning line. Consolidation + calm. */}
+      Personal finance. All in one place.
     </p>
 
-    <!-- Main Headline -->
+    <!-- Main Headline — consolidation hook -->
     <h1 class="text-3xl md:text-5xl lg:text-6xl font-semibold text-stone-800 leading-tight tracking-tight">
-      {/* COPY PLACEHOLDER: The core hook. Reframes what a finance app is. */}
-      Spend 3 minutes a day.<br />
-      Gain a lifetime of clarity.
+      {/* COPY PLACEHOLDER: The core hook. One app replaces the juggling act. */}
+      Budget. Track. Invest.<br />
+      Finally, one place for all of it.
     </h1>
 
-    <!-- Subtext -->
+    <!-- Subtext — expand the promise -->
     <p class="text-base md:text-xl text-stone-500 leading-relaxed max-w-2xl mx-auto">
-      {/* COPY PLACEHOLDER: Expand on the promise. Calm, not hype. */}
-      Finzen is a personal finance app built around one idea: manual awareness compounds into
-      calm, clear financial understanding. No bank connections. No automation. Just you.
+      {/* COPY PLACEHOLDER: Expand. Why consolidation matters. Privacy + intentionality layered in. */}
+      Finzen combines envelope budgeting, spending tracking, and portfolio management
+      into one beautifully simple app. Privacy-first. No bank connections. Just a clear,
+      complete picture of your finances.
     </p>
 
     <!-- Primary CTA -->
@@ -39,23 +43,23 @@ import { APP_URL } from '@/data/pages';
         href={APP_URL}
         class="inline-flex items-center gap-2 px-7 py-3.5 bg-emerald-700 text-white text-base font-medium rounded-xl hover:bg-emerald-800 transition-colors shadow-sm"
       >
-        Start Your Practice
+        Get Started Free
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
     </div>
 
-    <!-- Contextual angle links (not all — curated) -->
+    <!-- Contextual angle links (curated — not all) -->
     <div class="pt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-      <a href="/daily-expense-tracker" class="text-sm text-stone-400 hover:text-emerald-700 transition-colors">
-        Daily habit →
-      </a>
       <a href="/privacy-first-finance-app" class="text-sm text-stone-400 hover:text-emerald-700 transition-colors">
         Privacy first →
       </a>
       <a href="/visual-financial-insights" class="text-sm text-stone-400 hover:text-emerald-700 transition-colors">
         See your money →
+      </a>
+      <a href="/manual-personal-finance-app" class="text-sm text-stone-400 hover:text-emerald-700 transition-colors">
+        Why manual →
       </a>
     </div>
   </div>

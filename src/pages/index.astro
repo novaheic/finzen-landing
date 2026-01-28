@@ -5,15 +5,23 @@
  * The main narrative page. A scrolling story that builds trust,
  * explains the product, and converts visitors into users.
  *
- * Structure:
- *   1. Hero (philosophy-first)
- *   2. Reframing section (manual > automated)
- *   3. How It Works (3 steps)
- *   4. The Experience (emotional / sensory)
- *   5. Visual Intelligence (show the data)
- *   6. Trust & Privacy
- *   7. Who This Is For (qualification)
- *   8. CTA (habit-oriented)
+ * --- SECTION MAP (beta-friendly) ---
+ * Each section is a self-contained block. Add or remove any one
+ * without touching the others. Reorder as the narrative evolves.
+ *
+ *   1. Hero                  — consolidation hook (see Hero.astro)
+ *   2. Reframing             — stop juggling apps and spreadsheets
+ *   3. How It Works          — 4 steps: budget, track, invest, see
+ *   4. The Experience        — emotional / sensory ("what it feels like")
+ *   5. Visual Intelligence   — show the data capabilities
+ *   6. Trust & Privacy       — encryption, EU servers, no connections
+ *   7. Founder Story         — why this was built. Brief, authentic.
+ *   8. Qualification         — who this is / isn't for
+ *   9. CTA                   — get started
+ *
+ * To remove a section: delete the block + its comment.
+ * To add a section: insert a new Section block anywhere in the flow.
+ * To reorder: cut and paste. Sections are independent.
  */
 
 import Layout from '@/layouts/Layout.astro';
@@ -33,182 +41,200 @@ const meta = pages.home;
   canonical="/"
 >
 
-  <!-- 1. Philosophy-first hero -->
+  <!-- ============================================================
+       SECTION 1: HERO
+       Consolidation hook. One app for budgeting + tracking + investing.
+       See Hero.astro for full structure and copy placeholders.
+       ============================================================ -->
   <Hero />
 
-  <!-- 2. Reframing: Manual tracking is intentional -->
+  <!-- ============================================================
+       SECTION 2: REFRAMING
+       The core "why." Stop juggling apps and spreadsheets.
+       Finzen is the one place that sees the full picture.
+       COPY PLACEHOLDER: Refine tone and specifics during beta.
+       ============================================================ -->
   <Section
-    heading="Manual tracking is not a limitation."
-    subheading="It is the entire point."
+    heading="One app. The full picture."
+    subheading="Stop juggling. Start understanding."
     bg="stone"
   >
-    {/*
-      COPY PLACEHOLDER:
-      - Paragraph 1: Why automation creates a false sense of security.
-      - Paragraph 2: What happens when you touch every transaction yourself.
-      - Paragraph 3: The compounding power of daily awareness.
-      - Keep it under 200 words. Calm, confident tone.
-    */}
     <div class="max-w-2xl space-y-4">
       <p class="text-base text-stone-600 leading-relaxed">
-        Most finance apps want to automate everything — sync your bank, categorize automatically, set it and forget it. The problem? When you are not paying attention, you are not learning. Automation creates the illusion of control without the understanding.
+        Most people end up managing their finances across a patchwork of tools — a budgeting app here, an investment tracker there, a spreadsheet holding it all together. It never quite works. The budget does not talk to the portfolio. The spending data lives in a different place than the savings goal.
       </p>
       <p class="text-base text-stone-600 leading-relaxed">
-        Finzen flips this. Every transaction you enter is a moment of awareness. Every number you type is a small act of financial mindfulness. And over weeks and months, those moments compound into genuine clarity.
+        Finzen was built to fix this. It combines envelope budgeting, cashflow tracking, and portfolio management in one seamless experience. Not three apps pretending to be one — a single tool designed from the ground up to show you the complete picture of your finances.
       </p>
       <p class="text-base text-stone-600 leading-relaxed">
-        This is not about being tedious. It is about being intentional. Two to three minutes a day. That is the practice.
+        Where your money is. Where it is going. How to grow it. All in one place, beautifully presented.
       </p>
     </div>
   </Section>
 
-  <!-- 3. How It Works — 3 clear steps -->
+  <!-- ============================================================
+       SECTION 3: HOW IT WORKS
+       Simple steps showing the flow: budget → track → invest → see.
+       COPY PLACEHOLDER: Adjust step labels and descriptions as UX evolves.
+       ============================================================ -->
   <Section heading="How it works" align="center">
-    {/*
-      COPY PLACEHOLDER:
-      - 3 steps in a horizontal row (stack on mobile)
-      - Step 1: Open Finzen. Enter what you spent. 30 seconds.
-      - Step 2: See your spending in real-time. Sankey flow. Budget view.
-      - Step 3: Watch your financial picture sharpen over time.
-      - Each step: icon + title + 1 sentence.
-    */}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
-      <!-- Step 1 -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4">
+      <!-- Step 1: Budget -->
       <div class="text-center space-y-3">
         <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center">
           <span class="text-lg font-semibold text-emerald-700">1</span>
         </div>
-        <h3 class="text-base font-semibold text-stone-800">Enter</h3>
+        <h3 class="text-base font-semibold text-stone-800">Budget</h3>
         <p class="text-sm text-stone-500 leading-relaxed">
-          Open the app. Type what you spent. Takes 30 seconds. No forms, no friction.
+          Set up envelope budgets. Every dollar gets a job. Zero-based, clear, intentional.
         </p>
       </div>
-      <!-- Step 2 -->
+      <!-- Step 2: Track -->
       <div class="text-center space-y-3">
         <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center">
           <span class="text-lg font-semibold text-emerald-700">2</span>
         </div>
-        <h3 class="text-base font-semibold text-stone-800">See</h3>
+        <h3 class="text-base font-semibold text-stone-800">Track</h3>
         <p class="text-sm text-stone-500 leading-relaxed">
-          Watch your spending flow visualize in real-time. Budget vs. actual. Category breakdowns.
+          Log your spending manually. Quick, intentional. See budget vs. actual in real time.
         </p>
       </div>
-      <!-- Step 3 -->
+      <!-- Step 3: Invest -->
       <div class="text-center space-y-3">
         <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center">
           <span class="text-lg font-semibold text-emerald-700">3</span>
         </div>
-        <h3 class="text-base font-semibold text-stone-800">Understand</h3>
+        <h3 class="text-base font-semibold text-stone-800">Invest</h3>
         <p class="text-sm text-stone-500 leading-relaxed">
-          Over time, your financial story becomes clear. Trends, patterns, progress. All yours.
+          Track stocks, crypto, commodities, forex — with real-time prices. All in one portfolio view.
+        </p>
+      </div>
+      <!-- Step 4: See -->
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center">
+          <span class="text-lg font-semibold text-emerald-700">4</span>
+        </div>
+        <h3 class="text-base font-semibold text-stone-800">See</h3>
+        <p class="text-sm text-stone-500 leading-relaxed">
+          Watch it all connect. Cashflow flows, portfolio breakdowns, net worth over time.
         </p>
       </div>
     </div>
   </Section>
 
-  <!-- 4. The Experience — emotional / sensory -->
+  <!-- ============================================================
+       SECTION 4: THE EXPERIENCE
+       Emotional / sensory. What it actually feels like to use Finzen.
+       Not features — feelings. Calm. Ownership. Understanding.
+       COPY PLACEHOLDER: Refine with real user language once in beta.
+       ============================================================ -->
   <Section
-    heading="The feeling of being in control"
+    heading="The feeling of actually understanding your money"
     subheading="Not anxious. Not overwhelmed. Just clear."
     bg="stone"
   >
-    {/*
-      COPY PLACEHOLDER:
-      - Describe the emotional state of using Finzen daily.
-      - Not features — feelings. Calm. Curiosity. Ownership.
-      - Use 2-3 short, evocative paragraphs.
-      - Maybe a pull quote or emphasized line.
-    */}
     <div class="max-w-2xl space-y-4">
       <p class="text-base text-stone-600 leading-relaxed">
-        There is a quiet satisfaction in knowing exactly where your money went today. Not because someone told you — because you chose to look. That small act, repeated daily, becomes a practice. A ritual. A relationship with your finances that feels calm instead of stressful.
+        There is a specific kind of calm that comes from knowing exactly where your money stands. Not a vague sense of "I think I'm okay" — actual clarity. You know your budget. You know your portfolio. You know your net worth. And it all lives in one place you actually enjoy using.
       </p>
       <p class="text-lg font-medium text-stone-700 italic leading-relaxed">
-        "Financial clarity is not about having more money. It is about understanding the money you have."
+        "Finally, a finance app that doesn't look like it was made in Excel 2003."
       </p>
       <p class="text-base text-stone-600 leading-relaxed">
-        Finzen is designed to make that clarity accessible. Beautiful interfaces. Thoughtful visualizations. A pace that respects your time.
+        Finzen is designed to make financial management feel less like a chore and more like a practice. Beautiful interfaces. Intuitive navigation. Visualizations that actually tell you something. A tool you come back to because it helps — not because you have to.
       </p>
     </div>
   </Section>
 
-  <!-- 5. Visual Intelligence — show the data -->
+  <!-- ============================================================
+       SECTION 5: VISUAL INTELLIGENCE
+       Show the data capabilities. What the visualizations look like.
+       COPY PLACEHOLDER: Replace feature list with actual screenshots
+       or mockups once the app UI stabilizes in beta.
+       ============================================================ -->
   <Section
-    heading="Your finances, beautifully visualized"
-    subheading="From daily entries to powerful insight."
+    heading="Intuitive financial reports"
+    subheading="See where your money goes. Actually understand it."
   >
-    {/*
-      COPY PLACEHOLDER:
-      - Describe (or show) the visual capabilities:
-        • Sankey spending flow diagram
-        • Portfolio breakdown
-        • Trend charts over time
-        • Budget vs. actual comparison
-      - Use static mockup images or abstract illustrations.
-      - For now: descriptive text + feature list.
-    */}
     <div class="mt-4">
       <FeatureList
         heading="What you will see"
         columns={2}
         features={[
-          { label: 'Sankey Spending Flow', detail: 'See exactly how money moves from income to categories to savings.' },
-          { label: 'Budget vs. Actual', detail: 'Envelope-based budgeting with real-time tracking.' },
-          { label: 'Portfolio Breakdown', detail: 'Stocks, crypto, commodities, real estate — all in one view.' },
-          { label: 'Trend Analysis', detail: 'Monthly and custom date range charts showing your trajectory.' },
-          { label: 'Net Worth Timeline', detail: 'Watch your financial picture grow over weeks and months.' },
-          { label: 'Multi-Currency Support', detail: 'Works with 168+ currencies. Automatic conversion.' },
+          { label: 'Sankey Spending Flow', detail: 'A visual map of how money moves from income through categories to savings and investments.' },
+          { label: 'Envelope Budget Tracking', detail: 'Zero-based budgeting with real-time budget vs. actual for every category.' },
+          { label: 'Portfolio Breakdown', detail: 'Stocks, ETFs, crypto, commodities, forex, real estate — one complete allocation view.' },
+          { label: 'Spending Trend Analysis', detail: 'Monthly trend charts with custom date ranges. Spot patterns. Track improvement.' },
+          { label: 'Net Worth Timeline', detail: 'Watch your financial trajectory grow over weeks, months, and years.' },
+          { label: 'Multi-Currency & Multi-Asset', detail: '168+ currencies. Real-time price data. Automatic conversion to your base currency.' },
         ]}
       />
     </div>
   </Section>
 
-  <!-- 6. Trust & Privacy -->
+  <!-- ============================================================
+       SECTION 6: TRUST & PRIVACY
+       Factual. Specific. Brief. Trust is earned by being concrete.
+       COPY PLACEHOLDER: Add third-party audit details if available.
+       ============================================================ -->
   <TrustBadge />
 
   <Section
     heading="Your data is yours. Period."
-    subheading="No compromises on privacy."
+    subheading="Privacy-first design. No compromises."
     bg="stone"
   >
-    {/*
-      COPY PLACEHOLDER:
-      - AES-256-GCM encryption details (client-side)
-      - EU-hosted servers
-      - No bank, wallet, or broker connections — ever
-      - No data sharing, no ad targeting
-      - Brief and factual. Trust is earned by specificity.
-    */}
     <div class="max-w-2xl space-y-4">
       <p class="text-base text-stone-600 leading-relaxed">
-        Every piece of financial data in Finzen is encrypted with AES-256-GCM before it ever leaves your device. Your encryption key is derived from your password — we never see it. Data is stored on EU servers, subject to GDPR.
+        Every piece of financial data in Finzen is encrypted with AES-256-GCM before it ever leaves your device. Your encryption key is derived from your password using PBKDF2-SHA256 — we never see it, never store it. Data is hosted on EU servers, subject to GDPR.
       </p>
       <p class="text-base text-stone-600 leading-relaxed">
-        There are no bank connections. No wallet syncing. No broker integrations. Finzen never touches your accounts, because it does not need to. Manual entry is not just a philosophy — it is a security feature.
+        There are no bank connections. No wallet syncing. No broker integrations. Finzen never touches your accounts. You enter data manually — which means the app can only ever contain what you choose to put into it. That is not a limitation. It is a security boundary.
       </p>
     </div>
   </Section>
 
-  <!-- 7. Who This Is For — qualification -->
+  <!-- ============================================================
+       SECTION 7: FOUNDER STORY
+       Brief, authentic. Why this was built. The problem it solves.
+       Establishes credibility without corporate polish.
+       COPY PLACEHOLDER: Polish with founder's own words during beta.
+       ============================================================ -->
+  <Section
+    heading="Why we built this"
+    bg="stone"
+  >
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        We were tired of juggling multiple apps to get a complete picture of our finances. Budgeting in one app. Investments in another. Spending tracking somewhere else. And eventually — inevitably — an ugly Google Sheet held together by duct tape and desperation, because it was the only place where everything lived in one spot.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        So we built something different. An app that does everything in one place — envelope budgeting, real-time portfolio tracking, cashflow visualization — with privacy-first design and interfaces that do not make you want to close the tab.
+      </p>
+      <p class="text-lg font-medium text-stone-700 italic leading-relaxed">
+        700 hours of building. One obsessive goal: the finance app we always wished existed.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 8: QUALIFICATION
+       Who this is for. Who it isn't. Be honest — help people self-select.
+       COPY PLACEHOLDER: Update "for" list as beta feedback comes in.
+       ============================================================ -->
   <Section heading="Is Finzen right for you?" align="center">
-    {/*
-      COPY PLACEHOLDER:
-      - Two columns: "This IS for you if..." and "This is NOT for you if..."
-      - Be honest. Help people self-select.
-      - "For" list: wants awareness, values privacy, likes daily habits, wants beautiful visuals
-      - "Not for" list: wants full automation, needs bank sync, looking for investment advice
-    */}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 text-left">
       <!-- For you -->
       <div class="space-y-3">
         <h3 class="text-sm font-semibold text-emerald-700 uppercase tracking-wider">This is for you if</h3>
         <ul class="space-y-2">
           {[
-            'You want to understand your finances, not just see a number.',
+            'You want budgeting and investing in one place — not split across apps.',
+            'You are tired of a spreadsheet that does everything badly.',
             'Privacy matters more than convenience.',
-            'You like daily habits and small rituals.',
-            'You want beautiful, meaningful financial visualizations.',
-            'You value being in control of your own data.',
+            'You want financial visualizations that actually make sense.',
+            'You value understanding your money, not just seeing a number.',
+            'You want to track investments alongside your budget.',
           ].map((item) => (
             <li class="flex items-start gap-2 text-sm text-stone-600">
               <span class="mt-0.5 text-emerald-600">✓</span>
@@ -224,8 +250,8 @@ const meta = pages.home;
           {[
             'You want your bank account to sync automatically.',
             'You are looking for investment or tax advice.',
-            'You need a tool that works without any daily input.',
-            'You prefer a "set it and forget it" approach.',
+            'You need a fully automated "set it and forget it" tool.',
+            'You only care about one area of finance — not the full picture.',
           ].map((item) => (
             <li class="flex items-start gap-2 text-sm text-stone-500">
               <span class="mt-0.5 text-stone-300">✕</span>
@@ -237,11 +263,15 @@ const meta = pages.home;
     </div>
   </Section>
 
-  <!-- 8. Final CTA -->
+  <!-- ============================================================
+       SECTION 9: CTA
+       Final conversion point. Low friction. Clear value.
+       COPY PLACEHOLDER: Test different framings during beta.
+       ============================================================ -->
   <CTABlock
-    heading="Ready to start your daily practice?"
-    subtext="Free to start. No credit card. No bank connection required. Just open, enter, and see."
-    buttonLabel="Begin Today"
+    heading="See your finances clearly. Finally."
+    subtext="Free to start. No credit card. No bank connection required. One app for the full picture."
+    buttonLabel="Get Started Free"
   />
 
 </Layout>

@@ -26,10 +26,10 @@ export interface PageMeta {
 export const pages: Record<string, PageMeta> = {
   home: {
     slug: '',
-    title: 'Finzen — Financial Clarity in 3 Minutes a Day',
+    title: 'Finzen — Budgeting, Tracking & Investing in One App',
     description:
-      'Finzen is a private, manual personal finance app. Track your finances in 2–3 minutes daily. No bank connections. Full AES-256 encryption. Calm, clear financial awareness.',
-    keywords: ['finzen', 'personal finance app', 'manual finance tracking', 'privacy finance app'],
+      'Finzen is an all-in-one personal finance app. Envelope budgeting, spending tracking, and portfolio management — combined. Privacy-first, AES-256 encrypted, no bank connections.',
+    keywords: ['finzen', 'personal finance app', 'all-in-one finance', 'budgeting and investing app'],
     footerLabel: 'Home',
     inFooter: true,
     siblings: [],

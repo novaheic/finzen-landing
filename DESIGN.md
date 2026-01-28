@@ -16,24 +16,42 @@ Finzen's marketing site must radiate the same calm, intentional energy as the pr
 |--------|--------------------|-----------------------------|
 | **Calm** | Measured sentences. Generous whitespace. | Exclamation marks. Buzzword stacking. |
 | **Confident** | States truths directly. No hedging. | Hype. "Revolutionary." "Game-changing." |
-| **Warm** | Speaks to a real person's real frustration. | Corporate. Detached. Generic. |
+| **Warm** | Speaks to a real person's real frustration. Built by someone who lived it. | Corporate. Detached. Generic. |
 | **Intelligent** | Respects the reader's ability to understand. | Condescending explainer tone. |
+| **Authentic** | Founder voice. Personal. Occasionally dry humor. Earned credibility. | Polished PR copy. "We're passionate about..." |
 
 ### Core Narrative Arc (Homepage)
 
-The homepage is one continuous story, told through scroll:
+The homepage is one continuous story, told through scroll. The central hook is **consolidation** — stop juggling apps and spreadsheets — layered with the mindful-awareness angle.
 
-1. **Hook** — You don't need another finance app. You need 3 minutes a day.
-2. **Reframe** — Manual tracking isn't a limitation. It's the whole point.
-3. **Educate** — Here's how a tiny daily habit transforms your finances.
-4. **Inspire** — See what financial clarity actually looks like (visuals).
-5. **Trust** — Your data, your encryption, your peace of mind.
-6. **Qualify** — This is for people who want awareness, not automation.
-7. **Convert** — Start your practice today.
+1. **Hook** — Stop juggling. One app. Budgeting, cashflow, and portfolio — all in one place.
+2. **Reframe** — You don't need 4 apps and a spreadsheet. You need one tool that sees the full picture.
+3. **How It Works** — Budget → Track spending → Watch investments → See it all connected.
+4. **The Experience** — What it feels like to actually understand your finances (not just see numbers).
+5. **Visual Intelligence** — Show the data. Sankey flows. Portfolio views. Trend charts.
+6. **Trust & Privacy** — AES-256 encryption. EU servers. No bank connections. Your data, yours alone.
+7. **Founder Story** — Brief, authentic. Why this was built. The spreadsheet that broke.
+8. **Qualify** — Who this is for. Who it isn't. Be honest.
+9. **Convert** — Get started.
+
+### Founder Voice (use on homepage, sparingly on angle pages)
+
+The founder's story is a genuine asset. It reads as: personal finance nerd, decade of experience, tried everything, ended up on a Google Sheet held together by duct tape. Built the app because nothing else did everything in one place.
+
+This is not "humble brag" copy — it is earned credibility. Use it to:
+- Establish authenticity (real person built this for a real problem)
+- Justify the "all-in-one" positioning (the founder lived the fragmentation)
+- Add personality without being unprofessional
+
+Tone examples:
+- ✅ "I spent 700 hours building this because no app did what I needed."
+- ✅ "The spreadsheet was fine. Until it wasn't."
+- ❌ "As a passionate finance enthusiast with over a decade of experience..."
 
 ### Metaphorical Framing (use sparingly, contextually)
 
-- Tending a garden / bonsai (patience, daily care, compounding beauty)
+- The ugly spreadsheet → the clean dashboard (upgrade, not just alternative)
+- Juggling multiple apps → one place that does it all (consolidation)
 - Becoming your own CFO (ownership, mastery, not dependency)
 - Mindfulness applied to money (presence, not anxiety)
 
@@ -61,9 +79,22 @@ The homepage is one continuous story, told through scroll:
 
 ### Responsive Strategy
 
-- Mobile-first CSS. Homepage sections stack cleanly.
-- Navigation collapses to a single CTA button on mobile (no hamburger menu needed — the footer has the full map).
-- Angle pages are short enough to work well on any screen.
+The app itself is desktop-first. The landing page follows suit: **design for desktop, ensure mobile works cleanly.**
+
+- Desktop is the primary design target. Layout decisions optimize for ~1200px viewports.
+- Mobile is a clean fallback — sections stack, type scales down, grids go single-column. No mobile-specific features or layouts.
+- Navigation stays minimal on all screen sizes: logo + CTA. No hamburger needed — the footer is the full map.
+- Use Tailwind's `md:` breakpoints as enhancements on top of a readable single-column base. The base state is intentionally simple so it degrades gracefully without special mobile work.
+
+### Beta & Evolvability
+
+The site is launching during beta. Expect the product to shift. The architecture must support this:
+
+- **Sections are independent.** Each homepage section is a self-contained block. Adding or removing one requires zero changes elsewhere.
+- **Copy is marked as provisional.** Every placeholder comment (`COPY PLACEHOLDER`) signals that the text is structural, not final. Rewrite freely.
+- **No section depends on another.** The narrative flows better with all sections present, but any single section can be cut without breaking the page.
+- **New angle pages are cheap to add.** Register metadata in `pages.ts`, create the `.astro` file following the template, wire sibling links. Done.
+- **Avoid premature polish.** Do not obsess over pixel-perfect copy or imagery until the product positioning stabilizes. Get the structure right first.
 
 ---
 
@@ -387,14 +418,15 @@ This section maps what each page needs to *accomplish* — not what it says. Fin
 
 | Section | Intent | Key Message |
 |---------|--------|-------------|
-| Hero | Immediate emotional hook | "Finance doesn't have to be stressful. 3 minutes a day is enough." |
-| Reframe | Challenge assumptions | Manual tracking = awareness. Automation = ignorance. |
-| How It Works | Reduce friction anxiety | Step 1: Open. Step 2: Enter. Step 3: See. |
-| Experience | Paint the feeling | Calm. In control. Curious, not anxious. |
-| Visual Intelligence | Show capability | Static visuals of Sankey flow, portfolio view, trend charts. |
-| Trust | Eliminate security concerns | Encryption spec. EU data. No connections. Auditable. |
+| Hero | Consolidation hook + calm tone | "One app. Budgeting, cashflow, portfolio — the full picture." |
+| Reframe | Challenge the status quo | Stop juggling apps and spreadsheets. One place does it all. |
+| How It Works | Reduce friction anxiety | Budget → Track → Invest → See it connected. Simple steps. |
+| Experience | Paint the feeling | Calm. In control. Finally understanding your money. |
+| Visual Intelligence | Show capability | Sankey flow, portfolio breakdown, trend charts. Show, don't tell. |
+| Trust | Eliminate security concerns | AES-256 encryption. EU data. No bank connections. Factual, brief. |
+| Founder Story | Build authenticity | Why this was built. The spreadsheet problem. Personal, brief. |
 | Qualification | Help people self-select | "This is for you if..." / "This is NOT for you if..." |
-| CTA | Convert | Download / sign up. Framed as starting a practice, not buying a product. |
+| CTA | Convert | Get started. Low friction. No bank connection required. |
 
 ### Angle Page Template
 
@@ -419,3 +451,7 @@ This section maps what each page needs to *accomplish* — not what it says. Fin
 | 2026-01-28 | 6 angle pages + homepage | Covers the 5 core intents. `/be-your-own-cfo` is optional Phase 2. |
 | 2026-01-28 | Tailwind CSS | Utility-first. No CSS bloat. Fast to build custom designs. |
 | 2026-01-28 | Single CTA in nav | Clean. Reduces cognitive load. Footer handles full navigation. |
+| 2026-01-28 | Desktop-first responsive | App is desktop-first. Landing page matches. Mobile is a clean fallback, not the design target. |
+| 2026-01-28 | Narrative pivot to consolidation | "All-in-one" is the stronger hook than "manual tracking." The mindfulness angle layers in, not leads. |
+| 2026-01-28 | Added founder story section | Authentic origin story is a genuine differentiator. Earns trust without corporate polish. |
+| 2026-01-28 | Beta evolvability philosophy | Site launches during beta. Sections are independent blocks. Easy add/remove. No premature polish. |
