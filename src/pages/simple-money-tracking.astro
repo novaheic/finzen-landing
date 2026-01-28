@@ -1,0 +1,110 @@
+---
+/**
+ * /simple-money-tracking
+ *
+ * Angle: Beginner-friendly. Low friction. No overwhelm.
+ * Audience: People who find finance apps intimidating or complex.
+ * Intent: "I just want something simple that actually works."
+ * Keyword cluster: simple money tracking, easy money tracking app, beginner personal finance
+ *
+ * Narrative: Finzen removes every unnecessary barrier.
+ * If you can type a number, you can use it.
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import TrustBadge from '@/components/TrustBadge.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.simpleMoneyTracking;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="Simple Money Tracking. No Overwhelm."
+    subtitle="If you can type a number, you can use Finzen. No setup complexity. No learning curve. Just clarity."
+    keyword="simple money tracking"
+  />
+
+  <!-- Core argument: Simplicity as design philosophy -->
+  <Section
+    heading="Finance tracking should not feel like homework."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Most apps overwhelm with features, dashboards, categories
+      - Finzen strips it to the essentials
+      - The barrier is not skill — it is friction
+      - "Start in minutes, not hours"
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        Most finance apps have dozens of features you will never use, buried in menus you will never find. They feel complex because they were built for complexity. Finzen was built for the opposite.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        The interface is intentionally minimal. Enter a transaction in seconds. See your spending at a glance. No spreadsheet skills required. No financial degree. Just open the app and start.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        Simplicity is not a lack of power — it is respect for your time and attention. Finzen does more with less, so you can focus on living.
+      </p>
+    </div>
+  </Section>
+
+  <!-- What "simple" looks like -->
+  <Section heading="What simplicity means here">
+    <div class="max-w-2xl">
+      <FeatureList
+        features={[
+          { label: 'One-tap transaction entry', detail: 'Amount. Category. Done. No forms. No dropdowns to navigate.' },
+          { label: 'Intuitive interface', detail: 'Designed so the most common actions are always one step away.' },
+          { label: 'No setup required', detail: 'No bank linking. No import process. Start entering data immediately.' },
+          { label: 'Gradual complexity', detail: 'Start simple. Add budget envelopes, investments, and more when you are ready.' },
+          { label: 'Beautiful by default', detail: 'Every view is designed to be clear and pleasant. No ugly spreadsheets.' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- The progression: simple → powerful -->
+  <Section
+    heading="Simple to start. Powerful over time."
+    subheading="Finzen grows with you."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Week 1: Just enter spending. See totals.
+      - Month 1: Budget envelopes. Category insights.
+      - Month 3+: Sankey flow, portfolio tracking, trend analysis.
+      - The power emerges from consistency, not complexity.
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        You do not need to use every feature on day one. Start with what matters: entering what you spend. As your habit builds, the app reveals more depth — budget tracking, visual insights, portfolio views — without ever feeling overwhelming.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        The power of Finzen is not in its feature count. It is in the compounding effect of daily awareness. Simple input. Rich output. Over time.
+      </p>
+    </div>
+  </Section>
+
+  <TrustBadge variant="compact" />
+
+  <CTABlock
+    heading="Start simple. Stay consistent."
+    subtext="No setup. No complexity. Just open and begin tracking."
+  />
+
+  <SiblingLinks slugs={['dailyExpenseTracker', 'visualFinancialInsights']} />
+
+</Layout>

@@ -1,0 +1,87 @@
+---
+/**
+ * /daily-expense-tracker
+ *
+ * Angle: Habit-loop, routine-focused.
+ * Audience: People searching for a daily expense tracking tool.
+ * Intent: "I want something I can use every day, quickly."
+ * Keyword cluster: daily expense tracker, daily money tracker, expense tracking habit
+ *
+ * Narrative: Finzen is a daily practice. 2-3 minutes. A small ritual
+ * that compounds into financial awareness over time.
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import TrustBadge from '@/components/TrustBadge.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.dailyExpenseTracker;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <!-- Angle-specific hero -->
+  <AngleHero
+    title="The Daily Expense Tracker That Builds a Habit"
+    subtitle="A 2–3 minute routine. Manual, intentional, and designed to compound into genuine financial clarity over time."
+    keyword="daily expense tracker"
+  />
+
+  <!-- Core argument: The habit loop -->
+  <Section
+    heading="Small daily discipline. Lasting results."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Why daily tracking matters (awareness compounds)
+      - The simplicity of the routine: open, enter, done
+      - How this is different from apps that auto-categorize
+      - Tie back to the "zen garden" metaphor: daily tending
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        The best financial habit is not the one that tracks the most data — it is the one you actually do every day. Finzen is designed around this idea. Open it. Spend two minutes entering what you spent. Close it. That is the practice.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        Over days and weeks, those entries build into a complete picture. Not because of automation — because of your attention. Every transaction you log is a moment of awareness. They compound.
+      </p>
+    </div>
+  </Section>
+
+  <!-- What the daily experience looks like -->
+  <Section heading="What your daily routine looks like">
+    <div class="max-w-2xl">
+      <FeatureList
+        features={[
+          { label: 'Instant entry', detail: 'No forms to fill out. Just amount, category, done. Designed for speed.' },
+          { label: 'Real-time budget view', detail: 'See how today\'s spending compares to your monthly envelope.' },
+          { label: 'Quick visual check', detail: 'Glance at your spending flow. Know where you stand.' },
+          { label: 'No bank sync required', detail: 'Enter what matters to you. Skip what does not. Full control.' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Trust signal (compact) -->
+  <TrustBadge variant="compact" />
+
+  <!-- CTA -->
+  <CTABlock
+    heading="Start your daily practice today"
+    subtext="Two minutes. No setup. No bank connection. Just open and begin."
+  />
+
+  <!-- Sibling links -->
+  <SiblingLinks slugs={['simpleMoneyTracking', 'manualFinanceApp']} />
+
+</Layout>

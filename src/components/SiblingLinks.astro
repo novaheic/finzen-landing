@@ -1,0 +1,48 @@
+---
+/**
+ * SiblingLinks.astro — "Continue exploring" links between angle pages.
+ * Renders at the bottom of each angle page, above the CTA.
+ * Accepts an array of slugs and looks up metadata from pages.ts.
+ *
+ * Usage:
+ *   <SiblingLinks slugs={['simpleMoneyTracking', 'manualFinanceApp']} />
+ */
+
+import { pages } from '@/data/pages';
+
+interface Props {
+  /** Array of keys from the pages registry */
+  slugs: string[];
+}
+
+const { slugs } = Astro.props;
+
+const linkedPages = slugs
+  .map((key) => pages[key])
+  .filter(Boolean);
+---
+
+{linkedPages.length > 0 && (
+  <section class="w-full py-10 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4">
+        Continue exploring
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        {linkedPages.map((page) => (
+          <a
+            href={`/${page.slug}`}
+            class="flex-1 p-4 border border-stone-200 rounded-lg hover:border-emerald-300 hover:bg-emerald-50 transition-colors group"
+          >
+            <p class="text-sm font-medium text-stone-700 group-hover:text-emerald-700 transition-colors">
+              {page.footerLabel}
+            </p>
+            <p class="text-xs text-stone-400 mt-0.5 line-clamp-2">
+              {page.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

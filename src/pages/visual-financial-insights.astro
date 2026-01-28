@@ -1,0 +1,116 @@
+---
+/**
+ * /visual-financial-insights
+ *
+ * Angle: Data-visual learners. Show the "what."
+ * Audience: People who want to see their finances, not just read numbers.
+ * Intent: "I want beautiful charts and visualizations of my spending."
+ * Keyword cluster: visual financial insights, spending visualization, sankey finance, money flow chart
+ *
+ * Narrative: Data becomes insight when it is beautifully presented.
+ * Your daily entries transform into a rich visual story.
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import TrustBadge from '@/components/TrustBadge.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.visualFinancialInsights;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="See Where Your Money Actually Goes"
+    subtitle="Sankey spending flows. Portfolio breakdowns. Trend charts. Your daily entries become powerful visual insights."
+    keyword="visual financial insights"
+  />
+
+  <!-- Core argument: Visualization = understanding -->
+  <Section
+    heading="Numbers without context are just noise."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Raw numbers in a spreadsheet don't tell a story
+      - Visualization transforms data into understanding
+      - Finzen's visuals are designed to reveal patterns, not just display data
+      - The Sankey diagram as the hero feature — show how money flows
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        A list of transactions tells you what happened. A visualization tells you why it matters. Finzen is built around this distinction. Every chart, every diagram, every breakdown is designed to surface insight — not just display data.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        The centerpiece is the Sankey spending flow: a visual map of how your money moves from income to categories to savings. At a glance, you can see where the largest flows are, where you have room, and where your money is actually going.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        This is financial storytelling. And it all starts from your daily entries.
+      </p>
+    </div>
+  </Section>
+
+  <!-- What visualizations are available -->
+  <Section heading="The visual toolkit">
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Sankey Spending Flow', detail: 'See money flow from income → categories → savings in one connected diagram.' },
+          { label: 'Budget vs. Actual', detail: 'Envelope budgeting with visual progress bars for each category.' },
+          { label: 'Portfolio Breakdown', detail: 'Pie and bar charts showing allocation across stocks, crypto, commodities, and more.' },
+          { label: 'Spending Trends', detail: 'Monthly trend lines. Spot patterns. Track improvement over time.' },
+          { label: 'Net Worth Timeline', detail: 'A chart showing your financial trajectory. The long view that motivates.' },
+          { label: 'Custom Date Ranges', detail: '1 month. 3 months. 1 year. Or any custom range you define.' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- How visuals emerge from daily input -->
+  <Section
+    heading="From 3 minutes to full insight"
+    subheading="The magic is in the consistency."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Day 1: Enter a few transactions. See a small bar chart.
+      - Week 2: Patterns start to emerge. Budget tracking becomes meaningful.
+      - Month 1: The Sankey flow tells a real story. Portfolio view takes shape.
+      - Month 3+: Trend analysis reveals your financial trajectory.
+      - The visual power comes from the daily habit, not from complexity.
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        The visualizations in Finzen are not decorative. They are the reward for your daily habit. Every transaction you enter feeds into richer charts, clearer patterns, and deeper understanding.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        After a week, you start seeing where your money goes. After a month, budgets become meaningful. After a quarter, the trend lines tell a story about your financial health that no single number ever could.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        Visual insight is not instant — it compounds. That is what makes it powerful.
+      </p>
+    </div>
+  </Section>
+
+  <TrustBadge variant="compact" />
+
+  <CTABlock
+    heading="Start building your financial story"
+    subtext="Daily entries. Beautiful visualizations. A complete financial picture — over time."
+  />
+
+  <SiblingLinks slugs={['dailyExpenseTracker', 'simpleMoneyTracking']} />
+
+</Layout>

@@ -1,0 +1,51 @@
+---
+/**
+ * TrustBadge.astro — Security and privacy trust signals.
+ * Renders a horizontal bar of trust indicators.
+ * Used on homepage (full) and angle pages (compact variant).
+ *
+ * Usage:
+ *   <TrustBadge />                  <!-- full bar -->
+ *   <TrustBadge variant="compact" /> <!-- inline, fewer items -->
+ */
+
+interface Props {
+  variant?: 'full' | 'compact';
+}
+
+const { variant = 'full' } = Astro.props;
+
+const trustItems = [
+  { label: 'AES-256-GCM Encrypted', icon: '🔐' },
+  { label: 'EU-Hosted Data', icon: '🇪🇺' },
+  { label: 'No Bank Connections', icon: '🚫' },
+  { label: 'Fully Manual & Private', icon: '🛡️' },
+];
+
+// Compact shows fewer items
+const items = variant === 'compact' ? trustItems.slice(0, 2) : trustItems;
+---
+
+{variant === 'full' ? (
+  <div class="w-full py-8 border-y border-stone-200 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        {items.map((item) => (
+          <div class="flex items-center gap-2">
+            <span class="text-lg" aria-hidden="true">{item.icon}</span>
+            <span class="text-sm font-medium text-stone-600">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+) : (
+  <div class="flex flex-wrap items-center gap-4">
+    {items.map((item) => (
+      <span class="text-xs text-stone-500 flex items-center gap-1">
+        <span aria-hidden="true">{item.icon}</span>
+        {item.label}
+      </span>
+    ))}
+  </div>
+)}

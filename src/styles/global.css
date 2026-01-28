@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/**
+ * Global styles for Finzen Landing.
+ * Tailwind 4 uses @import instead of @tailwind directives.
+ *
+ * Design tokens are defined in tailwind.config.mjs.
+ * This file handles only base typography overrides and resets.
+ */
+
+/* Base typography */
+@layer base {
+  html {
+    /* Smooth scrolling for anchor links */
+    scroll-behavior: smooth;
+    /* Prevent text size adjustment on mobile */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    /* Stone-100 base background eliminates harsh white */
+    @apply bg-white text-stone-800 font-sans;
+    /* Generous line-height for readability */
+    line-height: 1.6;
+    /* Anti-aliasing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Ensure images don't overflow */
+  img, video, svg {
+    @apply max-w-full;
+  }
+
+  /* Link base styling — most links will be overridden per component */
+  a {
+    @apply text-emerald-700 hover:text-emerald-800;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-emerald-500 outline-offset-2;
+  }
+}

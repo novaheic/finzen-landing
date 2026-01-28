@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Finzen favicon: abstract "zen" shape — a calm circle with a small accent -->
+  <rect width="32" height="32" rx="8" fill="#047857"/>
+  <!-- Inner circle — represents clarity and focus -->
+  <circle cx="16" cy="16" r="8" fill="none" stroke="white" stroke-width="2"/>
+  <!-- Small dot — the daily input, the practice -->
+  <circle cx="16" cy="16" r="2" fill="white"/>
+</svg>

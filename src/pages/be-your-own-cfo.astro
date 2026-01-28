@@ -1,0 +1,113 @@
+---
+/**
+ * /be-your-own-cfo
+ *
+ * Angle: Empowerment. Ownership. Mastery.
+ * Audience: People who want to feel in command of their finances.
+ * Intent: "I want to understand my money like a professional would."
+ * Keyword cluster: be your own CFO, personal finance mastery, financial independence tracking
+ *
+ * Narrative: A CFO understands every dollar. Finzen gives you
+ * the tools and the habit to become your own.
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import TrustBadge from '@/components/TrustBadge.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.beYourOwnCFO;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="Be Your Own CFO"
+    subtitle="A CFO understands every dollar that moves through the company. Finzen gives you the same clarity — for your personal finances."
+    keyword="be your own CFO"
+  />
+
+  <!-- Core argument: Ownership and mastery -->
+  <Section
+    heading="Understanding is the ultimate financial tool."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - A CFO does not delegate understanding — they own it
+      - Most people outsource their financial awareness (to apps, advisors, automation)
+      - Finzen flips this: you become the expert on your own money
+      - Not about being rich — about being informed, intentional, in control
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        A chief financial officer does not delegate understanding. They know where every dollar goes, why it goes there, and what the trajectory looks like. They have complete clarity — and that clarity drives better decisions.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        Most people outsource this awareness. To apps that auto-categorize. To advisors who manage but do not teach. To automation that keeps them informed but not understanding. Finzen takes a different approach: it gives you the tools to become the expert on your own money.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        This is not about being wealthy. It is about being informed. Intentional. In control of the one financial system that is entirely yours.
+      </p>
+    </div>
+  </Section>
+
+  <!-- What a "personal CFO" needs -->
+  <Section heading="What your personal CFO toolkit looks like">
+    <div class="max-w-2xl">
+      <FeatureList
+        features={[
+          { label: 'Complete spending visibility', detail: 'Every transaction, every category, every flow — tracked by you, understood by you.' },
+          { label: 'Envelope budgeting', detail: 'Zero-based budgeting. Every dollar has a job. You assign it.' },
+          { label: 'Multi-asset portfolio tracking', detail: 'Stocks, crypto, commodities, forex, real estate. One complete view.' },
+          { label: 'Sankey cash-flow analysis', detail: 'See how money moves through your life. Spot inefficiencies. Make informed choices.' },
+          { label: 'Real-time price monitoring', detail: 'Investment values update live. Always know your net worth.' },
+          { label: 'Historical trend analysis', detail: 'Track your financial trajectory over months and years.' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- The mindset shift -->
+  <Section
+    heading="From passive to intentional."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - The shift: from "I hope I'm doing okay" to "I know exactly where I stand"
+      - From reactive to proactive financial decisions
+      - The daily practice builds expertise over time
+      - This is mastery — earned through consistent attention
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        The shift from passive to intentional financial management does not happen overnight. It happens through a daily practice. Two to three minutes of conscious engagement — entering, reviewing, understanding — that compounds into genuine expertise.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        After weeks of daily tracking, you stop wondering how much you spent on dining out. You know. You stop being surprised by your credit card bill. You anticipated it. You move from reactive to proactive — from hoping for the best to planning for it.
+      </p>
+      <p class="text-lg font-medium text-stone-700 italic leading-relaxed">
+        "Financial mastery is not about earning more. It is about understanding what you already have."
+      </p>
+    </div>
+  </Section>
+
+  <TrustBadge />
+
+  <CTABlock
+    heading="Take ownership of your financial life"
+    subtext="Manual. Private. Intentional. The tools are here. The practice starts today."
+  />
+
+  <SiblingLinks slugs={['manualFinanceApp', 'privacyFirstFinance']} />
+
+</Layout>

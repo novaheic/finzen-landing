@@ -1,0 +1,247 @@
+---
+/**
+ * Homepage — /
+ *
+ * The main narrative page. A scrolling story that builds trust,
+ * explains the product, and converts visitors into users.
+ *
+ * Structure:
+ *   1. Hero (philosophy-first)
+ *   2. Reframing section (manual > automated)
+ *   3. How It Works (3 steps)
+ *   4. The Experience (emotional / sensory)
+ *   5. Visual Intelligence (show the data)
+ *   6. Trust & Privacy
+ *   7. Who This Is For (qualification)
+ *   8. CTA (habit-oriented)
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import Hero from '@/components/Hero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import TrustBadge from '@/components/TrustBadge.astro';
+import CTABlock from '@/components/CTABlock.astro';
+
+const meta = pages.home;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical="/"
+>
+
+  <!-- 1. Philosophy-first hero -->
+  <Hero />
+
+  <!-- 2. Reframing: Manual tracking is intentional -->
+  <Section
+    heading="Manual tracking is not a limitation."
+    subheading="It is the entire point."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Paragraph 1: Why automation creates a false sense of security.
+      - Paragraph 2: What happens when you touch every transaction yourself.
+      - Paragraph 3: The compounding power of daily awareness.
+      - Keep it under 200 words. Calm, confident tone.
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        Most finance apps want to automate everything — sync your bank, categorize automatically, set it and forget it. The problem? When you are not paying attention, you are not learning. Automation creates the illusion of control without the understanding.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        Finzen flips this. Every transaction you enter is a moment of awareness. Every number you type is a small act of financial mindfulness. And over weeks and months, those moments compound into genuine clarity.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        This is not about being tedious. It is about being intentional. Two to three minutes a day. That is the practice.
+      </p>
+    </div>
+  </Section>
+
+  <!-- 3. How It Works — 3 clear steps -->
+  <Section heading="How it works" align="center">
+    {/*
+      COPY PLACEHOLDER:
+      - 3 steps in a horizontal row (stack on mobile)
+      - Step 1: Open Finzen. Enter what you spent. 30 seconds.
+      - Step 2: See your spending in real-time. Sankey flow. Budget view.
+      - Step 3: Watch your financial picture sharpen over time.
+      - Each step: icon + title + 1 sentence.
+    */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
+      <!-- Step 1 -->
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center">
+          <span class="text-lg font-semibold text-emerald-700">1</span>
+        </div>
+        <h3 class="text-base font-semibold text-stone-800">Enter</h3>
+        <p class="text-sm text-stone-500 leading-relaxed">
+          Open the app. Type what you spent. Takes 30 seconds. No forms, no friction.
+        </p>
+      </div>
+      <!-- Step 2 -->
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center">
+          <span class="text-lg font-semibold text-emerald-700">2</span>
+        </div>
+        <h3 class="text-base font-semibold text-stone-800">See</h3>
+        <p class="text-sm text-stone-500 leading-relaxed">
+          Watch your spending flow visualize in real-time. Budget vs. actual. Category breakdowns.
+        </p>
+      </div>
+      <!-- Step 3 -->
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center">
+          <span class="text-lg font-semibold text-emerald-700">3</span>
+        </div>
+        <h3 class="text-base font-semibold text-stone-800">Understand</h3>
+        <p class="text-sm text-stone-500 leading-relaxed">
+          Over time, your financial story becomes clear. Trends, patterns, progress. All yours.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 4. The Experience — emotional / sensory -->
+  <Section
+    heading="The feeling of being in control"
+    subheading="Not anxious. Not overwhelmed. Just clear."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Describe the emotional state of using Finzen daily.
+      - Not features — feelings. Calm. Curiosity. Ownership.
+      - Use 2-3 short, evocative paragraphs.
+      - Maybe a pull quote or emphasized line.
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        There is a quiet satisfaction in knowing exactly where your money went today. Not because someone told you — because you chose to look. That small act, repeated daily, becomes a practice. A ritual. A relationship with your finances that feels calm instead of stressful.
+      </p>
+      <p class="text-lg font-medium text-stone-700 italic leading-relaxed">
+        "Financial clarity is not about having more money. It is about understanding the money you have."
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        Finzen is designed to make that clarity accessible. Beautiful interfaces. Thoughtful visualizations. A pace that respects your time.
+      </p>
+    </div>
+  </Section>
+
+  <!-- 5. Visual Intelligence — show the data -->
+  <Section
+    heading="Your finances, beautifully visualized"
+    subheading="From daily entries to powerful insight."
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - Describe (or show) the visual capabilities:
+        • Sankey spending flow diagram
+        • Portfolio breakdown
+        • Trend charts over time
+        • Budget vs. actual comparison
+      - Use static mockup images or abstract illustrations.
+      - For now: descriptive text + feature list.
+    */}
+    <div class="mt-4">
+      <FeatureList
+        heading="What you will see"
+        columns={2}
+        features={[
+          { label: 'Sankey Spending Flow', detail: 'See exactly how money moves from income to categories to savings.' },
+          { label: 'Budget vs. Actual', detail: 'Envelope-based budgeting with real-time tracking.' },
+          { label: 'Portfolio Breakdown', detail: 'Stocks, crypto, commodities, real estate — all in one view.' },
+          { label: 'Trend Analysis', detail: 'Monthly and custom date range charts showing your trajectory.' },
+          { label: 'Net Worth Timeline', detail: 'Watch your financial picture grow over weeks and months.' },
+          { label: 'Multi-Currency Support', detail: 'Works with 168+ currencies. Automatic conversion.' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- 6. Trust & Privacy -->
+  <TrustBadge />
+
+  <Section
+    heading="Your data is yours. Period."
+    subheading="No compromises on privacy."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER:
+      - AES-256-GCM encryption details (client-side)
+      - EU-hosted servers
+      - No bank, wallet, or broker connections — ever
+      - No data sharing, no ad targeting
+      - Brief and factual. Trust is earned by specificity.
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-stone-600 leading-relaxed">
+        Every piece of financial data in Finzen is encrypted with AES-256-GCM before it ever leaves your device. Your encryption key is derived from your password — we never see it. Data is stored on EU servers, subject to GDPR.
+      </p>
+      <p class="text-base text-stone-600 leading-relaxed">
+        There are no bank connections. No wallet syncing. No broker integrations. Finzen never touches your accounts, because it does not need to. Manual entry is not just a philosophy — it is a security feature.
+      </p>
+    </div>
+  </Section>
+
+  <!-- 7. Who This Is For — qualification -->
+  <Section heading="Is Finzen right for you?" align="center">
+    {/*
+      COPY PLACEHOLDER:
+      - Two columns: "This IS for you if..." and "This is NOT for you if..."
+      - Be honest. Help people self-select.
+      - "For" list: wants awareness, values privacy, likes daily habits, wants beautiful visuals
+      - "Not for" list: wants full automation, needs bank sync, looking for investment advice
+    */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 text-left">
+      <!-- For you -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-semibold text-emerald-700 uppercase tracking-wider">This is for you if</h3>
+        <ul class="space-y-2">
+          {[
+            'You want to understand your finances, not just see a number.',
+            'Privacy matters more than convenience.',
+            'You like daily habits and small rituals.',
+            'You want beautiful, meaningful financial visualizations.',
+            'You value being in control of your own data.',
+          ].map((item) => (
+            <li class="flex items-start gap-2 text-sm text-stone-600">
+              <span class="mt-0.5 text-emerald-600">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <!-- Not for you -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-semibold text-stone-400 uppercase tracking-wider">This is not for you if</h3>
+        <ul class="space-y-2">
+          {[
+            'You want your bank account to sync automatically.',
+            'You are looking for investment or tax advice.',
+            'You need a tool that works without any daily input.',
+            'You prefer a "set it and forget it" approach.',
+          ].map((item) => (
+            <li class="flex items-start gap-2 text-sm text-stone-500">
+              <span class="mt-0.5 text-stone-300">✕</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 8. Final CTA -->
+  <CTABlock
+    heading="Ready to start your daily practice?"
+    subtext="Free to start. No credit card. No bank connection required. Just open, enter, and see."
+    buttonLabel="Begin Today"
+  />
+
+</Layout>

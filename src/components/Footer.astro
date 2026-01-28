@@ -1,0 +1,73 @@
+---
+/**
+ * Footer.astro — Full site map + brand snippet + CTA.
+ * This is where angle pages live in navigation.
+ * Provides crawlers and users a complete site overview.
+ */
+
+import { anglePages, APP_URL } from '@/data/pages';
+---
+
+<footer class="w-full border-t border-stone-200 bg-stone-50">
+  <div class="max-w-5xl mx-auto px-6 py-12">
+
+    <!-- Top row: Brand + Pages -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Brand column -->
+      <div class="space-y-3">
+        <a href="/" class="text-lg font-semibold text-stone-800 hover:text-emerald-700 transition-colors">
+          Finzen
+        </a>
+        <p class="text-sm text-stone-500 leading-relaxed max-w-xs">
+          Financial clarity through daily awareness. Manual, private, and yours alone.
+        </p>
+      </div>
+
+      <!-- Explore pages column -->
+      <div class="space-y-3">
+        <h3 class="text-xs font-semibold text-stone-400 uppercase tracking-wider">Explore</h3>
+        <nav aria-label="Site pages" class="space-y-1.5">
+          {anglePages.map((page) => (
+            <a
+              href={`/${page.slug}`}
+              class="block text-sm text-stone-600 hover:text-emerald-700 transition-colors"
+            >
+              {page.footerLabel}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- CTA column -->
+      <div class="space-y-3 flex flex-col justify-between">
+        <div class="space-y-2">
+          <h3 class="text-xs font-semibold text-stone-400 uppercase tracking-wider">Get Started</h3>
+          <p class="text-sm text-stone-500 leading-relaxed">
+            2–3 minutes a day. That is all it takes.
+          </p>
+        </div>
+        <a
+          href={APP_URL}
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-700 text-white text-sm font-medium rounded-lg hover:bg-emerald-800 transition-colors w-fit"
+        >
+          Start Your Practice
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-10 pt-6 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-stone-400">
+        © {new Date().getFullYear()} Finzen. All rights reserved.
+      </p>
+      <nav aria-label="Legal links" class="flex gap-6">
+        <a href="/privacy" class="text-xs text-stone-400 hover:text-stone-600 transition-colors">Privacy Policy</a>
+        <a href="/terms" class="text-xs text-stone-400 hover:text-stone-600 transition-colors">Terms</a>
+      </nav>
+    </div>
+  </div>
+</footer>
