@@ -26,21 +26,21 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="w-full py-20 md:py-28 px-6 bg-gradient-to-b from-stone-50 to-white">
+<section class="w-full py-20 md:py-28 px-6 bg-gradient-to-b from-[#ECECEC] to-neutral-200 dark:from-[#1B1B1B] dark:to-neutral-900">
   <div class="max-w-3xl mx-auto text-center space-y-5">
 
     <!-- Eyebrow -->
-    <p class="text-sm font-medium text-emerald-700 uppercase tracking-widest">
+    <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100 uppercase tracking-widest">
       Finzen
     </p>
 
     <!-- Main H1 — unique per angle page, keyword-rich -->
-    <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-stone-800 leading-tight tracking-tight">
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
       {title}
     </h1>
 
     <!-- Positioning subtitle -->
-    <p class="text-base md:text-lg text-stone-500 leading-relaxed max-w-xl mx-auto">
+    <p class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl mx-auto">
       {subtitle}
     </p>
 
@@ -48,7 +48,7 @@ const { title, subtitle } = Astro.props;
     <div class="pt-4">
       <a
         href={APP_URL}
-        class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-700 text-white text-sm font-medium rounded-xl hover:bg-emerald-800 transition-colors"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] text-white text-sm font-medium rounded-xl hover:bg-neutral-800 dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors"
       >
         Get Started Free
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

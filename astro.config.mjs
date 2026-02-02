@@ -1,7 +1,12 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   // Production URL — update before launch
   site: 'https://finzen.app',
 

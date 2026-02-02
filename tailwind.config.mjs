@@ -1,11 +1,8 @@
 /**
  * Tailwind CSS Configuration — Design Tokens
  *
- * This is the single source of truth for Finzen's visual design system.
- * All colors, spacing, typography, and shadows are defined here.
- *
- * Philosophy: Muted, grounded, calm. Sage green as primary signal.
- * Warm stone tones for backgrounds and text. Generous whitespace.
+ * Brand: black/white. Light bg #ECECEC, dark bg #1B1B1B.
+ * Accents: black in light mode, white in dark mode (use dark: prefix).
  */
 
 export default {
@@ -13,34 +10,26 @@ export default {
 
   theme: {
     extend: {
-      /**
-       * Color Palette
-       * Primary: Emerald (green family — calm, growth, nature)
-       * Neutral: Stone (warm grays — not cold blue-gray)
-       * Accent: Amber (optional warm accent for highlights)
-       */
       colors: {
-        // Primary action / brand color
-        brand: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          500: '#10b981',  // emerald-500
-          600: '#059669',  // emerald-600
-          700: '#047857',  // emerald-700
-          800: '#065f46',  // emerald-800
+        // Page backgrounds (use in components; body uses global.css)
+        page: {
+          light: '#ECECEC',
+          dark: '#1B1B1B',
         },
-        // Warm neutral — slightly warmer than default stone
+        // Accent: black light / white dark — use bg-accent text-accent etc.
+        accent: '#0a0a0a',
+        // Neutral text/surfaces
         neutral: {
-          50: '#faf9f7',
-          100: '#f5f3f0',
-          200: '#e8e5e0',
-          300: '#d4d0c8',
-          400: '#a8a29e',  // stone-400
-          500: '#78716c',  // stone-500
-          600: '#57534e',  // stone-600
-          700: '#44403c',  // stone-700
-          800: '#292524',  // stone-800
-          900: '#1c1917',  // stone-900
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#1a1a1a',
         },
       },
 

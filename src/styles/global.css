@@ -1,45 +1,82 @@
 @import "tailwindcss";
 
 /**
+ * Dark mode: class-based so we can toggle via JS.
+ * Add class="dark" on <html> for dark theme.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
  * Global styles for Finzen Landing.
  * Tailwind 4 uses @import instead of @tailwind directives.
  *
- * Design tokens are defined in tailwind.config.mjs.
- * This file handles only base typography overrides and resets.
+ * Brand: black/white. Light bg #ECECEC, dark bg #1B1B1B.
+ * Accents: black in light mode, white in dark mode.
  */
 
-/* Base typography */
+/* Base typography + theme backgrounds */
 @layer base {
   html {
-    /* Smooth scrolling for anchor links */
     scroll-behavior: smooth;
-    /* Prevent text size adjustment on mobile */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
 
   body {
-    /* Stone-100 base background eliminates harsh white */
-    @apply bg-white text-stone-800 font-sans;
-    /* Generous line-height for readability */
+    /* Light: #ECECEC, dark: #1B1B1B */
+    background-color: #ECECEC;
+    color: #1a1a1a;
+    @apply font-sans;
     line-height: 1.6;
-    /* Anti-aliasing */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Ensure images don't overflow */
+  .dark body {
+    background-color: #1B1B1B;
+    color: #e5e5e5;
+  }
+
   img, video, svg {
     @apply max-w-full;
   }
 
-  /* Link base styling — most links will be overridden per component */
+  /* Accent: black in light, white in dark */
   a {
-    @apply text-emerald-700 hover:text-emerald-800;
+    color: #0a0a0a;
+  }
+  a:hover {
+    color: #1a1a1a;
+  }
+  .dark a {
+    color: #f5f5f5;
+  }
+  .dark a:hover {
+    color: #ffffff;
   }
 
-  /* Focus styles for accessibility */
   :focus-visible {
-    @apply outline-2 outline-emerald-500 outline-offset-2;
+    outline: 2px solid #0a0a0a;
+    outline-offset: 2px;
   }
+  .dark :focus-visible {
+    outline-color: #f5f5f5;
+  }
+}
+
+/* Theme toggle icons: sun in light, moon in dark (global so .dark on html works) */
+.theme-toggle-knob-sun {
+  display: flex;
+  color: #0a0a0a;
+}
+.theme-toggle-knob-moon {
+  display: none;
+  color: #ffffff;
+}
+.dark .theme-toggle-knob-sun {
+  display: none !important;
+}
+.dark .theme-toggle-knob-moon {
+  display: flex !important;
+  color: #ffffff;
 }

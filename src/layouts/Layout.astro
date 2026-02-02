@@ -32,6 +32,15 @@ const { title, description, canonical, ogImage } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Prevent flash: set theme before paint -->
+  <script is:inline>
+    (function() {
+      const stored = localStorage.getItem('finzen-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const dark = stored === 'dark' || (stored !== 'light' && prefersDark);
+      document.documentElement.classList.toggle('dark', dark);
+    })();
+  </script>
   <SEO
     title={title}
     description={description}

@@ -1,8 +1,9 @@
 ---
 /**
  * Header.astro — Minimal top navigation.
- * Logo + single CTA. No clutter. Mobile-responsive.
- * Angle pages are discovered through content and footer, not nav.
+ * Logo (wordmark) left. Theme toggle + CTA right.
+ *
+ * Logo: public/wordmark.svg. Black for light mode; inverts in dark.
  */
 
 import { APP_URL } from '@/data/pages';
@@ -13,22 +14,125 @@ import { APP_URL } from '@/data/pages';
     aria-label="Main navigation"
     class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between"
   >
-    <!-- Logo -->
-    <a href="/" aria-label="Finzen — Home" class="group">
-      <span class="text-xl font-semibold text-stone-800 tracking-tight group-hover:text-emerald-700 transition-colors">
-        Finzen
-      </span>
+    <!-- Logo: top left -->
+    <a href="/" aria-label="Finzen — Home" class="flex items-center shrink-0">
+      <img
+        src="/wordmark.svg"
+        alt="Finzen"
+        width="120"
+        height="32"
+        class="h-8 w-auto dark:invert"
+      />
     </a>
 
-    <!-- Single CTA -->
-    <a
-      href={APP_URL}
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-700 text-white text-sm font-medium rounded-lg hover:bg-emerald-800 transition-colors"
-    >
-      Get Started
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <!-- Right: neumorphic theme toggle + CTA -->
+    <div class="flex items-center gap-4">
+      <!-- Theme toggle: sliding knob with icon on top — sun (light) / moon (dark) -->
+      <button
+        id="theme-toggle"
+        type="button"
+        role="switch"
+        aria-label="Toggle light/dark mode"
+        aria-checked="false"
+        class="theme-toggle relative flex items-center rounded-full w-[72px] h-9 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-neutral-100 focus-visible:ring-offset-[#ECECEC] dark:focus-visible:ring-offset-[#1B1B1B]"
+      >
+        <!-- Neumorphic track: soft inset shadow -->
+        <span
+          class="absolute inset-0 rounded-full transition-colors duration-200 theme-toggle-track"
+          aria-hidden="true"
+        ></span>
+        <!-- Sliding knob: icon on top — sun in light (black), moon in dark (white) -->
+        <span
+          class="theme-toggle-knob absolute left-1 top-1 w-7 h-7 rounded-full z-[2] flex items-center justify-center transition-transform duration-200 ease-out"
+          aria-hidden="true"
+        >
+          <span class="theme-toggle-knob-icon theme-toggle-knob-sun absolute inset-0 flex items-center justify-center w-4 h-4 m-auto" aria-hidden="true">
+            <svg class="w-full h-full" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+              <!-- Rays (stroke): outer r=10 to inner r=6.5 — do not touch center -->
+              <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2 L12 5.5 M12 22 L12 18.5 M2 12 L5.5 12 M22 12 L18.5 12 M19 5 L16.2 7.8 M5 5 L7.8 7.8 M5 19 L7.8 16.2 M19 19 L16.2 16.2" />
+              <!-- Solid center: bigger, rays stop before it -->
+              <circle cx="12" cy="12" r="5.5" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
+          <span class="theme-toggle-knob-icon theme-toggle-knob-moon absolute inset-0 flex items-center justify-center w-4 h-4 m-auto" aria-hidden="true">
+            <svg class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
+              <!-- Moon crescent filled — light in dark mode -->
+              <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+          </span>
+        </span>
+      </button>
+
+      <a
+        href={APP_URL}
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0a0a0a] text-white text-sm font-medium rounded-lg hover:bg-[#1a1a1a] dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors"
+      >
+        Get Started
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
   </nav>
 </header>
+
+<style>
+  /* Light mode: light track (concave), light raised knob */
+  .theme-toggle-track {
+    background: #e0e0e0;
+    box-shadow:
+      inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+  }
+  .theme-toggle-knob {
+    background: #ECECEC;
+    box-shadow:
+      2px 2px 4px rgba(0, 0, 0, 0.1),
+      -1px -1px 2px rgba(255, 255, 255, 0.9);
+  }
+
+  /* Dark mode: .dark is on <html>, outside this component — use :global() so selectors match */
+  :global(.dark) .theme-toggle-track {
+    background: #252525;
+    box-shadow:
+      inset 3px 3px 6px rgba(0, 0, 0, 0.5),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.06);
+  }
+  :global(.dark) .theme-toggle-knob {
+    background: #1B1B1B;
+    box-shadow:
+      2px 2px 4px rgba(0, 0, 0, 0.5),
+      -1px -1px 2px rgba(255, 255, 255, 0.06);
+    transform: translateX(36px);
+  }
+
+</style>
+
+<script>
+  (function() {
+    function syncThemeToggle() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      btn.setAttribute('aria-checked', String(isDark));
+      const knob = btn.querySelector('.theme-toggle-knob');
+      if (knob) knob.style.transform = isDark ? 'translateX(36px)' : 'translateX(0)';
+    }
+    function initThemeToggle() {
+      syncThemeToggle();
+      const btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+        localStorage.setItem('finzen-theme', isDark ? 'dark' : 'light');
+        syncThemeToggle();
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initThemeToggle);
+    } else {
+      initThemeToggle();
+    }
+  })();
+</script>

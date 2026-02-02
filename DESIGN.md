@@ -71,7 +71,7 @@ Tone examples:
 
 ### Visual Design Direction
 
-- **Color Palette:** Muted, grounded. Sage green as a primary signal. Warm stone / off-white backgrounds. Deep navy or charcoal for text. One accent color for CTAs (a deeper green or a warm amber).
+- **Color Palette:** Black/white brand. Light mode: background `#ECECEC`, accents black. Dark mode: background `#1B1B1B`, accents white. No green; CTAs and links use black (light) or white (dark).
 - **Typography:** A geometric sans-serif for headings (Inter or DM Sans). Same family, different weights, for body. Generous line-height (1.6–1.7 for body). Large type at key moments.
 - **Imagery:** Abstract, organic. Soft gradients. Flowing data-like lines. No stock photos of people staring at laptops or phones.
 - **Icons:** Minimal, thin-line style. Consistent stroke weight. Custom-feeling, not generic icon-pack.
@@ -116,7 +116,7 @@ The site is launching during beta. Expect the product to shift. The architecture
 
 ```
 Top Nav:
-  [Finzen logo]                              [Get Started →]
+  (spacer)                    [Wordmark logo] [Theme toggle] [Get Started →]
   (That's it. Clean. No clutter.)
 
 Footer:
@@ -129,6 +129,13 @@ Hero Sections:
   └── Contextual links to 2-3 most relevant angle pages
       (Not all of them. Curated per page.)
 ```
+
+**Header logo (wordmark):**
+- **Where:** `public/wordmark.svg` (or `wordmark.png`). The header loads `/wordmark.svg`; replace that file with your asset.
+- **Format:** SVG preferred (sharp at any size, small file). PNG works (use 2x for retina; aim under ~50 KB).
+- **Naming:** Keep the filename `wordmark.svg` (or `wordmark.png`) so the header link stays correct.
+- **Size:** SVG typically 2–10 KB for a wordmark. PNG: under 50 KB for a ~240×64px (2x) asset.
+- **Color:** Use a **black** wordmark for light mode. The header applies `dark:invert` so it appears white in dark mode. If your logo is white, remove the `dark:invert` class in `Header.astro` and use a separate dark asset if needed.
 
 **Principle:** Angle pages are *discovered*, not navigated to. They exist to capture search intent and funnel into the brand story. The homepage is the true hub.
 
