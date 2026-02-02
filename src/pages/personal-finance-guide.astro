@@ -1,0 +1,219 @@
+---
+/**
+ * /personal-finance-guide
+ *
+ * Angle: Beginners, simplicity seekers, overwhelmed users
+ * Audience: People new to personal finance or frustrated by complex apps
+ * Intent: "I want something simple to manage my money"
+ *
+ * Target Keywords:
+ * - personal finance guide (100-1K)
+ * - personal finance for beginners (100-1K)
+ * - budgeting for beginners (1K-10K)
+ * - simple budgeting app (1K-10K)
+ * - how to manage personal finances (100-1K)
+ * - budgeting made simple (100-1K)
+ * - easy budgeting app (100-1K)
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.personalFinanceGuide;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="Personal finance without the overwhelm"
+    subtitle="Start in minutes. No finance degree required. Just clarity."
+    keyword="simple personal finance"
+  />
+
+  <!-- Section 1: You Don't Need to Be an Expert -->
+  <Section
+    heading="You don't need to be a finance expert"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Finance apps shouldn't require a learning curve
+      - You don't need spreadsheet skills or accounting knowledge
+      - Finzen is designed for normal humans
+      - The goal is clarity, not complexity
+
+      Keywords to weave in: personal finance for beginners, budgeting for beginners
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: You shouldn't need a finance degree to track your money. Most personal finance apps are designed by finance nerds, for finance nerds. Finzen is different.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: We designed it for people who just want to understand where their money goes — without learning accounting software or building complex spreadsheets.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 2: The 3-Minute Habit -->
+  <Section
+    heading="The 3-minute daily habit"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Simple routine anyone can follow
+      - Open the app. Enter what you spent. Done.
+      - Takes 2-3 minutes max
+      - Consistency beats complexity
+
+      Keywords to weave in: simple budgeting app, easy budgeting app
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Here's the whole routine: Open Finzen. Enter what you spent today. Check your budget. Close the app. Done.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: That's it. 2-3 minutes. Do it daily and you'll understand your finances better than 90% of people who use "sophisticated" tools.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 3: Start Where You Are -->
+  <Section
+    heading="Start wherever you are"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Living paycheck to paycheck? Start here.
+      - Want to stop overspending? Start here.
+      - No judgment, just tools.
+      - The first step is seeing clearly.
+
+      Keywords to weave in: paycheck to paycheck, how to stop overspending
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Living paycheck to paycheck?
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Start here. See exactly where every dollar goes. Find the leaks. Build a buffer. One step at a time.]
+      </p>
+
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mt-6">
+        Want to stop overspending?
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Start here. When you have to enter every purchase, you think twice. Awareness is the first step to change.]
+      </p>
+
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mt-6">
+        Just want to finally understand your money?
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Start here. No complicated setup. No financial jargon. Just clarity.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 4: Grow at Your Own Pace -->
+  <Section
+    heading="Simple now. Powerful when you're ready."
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Start with basic expense tracking
+      - Add envelope budgeting when ready
+      - Explore investments when you're ready
+      - Unlock analytics as you grow
+
+      Keywords to weave in: personal financial management, how to manage personal finances
+    */}
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Week 1', detail: '[COPY: Just track your spending. Nothing else. Get the habit.]' },
+          { label: 'Month 1', detail: '[COPY: Set up a simple budget. See budget vs. actual.]' },
+          { label: 'Month 2', detail: '[COPY: Add your savings and investments. See net worth.]' },
+          { label: 'Month 3+', detail: '[COPY: Explore trend charts, allocation views, and insights.]' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Section 5: Clean Interface -->
+  <Section
+    heading="Clean design. No clutter."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Screenshot showing simple UI
+      - Designed for clarity, not feature overload
+      - No dark patterns or confusing menus
+      - Mobile and desktop
+
+      Keywords to weave in: budgeting made simple
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finance apps love to show off every feature on one screen. Finzen doesn't. We hide complexity until you need it. The interface stays clean so you can focus on what matters.]
+      </p>
+      {/* PLACEHOLDER: Add app screenshot/mockup here */}
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: No clutter. No dark patterns. No 47 menu items. Just your money, clearly presented.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 6: Common Questions -->
+  <Section
+    heading="Questions beginners ask"
+  >
+    {/*
+      COPY PLACEHOLDER — FAQ-style section
+      - "Do I need to connect my bank?"
+      - "Is this secure?"
+      - "How long until I see results?"
+      - "What if I miss a day?"
+    */}
+    <div class="max-w-2xl space-y-6">
+      <div>
+        <p class="text-base font-medium text-neutral-700 dark:text-neutral-300">"Do I need to connect my bank?"</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: No. Finzen never connects to your bank. You enter transactions manually — which keeps your data secure and makes you more aware of your spending.]
+        </p>
+      </div>
+      <div>
+        <p class="text-base font-medium text-neutral-700 dark:text-neutral-300">"What if I miss a day?"</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: No problem. Add your transactions whenever you remember. The goal is consistency over time, not perfection.]
+        </p>
+      </div>
+      <div>
+        <p class="text-base font-medium text-neutral-700 dark:text-neutral-300">"How long until I see results?"</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: After one week, you'll know where your money goes. After one month, you'll have a real budget. After three months, you'll have trend data that reveals patterns.]
+        </p>
+      </div>
+    </div>
+  </Section>
+
+
+  <CTABlock
+    heading="Your first budget in 5 minutes"
+    subtext="No finance degree required. No bank connection. Just start."
+  />
+
+  <SiblingLinks slugs={meta.siblings} />
+
+</Layout>

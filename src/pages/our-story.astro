@@ -1,0 +1,219 @@
+---
+/**
+ * /our-story
+ *
+ * Angle: The story, philosophy, inspiration behind Finzen
+ * Audience: People who want to understand the "why" behind the product
+ * Intent: "Who built this? Why? Is it trustworthy?"
+ *
+ * Target Keywords:
+ * - YNAB alternative
+ * - blockfolio alternative
+ * - personal finance app story
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.ourStory;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="We built the finance app we wished existed"
+    subtitle="One tool. Complete picture. No compromises."
+    keyword="about finzen"
+  />
+
+  <!-- Section 1: The Problem We Lived -->
+  <Section
+    heading="The problem we lived every day"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Budgeting in one app (YNAB, Mint, etc.)
+      - Investments in another (Blockfolio, Delta, Personal Capital)
+      - Spending tracking somewhere else
+      - The inevitable spreadsheet holding it all together
+      - The frustration of fragmented financial data
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: We were tired of juggling multiple apps to get a complete picture of our finances. Budgeting in one app. Investments in another. Spending tracking somewhere else.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: And eventually — inevitably — an ugly Google Sheet held together by duct tape and desperation, because it was the only place where everything lived in one spot.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: The budget didn't talk to the portfolio. The spending data lived in a different place than the savings goal. Nothing connected.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 2: The Solution We Built -->
+  <Section
+    heading="So we built something different"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - All-in-one from the ground up
+      - Not three apps pretending to be one
+      - Envelope budgeting + expense tracking + portfolio management
+      - Privacy-first, manual by design
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen is an all-in-one personal finance app — not three separate tools stitched together, but a single experience designed from the ground up.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Envelope budgeting. Daily expense tracking. Portfolio management. Visual insights. All in one place, talking to each other.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 3: Our Philosophy -->
+  <Section
+    heading="Our philosophy"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Manual entry = awareness (not a limitation)
+      - Privacy = respect for your data
+      - Visualization = understanding, not just numbers
+      - Simplicity = accessibility without dumbing down
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Manual entry creates awareness.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: We don't connect to banks or brokers. That's not a limitation — it's a design choice. When you enter each transaction yourself, you stay aware. You understand your money because you touch it every day.]
+      </p>
+
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mt-6">
+        Privacy is respect.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Your financial data is encrypted before it leaves your device. We never see it. We can't see it. That's how it should be.]
+      </p>
+
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mt-6">
+        Visualization creates understanding.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Numbers in a spreadsheet don't tell a story. Sankey diagrams, trend charts, allocation breakdowns — these create actual insight.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 4: The Build Story -->
+  <Section
+    heading="700 hours of obsession"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - The builder story (your personal journey)
+      - Why this matters to you specifically
+      - Beta philosophy — building in public
+      - Invitation to be part of shaping the product
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Your personal story here. What drove you to spend 700+ hours building this? What's your relationship with personal finance? What frustrated you about existing tools?]
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
+        "The finance app we always wished existed."
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: We're in beta. That means we're building in public, listening to users, and iterating fast. If you join now, you're not just using a product — you're helping shape it.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 5: For YNAB Users -->
+  <Section
+    heading="If you love YNAB..."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - YNAB is great for budgeting
+      - But it doesn't track investments
+      - Finzen = envelope budgeting + portfolio tracking
+      - For people who want the full picture
+
+      Keywords to weave in: YNAB, ynab4
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: YNAB taught millions of people how to budget with the envelope method. We love it. But if you also want to track your investments in the same place — YNAB can't help you.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen combines envelope budgeting with portfolio tracking. The complete picture. One app.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 6: For Blockfolio/Portfolio App Users -->
+  <Section
+    heading="If you use Blockfolio or Delta..."
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Portfolio trackers are great for investments
+      - But they don't help with budgeting
+      - Finzen = portfolio tracking + envelope budgeting
+      - Manual, private, combined
+
+      Keywords to weave in: blockfolio, blockfolio alternative
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Portfolio trackers like Blockfolio and Delta are great for seeing your crypto and stocks. But they don't help you budget. They don't show your spending. They only show part of the picture.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen tracks your portfolio AND your budget. See how your monthly spending connects to your long-term wealth building.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 7: Be Your Own CFO (absorbed from old page) -->
+  <Section
+    heading="Be your own CFO"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Content absorbed from be-your-own-cfo.astro
+      - Stop outsourcing your financial awareness
+      - Tools to understand, plan, and grow
+      - Manually, privately, on your own terms
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Stop outsourcing your financial awareness. You don't need a financial advisor to understand your money. You need the right tools and the habit of paying attention.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen gives you the tools to understand, plan, and grow your finances — manually, privately, and on your own terms.]
+      </p>
+    </div>
+  </Section>
+
+  <CTABlock
+    heading="Join the beta"
+    subtext="Be part of building something better. Free to start. No bank connection required."
+  />
+
+  <SiblingLinks slugs={meta.siblings} />
+
+</Layout>

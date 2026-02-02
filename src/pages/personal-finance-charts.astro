@@ -1,0 +1,221 @@
+---
+/**
+ * /personal-finance-charts
+ *
+ * Angle: Visual learners, data visualization fans, analytics-minded users
+ * Audience: People who want beautiful charts and visual insights
+ * Intent: "I want to see my finances, not just read numbers"
+ *
+ * Target Keywords:
+ * - personal finance charts (100-1K)
+ * - budget sankey (10-100)
+ * - money flow chart (100-1K)
+ * - expense charts (100-1K)
+ * - budget visualization (10-100)
+ * - monthly financial report (100-1K)
+ * - financial analytics (1K-10K)
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.personalFinanceCharts;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="See your money. Actually understand it."
+    subtitle="Sankey flows, trend charts, portfolio breakdowns. Your data becomes insight."
+    keyword="financial insights & charts"
+  />
+
+  <!-- Section 1: The Sankey Spending Flow -->
+  <Section
+    heading="The Sankey spending flow"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - What a Sankey diagram is
+      - Income → Categories → Savings/Investments
+      - See exactly how money flows through your life
+      - The signature Finzen visualization
+
+      Keywords to weave in: budget sankey, money flow chart, cash flow visual
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: The Sankey diagram shows how money flows through your finances. Income enters on one side. Spending categories branch off. Savings and investments collect on the other side.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: At a glance, you see the whole picture: where the biggest flows are, where money pools, where it leaks. It's financial storytelling in visual form.]
+      </p>
+      {/* PLACEHOLDER: Add Sankey diagram screenshot/mockup */}
+    </div>
+  </Section>
+
+  <!-- Section 2: Budget Visualization -->
+  <Section
+    heading="Budget charts that make sense"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Visual budget vs. actual
+      - Progress bars for each category
+      - Color-coded (green = on track, red = over)
+      - Instantly know where you stand
+
+      Keywords to weave in: budget visualization, visual budget, expense charts
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Numbers in a table don't tell you much. Progress bars do. Each budget category shows a visual bar — green when you're on track, yellow when you're getting close, red when you've overspent.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: One look and you know exactly where you stand in every category.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 3: Spending Trends -->
+  <Section
+    heading="Trends reveal what snapshots hide"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Monthly/weekly trend lines
+      - Spot patterns over time
+      - "Am I spending more on food than last month?"
+      - Long-term perspective
+
+      Keywords to weave in: personal finance charts, money charts
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: A single month's spending doesn't tell you much. But three months? Six months? A year? Now you see patterns. Now you see whether things are improving or getting worse.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen's trend charts show your spending over time — by category, by total, by whatever you want to track.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 4: Portfolio Visualizations -->
+  <Section
+    heading="Portfolio at a glance"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Asset allocation pie charts
+      - Performance over time
+      - Diversification view
+      - Multi-asset breakdown
+
+      Keywords to weave in: financial analytics
+    */}
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Allocation Pie Chart', detail: '[COPY: See your portfolio split across asset classes]' },
+          { label: 'Performance Timeline', detail: '[COPY: Track portfolio value over weeks, months, years]' },
+          { label: 'Asset Breakdown', detail: '[COPY: Drill into stocks, crypto, commodities, etc.]' },
+          { label: 'Diversification View', detail: '[COPY: Spot over-concentration at a glance]' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Section 5: Net Worth Timeline -->
+  <Section
+    heading="Watch your net worth grow"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - The most motivating chart in personal finance
+      - Assets minus liabilities over time
+      - See your financial trajectory
+      - Celebrate the upward trend
+
+      Keywords to weave in: net worth tracking
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: The net worth timeline might be the most motivating chart in personal finance. It shows your total assets minus your total liabilities — over time.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: When that line trends upward, you know you're building wealth. Even small gains feel meaningful when you can see the trajectory.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 6: Monthly Reports -->
+  <Section
+    heading="Monthly financial reports"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Comprehensive monthly summary
+      - Budget performance recap
+      - Spending by category
+      - Portfolio changes
+      - Net worth delta
+
+      Keywords to weave in: monthly financial report
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: At the end of each month, Finzen generates a report: How did your budget perform? Where did you spend the most? How did your portfolio change? What's your net worth now vs. last month?]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: It's your personal financial statement — automatically generated from your daily entries.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 7: Visuals From Daily Habit -->
+  <Section
+    heading="The magic comes from consistency"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - These visualizations emerge from your daily entries
+      - Day 1: Not much to see
+      - Week 2: Patterns start
+      - Month 1: Real insights
+      - Month 3+: Full story
+
+      Link to Manual Finance App page
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: All these beautiful visualizations come from one simple habit: entering your transactions daily. Day one, there's not much to see. But after a week, patterns emerge. After a month, you have real insights. After three months, you have a complete financial story.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: The visual power isn't magic — it's the reward for your daily practice.]
+      </p>
+    </div>
+  </Section>
+
+
+  <CTABlock
+    heading="Start seeing your financial story"
+    subtext="Daily entries. Beautiful visualizations. A complete picture — over time."
+  />
+
+  <SiblingLinks slugs={meta.siblings} />
+
+</Layout>

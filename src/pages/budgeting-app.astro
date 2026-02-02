@@ -1,0 +1,198 @@
+---
+/**
+ * /budgeting-app
+ *
+ * Angle: Budget-focused users, expense trackers, YNAB-style envelope budgeters
+ * Audience: People who want structured budgeting with expense tracking
+ * Intent: "I want to budget my money and track my spending"
+ *
+ * Target Keywords (High Volume):
+ * - budgeting app (100K-1M)
+ * - budget app (100K-1M)
+ * - budget planner (10K-100K)
+ * - expense tracking (1K-10K)
+ * - envelope budgeting (1K-10K)
+ * - zero based budgeting (10K-100K)
+ * - spending tracker (1K-10K)
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.budgetingApp;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="Finally, a budget that actually works"
+    subtitle="Envelope budgeting meets daily expense tracking. Set categories, track spending, see exactly where every dollar goes."
+    keyword="budget & expense tracker"
+  />
+
+  <!-- Section 1: The Envelope Method -->
+  <Section
+    heading="Zero-based budgeting. Every dollar has a job."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - What zero-based / envelope budgeting actually means
+      - Give every dollar a purpose before the month begins
+      - Digital envelopes replace physical cash envelopes
+      - When an envelope is empty, spending stops (or you move money intentionally)
+
+      Keywords to weave in: envelope budgeting, zero based budgeting, budget planner
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Explain the envelope budgeting philosophy. Every dollar gets assigned to a category before you spend it. When the category is empty, you're done — or you consciously move money from another envelope.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: How Finzen implements this digitally. Create categories, set amounts, watch the balances change as you spend.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Why this works when other budgeting methods fail — it's proactive, not reactive.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 2: Expense Tracking -->
+  <Section
+    heading="Track every expense. Build real awareness."
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Manual expense entry = intentional spending
+      - Quick daily routine (2-3 minutes)
+      - Real-time budget vs. actual
+      - See spending by category instantly
+
+      Keywords to weave in: expense tracking, spending tracker, track spending, money tracker
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: The power of manual expense tracking. When you enter each purchase, you become aware of your spending patterns.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Budget vs. actual in real time. Know instantly if you're on track or overspending in any category.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 3: Spending Categories -->
+  <Section
+    heading="Flexible categories that fit your life"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Customizable spending categories
+      - Pre-built templates to get started
+      - Subcategories for granular tracking
+      - Category-level insights and breakdowns
+
+      Keywords to weave in: expense categories, spending categories, category budgeting
+    */}
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Custom Categories', detail: '[COPY: Create categories that match how you actually spend]' },
+          { label: 'Starter Templates', detail: '[COPY: Pre-built category sets for common budgeting styles]' },
+          { label: 'Subcategories', detail: '[COPY: Break down "Food" into Groceries, Dining Out, Coffee, etc.]' },
+          { label: 'Category Budgets', detail: '[COPY: Set monthly limits for each category]' },
+          { label: 'Rollover Options', detail: '[COPY: Unused budget rolls to next month or resets]' },
+          { label: 'Category Insights', detail: '[COPY: See spending trends per category over time]' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Section 4: Cash Flow Visibility -->
+  <Section
+    heading="See your cash flow clearly"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Money in vs. money out
+      - Spot spending leaks
+      - "Where does my money go?" answered
+      - Monthly and weekly views
+
+      Keywords to weave in: cash flow analysis, cashflow, where does my money go
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finally answer "where does my money go?" See income flowing in and expenses flowing out.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Spot the leaks — those small recurring expenses that add up. Subscriptions, daily coffees, convenience purchases.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 5: Visual Budget Reports -->
+  <Section
+    heading="Budget reports that actually help"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Visual progress bars for each budget category
+      - Monthly spending summaries
+      - Trend charts over time
+      - Export options
+
+      Keywords to weave in: budget visualization, spending reports, monthly financial report
+    */}
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Budget Progress Bars', detail: '[COPY: See at a glance how much is left in each envelope]' },
+          { label: 'Monthly Summaries', detail: '[COPY: End-of-month reports showing budget performance]' },
+          { label: 'Spending Trends', detail: '[COPY: Track how your spending changes month to month]' },
+          { label: 'Category Breakdowns', detail: '[COPY: Pie charts and bar graphs by spending category]' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Section 6: Beyond Just Budgeting -->
+  <Section
+    heading="Budget and invest in the same app"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Budgeting is step one — but what about investments?
+      - Finzen combines budgeting with portfolio tracking
+      - See the full picture: spending + saving + investing
+      - Link to Investment Portfolio page
+
+      Keywords to weave in: budgeting and investing
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Most budgeting apps stop at budgeting. But your financial life includes investments too. Finzen tracks both — so you see how your budget feeds your portfolio growth.]
+      </p>
+    </div>
+  </Section>
+
+  <CTABlock
+    heading="Start your first budget today"
+    subtext="Envelope budgeting + expense tracking. No bank connection required. Free to start."
+  />
+
+  <SiblingLinks slugs={meta.siblings} />
+
+</Layout>

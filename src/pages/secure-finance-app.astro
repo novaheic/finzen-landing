@@ -1,0 +1,191 @@
+---
+/**
+ * /secure-finance-app
+ *
+ * Angle: Security-conscious users, privacy advocates, EU users
+ * Audience: People who care about data privacy and encryption
+ * Intent: "I want a finance app that protects my data"
+ *
+ * Target Keywords:
+ * - secure finance app (100-1K)
+ * - private finance app (10-100)
+ * - encrypted finance app
+ * - private budgeting (10-100)
+ * - GDPR finance app
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import TrustBadge from '@/components/TrustBadge.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.secureFinanceApp;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="Your financial data belongs to you. Only you."
+    subtitle="AES-256 encrypted. EU hosted. No bank connections. No wallet sync. Ever."
+    keyword="privacy-first finance"
+  />
+
+  <!-- Section 1: Encryption -->
+  <Section
+    heading="Encryption that actually protects you"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - AES-256-GCM encryption (industry standard)
+      - PBKDF2-SHA256 key derivation from your password
+      - We never see your encryption key
+      - Data encrypted before it leaves your device
+
+      Keywords to weave in: secure finance app, encrypted finance app
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Every piece of financial data in Finzen is encrypted with AES-256-GCM — the same encryption standard used by banks and governments — before it ever leaves your device.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Your encryption key is derived from your password using PBKDF2-SHA256. We never see it. We never store it. Even we can't read your data.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 2: No Bank Connections -->
+  <Section
+    heading="No bank connections. By design."
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - We don't connect to banks because we don't need to
+      - Your bank credentials stay with your bank
+      - Manual entry = complete isolation
+      - A security boundary, not a limitation
+
+      Keywords to weave in: private finance app
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen never connects to your bank accounts. Never. Your bank credentials stay with your bank. Your broker credentials stay with your broker.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: You enter transactions manually. That's not a workaround — it's the architecture. The app can only ever contain what you choose to put into it.]
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
+        "This is a security boundary, not a limitation."
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 3: EU Hosting -->
+  <Section
+    heading="EU servers. GDPR compliant."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Data hosted in the European Union
+      - Subject to GDPR protections
+      - No data transfers to jurisdictions with weaker privacy laws
+      - Your data never leaves secure EU infrastructure
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Your encrypted data is stored on servers in the European Union, subject to GDPR — one of the world's strongest data protection frameworks.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: No surprise transfers to countries with weaker privacy laws. Your data stays where privacy is protected by law.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 4: What We Don't Have -->
+  <Section
+    heading="What we can't access"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - List of things we explicitly don't have access to
+      - Transparency about our technical limitations (by design)
+    */}
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Your Bank Accounts', detail: '[COPY: No connections. No credentials. No access.]' },
+          { label: 'Your Broker Accounts', detail: '[COPY: Your investment accounts stay isolated.]' },
+          { label: 'Your Encryption Key', detail: '[COPY: Derived from your password. Never transmitted.]' },
+          { label: 'Your Actual Data', detail: '[COPY: Encrypted before upload. We see only ciphertext.]' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Section 5: Why This Matters -->
+  <Section
+    heading="Why privacy matters for finance"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Financial data is deeply personal
+      - Data breaches expose financial behavior
+      - Aggregated financial data is valuable to bad actors
+      - The best protection is not collecting data in the first place
+
+      Keywords to weave in: private budgeting
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Financial data is some of the most personal information you have. It reveals your habits, your priorities, your lifestyle, your vulnerabilities.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: When finance apps connect to your bank, they're aggregating data that's extremely valuable — to advertisers, to data brokers, and to attackers if there's a breach.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: The best way to protect data is to never collect it in a readable form. That's what Finzen does.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 6: The Privacy + Manual Connection -->
+  <Section
+    heading="Privacy and awareness go together"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Manual entry is both a privacy feature AND a mindfulness feature
+      - The same architecture that protects you also makes you aware
+      - Link to Manual Finance App page
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Here's what's interesting: the same design that protects your privacy also builds your financial awareness. Manual entry keeps your accounts isolated AND makes you pay attention to every transaction.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Security and mindfulness, built into the same architecture.]
+      </p>
+    </div>
+  </Section>
+
+  <TrustBadge />
+
+  <CTABlock
+    heading="Finance tracking that respects your privacy"
+    subtext="AES-256 encrypted. EU hosted. No bank connections. Free to start."
+  />
+
+  <SiblingLinks slugs={meta.siblings} />
+
+</Layout>

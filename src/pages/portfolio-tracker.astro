@@ -1,0 +1,220 @@
+---
+/**
+ * /portfolio-tracker
+ *
+ * Angle: Investors, portfolio trackers, net worth focused users
+ * Audience: People who want to track investments across multiple asset classes
+ * Intent: "I want to see all my investments in one place"
+ *
+ * Target Keywords (High Volume):
+ * - portfolio tracker (1K-10K)
+ * - investment tracker (1K-10K)
+ * - stock tracker (10K-100K)
+ * - crypto tracker (1K-10K)
+ * - net worth tracking (1K-10K)
+ * - asset tracker (1K-10K)
+ * - wealth tracker (1K-10K)
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.portfolioTracker;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    title="Your complete investment picture. One dashboard."
+    subtitle="Stocks, ETFs, crypto, commodities, forex — all assets, real-time prices, unified portfolio view."
+    keyword="investment & portfolio tracker"
+  />
+
+  <!-- Section 1: Multi-Asset Portfolio -->
+  <Section
+    heading="Every asset class. One unified view."
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Stocks, ETFs, mutual funds
+      - Cryptocurrency (BTC, ETH, altcoins)
+      - Commodities (gold, silver, oil)
+      - Forex positions
+      - Real estate holdings
+      - Other assets (collectibles, private investments)
+
+      Keywords to weave in: portfolio tracker, multi asset portfolio, asset tracker
+    */}
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Stocks & ETFs', detail: '[COPY: Track individual stocks, ETFs, and mutual funds with real-time prices]' },
+          { label: 'Cryptocurrency', detail: '[COPY: Bitcoin, Ethereum, and thousands of altcoins. Live prices.]' },
+          { label: 'Commodities', detail: '[COPY: Gold, silver, platinum, oil — track precious metals and resources]' },
+          { label: 'Forex', detail: '[COPY: Currency positions and forex trading portfolio]' },
+          { label: 'Real Estate', detail: '[COPY: Track property values as part of your net worth]' },
+          { label: 'Custom Assets', detail: '[COPY: Add any asset — collectibles, private investments, loans owed to you]' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Section 2: Real-Time Prices -->
+  <Section
+    heading="Real-time prices. Always current."
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Live market data for stocks and crypto
+      - 168+ currencies supported
+      - Automatic conversion to your base currency
+      - Historical price data
+
+      Keywords to weave in: stock tracker, crypto tracker, investment tracker
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen pulls real-time price data so your portfolio value is always current. Stocks, crypto, commodities — all updating live.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Support for 168+ currencies. Hold assets in USD, EUR, GBP, JPY — Finzen converts everything to your chosen base currency automatically.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 3: Portfolio Performance -->
+  <Section
+    heading="Track performance over time"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Total returns (realized + unrealized gains)
+      - Performance by asset class
+      - Historical tracking
+      - Cost basis and gain/loss calculations
+
+      Keywords to weave in: portfolio performance, investment returns, portfolio analysis
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: See your total portfolio performance — realized gains from sales, unrealized gains from current holdings. Know exactly how your investments are doing.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Break down performance by asset class. Is your crypto outperforming stocks? Are commodities dragging? See it clearly.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 4: Net Worth Tracking -->
+  <Section
+    heading="Your net worth, over time"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Assets minus liabilities = net worth
+      - Net worth timeline chart
+      - Watch your trajectory over months and years
+      - Include non-investment assets (cash, property)
+
+      Keywords to weave in: net worth tracking, networth, wealth tracker, wealth management
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Net worth = everything you own minus everything you owe. Finzen tracks this over time, showing your financial trajectory.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: The net worth timeline is one of the most motivating charts in personal finance. Watch it grow over months and years.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 5: Asset Allocation -->
+  <Section
+    heading="Visualize your allocation"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Diversification breakdown by asset type
+      - See if you're overweight in any area
+      - Allocation changes over time
+      - Rebalancing insights
+
+      Keywords to weave in: asset allocation, portfolio allocation, portfolio breakdown
+    */}
+    <div class="max-w-2xl">
+      <FeatureList
+        columns={2}
+        features={[
+          { label: 'Allocation Breakdown', detail: '[COPY: Pie charts showing % in stocks, crypto, commodities, etc.]' },
+          { label: 'Diversification Check', detail: '[COPY: See if you are too concentrated in any single asset or class]' },
+          { label: 'Allocation Over Time', detail: '[COPY: Track how your allocation shifts as markets move]' },
+          { label: 'Rebalancing Visibility', detail: '[COPY: Know when your portfolio drifts from target allocation]' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <!-- Section 6: Why No Broker Sync -->
+  <Section
+    heading="Privacy-first portfolio tracking"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Why Finzen doesn't connect to brokers
+      - Manual entry = you control what's tracked
+      - Security through isolation
+      - Your broker credentials stay with you
+
+      Link to: Privacy-First Finance page
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Finzen doesn't connect to your brokerage accounts. That's intentional. You enter your holdings manually — which means your broker credentials never leave your broker.]
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: This is a security boundary, not a limitation. Your financial data stays encrypted and isolated.]
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 7: Combined with Budgeting -->
+  <Section
+    heading="Investments + budgeting in one app"
+    bg="stone"
+  >
+    {/*
+      COPY PLACEHOLDER — Suggested talking points:
+      - Most portfolio trackers ignore budgeting
+      - Finzen shows how your budget feeds your investments
+      - Complete financial picture
+      - Link to Budget & Expense Tracker page
+    */}
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        [COPY: Portfolio trackers usually ignore budgeting. Budgeting apps usually ignore investments. Finzen does both — so you can see how your monthly budget feeds your long-term wealth building.]
+      </p>
+    </div>
+  </Section>
+
+
+  <CTABlock
+    heading="See your complete portfolio"
+    subtext="Stocks, crypto, commodities, forex — all in one view. No broker connection required."
+  />
+
+  <SiblingLinks slugs={meta.siblings} />
+
+</Layout>

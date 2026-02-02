@@ -26,79 +26,150 @@ export interface PageMeta {
 export const pages: Record<string, PageMeta> = {
   home: {
     slug: '',
-    title: 'Finzen — Budgeting, Tracking & Investing in One App',
+    title: 'Finzen — Budget, Track Spending & Investments in One App',
     description:
-      'Finzen is an all-in-one personal finance app. Envelope budgeting, spending tracking, and portfolio management — combined. Privacy-first, AES-256 encrypted, no bank connections.',
-    keywords: ['finzen', 'personal finance app', 'all-in-one finance', 'budgeting and investing app'],
+      'All-in-one personal finance software. Envelope budgeting, expense tracking, and portfolio management combined. Privacy-first, AES-256 encrypted, no bank sync.',
+    keywords: [
+      'personal finance app',
+      'personal finance software',
+      'all-in-one finance',
+      'budgeting and investing app',
+      'finance management',
+      'money tracking app',
+    ],
     footerLabel: 'Home',
     inFooter: true,
     siblings: [],
   },
 
-  dailyExpenseTracker: {
-    slug: 'daily-expense-tracker',
-    title: 'Daily Expense Tracker — Build Your Finance Habit | Finzen',
+  budgetingApp: {
+    slug: 'budgeting-app',
+    title: 'Budgeting App — Envelope Budgeting & Expense Tracking | Finzen',
     description:
-      'A daily expense tracker designed around a 2–3 minute routine. Manual entry, instant clarity. No subscriptions to bank accounts. Just you and your finances.',
-    keywords: ['daily expense tracker', 'daily money tracker', 'expense tracking habit'],
-    footerLabel: 'Daily Expense Tracker',
+      'Zero-based envelope budgeting meets daily expense tracking. Set spending categories, track every purchase, see budget vs. actual in real-time.',
+    keywords: [
+      'budgeting app',
+      'budget app',
+      'budget planner',
+      'expense tracking',
+      'envelope budgeting',
+      'zero based budgeting',
+      'spending tracker',
+      'money tracker',
+    ],
+    footerLabel: 'Budget & Track Spending',
     inFooter: true,
-    siblings: ['simpleMoneyTracking', 'manualFinanceApp'],
+    siblings: ['portfolioTracker', 'personalFinanceCharts', 'mindfulMoneyTracking'],
   },
 
-  manualFinanceApp: {
-    slug: 'manual-personal-finance-app',
-    title: 'Manual Personal Finance App — Awareness Over Automation | Finzen',
+  portfolioTracker: {
+    slug: 'portfolio-tracker',
+    title: 'Portfolio Tracker — Stocks, Crypto, ETFs & Net Worth | Finzen',
     description:
-      'A personal finance app that is fully manual by design. No bank syncing. No automated categorization. You stay in control, aware of every dollar.',
-    keywords: ['manual personal finance app', 'manual budget app', 'no bank connection finance app'],
-    footerLabel: 'Manual Finance App',
+      'Track stocks, ETFs, crypto, forex, and commodities in one portfolio view. Real-time prices, multi-asset allocation, net worth over time.',
+    keywords: [
+      'portfolio tracker',
+      'investment tracker',
+      'stock tracker',
+      'crypto tracker',
+      'net worth tracking',
+      'asset tracker',
+      'wealth tracker',
+      'portfolio management',
+    ],
+    footerLabel: 'Portfolio & Net Worth',
     inFooter: true,
-    siblings: ['privacyFirstFinance', 'dailyExpenseTracker'],
+    siblings: ['budgetingApp', 'personalFinanceCharts', 'secureFinanceApp'],
   },
 
-  simpleMoneyTracking: {
-    slug: 'simple-money-tracking',
-    title: 'Simple Money Tracking — No Overwhelm, Just Clarity | Finzen',
+  personalFinanceGuide: {
+    slug: 'personal-finance-guide',
+    title: 'Personal Finance Guide — Start Managing Money Today | Finzen',
     description:
-      'Money tracking that does not require a finance degree. Simple interface, powerful insights. Start in minutes, not hours. Designed for beginners and busy professionals.',
-    keywords: ['simple money tracking', 'easy money tracking app', 'beginner personal finance'],
-    footerLabel: 'Simple Money Tracking',
+      'Personal finance made simple. No finance degree required. Clean interface, powerful insights. Perfect for beginners or anyone overwhelmed by complex apps.',
+    keywords: [
+      'personal finance guide',
+      'personal finance for beginners',
+      'simple budgeting app',
+      'budgeting for beginners',
+      'easy budgeting app',
+      'how to manage personal finances',
+      'budgeting made simple',
+    ],
+    footerLabel: 'Personal Finance Basics',
     inFooter: true,
-    siblings: ['dailyExpenseTracker', 'visualFinancialInsights'],
+    siblings: ['budgetingApp', 'mindfulMoneyTracking', 'personalFinanceCharts'],
   },
 
-  privacyFirstFinance: {
-    slug: 'privacy-first-finance-app',
-    title: 'Privacy-First Finance App — Your Data, Your Control | Finzen',
+  mindfulMoneyTracking: {
+    slug: 'mindful-money-tracking',
+    title: 'Mindful Money Tracking — Intentional Finance | Finzen',
     description:
-      'AES-256 encrypted. EU-hosted. No bank or wallet connections. Finzen is a finance app that never touches your accounts — because your financial data is private.',
-    keywords: ['privacy first finance app', 'encrypted finance app', 'secure money tracking'],
-    footerLabel: 'Privacy-First Finance',
+      'A personal finance app without bank sync. Manual entry creates awareness. Every transaction is a choice. Build financial mindfulness through daily practice.',
+    keywords: [
+      'mindful money tracking',
+      'manual expense tracker',
+      'budgeting app without bank sync',
+      'daily expense tracker',
+      'mindful budgeting',
+      'conscious spending',
+      'financial wellness app',
+      'intentional finance',
+    ],
+    footerLabel: 'The Finzen Method',
     inFooter: true,
-    siblings: ['manualFinanceApp', 'beYourOwnCFO'],
+    siblings: ['secureFinanceApp', 'personalFinanceGuide', 'personalFinanceCharts'],
   },
 
-  visualFinancialInsights: {
-    slug: 'visual-financial-insights',
-    title: 'Visual Financial Insights — See Where Your Money Goes | Finzen',
+  secureFinanceApp: {
+    slug: 'secure-finance-app',
+    title: 'Secure Finance App — AES-256 Encrypted, EU Hosted | Finzen',
     description:
-      'Sankey spending flow diagrams. Portfolio breakdowns. Trend charts. Finzen turns your daily entries into beautiful, actionable financial visualizations.',
-    keywords: ['visual financial insights', 'spending visualization', 'sankey finance', 'money flow chart'],
-    footerLabel: 'Visual Financial Insights',
+      'Your financial data encrypted with AES-256-GCM. EU servers, GDPR compliant. No bank connections, no wallet sync. Finzen never touches your accounts.',
+    keywords: [
+      'secure finance app',
+      'private finance app',
+      'encrypted finance app',
+      'private budgeting',
+      'GDPR finance app',
+    ],
+    footerLabel: 'Privacy & Security',
     inFooter: true,
-    siblings: ['dailyExpenseTracker', 'simpleMoneyTracking'],
+    siblings: ['mindfulMoneyTracking', 'portfolioTracker'],
   },
 
-  beYourOwnCFO: {
-    slug: 'be-your-own-cfo',
-    title: 'Be Your Own CFO — Master Your Personal Finances | Finzen',
+  personalFinanceCharts: {
+    slug: 'personal-finance-charts',
+    title: 'Personal Finance Charts — Sankey, Trends & Reports | Finzen',
     description:
-      'Stop outsourcing your financial awareness. Finzen gives you the tools to understand, plan, and grow your finances — manually, privately, and on your own terms.',
-    keywords: ['be your own CFO', 'personal finance mastery', 'financial independence tracking'],
-    footerLabel: 'Be Your Own CFO',
+      'Sankey spending flows, portfolio breakdowns, budget charts, and net worth timelines. Turn daily entries into beautiful, actionable financial visualizations.',
+    keywords: [
+      'personal finance charts',
+      'budget sankey',
+      'money flow chart',
+      'expense charts',
+      'budget visualization',
+      'monthly financial report',
+      'financial analytics',
+    ],
+    footerLabel: 'Charts, Reports & Insights',
     inFooter: true,
-    siblings: ['manualFinanceApp', 'privacyFirstFinance'],
+    siblings: ['budgetingApp', 'portfolioTracker', 'mindfulMoneyTracking'],
+  },
+
+  ourStory: {
+    slug: 'our-story',
+    title: 'Our Story — Why We Built Finzen',
+    description:
+      'Why we built an all-in-one personal finance app. The frustration with juggling tools. The inspiration. 700 hours of obsessive building.',
+    keywords: [
+      'YNAB alternative',
+      'blockfolio alternative',
+      'personal finance app story',
+    ],
+    footerLabel: 'Our Story',
+    inFooter: true,
+    siblings: ['mindfulMoneyTracking', 'secureFinanceApp'],
   },
 };
 
@@ -107,12 +178,13 @@ export const pages: Record<string, PageMeta> = {
  * Home is excluded — it's rendered separately.
  */
 export const anglePages = [
-  pages.dailyExpenseTracker,
-  pages.manualFinanceApp,
-  pages.simpleMoneyTracking,
-  pages.privacyFirstFinance,
-  pages.visualFinancialInsights,
-  pages.beYourOwnCFO,
+  pages.personalFinanceGuide,
+  pages.budgetingApp,
+  pages.portfolioTracker,
+  pages.mindfulMoneyTracking,
+  pages.secureFinanceApp,
+  pages.personalFinanceCharts,
+  pages.ourStory,
 ];
 
 /**

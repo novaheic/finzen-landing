@@ -1,0 +1,447 @@
+---
+/**
+ * /mindful-money-tracking
+ *
+ * Angle: Manual tracking, mindfulness, intentional finance, anti-automation
+ * Audience: People who value awareness over convenience
+ * Intent: "I want a finance app that doesn't connect to my bank"
+ *
+ * Target Keywords:
+ * - mindful money tracking
+ * - manual expense tracker (10-100)
+ * - budgeting app without bank sync (10-100)
+ * - daily expense tracker (1K-10K)
+ * - mindful budgeting (10-100)
+ * - conscious spending (100-1K)
+ * - financial wellness app (100-1K)
+ * - intentional finance
+ * - take control of finances
+ * - financial peace of mind
+ * - stop impulse buying
+ * - where does my money go
+ * - anxious about money
+ */
+
+import Layout from '@/layouts/Layout.astro';
+import { pages } from '@/data/pages';
+import AngleHero from '@/components/AngleHero.astro';
+import Section from '@/components/Section.astro';
+import FeatureList from '@/components/FeatureList.astro';
+import CTABlock from '@/components/CTABlock.astro';
+import SiblingLinks from '@/components/SiblingLinks.astro';
+
+const meta = pages.mindfulMoneyTracking;
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`/${meta.slug}`}
+>
+
+  <AngleHero
+    eyebrow="The Finzen Method"
+    title="Mindful Money Management"
+    subtitle="A zen garden for your finances. 2-3 minutes daily. Tend your money like a bonsai tree. Watch your wealth grow with intention."
+    keyword="mindful budgeting"
+  />
+
+  <!-- IMAGE PLACEHOLDER: Hero image -->
+  <div class="bg-neutral-200 dark:bg-neutral-800 border-2 border-dashed border-neutral-400 dark:border-neutral-600 rounded-lg p-12 my-8 text-center">
+    <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-2">📸 Hero Image Placeholder</p>
+    <p class="text-sm text-neutral-500 dark:text-neutral-500">Split-screen: Zen garden with raked sand | Finzen dashboard<br/>OR: Animated bonsai tree<br/>Dimensions: Full-width, ~600px height</p>
+  </div>
+
+  <!-- ============================================================
+       SECTION 1: THE ZEN GARDEN METAPHOR
+       ============================================================ -->
+  <Section
+    heading="You don't hire someone else to tend your zen garden"
+    bg="stone"
+  >
+    <!-- IMAGE PLACEHOLDER: Zen garden metaphor visual -->
+    <div class="bg-white dark:bg-neutral-900 border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 mb-6 text-center max-w-4xl mx-auto">
+      <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-2">📸 Zen Garden Metaphor</p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500">Hands placing zen stones | Hands logging in Finzen<br/>Side-by-side comparison<br/>~1200×500px</p>
+    </div>
+
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        A zen garden isn't built overnight. It's tended daily. Each stone placed intentionally. Each pattern raked with care. The practice itself creates the mastery.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Your finances work the same way. Most people are on autopilot with their money—bank syncing creates passive observation, not participation. You can't fix what you don't feel connected to.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Finzen is a <strong>manual expense tracker</strong> by design. Every transaction you log is a stone placed intentionally. Every daily entry is a moment of awareness. This isn't a limitation—it's the whole point.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 2: THE DISCONNECTION PROBLEM
+       ============================================================ -->
+  <Section
+    heading="The disconnection problem"
+  >
+    <!-- IMAGE PLACEHOLDER: Chaos vs. calm -->
+    <div class="bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-8 mb-6 text-center max-w-3xl mx-auto">
+      <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-2">📸 Chaos vs. Calm</p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500">Scattered chaotic apps | Peaceful zen stones<br/>~1000×400px</p>
+    </div>
+
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Most finance apps promise convenience through automation. Connect your bank. Sync your transactions. Watch the numbers update automatically.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        But here's what actually happens: you stop paying attention. You become a spectator to your own spending. The data is there, but you don't <em>see</em> it. You don't <em>feel</em> it.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        When you're <strong>anxious about money</strong>, when you wonder <strong>where does my money go</strong>, it's not because you lack data—it's because you lack connection.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
+        "Automation creates blindness. Manual entry creates awareness."
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 3: WHY MANUAL TRACKING CREATES MASTERY
+       ============================================================ -->
+  <Section
+    heading="Why manual tracking creates mastery"
+    bg="stone"
+  >
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        When you use a <strong>budgeting app without bank sync</strong>, something shifts. Each transaction you enter isn't just data—it's a decision you acknowledge. A purchase you own.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        The act of typing "$4.50 — Coffee — Dining Out" forces you to see it. To feel it. That moment of manual entry creates muscle memory. Creates awareness. Creates <strong>conscious spending</strong>.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        You notice patterns autopilot misses. You catch subscriptions you forgot about. You realize you spent $300 on takeout this month without even noticing.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        <strong>Manual expense tracking</strong> isn't a step backwards—it's the secret to <strong>taking control of your finances</strong>. Discipline pays off. The practice compounds into wisdom.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 4: THE FINZEN METHOD (3-STEP FRAMEWORK)
+       ============================================================ -->
+  <Section
+    heading="The Finzen Method"
+    subheading="Tend. Observe. Grow."
+  >
+    <!-- VIDEO PLACEHOLDER -->
+    <div class="bg-neutral-900 dark:bg-neutral-800 border-2 border-dashed border-neutral-600 dark:border-neutral-500 rounded-lg p-16 mb-12 text-center max-w-3xl mx-auto">
+      <p class="text-neutral-300 dark:text-neutral-400 font-medium mb-2">🎥 30-Second Finzen Method Video</p>
+      <p class="text-sm text-neutral-400 dark:text-neutral-500">Your video goes here<br/>16:9 ratio, max-width ~800px<br/>Path: /videos/finzen-method.mp4</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-12">
+
+      <!-- Step 1: Tend -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
+            <span class="text-lg font-semibold text-white dark:text-neutral-900">1</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Tend (Daily Logging)</h3>
+        </div>
+        <div class="ml-13 space-y-3">
+          <!-- IMAGE PLACEHOLDER: Daily ritual -->
+          <div class="bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-6 mb-4 text-center">
+            <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-1">📸 Daily Ritual</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-500">Person with coffee logging expenses OR hand watering bonsai<br/>~600×400px</p>
+          </div>
+
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Your <strong>daily expense tracker</strong> ritual: 2-3 minutes each day. Log every transaction. Like watering a bonsai tree—small, consistent action.
+          </p>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Open Finzen. Enter today's spending. Check your budget status. Done. No marathon spreadsheet sessions. No "I'll catch up on Sunday." Just a tiny daily habit that creates connection.
+          </p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500 italic">
+            Morning coffee while you log yesterday's expenses. Evening wind-down while you check if you're on track. The ritual becomes meditation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2: Observe -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
+            <span class="text-lg font-semibold text-white dark:text-neutral-900">2</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Observe (Visual Understanding)</h3>
+        </div>
+        <div class="ml-13 space-y-3">
+          <!-- IMAGE PLACEHOLDER: Finzen dashboard mockup -->
+          <div class="bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-6 mb-4 text-center">
+            <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-1">📸 Finzen Dashboard</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-500">Sankey diagram, budget charts, net worth timeline<br/>OR: Zen garden patterns + Finzen sankey<br/>~800×500px</p>
+          </div>
+
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Your zen garden reveals patterns. Sankey diagrams show money flowing like raked sand. Charts map your financial landscape. Monthly overviews let you step back and see the whole picture.
+          </p>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Budget vs. actual. Net worth timeline. Spending by category. Portfolio performance. Cash flow forecasting. Every daily entry becomes part of a larger story—a <strong>visual money tracker</strong> that makes sense of your financial life.
+          </p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500 italic">
+            You don't need to be a finance expert to understand beautiful charts. The insights find you.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3: Grow -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
+            <span class="text-lg font-semibold text-white dark:text-neutral-900">3</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Grow (Intentional Action)</h3>
+        </div>
+        <div class="ml-13 space-y-3">
+          <!-- IMAGE PLACEHOLDER: Growth visual -->
+          <div class="bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-6 mb-4 text-center">
+            <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-1">📸 Growth & Results</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-500">Mature bonsai OR upward graph with natural elements<br/>~600×400px</p>
+          </div>
+
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Connection creates awareness. Awareness creates intention. Intention creates change.
+          </p>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            You see you're overspending on dining out—so you adjust. You notice your investments are too concentrated—so you rebalance. You realize you're paying for three streaming services you never use—so you cancel.
+          </p>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            From paycheck-to-paycheck to <strong>wealth building</strong>. From chaos to clarity. From anxiety to <strong>financial peace of mind</strong>. This is <strong>intentional spending</strong> in action.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 4B: ENVELOPE BUDGETING DISCIPLINE
+       ============================================================ -->
+  <Section
+    heading="The discipline of envelope budgeting"
+    bg="stone"
+  >
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        At the heart of the Finzen Method is <strong>envelope budgeting</strong>—also known as <strong>zero-based budgeting</strong>. Every dollar you earn gets assigned a purpose before the month begins.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        $2,000 paycheck? You decide where it goes: $800 to rent, $400 to groceries, $200 to savings, $150 to dining out, $100 to utilities. Every single dollar has a purpose. Nothing floats in limbo.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        This requires discipline. You can't spend money twice. When the "Dining Out" envelope is empty, you cook at home. When "Shopping" hits zero, you stop browsing.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        <strong>Category budgeting</strong> creates boundaries. Those boundaries create freedom. You know exactly what you can spend without guilt, without anxiety, without wondering if you're okay.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Like tending a garden, <strong>envelope budget</strong> systems require daily attention. You log each expense. You watch your envelopes. You adjust when life happens. The practice builds awareness. The awareness builds control.
+      </p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
+        Want to dive deeper into envelope budgeting? See our complete <a href="/budgeting-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">budgeting guide</a>.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 5: FROM BEGINNER TO MASTER GARDENER
+       ============================================================ -->
+  <Section
+    heading="From beginner to master gardener"
+    bg="stone"
+  >
+    <!-- IMAGE PLACEHOLDER: Growth journey -->
+    <div class="bg-white dark:bg-neutral-900 border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 mb-6 text-center max-w-4xl mx-auto">
+      <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-2">📸 Growth Journey Timeline</p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500">Seed → Sprout → Young Tree → Mature Bonsai<br/>Minimalist illustration or infographic<br/>~1200×300px</p>
+    </div>
+
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Whether you're a broke college student learning <strong>budgeting for beginners</strong> or managing a multi-million dollar portfolio, the journey is the same: daily practice leads to mastery.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Beginners find clarity. They stop wondering "where does my money go?" They develop <strong>financial habits</strong> that compound over months and years.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Advanced users find optimization. They track multi-asset portfolios. They forecast cash flow. They calculate risk-adjusted returns. They use Finzen as their <strong>financial wellness app</strong>—a complete system for understanding and growing wealth.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
+        "A seed becomes a sprout. A sprout becomes a tree. Same soil. Same water. Just time and intention."
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 6: STOP IMPULSE BUYING
+       ============================================================ -->
+  <Section
+    heading="Break the impulse cycle"
+  >
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Want to <strong>stop impulse buying</strong>? Manual tracking is the solution hiding in plain sight.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Impulse spending thrives in the dark. The quick Amazon order at 11pm. The "treat yourself" $6 latte. The small purchases that balloon into $400 by month's end.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        When you know you'll have to log that purchase tonight—when you'll see it staring back at you in your <strong>daily expense tracker</strong>—you pause.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        "Do I really want to log this?" That moment of reflection changes everything. Awareness is the cure.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 7: DISCIPLINE PAYS OFF
+       ============================================================ -->
+  <Section
+    heading="Discipline pays off"
+    bg="stone"
+  >
+    <!-- IMAGE PLACEHOLDER: Results/testimonials -->
+    <div class="bg-white dark:bg-neutral-900 border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 mb-6 text-center max-w-4xl mx-auto">
+      <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-2">📸 Testimonials & Stats</p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500">Stat callouts with earth tones OR nature photos with quotes<br/>Grid or ~1200px wide</p>
+    </div>
+
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        A zen garden isn't built in a day. Neither is <strong>financial freedom</strong>.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        But here's what users report after a month of <strong>mindful budgeting</strong> with Finzen:
+      </p>
+      <ul class="space-y-2 ml-6">
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          A feeling of connectedness with their finances
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          A personal relationship with their charts and statistics
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          No more money anxiety—just clarity
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          Fewer impulse purchases
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          Actual understanding of where their money goes
+        </li>
+      </ul>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Just 2-3 minutes a day. That's all it takes to <strong>take control of your finances</strong>.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
+        "I spend less time managing my finances now than I did when everything was 'automated.' And I actually understand what's happening."
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 8: WHAT IS FINANCIAL WELLNESS?
+       ============================================================ -->
+  <Section
+    heading="This is financial wellness"
+  >
+    <div class="max-w-2xl space-y-6">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        <strong>Financial wellness</strong> isn't just tracking numbers. It's building a relationship with your money. It's understanding + control + calm.
+      </p>
+
+      <div class="mt-6">
+        <FeatureList
+          columns={2}
+          features={[
+            {
+              label: 'Understanding',
+              detail: 'Know exactly where your money goes. No guessing. No "I think I\'m okay." Just certainty.'
+            },
+            {
+              label: 'Control',
+              detail: 'Every transaction is a choice you consciously make. Every budget adjustment is intentional.'
+            },
+            {
+              label: 'Calm',
+              detail: 'Replace money anxiety with money clarity. The unknown becomes known. Stress becomes peace.'
+            },
+            {
+              label: 'Growth',
+              detail: 'Small daily habits compound into major change. Discipline becomes freedom.'
+            },
+          ]}
+        />
+      </div>
+
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mt-6">
+        This is what <strong>mindful money tracking</strong> creates. Not perfection—connection. Not overnight transformation—sustainable practice.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 9: PRIVACY AS A SIDE EFFECT
+       ============================================================ -->
+  <Section
+    heading="Privacy as a side effect"
+    bg="stone"
+  >
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Here's a bonus: because Finzen is a <strong>manual expense tracker</strong> with no bank sync, your financial accounts stay completely isolated.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Your bank credentials never leave your bank. Your broker credentials never leave your broker. There's no third-party aggregator with access to everything. No API keys. No OAuth tokens. No security breach waiting to happen.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Manual entry isn't just about awareness—it's also about security. Privacy through architecture, not just encryption.
+      </p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
+        Want to learn more about how we protect your data? Check out our <a href="/secure-finance-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">privacy & security page</a>.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 10: THE ZEN GARDEN AWAITS
+       ============================================================ -->
+  <Section
+    heading="Your financial zen garden awaits"
+  >
+    <div class="max-w-2xl space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Finzen combines <strong>mindful budgeting</strong>, <strong>conscious spending</strong>, and portfolio tracking in one seamless experience.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        No bank sync. No automation. No passive observation. Just you, your money, and 2-3 minutes of daily practice.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Start tending your garden today.
+      </p>
+    </div>
+  </Section>
+
+  <CTABlock
+    heading="Begin your mindful money practice"
+    subtext="2-3 minutes a day. Complete clarity. No bank connection required. Free beta access."
+  />
+
+  <SiblingLinks slugs={meta.siblings} />
+
+</Layout>
