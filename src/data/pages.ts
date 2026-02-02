@@ -191,7 +191,7 @@ export const anglePages = [
  * App download / sign-up URL.
  * Update this to point to the actual Finzen app when ready.
  */
-export const APP_URL = 'https://finzen.app/app';
+export const APP_URL = 'https://app.finzen.org';
 
 /**
  * Site-wide defaults
