@@ -34,7 +34,7 @@ import { APP_URL } from '@/data/pages';
         role="switch"
         aria-label="Toggle light/dark mode"
         aria-checked="false"
-        class="theme-toggle relative flex items-center rounded-full w-[72px] h-9 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-neutral-100 focus-visible:ring-offset-[#ECECEC] dark:focus-visible:ring-offset-[#1B1B1B]"
+        class="theme-toggle relative flex items-center rounded-full w-[72px] h-9 shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-neutral-100 focus-visible:ring-offset-[#ECECEC] dark:focus-visible:ring-offset-[#1B1B1B]"
       >
         <!-- Neumorphic track: soft inset shadow -->
         <span
@@ -65,7 +65,7 @@ import { APP_URL } from '@/data/pages';
 
       <a
         href={APP_URL}
-        class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0a0a0a] text-white text-sm font-medium rounded-lg hover:bg-[#1a1a1a] dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors"
+        class="header-cta inline-flex items-center gap-2 px-6 py-2.5 bg-[#0a0a0a] text-white text-sm font-medium rounded-full dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
       >
         Get Started
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -106,6 +106,48 @@ import { APP_URL } from '@/data/pages';
     transform: translateX(36px);
   }
 
+  /* Get Started pill: shadow, hover float + scale + shine */
+  .header-cta {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  :global(.dark) .header-cta {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .header-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  :global(.dark) .header-cta:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 6px 12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+  /* Shine: narrow sliver (light mode only; dark mode uses glow instead) */
+  .header-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(255, 255, 255, 0.35) 49%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.35) 51%,
+      transparent 55%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.45s ease;
+    pointer-events: none;
+  }
+  .header-cta:hover::before {
+    transform: translateX(100%);
+  }
+  /* Dark mode: subtle sliver so it’s visible on white */
+  :global(.dark) .header-cta::before {
+    display: none;
+  }
 </style>
 
 <script>
