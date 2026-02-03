@@ -120,6 +120,7 @@ const disconnectionRings = [
        ============================================================ -->
   <Section
     heading="The disconnection problem"
+    align="center"
   >
     <div class="disconnection-rings mb-20">
       {disconnectionRings.map(({ pct, label, offset }, i) => (
@@ -163,25 +164,59 @@ const disconnectionRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 3: WHY MANUAL TRACKING CREATES MASTERY
+       SECTION 3: WHY MANUAL TRACKING
        ============================================================ -->
-  <Section
-    heading="Why manual tracking creates mastery"
-    bg="stone"
-  >
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        When you use a <strong>budgeting app without bank sync</strong>, something shifts. Each transaction you enter isn't just data—it's a decision you acknowledge. A purchase you own.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        The act of typing "$4.50 — Coffee — Dining Out" forces you to see it. To feel it. That moment of manual entry creates muscle memory. Creates awareness. Creates <strong>conscious spending</strong>.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        You notice patterns autopilot misses. You catch subscriptions you forgot about. You realize you spent $300 on takeout this month without even noticing.
-      </p>
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        <strong>Manual expense tracking</strong> isn't a step backwards—it's the secret to <strong>taking control of your finances</strong>. Discipline pays off. The practice compounds into wisdom.
-      </p>
+  <Section bg="stone" class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <!-- Image: left on desktop, above on mobile — mobile manual input screenshot.
+           Size: wrapper is 50% column; images capped at max-w. Centered on mobile. -->
+      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <img
+          src="/images/mindful-money-tracking/method_light.png"
+          alt="Finzen mobile app — manual transaction entry screen"
+          class="w-full max-w-[260px] h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/mindful-money-tracking/method_dark.png"
+          alt="Finzen mobile app — manual transaction entry screen"
+          class="w-full max-w-[260px] h-auto rounded-lg hidden dark:block"
+        />
+      </div>
+      <!-- Title, text, checkmarks: right on desktop, below image on mobile -->
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+          Why manual tracking?
+        </h2>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Spending, saving, investing, debt - each entry is a decision you own. That awareness is the path to <strong>taking control of your finances</strong>.
+        </p>
+        <ul class="space-y-2 list-none pl-0 mt-1">
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Notice easy-to-miss patterns</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>See where your money really goes</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Feel connected to your cash flow and portfolio</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Discipline compounds into wisdom</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </Section>
 
@@ -192,92 +227,118 @@ const disconnectionRings = [
     heading="The Finzen Method"
     subheading="Tend. Observe. Grow."
   >
-    <!-- VIDEO PLACEHOLDER -->
-    <div class="bg-neutral-900 dark:bg-neutral-800 border-2 border-dashed border-neutral-600 dark:border-neutral-500 rounded-lg p-16 mb-12 text-center max-w-3xl mx-auto">
-      <p class="text-neutral-300 dark:text-neutral-400 font-medium mb-2">🎥 30-Second Finzen Method Video</p>
-      <p class="text-sm text-neutral-400 dark:text-neutral-500"><strong>Put video at:</strong> <code>public/videos/finzen-method.mp4</code><br/>16:9 ratio, max-width ~800px</p>
+    <div class="mb-12 max-w-3xl mx-auto">
+      <div class="aspect-video w-full max-w-[800px] mx-auto rounded-lg overflow-hidden bg-neutral-900 dark:bg-neutral-800">
+        <video
+          id="finzen-method-video"
+          class="w-full h-full object-contain"
+          src="/videos/onboarding-intro-h264fallback.mp4"
+          poster="/videos/onboarding-poster.jpg"
+          controls
+          preload="metadata"
+          playsinline
+        >
+          <p class="p-4 text-neutral-400">Your browser does not support the video tag. <a href="/videos/onboarding-intro-h264fallback.mp4" class="underline">Download the video</a>.</p>
+        </video>
+      </div>
     </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('finzen-method-video');
+        if (video) video.volume = 0.5;
+      });
+    </script>
 
     <div class="max-w-3xl mx-auto space-y-12">
 
-      <!-- Step 1: Tend -->
-      <div class="space-y-3">
-        <div class="flex items-center gap-3">
+      <!-- Step 1: Tend — desktop: image left, text left -->
+      <div class="space-y-3 text-center md:text-left">
+        <div class="flex items-center justify-center gap-3 md:justify-start md:ml-[174px]">
           <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
             <span class="text-lg font-semibold text-white dark:text-neutral-900">1</span>
           </div>
           <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Tend (Daily Logging)</h3>
         </div>
-        <div class="ml-13 space-y-3">
-          <!-- IMAGE PLACEHOLDER: Daily ritual -->
-          <div class="bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-6 mb-4 text-center">
-            <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-1">📸 Daily Ritual</p>
-            <p class="text-xs text-neutral-500 dark:text-neutral-500"><strong>Put image at:</strong> <code>public/images/mindful-money-tracking/daily-ritual.jpg</code><br/>Person with coffee logging expenses OR hand watering bonsai<br/>~600×400px</p>
+        <div class="flex flex-col text-center md:flex-row md:items-center md:gap-6 md:text-left">
+          <div class="mb-4 flex justify-center md:mb-0 md:flex-shrink-0">
+            <img
+              src="/images/mindful-money-tracking/daily-ritual.png"
+              alt="Daily ritual — 2–3 minutes logging expenses like tending a bonsai"
+              class="w-[150px] h-auto rounded-lg"
+            />
           </div>
-
-          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Your <strong>daily expense tracker</strong> ritual: 2-3 minutes each day. Log every transaction. Like watering a bonsai tree—small, consistent action.
-          </p>
-          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Open Finzen. Enter today's spending. Check your budget status. Done. No marathon spreadsheet sessions. No "I'll catch up on Sunday." Just a tiny daily habit that creates connection.
-          </p>
-          <p class="text-sm text-neutral-500 dark:text-neutral-500 italic">
-            Morning coffee while you log yesterday's expenses. Evening wind-down while you check if you're on track. The ritual becomes meditation.
-          </p>
+          <div class="space-y-3 md:flex-1 md:min-w-0">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Your <strong>daily expense tracker</strong> ritual: 2-3 minutes each day. Log every transaction. Like watering a bonsai tree—small, consistent action.
+            </p>
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Open Finzen. Enter today's spending. Check your budget status. Done. Just a tiny daily habit that creates connection.
+            </p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-500 italic">
+              Morning coffee while you log yesterday's expenses. Evening wind-down while you check if you're on track.
+            </p>
+          </div>
         </div>
       </div>
 
-      <!-- Step 2: Observe -->
-      <div class="space-y-3">
-        <div class="flex items-center gap-3">
+      <!-- Step 2: Observe — desktop: text left (same column as 1 & 3), image right -->
+      <div class="space-y-3 text-center md:text-left">
+        <div class="flex items-center justify-center gap-3 md:justify-start md:ml-[174px]">
           <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
             <span class="text-lg font-semibold text-white dark:text-neutral-900">2</span>
           </div>
           <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Observe (Visual Understanding)</h3>
         </div>
-        <div class="ml-13 space-y-3">
-          <!-- IMAGE PLACEHOLDER: Finzen dashboard mockup -->
-          <div class="bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-6 mb-4 text-center">
-            <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-1">📸 Finzen Dashboard</p>
-            <p class="text-xs text-neutral-500 dark:text-neutral-500"><strong>Put image at:</strong> <code>public/images/mindful-money-tracking/finzen-dashboard.jpg</code><br/>Sankey diagram, budget charts, net worth timeline<br/>OR: Zen garden patterns + Finzen sankey<br/>~800×500px</p>
+        <div class="flex flex-col text-center md:flex-row md:items-center md:gap-6 md:text-left">
+          <div class="order-2 md:order-1 space-y-3 md:flex-1 md:min-w-0 mb-4 md:mb-0">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Your zen garden reveals patterns. Sankey diagrams show money flowing like raked sand. Charts map your financial landscape. Monthly overviews let you step back and see the whole picture.
+            </p>
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Budget vs. actual. Net worth timeline. Spending by category. Portfolio performance. Cash flow forecasting. Every daily entry becomes part of a larger story—a <strong>visual money tracker</strong> that makes sense of your financial life.
+            </p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-500 italic">
+              You don't need to be a finance expert to understand beautiful charts. The insights find you.
+            </p>
           </div>
-
-          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Your zen garden reveals patterns. Sankey diagrams show money flowing like raked sand. Charts map your financial landscape. Monthly overviews let you step back and see the whole picture.
-          </p>
-          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Budget vs. actual. Net worth timeline. Spending by category. Portfolio performance. Cash flow forecasting. Every daily entry becomes part of a larger story—a <strong>visual money tracker</strong> that makes sense of your financial life.
-          </p>
-          <p class="text-sm text-neutral-500 dark:text-neutral-500 italic">
-            You don't need to be a finance expert to understand beautiful charts. The insights find you.
-          </p>
+          <div class="order-1 md:order-2 mb-4 flex justify-center md:mb-0 md:flex-shrink-0">
+            <img
+              src="/images/mindful-money-tracking/observe.png"
+              alt="Observe — Sankey diagrams and charts reveal your financial landscape"
+              class="w-[150px] h-auto rounded-lg"
+            />
+          </div>
         </div>
       </div>
 
-      <!-- Step 3: Grow -->
-      <div class="space-y-3">
-        <div class="flex items-center gap-3">
+      <!-- Step 3: Grow — desktop: image left, text left -->
+      <div class="space-y-3 text-center md:text-left">
+        <div class="flex items-center justify-center gap-3 md:justify-start md:ml-[174px]">
           <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
             <span class="text-lg font-semibold text-white dark:text-neutral-900">3</span>
           </div>
           <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Grow (Intentional Action)</h3>
         </div>
-        <div class="ml-13 space-y-3">
-          <!-- IMAGE PLACEHOLDER: Growth visual -->
-          <div class="bg-neutral-100 dark:bg-neutral-800 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-6 mb-4 text-center">
-            <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-1">📸 Growth & Results</p>
-            <p class="text-xs text-neutral-500 dark:text-neutral-500"><strong>Put image at:</strong> <code>public/images/mindful-money-tracking/growth-results.jpg</code><br/>Mature bonsai OR upward graph with natural elements<br/>~600×400px</p>
+        <div class="flex flex-col text-center md:flex-row md:items-center md:gap-6 md:text-left">
+          <div class="mb-4 flex justify-center md:mb-0 md:flex-shrink-0">
+            <img
+              src="/images/mindful-money-tracking/growth-results.png"
+              alt="Grow — Small daily habits compound into major change"
+              class="w-[150px] h-auto rounded-lg"
+            />
           </div>
-
-          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Connection creates awareness. Awareness creates intention. Intention creates change.
-          </p>
-          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            You see you're overspending on dining out—so you adjust. You notice your investments are too concentrated—so you rebalance. You realize you're paying for three streaming services you never use—so you cancel.
-          </p>
-          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            From paycheck-to-paycheck to <strong>wealth building</strong>. From chaos to clarity. From anxiety to <strong>financial peace of mind</strong>. This is <strong>intentional spending</strong> in action.
-          </p>
+          <div class="space-y-3 md:flex-1 md:min-w-0">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Connection creates awareness. Awareness creates intention. Intention creates change.
+            </p>
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              You see you're overspending on dining out—so you adjust. You notice your investments are too concentrated—so you rebalance. You realize you're paying for three streaming services you never use—so you cancel.
+            </p>
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              From paycheck-to-paycheck to <strong>wealth building</strong>. From chaos to clarity. From anxiety to <strong>financial peace of mind</strong>. This is <strong>intentional spending</strong> in action.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -319,14 +380,22 @@ const disconnectionRings = [
   <Section
     heading="From beginner to master gardener"
     bg="stone"
+    align="center"
   >
-    <!-- IMAGE PLACEHOLDER: Growth journey -->
-    <div class="bg-white dark:bg-neutral-900 border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 mb-6 text-center max-w-4xl mx-auto">
-      <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-2">📸 Growth Journey Timeline</p>
-      <p class="text-sm text-neutral-500 dark:text-neutral-500"><strong>Put image at:</strong> <code>public/images/mindful-money-tracking/growth-journey.jpg</code><br/>Seed → Sprout → Young Tree → Mature Bonsai<br/>Minimalist illustration or infographic<br/>~1200×300px</p>
+    <div class="mb-6 max-w-4xl mx-auto">
+      <img
+        src="/images/mindful-money-tracking/steps_light.png"
+        alt="Growth journey — from seed to mature bonsai, daily practice leads to mastery"
+        class="w-full max-w-full h-auto rounded-lg block dark:hidden"
+      />
+      <img
+        src="/images/mindful-money-tracking/steps_dark.png"
+        alt="Growth journey — from seed to mature bonsai, daily practice leads to mastery"
+        class="w-full max-w-full h-auto rounded-lg hidden dark:block"
+      />
     </div>
 
-    <div class="max-w-2xl space-y-4">
+    <div class="max-w-2xl mx-auto space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
         Whether you're a broke college student learning <strong>budgeting for beginners</strong> or managing a multi-million dollar portfolio, the journey is the same: daily practice leads to mastery.
       </p>
@@ -525,6 +594,35 @@ const disconnectionRings = [
     transform: translateX(0);
   }
 
+  /* Method image: from below on mobile, from left on desktop */
+  .method-image-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  @media (min-width: 768px) {
+    .method-image-reveal {
+      transform: translateX(-40px);
+    }
+  }
+  .method-image-reveal.in-view {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  .check-minimal {
+    color: rgb(163 163 163);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .check-minimal.check-align {
+    margin-top: 0.35em;
+  }
+  :global(.dark) .check-minimal {
+    color: rgb(255 255 255);
+  }
+
   .disconnection-rings {
     display: grid;
     grid-template-columns: 1fr;
@@ -650,5 +748,8 @@ const disconnectionRings = [
     if (heroImage) observer.observe(heroImage);
 
     document.querySelectorAll('.rocks-reveal').forEach((el) => observer.observe(el));
+
+    const methodImage = document.querySelector('.method-image-reveal');
+    if (methodImage) observer.observe(methodImage);
   });
 </script>
