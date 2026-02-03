@@ -46,17 +46,21 @@ const meta = pages.mindfulMoneyTracking;
     keyword="mindful budgeting"
   />
 
-  <div class="scale-[0.70] origin-center -mt-52 md:-mt-[28rem] mb-0 relative z-10">
-    <img
-      src="/images/mindful-money-tracking/hero_light.png"
-      alt="Mindful money management — zen garden for your finances"
-      class="w-auto max-w-full h-auto rounded-lg mx-auto md:max-w-none dark:hidden"
-    />
-    <img
-      src="/images/mindful-money-tracking/hero_dark.png"
-      alt="Mindful money management — zen garden for your finances"
-      class="w-auto max-w-full h-auto rounded-lg mx-auto md:max-w-none hidden dark:block"
-    />
+  <!-- Wrapper: full width, clip horizontal overflow only (overflow-x-clip avoids clipping top on mobile scale) -->
+  <div class="w-full overflow-x-clip -mt-52 md:-mt-[21.2rem] mb-0 relative z-10 flex justify-center">
+    <!-- Mobile: responsive + scale up. Desktop: fixed width, no scale, can overflow left/right -->
+    <div class="scale-[1.15] md:scale-100 origin-center w-max max-w-full md:w-[960px] md:max-w-none min-w-0 shrink-0">
+      <img
+        src="/images/mindful-money-tracking/hero_light.png"
+        alt="Mindful money management — zen garden for your finances"
+        class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
+      />
+      <img
+        src="/images/mindful-money-tracking/hero_dark.png"
+        alt="Mindful money management — zen garden for your finances"
+        class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
+      />
+    </div>
   </div>
 
   <!-- ============================================================
@@ -65,7 +69,7 @@ const meta = pages.mindfulMoneyTracking;
   <Section
     heading="You don't hire someone else to tend your zen garden"
     bg="stone"
-    class="-mt-16 md:-mt-20 !pt-4 md:!pt-6"
+    class="mt-4 md:mt-0 !pt-12 md:!pt-2"
   >
     <!-- IMAGE PLACEHOLDER: Zen garden metaphor visual -->
     <div class="bg-white dark:bg-neutral-900 border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 mb-6 text-center max-w-4xl mx-auto">

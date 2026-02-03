@@ -39,10 +39,26 @@ const meta = pages.budgetingApp;
     keyword="budget & expense tracker"
   />
 
+  <div class="w-full overflow-x-clip -mt-52 md:-mt-[21.2rem] mb-0 relative z-10 flex justify-center">
+    <div class="scale-[1.15] md:scale-100 origin-center w-max max-w-full md:w-[960px] md:max-w-none min-w-0 shrink-0">
+      <img
+        src={`/images/${meta.slug}/hero_light.png`}
+        alt={meta.title}
+        class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
+      />
+      <img
+        src={`/images/${meta.slug}/hero_dark.png`}
+        alt={meta.title}
+        class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
+      />
+    </div>
+  </div>
+
   <!-- Section 1: The Envelope Method -->
   <Section
     heading="Zero-based budgeting. Every dollar has a job."
     bg="stone"
+    class="mt-4 md:mt-0 !pt-12 md:!pt-2"
   >
     {/*
       COPY PLACEHOLDER — Suggested talking points:
