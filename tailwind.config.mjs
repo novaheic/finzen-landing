@@ -47,6 +47,7 @@ export default {
           'Roboto',
           'sans-serif',
         ],
+        logo: ['Montserrat', 'system-ui', 'sans-serif'],
       },
 
       /**

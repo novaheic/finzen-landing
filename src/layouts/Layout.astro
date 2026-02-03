@@ -47,6 +47,19 @@ const { title, description, canonical, ogImage } = Astro.props;
     canonical={canonical}
     ogImage={ogImage}
   />
+  <!-- Favicon: match browser/OS theme (tab color) via prefers-color-scheme -->
+  <link rel="icon" type="image/webp" href="/logo-light.webp" media="(prefers-color-scheme: light)" id="favicon" />
+  <link rel="icon" type="image/webp" href="/logo-dark.webp" media="(prefers-color-scheme: dark)" />
+  <script is:inline>
+    (function() {
+      var link = document.getElementById('favicon');
+      if (link && window.matchMedia) {
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        link.href = dark ? '/logo-dark.webp' : '/logo-light.webp';
+        link.removeAttribute('media');
+      }
+    })();
+  </script>
 </head>
 <body>
   <Header />

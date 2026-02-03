@@ -1,9 +1,9 @@
 ---
 /**
  * Header.astro — Minimal top navigation.
- * Logo (wordmark) left. Theme toggle + CTA right.
+ * Logo (icon + wordmark) left. Theme toggle + CTA right.
  *
- * Logo: public/wordmark.svg. Black for light mode; inverts in dark.
+ * Logo: public/logo-light.webp (light mode), public/logo-dark.webp (dark mode) + "Finzen" in Montserrat Extrabold.
  */
 
 import { APP_URL } from '@/data/pages';
@@ -14,15 +14,23 @@ import { APP_URL } from '@/data/pages';
     aria-label="Main navigation"
     class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between"
   >
-    <!-- Logo: top left -->
-    <a href="/" aria-label="Finzen — Home" class="flex items-center shrink-0">
+    <!-- Logo: icon (light/dark) + wordmark (Montserrat Extrabold) -->
+    <a href="/" aria-label="Finzen — Home" class="flex items-center gap-2 shrink-0">
       <img
-        src="/wordmark.svg"
-        alt="Finzen"
-        width="120"
+        src="/logo-light.webp"
+        alt=""
+        width="32"
         height="32"
-        class="h-8 w-auto dark:invert"
+        class="h-8 w-8 object-contain dark:hidden"
       />
+      <img
+        src="/logo-dark.webp"
+        alt=""
+        width="32"
+        height="32"
+        class="h-8 w-8 object-contain hidden dark:block"
+      />
+      <span class="logo-text font-logo text-2xl font-extrabold text-[#0a0a0a] dark:text-white tracking-[0.01em]">Finzen</span>
     </a>
 
     <!-- Right: neumorphic theme toggle + CTA -->
