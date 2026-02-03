@@ -34,7 +34,7 @@ import { APP_URL } from '@/data/pages';
     </a>
 
     <!-- Right: neumorphic theme toggle + CTA -->
-    <div class="flex items-center gap-4">
+    <div class="header-right flex items-center gap-4">
       <!-- Theme toggle: sliding knob with icon on top — sun (light) / moon (dark) -->
       <button
         id="theme-toggle"
@@ -155,6 +155,21 @@ import { APP_URL } from '@/data/pages';
   /* Dark mode: subtle sliver so it’s visible on white */
   :global(.dark) .header-cta::before {
     display: none;
+  }
+
+  /* Under 420px: slightly smaller CTA and theme toggle */
+  @media (max-width: 419px) {
+    .header-right {
+      transform: scale(0.85);
+      transform-origin: right center;
+    }
+  }
+
+  /* Under 398px: hide header CTA, rely on hero/page CTAs */
+  @media (max-width: 397px) {
+    .header-cta {
+      display: none !important;
+    }
   }
 </style>
 
