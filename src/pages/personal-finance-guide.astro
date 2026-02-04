@@ -30,9 +30,9 @@ const meta = pages.personalFinanceGuide;
 const R = 48;
 const C = 2 * Math.PI * R;
 const overwhelmRings = [
-  { pct: 65, label: 'of Americans can\'t pass a basic financial literacy test' },
-  { pct: 78, label: 'of people feel overwhelmed by personal finance apps' },
-  { pct: 56, label: 'give up on budgeting apps within the first month' },
+  { pct: 77, label: 'of Americans experience "significant" stress over money' },
+  { pct: 28, label: 'of households have a written financial plan' },
+  { pct: 57, label: 'of Americans spend more than they earn' },
 ].map(({ pct, label }) => ({ pct, label, offset: C * (1 - pct / 100) }));
 ---
 
@@ -44,37 +44,40 @@ const overwhelmRings = [
 
   <AngleHero
     eyebrow="Personal Finance Made Simple"
-    title="Your Complete Personal Finance Guide"
-    subtitle="No finance degree required. No complicated spreadsheets. Just clarity about your money in 3 minutes a day."
+    title="Personal Finance: A Complete Guide"
+    subtitle="Understand your money, build better habits, and take control. Everything you need to know about personal finance."
     keyword="personal finance for beginners"
+    showCta={false}
   />
 
-  <!-- Wrapper: full width, clip horizontal overflow only (overflow-x-clip avoids clipping top on mobile scale) -->
-  <div class="w-full overflow-x-clip -mt-52 md:-mt-[21.2rem] mb-0 relative z-10 flex justify-center">
-    <div class="hero-image-reveal w-max max-w-full min-w-0 shrink-0">
-      <!-- Mobile: responsive + scale up. Desktop: fixed width, no scale, can overflow left/right -->
-      <div class="scale-[1.15] md:scale-100 origin-center md:w-[960px] md:max-w-none">
+  <!-- Wrapper: full width, clip horizontal overflow only. Inner uses left-1/2 -translate-x-1/2 so image stays centered when wider than viewport (e.g. ~768–1100px). -->
+  <div class="w-full overflow-x-clip -mt-56 md:-mt-96 mb-0 relative z-10">
+    <div class="relative left-1/2 -translate-x-1/2 w-full md:w-max">
+      <div class="hero-image-reveal w-full min-w-0 shrink-0 md:w-max">
+        <!-- Mobile: fit viewport then scale up just a little (1.08). Desktop: fixed width. -->
+        <div class="origin-center scale-[1.3] md:scale-100 w-full md:w-[1120px] md:max-w-none">
         <img
-          src="/images/mindful-money-tracking/hero_light.png"
+          src="/images/personal-finance-guide/hero_light.png"
           alt="Personal finance guide — simple money management"
           class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
         />
         <img
-          src="/images/mindful-money-tracking/hero_dark.png"
+          src="/images/personal-finance-guide/hero_dark.png"
           alt="Personal finance guide — simple money management"
           class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
         />
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ============================================================
-       SECTION 1: YOU DON'T NEED TO BE AN EXPERT
+       SECTION 1: Money skills anyone can learn
        ============================================================ -->
   <Section
-    heading="You don't need to be a finance expert"
+    heading="Money skills anyone can learn"
     bg="stone"
-    class="mt-4 md:mt-0 !pt-12 md:!pt-2"
+    class="mt-0 md:-mt-2 !pt-10 md:!pt-1"
   >
     <div class="flex flex-col md:flex-row md:items-start md:gap-8 lg:gap-10">
       <!-- Text column (left on desktop) -->
@@ -83,25 +86,25 @@ const overwhelmRings = [
           Personal finance doesn't require a degree in economics. At its core, it's about three things: knowing where your money goes, spending less than you earn, and putting the difference to work. That's it.
         </p>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
-          The problem isn't that personal finance is complicated — it's that most resources make it feel that way. Jargon, complex strategies, apps with 50 features you'll never use. This guide cuts through all of that.
+          Most people struggle not because personal finance is complicated, but because they don't have a plan. A simple budget and an investment strategy - that's what makes the difference.
         </p>
         <!-- Mobile only: after second paragraph. Hidden under 450px; >=450px float right; <450px in line (but hidden) -->
         <div class="rocks-reveal md:hidden max-[449px]:hidden mb-4 min-[380px]:float-right min-[380px]:ml-4 min-[380px]:mb-4 min-[380px]:mt-0 w-fit">
           <img
-            src="/images/mindful-money-tracking/stones.png"
+            src="/images/personal-finance-guide/piggy_bank.png"
             alt="Simple personal finance — no complexity"
             class="rounded-lg max-w-[140px] min-[380px]:max-w-[160px] mx-auto min-[380px]:mx-0 block"
           />
         </div>
         <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-0">
-          This page is your <strong>personal finance guide</strong> — the essentials you actually need, explained simply. Whether you're starting from zero or just want to simplify your approach, start here.
+          This guide breaks down everything you should know about managing your money.
         </p>
         <div class="clear-both md:clear-none"></div>
       </div>
       <!-- Image: right column on desktop only -->
       <div class="rocks-reveal hidden md:block flex-shrink-0 w-full md:max-w-[270px] lg:max-w-[270px] p-6 lg:p-8">
         <img
-          src="/images/mindful-money-tracking/stones.png"
+          src="/images/personal-finance-guide/piggy_bank.png"
           alt="Simple personal finance — no complexity"
           class="w-full h-auto rounded-lg"
         />
@@ -110,10 +113,430 @@ const overwhelmRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 2: THE OVERWHELM PROBLEM
+       SECTION 2: THREE THINGS THAT ACTUALLY MATTER
        ============================================================ -->
   <Section
-    heading="The overwhelm is real"
+    heading="Three things that actually matter"
+    align="center"
+  >
+    <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <!-- Card 1: Liquidity -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Liquidity</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Going broke can often be a timing issue. A budget shows where your money goes, and an emergency fund keeps you afloat when life happens.
+        </p>
+      </div>
+      <!-- Card 2: Investing -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M7 14l4-4 4 4 5-8"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Investing</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Don't pay management fees. Low-cost index funds beat most active managers. Build a simple portfolio, automate it, and let compound growth work.
+        </p>
+      </div>
+      <!-- Card 3: Stability -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Stability</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Don't let debt or disaster wipe you out. Kill high-interest debt first, get essential insurance coverage, and protect the wealth you've built.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 2B: GETTING STARTED CHECKLIST
+       ============================================================ -->
+  <Section
+    heading="The personal finance to-do list"
+    subheading="How many of these have you covered?"
+    align="center"
+    class="getting-started-section"
+  >
+    <div class="checklist-container max-w-2xl mx-auto">
+      <div class="checklist-item border-b border-neutral-200 dark:border-neutral-800 py-5 flex items-start gap-4" data-step="1">
+        <label class="checkbox-wrapper flex-shrink-0 cursor-pointer">
+          <input type="checkbox" class="checklist-checkbox sr-only">
+          <span class="checkbox-custom w-6 h-6 rounded border-2 border-neutral-300 dark:border-neutral-600 flex items-center justify-center transition-all duration-200 bg-white dark:bg-neutral-900">
+            <svg class="checkmark w-4 h-4 text-neutral-900 dark:text-neutral-100 opacity-0 transition-opacity duration-200" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8l3 3 7-7"/>
+            </svg>
+          </span>
+        </label>
+        <div class="flex-1 min-w-0">
+          <h4 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">1. Set up a budget tracking system</h4>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Choose an app or spreadsheet to track expenses. Start logging where your money goes.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item border-b border-neutral-200 dark:border-neutral-800 py-5 flex items-start gap-4" data-step="2">
+        <label class="checkbox-wrapper flex-shrink-0 cursor-pointer">
+          <input type="checkbox" class="checklist-checkbox sr-only">
+          <span class="checkbox-custom w-6 h-6 rounded border-2 border-neutral-300 dark:border-neutral-600 flex items-center justify-center transition-all duration-200 bg-white dark:bg-neutral-900">
+            <svg class="checkmark w-4 h-4 text-neutral-900 dark:text-neutral-100 opacity-0 transition-opacity duration-200" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8l3 3 7-7"/>
+            </svg>
+          </span>
+        </label>
+        <div class="flex-1 min-w-0">
+          <h4 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">2. Build your emergency fund</h4>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Save 3 months of expenses in a high-yield savings account. This is your financial safety net.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item border-b border-neutral-200 dark:border-neutral-800 py-5 flex items-start gap-4" data-step="3">
+        <label class="checkbox-wrapper flex-shrink-0 cursor-pointer">
+          <input type="checkbox" class="checklist-checkbox sr-only">
+          <span class="checkbox-custom w-6 h-6 rounded border-2 border-neutral-300 dark:border-neutral-600 flex items-center justify-center transition-all duration-200 bg-white dark:bg-neutral-900">
+            <svg class="checkmark w-4 h-4 text-neutral-900 dark:text-neutral-100 opacity-0 transition-opacity duration-200" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8l3 3 7-7"/>
+            </svg>
+          </span>
+        </label>
+        <div class="flex-1 min-w-0">
+          <h4 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">3. Pay down bad debts</h4>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Anything over 4% is considered high interest. Don't let it compound against you.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item py-5 flex items-start gap-4" data-step="4">
+        <label class="checkbox-wrapper flex-shrink-0 cursor-pointer">
+          <input type="checkbox" class="checklist-checkbox sr-only">
+          <span class="checkbox-custom w-6 h-6 rounded border-2 border-neutral-300 dark:border-neutral-600 flex items-center justify-center transition-all duration-200 bg-white dark:bg-neutral-900">
+            <svg class="checkmark w-4 h-4 text-neutral-900 dark:text-neutral-100 opacity-0 transition-opacity duration-200" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8l3 3 7-7"/>
+            </svg>
+          </span>
+        </label>
+        <div class="flex-1 min-w-0">
+          <h4 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">4. Build an investment portfolio</h4>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Invest excess capital in a diversified portfolio to grow wealth and combat inflation. </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const STORAGE_KEY = 'pf-checklist-state';
+        const container = document.querySelector('.checklist-container');
+        if (!container) return;
+
+        const items = container.querySelectorAll('.checklist-item');
+
+        // Load saved state from localStorage
+        function loadState() {
+          try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+              const state = JSON.parse(saved);
+              items.forEach((item) => {
+                const step = item.getAttribute('data-step');
+                if (state[step]) {
+                  const checkbox = item.querySelector('.checklist-checkbox');
+                  if (checkbox) {
+                    checkbox.checked = true;
+                    updateCheckboxVisual(item, true);
+                  }
+                }
+              });
+            }
+          } catch (e) {
+            console.error('Failed to load checklist state:', e);
+          }
+        }
+
+        // Save state to localStorage
+        function saveState() {
+          try {
+            const state = {};
+            items.forEach((item) => {
+              const step = item.getAttribute('data-step');
+              const checkbox = item.querySelector('.checklist-checkbox');
+              if (checkbox && checkbox.checked) {
+                state[step] = true;
+              }
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          } catch (e) {
+            console.error('Failed to save checklist state:', e);
+          }
+        }
+
+        // Update visual state of checkbox
+        function updateCheckboxVisual(item, checked) {
+          const checkmark = item.querySelector('.checkmark');
+          const customBox = item.querySelector('.checkbox-custom');
+          if (checkmark && customBox) {
+            if (checked) {
+              checkmark.style.opacity = '1';
+              customBox.style.borderColor = 'rgb(38, 38, 38)';
+              customBox.style.backgroundColor = 'rgb(38, 38, 38)';
+              checkmark.style.color = 'white';
+            } else {
+              checkmark.style.opacity = '0';
+              customBox.style.borderColor = '';
+              customBox.style.backgroundColor = '';
+              checkmark.style.color = '';
+            }
+          }
+        }
+
+        // Handle dark mode for checked state
+        function updateDarkMode() {
+          const isDark = document.documentElement.classList.contains('dark');
+          items.forEach((item) => {
+            const checkbox = item.querySelector('.checklist-checkbox');
+            const customBox = item.querySelector('.checkbox-custom');
+            const checkmark = item.querySelector('.checkmark');
+            if (checkbox && checkbox.checked && customBox) {
+              if (isDark) {
+                customBox.style.borderColor = 'rgb(245, 245, 245)';
+                customBox.style.backgroundColor = 'rgb(245, 245, 245)';
+                checkmark.style.color = 'rgb(23, 23, 23)';
+              } else {
+                customBox.style.borderColor = 'rgb(38, 38, 38)';
+                customBox.style.backgroundColor = 'rgb(38, 38, 38)';
+                checkmark.style.color = 'white';
+              }
+            }
+          });
+        }
+
+        // Set up event listeners
+        items.forEach((item) => {
+          const checkbox = item.querySelector('.checklist-checkbox');
+          if (!checkbox) return;
+
+          checkbox.addEventListener('change', () => {
+            updateCheckboxVisual(item, checkbox.checked);
+            updateDarkMode();
+            saveState();
+          });
+        });
+
+        // Load initial state
+        loadState();
+        updateDarkMode();
+
+        // Watch for theme changes
+        const observer = new MutationObserver(updateDarkMode);
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      })();
+    </script>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 3: SIMPLE NOW, POWERFUL LATER
+       ============================================================ -->
+  <Section
+    heading="Budgeting made simple"
+    bg="stone"
+  >
+    <div class="envelope-section flex flex-col md:flex-row md:items-center gap-6 md:gap-0 max-w-4xl mx-auto">
+      <!-- Left column: text (on mobile: text, then image+button) -->
+      <div class="flex-1 min-w-0 space-y-4 text-center md:text-left">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          A budget is just a written financial plan.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Write down your fixed costs, estimate variable costs. Track your spending, adjust your budget and take control of where your money goes.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Envelope based budgeting is one of the most popular budgeting methods. Imagine your spending categories as envelopes. At the beginning of the month you put in a certain amount of money, and when it's empty, no more spending for that category.
+        </p>
+        <p class="text-sm text-neutral-500 dark:text-neutral-500">
+          <a href="/budgeting-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about budgeting and cashflow →</a>
+        </p>
+
+        <!-- Mobile only: image + CTA -->
+        <div class="flex flex-col items-center gap-4 py-2 md:hidden">
+          <div class="envelope-reveal-mobile w-full max-w-[560px] rounded-lg overflow-hidden">
+            <img
+              src="/images/mindful-money-tracking/envelope_budgeting_light.png"
+              alt="Envelope based budgeting"
+              class="w-full h-auto rounded-lg block dark:hidden"
+            />
+            <img
+              src="/images/mindful-money-tracking/envelope_budgeting_dark.png"
+              alt="Envelope based budgeting"
+              class="w-full h-auto rounded-lg hidden dark:block"
+            />
+          </div>
+          <a
+            href={APP_URL}
+            class="inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          >
+            Create a budget
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right column: image + CTA (desktop only); image reveals from right -->
+      <div class="hidden md:flex flex-shrink-0 flex-col items-center gap-4 w-[560px] md:-ml-8">
+        <div class="envelope-reveal-desktop w-full rounded-lg overflow-hidden">
+          <img
+            src="/images/mindful-money-tracking/envelope_budgeting_light.png"
+            alt="Envelope based budgeting"
+            class="w-full h-auto rounded-lg block dark:hidden"
+          />
+          <img
+            src="/images/mindful-money-tracking/envelope_budgeting_dark.png"
+            alt="Envelope based budgeting"
+            class="w-full h-auto rounded-lg hidden dark:block"
+          />
+        </div>
+        <a
+          href={APP_URL}
+          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors whitespace-nowrap"
+        >
+          Create a budget
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 4: LIQUIDITY — WHY YOU NEED AN EMERGENCY FUND
+       ============================================================ -->
+  <Section class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <!-- Image: left on desktop, above on mobile — mobile manual input screenshot.
+           Size: wrapper is 50% column; images capped at max-w. Centered on mobile. -->
+      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <img
+          src="/images/personal-finance-guide/emergency_fund.png"
+          alt="Emergency fund — liquidity and runway"
+          class="w-full max-w-[260px] h-auto rounded-lg"
+        />
+      </div>
+      <!-- Title, subtitle, and content: right on desktop, below image on mobile -->
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
+            Liquidity
+          </h2>
+          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+            Why you need an emergency fund
+          </p>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Having money isn't enough - it needs to be liquid and available when you need it. Tracking your cashflow shows exactly how long your emergency fund will last. When you know your burn rate, you know your runway.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          An emergency fund (3–6 months of expenses) protects: your ability to weather job loss, medical bills, or car repairs without selling investments at a bad time. Liquidity means options. No liquidity means forced decisions.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 4B: INVESTING
+       ============================================================ -->
+  <Section
+    heading="Investing"
+    subheading="Asset allocation, diversification, and portfolio management"
+    bg="stone"
+  >
+    <div class="max-w-3xl mx-auto md:mx-0 space-y-8 md:space-y-6">
+      <!-- Paragraph 1: Asset Classes -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Diversify your portfolio:</strong> equities (stocks, ETFs, Mutual Funds,...), real estate, commodities, and crypto. Each carries different risk and return profiles. Most investors start with equities through index funds - broad exposure, low fees, proven track record (around 10% returns per year).
+        </p>
+      </div>
+
+      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+
+      <!-- Paragraph 2: Active vs Passive -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M18 17V9"/>
+            <path d="M13 17V5"/>
+            <path d="M8 17v-3"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Active vs. passive investing:</strong> Active management (picking individual stocks) usually loses to passive strategies after fees. Diversification across assets and sectors reduces risk. Dollar-cost averaging (DCA) - investing the same amount regularly - removes timing decisions and emotion.
+        </p>
+      </div>
+
+      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+
+      <!-- Paragraph 3: Track Portfolio -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Track your portfolio.</strong> Monitor allocation, rebalance annually, understand what you own. Never invest more than you can afford to lose. Risk tolerance isn't theoretical - it's what lets you sleep at night when markets drop 20%.
+        </p>
+      </div>
+
+      <!-- Learn more link -->
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 text-center md:text-left md:ml-16">
+        <a href="/portfolio-tracker" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about portfolio monitoring →</a>
+      </p>
+    </div>
+
+    <!-- 3 screenshots: overlapping pile with tilt, same as "See your finances visually" -->
+    <div class="screenshot-pile flex justify-center items-end mt-16 mb-4 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px]">
+      <div class="screenshot-in-left screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 z-0">
+        <img src="/images/mindful-money-tracking/cashflow_light.png" alt="Budget view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/cashflow_dark.png" alt="Budget view" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+      <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
+        <img src="/images/mindful-money-tracking/networth_light.png" alt="Net worth" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/networth dark.png" alt="Net worth" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+      <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
+        <img src="/images/mindful-money-tracking/spending_light.png" alt="Spending charts" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/spending_dark.png" alt="Spending charts" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 5: THE OVERWHELM PROBLEM
+       ============================================================ -->
+  <Section
+    heading="Just start and you'll already be ahead of most"
     align="center"
   >
     <div class="overwhelm-rings mb-20">
@@ -149,290 +572,22 @@ const overwhelmRings = [
 
     <div class="max-w-2xl space-y-4 text-center mx-auto">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Financial literacy isn't taught in schools. Most people learn money management through trial and error — expensive mistakes, confusing advice, and apps that assume you already know what you're doing.
+        Financial literacy isn't taught in schools. Most people learn money management through trial and error. But to be fair doing anything is better than doing nothing. So just start!
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        The good news: you don't need to master everything. You just need a few key principles and a simple way to track your progress. That's exactly what this guide provides.
+        The good news: you don't need to master everything. You just need a few key principles and a simple way to track your progress. That's exactly what Finzen provides.
       </p>
     </div>
   </Section>
 
   <!-- ============================================================
-       SECTION 3: PERSONAL FINANCE RULES OF THUMB
-       ============================================================ -->
-  <Section
-    heading="Personal finance rules of thumb"
-    subheading="Simple guidelines that actually work"
-    bg="stone"
-  >
-    <div class="max-w-4xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        <!-- Rule 1: 50/30/20 -->
-        <div class="rule-card rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">50/30/20</span>
-          </div>
-          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">The budget ratio</h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <strong>50%</strong> on needs (rent, utilities, groceries, insurance). <strong>30%</strong> on wants (dining out, hobbies, subscriptions). <strong>20%</strong> on savings and debt payoff. Not a rigid law — a starting framework you can adjust.
-          </p>
-        </div>
-
-        <!-- Rule 2: Emergency Fund -->
-        <div class="rule-card rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">3–6 mo</span>
-          </div>
-          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Emergency fund target</h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Before investing, build a cash buffer covering 3–6 months of expenses. This protects you from job loss, medical emergencies, or unexpected repairs. Start with $1,000, then build up over time.
-          </p>
-        </div>
-
-        <!-- Rule 3: Pay Yourself First -->
-        <div class="rule-card rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">10%+</span>
-          </div>
-          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Pay yourself first</h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Transfer at least 10% of every paycheck to savings before spending anything else. Automate this if possible — what you don't see, you won't spend. Increase the percentage as your income grows.
-          </p>
-        </div>
-
-        <!-- Rule 4: Debt Avalanche/Snowball -->
-        <div class="rule-card rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">High %</span>
-          </div>
-          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Attack high-interest debt first</h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Pay minimums on all debts, then throw extra money at the highest-interest one. Credit cards often charge 20%+ APR — that's an emergency. Paying these down is a guaranteed 20% return.
-          </p>
-        </div>
-
-        <!-- Rule 5: Housing -->
-        <div class="rule-card rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">≤30%</span>
-          </div>
-          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Housing costs</h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Keep rent or mortgage under 30% of your gross income. Going higher squeezes savings, emergencies, and quality of life. Housing is usually your biggest expense — getting this right matters.
-          </p>
-        </div>
-
-        <!-- Rule 6: Investing -->
-        <div class="rule-card rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">15%</span>
-          </div>
-          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Invest for retirement</h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Once you have an emergency fund, aim to invest 15% of income for retirement. Start with whatever you can — even 1% — and increase over time. Time in the market beats timing the market.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-10 max-w-2xl mx-auto text-center">
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          These aren't rigid laws — they're starting points. Your situation is unique. A student's budget looks different from a retiree's. The important thing is to start somewhere, track your progress, and adjust as you learn.
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 4: THE 3-MINUTE HABIT
-       ============================================================ -->
-  <Section class="pt-8 pb-16 md:py-24">
-    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
-      <!-- Image: left on desktop, above on mobile — mobile manual input screenshot.
-           Size: wrapper is 50% column; images capped at max-w. Centered on mobile. -->
-      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
-        <img
-          src="/images/mindful-money-tracking/method_light.png"
-          alt="Finzen mobile app — simple transaction entry"
-          class="w-full max-w-[260px] h-auto rounded-lg block dark:hidden"
-        />
-        <img
-          src="/images/mindful-money-tracking/method_dark.png"
-          alt="Finzen mobile app — simple transaction entry"
-          class="w-full max-w-[260px] h-auto rounded-lg hidden dark:block"
-        />
-      </div>
-      <!-- Title, text, checkmarks: right on desktop, below image on mobile -->
-      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
-        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
-          The 3-minute daily habit
-        </h2>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          The most effective financial habit isn't complicated. It's a simple daily check-in: record what you spent, see where you stand, move on with your day. Three minutes. That's it.
-        </p>
-        <ul class="space-y-2 list-none pl-0 mt-1">
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
-            </span>
-            <span>Open the app (30 seconds)</span>
-          </li>
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
-            </span>
-            <span>Enter today's spending (2 minutes)</span>
-          </li>
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
-            </span>
-            <span>Check your budget status (30 seconds)</span>
-          </li>
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
-            </span>
-            <span>Done. Close the app.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 5: SIMPLE NOW, POWERFUL LATER
-       ============================================================ -->
-  <Section
-    heading="Simple now. Powerful when you're ready."
-    bg="stone"
-  >
-    <div class="envelope-section flex flex-col md:flex-row md:items-center gap-6 md:gap-0 max-w-4xl mx-auto">
-      <!-- Left column: text (on mobile: paras 1–3, then image+button, then paras 4–6) -->
-      <div class="flex-1 min-w-0 space-y-4 text-center md:text-left">
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          <strong>Week 1:</strong> Just track your spending. Nothing else. Don't worry about budgets or categories yet — just record what goes out. Build the daily habit first.
-        </p>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          <strong>Month 1:</strong> Now you have data. Create a simple budget based on what you actually spent. See where reality differs from your expectations.
-        </p>
-
-        <!-- Mobile only: image + CTA between second and third paragraph (image reveals from below) -->
-        <div class="flex flex-col items-center gap-4 py-2 md:hidden">
-          <div class="envelope-reveal-mobile w-full max-w-[560px] rounded-lg overflow-hidden">
-            <img
-              src="/images/mindful-money-tracking/envelope_budgeting_light.png"
-              alt="Grow at your own pace — from beginner to expert"
-              class="w-full h-auto rounded-lg block dark:hidden"
-            />
-            <img
-              src="/images/mindful-money-tracking/envelope_budgeting_dark.png"
-              alt="Grow at your own pace — from beginner to expert"
-              class="w-full h-auto rounded-lg hidden dark:block"
-            />
-          </div>
-          <a
-            href={APP_URL}
-            class="inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-          >
-            Start your journey
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          <strong>Month 2:</strong> Add your savings accounts and investments. Track your total net worth. See the complete picture of where you stand financially.
-        </p>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          <strong>Month 3+:</strong> Now you have trends. Compare months. Spot patterns. Adjust your approach based on real data, not guesswork.
-        </p>
-      </div>
-
-      <!-- Right column: image + CTA (desktop only); image reveals from right -->
-      <div class="hidden md:flex flex-shrink-0 flex-col items-center gap-4 w-[560px] md:-ml-8">
-        <div class="envelope-reveal-desktop w-full rounded-lg overflow-hidden">
-          <img
-            src="/images/mindful-money-tracking/envelope_budgeting_light.png"
-            alt="Grow at your own pace — from beginner to expert"
-            class="w-full h-auto rounded-lg block dark:hidden"
-          />
-          <img
-            src="/images/mindful-money-tracking/envelope_budgeting_dark.png"
-            alt="Grow at your own pace — from beginner to expert"
-            class="w-full h-auto rounded-lg hidden dark:block"
-          />
-        </div>
-        <a
-          href={APP_URL}
-          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors whitespace-nowrap"
-        >
-          Start your journey
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 6: THREE THINGS THAT MATTER (neumorphic cards)
-       ============================================================ -->
-  <Section
-    heading="Three things that actually matter"
-    align="center"
-  >
-    <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-      <!-- Card 1: Know where your money goes -->
-      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Know where it goes</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Most people have no idea where their money actually goes. Tracking reveals the truth: subscriptions you forgot, small purchases that add up, patterns you never noticed.
-        </p>
-      </div>
-      <!-- Card 2: Spend without guilt -->
-      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 11l3 3L22 4"/>
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Spend without guilt</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          A budget isn't a restriction — it's permission. When you've planned for entertainment or dining out, spending on those things stops feeling guilty and starts feeling intentional.
-        </p>
-      </div>
-      <!-- Card 3: Build real wealth -->
-      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 3v18h18"/>
-            <path d="M7 14l4-4 4 4 5-8"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Build real wealth</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Wealth isn't just high income — it's the gap between what you earn and what you spend, invested over time. Small consistent savings, compounded over decades, become real wealth.
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 7: COMMON BUDGETING MISTAKES
+       SECTION 6: COMMON BUDGETING MISTAKES
        ============================================================ -->
   <Section
     heading="Common mistakes to avoid"
     subheading="Learn from what trips most people up"
-    bg="stone"
+    align="center"
+    class="common-mistakes-section"
   >
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -498,146 +653,41 @@ const overwhelmRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 8: VISUALIZE YOUR FINANCES
+       SECTION 6C: LIQUIDITY
        ============================================================ -->
-  <Section
-    heading="See your finances visually"
-    subheading="Charts and graphs make patterns obvious."
-    align="center"
-  >
-    <!-- 3 screenshots: 16:9, rounded, soft shadows, overlapping pile with tilt, animate in when scrolled into view -->
-    <div class="screenshot-pile flex justify-center items-end mb-12 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px] -mt-12 max-sm:-mt-16 md:-mt-6">
-      <div class="screenshot-in-left screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 z-0">
-        <img src="/images/mindful-money-tracking/cashflow_light.png" alt="Simple budget view" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/cashflow_dark.png" alt="Simple budget view" class="w-full h-full object-cover hidden dark:block" />
+  <Section class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <img
+          src="/images/personal-finance-guide/emergency_fund.png"
+          alt="Emergency fund — liquidity and runway"
+          class="w-full max-w-[260px] h-auto rounded-lg"
+        />
       </div>
-      <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
-        <img src="/images/mindful-money-tracking/networth_light.png" alt="Clean dashboard" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/networth dark.png" alt="Clean dashboard" class="w-full h-full object-cover hidden dark:block" />
-      </div>
-      <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
-        <img src="/images/mindful-money-tracking/spending_light.png" alt="Visual spending charts" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/spending_dark.png" alt="Visual spending charts" class="w-full h-full object-cover hidden dark:block" />
-      </div>
-    </div>
-
-    <style>
-      @keyframes slideInLeft {
-        from { opacity: 0; transform: translateX(-80px) rotate(-8deg); }
-        to { opacity: 1; transform: translateX(0) rotate(-6deg); }
-      }
-      @keyframes slideInBottom {
-        from { opacity: 0; transform: translateY(60px) rotate(0deg); }
-        to { opacity: 1; transform: translateY(0) rotate(2deg); }
-      }
-      @keyframes slideInRight {
-        from { opacity: 0; transform: translateX(80px) rotate(8deg); }
-        to { opacity: 1; transform: translateX(0) rotate(6deg); }
-      }
-      /* Start off-screen; animate only when .screenshot-pile gets .in-view (scroll-triggered) */
-      .screenshot-pile .screenshot-in-left {
-        opacity: 0;
-        transform: translateX(-80px) rotate(-8deg);
-      }
-      .screenshot-pile .screenshot-in-bottom {
-        opacity: 0;
-        transform: translateY(60px) rotate(0deg);
-      }
-      .screenshot-pile .screenshot-in-right {
-        opacity: 0;
-        transform: translateX(80px) rotate(8deg);
-      }
-      .screenshot-pile.in-view .screenshot-in-left {
-        animation: slideInLeft 0.7s ease-out forwards;
-      }
-      .screenshot-pile.in-view .screenshot-in-bottom {
-        animation: slideInBottom 0.7s ease-out 0.15s forwards;
-      }
-      .screenshot-pile.in-view .screenshot-in-right {
-        animation: slideInRight 0.7s ease-out 0.3s forwards;
-      }
-    </style>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const pile = document.querySelector('.screenshot-pile');
-        if (!pile) return;
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-              }
-            });
-          },
-          { rootMargin: '0px 0px -80px 0px', threshold: 0.1 }
-        );
-        observer.observe(pile);
-      });
-    </script>
-
-    <div class="max-w-2xl mx-auto space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Whatever tool you use to track your finances, it should make things clearer, not more confusing. Look for clean interfaces that show you what matters without overwhelming you with options you'll never use.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        The best financial tools stay out of your way. They make it easy to record transactions, see where you stand, and get on with your life. If it takes longer than a few minutes, the tool is the problem.
-      </p>
-      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
-        Interested in visual finance tracking? <a href="/personal-finance-charts" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">See how charts can clarify your finances</a>.
-      </p>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 9: YOUR PATH TO FINANCIAL CLARITY
-       ============================================================ -->
-  <Section
-    heading="Your path to financial clarity"
-    bg="stone"
-    align="center"
-    class="!bg-gradient-to-b !from-white !to-[#ECECEC] dark:!from-[#1B1B1B] dark:!to-[#1B1B1B]"
-  >
-    <div class="mb-6 max-w-4xl mx-auto">
-      <img
-        src="/images/mindful-money-tracking/steps_light.png"
-        alt="Your path: track spending, budget, save, invest"
-        class="w-full max-w-full h-auto rounded-lg block dark:hidden"
-      />
-      <img
-        src="/images/mindful-money-tracking/steps_dark.png"
-        alt="Your path: track spending, budget, save, invest"
-        class="w-full max-w-full h-auto rounded-lg hidden dark:block"
-      />
-    </div>
-
-    <div class="max-w-2xl mx-auto space-y-4">
-      <p class="text-base font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        There's no secret to personal finance. It's a sequence: awareness → control → growth.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        <strong>Step 1:</strong> Track spending to build awareness. <strong>Step 2:</strong> Create a budget to take control. <strong>Step 3:</strong> Build an emergency fund for stability. <strong>Step 4:</strong> Invest the surplus for growth. Most people stall at step 1 — don't.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        This isn't about perfection. It's about progress. Even small improvements compound over time.
-      </p>
-
-      <div class="pt-6 flex justify-center">
-        <a
-          href={APP_URL}
-          class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] text-white text-sm font-medium rounded-xl hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)] dark:bg-white dark:text-[#1B1B1B] dark:hover:-translate-y-1 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)] transition-all duration-200"
-        >
-          Get started →
-        </a>
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
+            Liquidity
+          </h2>
+          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+            Why you need an emergency fund
+          </p>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Having money isn't enough - it needs to be liquid and available when you need it. Tracking your cashflow shows exactly how long your emergency fund will last. When you know your burn rate, you know your runway.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          An emergency fund (3–6 months of expenses) protects: your ability to weather job loss, medical bills, or car repairs without selling investments at a bad time. Liquidity means options. No liquidity means forced decisions.
+        </p>
       </div>
     </div>
   </Section>
 
   <!-- ============================================================
-       SECTION 10: WHAT BEGINNERS GET
+       SECTION 6B: Personal Finance Rules of Thumb
        ============================================================ -->
   <Section
-    heading="What you get as a beginner"
+    heading="Personal Finance Rules of Thumb"
     align="center"
   >
     <div class="max-w-2xl mx-auto space-y-6 text-left">
@@ -674,6 +724,7 @@ const overwhelmRings = [
       </p>
     </div>
   </Section>
+
 
   <!-- ============================================================
        SECTION 11: THE PRIORITY ORDER
@@ -745,6 +796,26 @@ const overwhelmRings = [
         <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
           <strong class="text-neutral-900 dark:text-neutral-100">The key insight:</strong> This order exists because each step protects the next. An emergency fund prevents new debt. No debt means more money to invest. It's a sequence, not a checklist.
         </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       PERSONAL FINANCE GUIDE (CHEATSHEET) — toward bottom
+       ============================================================ -->
+  <Section heading="Your personal finance guide at a glance" align="center" bg="stone">
+    <div class="w-full overflow-x-clip">
+      <div class="relative left-1/2 -translate-x-1/2 w-full md:w-max max-w-4xl mx-auto">
+        <img
+          src="/images/personal-finance-guide/personal_finance_cheatsheet_light.png"
+          alt="Personal finance guide cheatsheet — key principles at a glance"
+          class="w-full md:w-auto max-w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/personal-finance-guide/personal_finance_cheatsheet_dark.png"
+          alt="Personal finance guide cheatsheet — key principles at a glance"
+          class="w-full md:w-auto max-w-full h-auto rounded-lg hidden dark:block"
+        />
       </div>
     </div>
   </Section>
@@ -920,137 +991,6 @@ const overwhelmRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 13: YOUR FIRST 30 DAYS
-       ============================================================ -->
-  <Section
-    heading="Your first 30 days"
-    subheading="A simple roadmap to get started"
-    bg="stone"
-  >
-    <div class="max-w-3xl mx-auto">
-      <div class="space-y-6">
-        <!-- Week 1 -->
-        <div class="checklist-week rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-lg font-bold text-neutral-900 dark:text-neutral-100">1</span>
-            <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Week 1: Track everything</h3>
-          </div>
-          <ul class="space-y-2 pl-0">
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Choose your tracking method (app, spreadsheet, notebook)</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Record every expense — no matter how small</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Don't judge yourself — just observe</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Week 2 -->
-        <div class="checklist-week rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-lg font-bold text-neutral-900 dark:text-neutral-100">2</span>
-            <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Week 2: Review and categorize</h3>
-          </div>
-          <ul class="space-y-2 pl-0">
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Review week 1 spending — what surprised you?</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Group expenses into 5-8 simple categories</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Identify your biggest spending areas</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Week 3 -->
-        <div class="checklist-week rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-lg font-bold text-neutral-900 dark:text-neutral-100">3</span>
-            <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Week 3: Set your first budget</h3>
-          </div>
-          <ul class="space-y-2 pl-0">
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Based on your data, set realistic spending limits per category</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Include a "miscellaneous" category for the unexpected</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Plan to save something — even if it's just $20</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Week 4 -->
-        <div class="checklist-week rounded-2xl p-6 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-lg font-bold text-neutral-900 dark:text-neutral-100">4</span>
-            <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Week 4: Review and adjust</h3>
-          </div>
-          <ul class="space-y-2 pl-0">
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Compare actual spending vs. your budget</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Adjust categories that were unrealistic</span>
-            </li>
-            <li class="flex items-start gap-3 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              <span class="check-minimal shrink-0 mt-0.5" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/></svg>
-              </span>
-              <span>Celebrate: you now have a working budget based on real data</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-10 max-w-2xl mx-auto text-center">
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          That's it. After 30 days, you'll have a clear picture of your spending habits and a realistic budget to guide your decisions. From here, it's refinement and consistency.
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
        BEGIN YOUR JOURNEY (CTA)
        ============================================================ -->
   <section class="w-full py-20 md:py-28 px-6 bg-[#ECECEC] dark:bg-[#1B1B1B]">
@@ -1093,6 +1033,88 @@ const overwhelmRings = [
 </Layout>
 
 <style>
+  /* Checklist styles */
+  .checklist-container {
+    text-align: left;
+  }
+
+  /* Getting started section: linear gradient */
+  :global(.getting-started-section) {
+    background: linear-gradient(to bottom, #ECECEC, #ffffff);
+  }
+  :global(.dark) :global(.getting-started-section) {
+    background: linear-gradient(to bottom, #1B1B1B, #171717);
+  }
+
+  /* Common mistakes section: gradient background */
+  :global(.common-mistakes-section) {
+    background: linear-gradient(to bottom, #ffffff, #ECECEC);
+  }
+  :global(.dark) :global(.common-mistakes-section) {
+    background: linear-gradient(to bottom, #171717, #1B1B1B);
+  }
+
+  .checklist-item {
+    position: relative;
+  }
+
+  .checkbox-wrapper {
+    position: relative;
+    display: inline-block;
+    /* Align checkbox with first line of title (cap height of text-base) */
+    margin-top: 6px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .checkbox-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .checkbox-wrapper:hover .checkbox-custom {
+    border-color: rgb(115, 115, 115);
+  }
+
+  :global(.dark) .checkbox-wrapper:hover .checkbox-custom {
+    border-color: rgb(163, 163, 163);
+  }
+
+  .checklist-checkbox:checked + .checkbox-custom {
+    border-color: rgb(38, 38, 38);
+    background-color: rgb(38, 38, 38);
+  }
+
+  :global(.dark) .checklist-checkbox:checked + .checkbox-custom {
+    border-color: rgb(245, 245, 245);
+    background-color: rgb(245, 245, 245);
+  }
+
+  .checklist-checkbox:checked + .checkbox-custom .checkmark {
+    opacity: 1;
+    color: white;
+  }
+
+  :global(.dark) .checklist-checkbox:checked + .checkbox-custom .checkmark {
+    color: rgb(23, 23, 23);
+  }
+
+  .checklist-checkbox:focus-visible + .checkbox-custom {
+    outline: 2px solid rgb(59, 130, 246);
+    outline-offset: 2px;
+  }
+
   /* Hero image: from below + fade on reveal */
   .hero-image-reveal {
     opacity: 0;
@@ -1146,6 +1168,41 @@ const overwhelmRings = [
   .envelope-section.in-view .envelope-reveal-desktop {
     opacity: 1;
     transform: translate(0);
+  }
+
+  /* Screenshot pile: 3 overlapping cards, animate on scroll */
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-80px) rotate(-8deg); }
+    to { opacity: 1; transform: translateX(0) rotate(-6deg); }
+  }
+  @keyframes slideInBottom {
+    from { opacity: 0; transform: translateY(60px) rotate(0deg); }
+    to { opacity: 1; transform: translateY(0) rotate(2deg); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(80px) rotate(8deg); }
+    to { opacity: 1; transform: translateX(0) rotate(6deg); }
+  }
+  .screenshot-pile .screenshot-in-left {
+    opacity: 0;
+    transform: translateX(-80px) rotate(-8deg);
+  }
+  .screenshot-pile .screenshot-in-bottom {
+    opacity: 0;
+    transform: translateY(60px) rotate(0deg);
+  }
+  .screenshot-pile .screenshot-in-right {
+    opacity: 0;
+    transform: translateX(80px) rotate(8deg);
+  }
+  .screenshot-pile.in-view .screenshot-in-left {
+    animation: slideInLeft 0.7s ease-out forwards;
+  }
+  .screenshot-pile.in-view .screenshot-in-bottom {
+    animation: slideInBottom 0.7s ease-out 0.15s forwards;
+  }
+  .screenshot-pile.in-view .screenshot-in-right {
+    animation: slideInRight 0.7s ease-out 0.3s forwards;
   }
 
   .check-minimal {
@@ -1292,6 +1349,89 @@ const overwhelmRings = [
   :global(.dark) .faq-accordion .faq-trigger:hover .faq-icon {
     color: rgb(163 163 163);
   }
+
+  /* Timeline styles - Mobile */
+  .rules-timeline .timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .rules-timeline.in-view .timeline-item {
+    animation: timeline-fade-in 0.5s ease-out var(--item-delay) forwards;
+  }
+
+  /* Timeline styles - Desktop */
+  .rules-timeline-desktop .timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .rules-timeline-desktop.in-view .timeline-item {
+    animation: timeline-fade-in 0.5s ease-out var(--item-delay) forwards;
+  }
+
+  @keyframes timeline-fade-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .timeline-badge {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .timeline-item:hover .timeline-badge {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  :global(.dark) .timeline-item:hover .timeline-badge {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .timeline-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .timeline-item:hover .timeline-card {
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08), -4px -4px 12px rgba(0, 0, 0, 0.04);
+  }
+  :global(.dark) .timeline-item:hover .timeline-card {
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.06);
+  }
+
+  /* Mobile timeline line */
+  .timeline-line-mobile {
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.8s ease-out;
+  }
+  .rules-timeline.in-view .timeline-line-mobile {
+    transform: scaleY(1);
+  }
+
+  /* Desktop wavy path */
+  .timeline-path {
+    stroke: rgb(200 200 200);
+  }
+  :global(.dark) .timeline-path {
+    stroke: rgb(80 80 80);
+  }
+
+  /* Path drawing animation */
+  .timeline-path-svg {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .rules-timeline-desktop.in-view .timeline-path-svg {
+    opacity: 1;
+  }
+  .rules-timeline-desktop.in-view .timeline-path {
+    stroke-dasharray: 5000;
+    stroke-dashoffset: 5000;
+    animation: draw-path 2s ease-out 0.2s forwards;
+  }
+  @keyframes draw-path {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
 </style>
 
 <script>
@@ -1317,7 +1457,14 @@ const overwhelmRings = [
 
     document.querySelectorAll('.method-image-reveal').forEach((el) => observer.observe(el));
 
-    const envelopeSection = document.querySelector('.envelope-section');
-    if (envelopeSection) observer.observe(envelopeSection);
+    document.querySelectorAll('.envelope-section').forEach((el) => observer.observe(el));
+
+    const rulesTimeline = document.querySelector('.rules-timeline');
+    if (rulesTimeline) observer.observe(rulesTimeline);
+
+    const rulesTimelineDesktop = document.querySelector('.rules-timeline-desktop');
+    if (rulesTimelineDesktop) observer.observe(rulesTimelineDesktop);
+
+    document.querySelectorAll('.screenshot-pile').forEach((el) => observer.observe(el));
   });
 </script>
