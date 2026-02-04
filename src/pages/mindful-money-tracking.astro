@@ -473,57 +473,14 @@ const disconnectionRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 6: CASH FLOW → EMERGENCY FUND → INVEST
-       ============================================================ -->
-  <Section
-    heading="Cash flow. Emergency fund. Invest the Rest."
-    bg="stone"
-    align="center"
-    class="!bg-gradient-to-b !from-white !to-[#ECECEC] dark:!from-[#1B1B1B] dark:!to-[#1B1B1B]"
-  >
-    <div class="mb-6 max-w-4xl mx-auto">
-      <img
-        src="/images/mindful-money-tracking/steps_light.png"
-        alt="Finzen method: cash flow positive, emergency fund, then portfolio investing"
-        class="w-full max-w-full h-auto rounded-lg block dark:hidden"
-      />
-      <img
-        src="/images/mindful-money-tracking/steps_dark.png"
-        alt="Finzen method: cash flow positive, emergency fund, then portfolio investing"
-        class="w-full max-w-full h-auto rounded-lg hidden dark:block"
-      />
-    </div>
-
-    <div class="max-w-2xl mx-auto space-y-4">
-      <p class="text-base font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        Budget, emergency fund, and portfolio in one place.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        See your monthly spending, <strong>emergency fund</strong>, and how many months it covers. Ready to <strong>invest</strong>? Track <strong>stocks</strong>, <strong>ETFs</strong>, <strong>crypto</strong>, and <strong>forex</strong> in <strong>real time</strong>.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        <strong>How much should you invest</strong>? Most people don't know because their <strong>budget</strong> and investments live in different apps. Finzen shows both together, so you see exactly what you can afford to risk - your spending, emergency cushion, and <strong>portfolio</strong> all in one place.
-      </p>
-
-      <div class="pt-6 flex justify-center">
-        <a
-          href={APP_URL}
-          class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] text-white text-sm font-medium rounded-xl hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)] dark:bg-white dark:text-[#1B1B1B] dark:hover:-translate-y-1 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)] transition-all duration-200"
-        >
-          Get started →
-        </a>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 6B: DATA VISUALIZATION
+       SECTION 6: SEE YOUR MONEY, CLEARLY (data visualization)
        ============================================================ -->
   <Section
     heading="See your money, clearly"
     subheading="Your data becomes visuals—no spreadsheets, no guesswork."
     bg="stone"
     align="center"
+    class="dark:!bg-gradient-to-b dark:!from-[#1B1B1B] dark:!to-[#171717]"
   >
     <!-- 3 screenshots: 16:9, rounded, soft shadows, overlapping pile with tilt, animate in when scrolled into view -->
     <div class="screenshot-pile flex justify-center items-end mb-12 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px] -mt-12 max-sm:-mt-16 md:-mt-6">
@@ -610,6 +567,50 @@ const disconnectionRings = [
   </Section>
 
   <!-- ============================================================
+       SECTION 6B: CASH FLOW → EMERGENCY FUND → INVEST
+       ============================================================ -->
+  <Section
+    heading="Cash flow. Emergency fund. Invest the Rest."
+    bg="stone"
+    align="center"
+    class="!bg-gradient-to-b !from-white !to-[#ECECEC] dark:!from-[#1B1B1B] dark:!to-[#1B1B1B]"
+  >
+    <div class="mb-6 max-w-4xl mx-auto">
+      <img
+        src="/images/mindful-money-tracking/steps_light.png"
+        alt="Finzen method: cash flow positive, emergency fund, then portfolio investing"
+        class="w-full max-w-full h-auto rounded-lg block dark:hidden"
+      />
+      <img
+        src="/images/mindful-money-tracking/steps_dark.png"
+        alt="Finzen method: cash flow positive, emergency fund, then portfolio investing"
+        class="w-full max-w-full h-auto rounded-lg hidden dark:block"
+      />
+    </div>
+
+    <div class="max-w-2xl mx-auto space-y-4">
+      <p class="text-base font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Budget, emergency fund, and portfolio in one place.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        See your monthly spending, <strong>emergency fund</strong>, and how many months it covers. Ready to <strong>invest</strong>? Track <strong>stocks</strong>, <strong>ETFs</strong>, <strong>crypto</strong>, and <strong>forex</strong> in <strong>real time</strong>.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        <strong>How much should you invest</strong>? Most people don't know because their <strong>budget</strong> and investments live in different apps. Finzen shows both together, so you see exactly what you can afford to risk - your spending, emergency cushion, and <strong>portfolio</strong> all in one place.
+      </p>
+
+      <div class="pt-6 flex justify-center">
+        <a
+          href={APP_URL}
+          class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] text-white text-sm font-medium rounded-xl hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)] dark:bg-white dark:text-[#1B1B1B] dark:hover:-translate-y-1 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)] transition-all duration-200"
+        >
+          Get started →
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
        SECTION 7: THIS IS FINANCIAL WELLNESS
        ============================================================ -->
   <Section
@@ -654,23 +655,58 @@ const disconnectionRings = [
   <!-- ============================================================
        SECTION 8: PRIVACY BY DEFAULT
        ============================================================ -->
-  <Section
-    heading="Privacy by default"
-    bg="stone"
-  >
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Here's a bonus: because Finzen is a <strong>manual expense tracker</strong> with no bank sync, your financial accounts stay completely isolated.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Your bank credentials never leave your bank. Your broker credentials never leave your broker. There's no third-party aggregator with access to everything. No API keys. No OAuth tokens. No security breach waiting to happen.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Manual entry isn't just about awareness—it's also about security. Privacy through architecture, not just encryption.
-      </p>
-      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
-        Want to learn more about how we protect your data? Check out our <a href="/secure-finance-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">privacy & security page</a>.
-      </p>
+  <Section bg="stone" class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-3 lg:gap-5">
+      <!-- Mobile only: title first -->
+      <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight order-1 w-full md:hidden">
+        Privacy by default
+      </h2>
+      <!-- Image: on mobile below title (order-2); on desktop left, bigger -->
+      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-2 md:order-1 flex justify-center md:justify-start mb-4 md:mb-0">
+        <img
+          src="/images/mindful-money-tracking/security.png"
+          alt="Privacy and security — your data stays yours"
+          class="w-full max-w-[260px] md:max-w-[320px] h-auto rounded-lg"
+        />
+      </div>
+      <!-- Title (desktop only), text, checkmarks: right on desktop -->
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-3 md:order-2">
+        <h2 class="hidden md:block text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+          Privacy by default
+        </h2>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Because Finzen is a <strong>manual expense tracker</strong> with no bank or broker sync, your accounts never connect to our servers. Privacy through architecture—not just encryption.
+        </p>
+        <ul class="space-y-2 list-none pl-0 mt-1">
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span><strong>No bank or broker sync</strong> — your credentials never leave your bank or broker.</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span><strong>Encrypted storage</strong> — your data is encrypted at rest (AES-256) so only you can use it</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span><strong>EU servers</strong> — data is stored in the European Union, under strong privacy and data-residency rules</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span><strong>No selling your data</strong> — we don't monetize your information; you stay in control</span>
+          </li>
+        </ul>
+        <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-2">
+          <a href="/secure-finance-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">More on privacy &amp; security</a>
+        </p>
+      </div>
     </div>
   </Section>
 
@@ -680,127 +716,79 @@ const disconnectionRings = [
   <Section
     heading="Discipline pays off"
     bg="stone"
+    align="center"
   >
-    <!-- Testimonial carousel: neumorphic cards, auto-loop -->
-    <div class="testimonial-carousel max-w-2xl mx-auto mb-10 overflow-hidden px-2">
-      <div class="testimonial-track flex transition-transform duration-500 ease-out w-[400%]">
-        <!-- Slide 1: 25% of track = one viewport width -->
-        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
-          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
-            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
-              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
-            </div>
-            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
-              "Finally feel in control. Two minutes a day and I actually know where my money goes."
-            </blockquote>
-            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Sarah M.</p>
+    <!-- Three neumorphic review cards: wider, 3 in a row when space; 2 + 1 when it doesn't fit; stacked on mobile -->
+    <div class="review-pile flex flex-wrap items-stretch justify-center gap-y-8 gap-x-4 md:gap-6 max-w-5xl mx-auto mb-10 px-4">
+      <div class="review-card w-full min-w-0 sm:min-w-[280px] flex-[1_1_320px] max-w-[360px] rounded-xl p-5 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden flex-shrink-0 ring-1 ring-neutral-200 dark:ring-neutral-700" aria-hidden="true">
+            <img src="/images/mindful-money-tracking/reviews/sarah-m.png" alt="" width="40" height="40" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 min-w-0 text-left">
+            <p class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 text-left">Sarah M.</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 text-left flex items-center gap-1">
+              <span>32</span>
+              <span>•</span>
+              <svg width="16" height="12" viewBox="0 0 16 12" class="inline-block flex-shrink-0 rounded-sm">
+                <rect width="16" height="12" fill="#B22234"/>
+                <path d="M0 1.85h16M0 3.69h16M0 5.54h16M0 7.38h16M0 9.23h16M0 11.08h16" stroke="#fff" stroke-width="0.92"/>
+                <rect width="6.4" height="5.54" fill="#3C3B6E"/>
+              </svg>
+              <span>United States</span>
+            </p>
           </div>
         </div>
-        <!-- Slide 2 -->
-        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
-          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
-            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
-              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
-            </div>
-            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
-              "No more anxiety before checking my accounts. The habit actually stuck."
-            </blockquote>
-            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">James K.</p>
-          </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
-          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
-            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
-              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
-            </div>
-            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
-              "Charts that actually make sense. I see everything in one place now."
-            </blockquote>
-            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Priya L.</p>
-          </div>
-        </div>
-        <!-- Slide 4 -->
-        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
-          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
-            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
-              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
-            </div>
-            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
-              "Started with the budget, now I track my portfolio too. One app."
-            </blockquote>
-            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Marcus T.</p>
-          </div>
-        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed text-left">"The daily logging habit made me realize I was spending $400/month on takeout without thinking. Now I actually see where my money goes - and for the first time in my life I feel truly in control."</p>
       </div>
-      <!-- Dots -->
-      <div class="flex justify-center gap-2 mt-6" role="tablist" aria-label="Testimonial navigation">
-        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 1" data-index="0"></button>
-        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 2" data-index="1"></button>
-        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 3" data-index="2"></button>
-        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 4" data-index="3"></button>
+      <div class="review-card review-card-center w-full min-w-0 sm:min-w-[280px] flex-[1_1_320px] max-w-[360px] rounded-xl p-5 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden flex-shrink-0 ring-1 ring-neutral-200 dark:ring-neutral-700" aria-hidden="true">
+            <img src="/images/mindful-money-tracking/reviews/ahmed-k.png" alt="" width="40" height="40" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 min-w-0 text-left">
+            <p class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 text-left">Ahmed K.</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 text-left flex items-center gap-1">
+              <span>28</span>
+              <span>•</span>
+              <svg width="16" height="12" viewBox="0 0 16 12" class="inline-block flex-shrink-0 rounded-sm">
+                <rect width="16" height="4" fill="#CE1126"/>
+                <rect y="4" width="16" height="4" fill="#fff"/>
+                <rect y="8" width="16" height="4" fill="#000"/>
+              </svg>
+              <span>Egypt</span>
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed text-left">"Banks in Egypt aren't covered by most finance apps. Manual tracking was the only option for me and Finzens statistics & dashboards shows me exactly where my money is going."</p>
+      </div>
+      <div class="review-card w-full min-w-0 sm:min-w-[280px] flex-[1_1_320px] max-w-[360px] rounded-xl p-5 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden flex-shrink-0 ring-1 ring-neutral-200 dark:ring-neutral-700" aria-hidden="true">
+            <img src="/images/mindful-money-tracking/reviews/jennifer-l.png" alt="" width="40" height="40" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 min-w-0 text-left">
+            <p class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 text-left">Jennifer L.</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 text-left flex items-center gap-1">
+              <span>41</span>
+              <span>•</span>
+              <svg width="16" height="12" viewBox="0 0 16 12" class="inline-block flex-shrink-0 rounded-sm">
+                <rect width="16" height="12" fill="#fff"/>
+                <rect width="4" height="12" fill="#FF0000"/>
+                <rect x="12" width="4" height="12" fill="#FF0000"/>
+                <path d="M8 3l.5 1.5h1.5l-1.2.9.5 1.4L8 6l-1.3.8.5-1.4-1.2-.9h1.5z" fill="#FF0000"/>
+              </svg>
+              <span>Canada</span>
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed text-left">"Used envelope budgeting to tackle my credit card debt. Wasn't always easy sticking to the limits, but watching the balance go down became addictive. Paid down 25k! Stick with it..."</p>
       </div>
     </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const carousel = document.querySelector('.testimonial-carousel');
-        if (!carousel) return;
-        const track = carousel.querySelector('.testimonial-track');
-        const dots = carousel.querySelectorAll('.testimonial-dot');
-        const total = 4;
-        let index = 0;
-        let intervalId = 0;
-        function goTo(i) {
-          index = ((i % total) + total) % total;
-          if (track) track.style.transform = `translateX(-${index * 25}%)`;
-          dots.forEach((dot, d) => {
-            dot.setAttribute('aria-current', d === index ? 'true' : null);
-          });
-        }
-        function next() { goTo(index + 1); }
-        function startInterval() {
-          intervalId = setInterval(next, 5500);
-        }
-        function stopInterval() {
-          if (intervalId) clearInterval(intervalId);
-        }
-        dots.forEach((dot, i) => {
-          dot.addEventListener('click', () => { goTo(i); stopInterval(); startInterval(); });
-        });
-        carousel.addEventListener('mouseenter', stopInterval);
-        carousel.addEventListener('mouseleave', startInterval);
-        goTo(0);
-        startInterval();
-      });
-    </script>
-
-    <div class="max-w-2xl space-y-4">
+    <div class="max-w-2xl mx-auto space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
         A zen garden isn't built in a day. Neither is <strong>financial freedom</strong>.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        But here's what users report after a month of <strong>mindful budgeting</strong> with Finzen:
-      </p>
-      <ul class="space-y-2 ml-6">
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          A feeling of connectedness with their finances
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          A personal relationship with their charts and statistics
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          No more money anxiety—just clarity
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          Fewer impulse purchases
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          Actual understanding of where their money goes
-        </li>
-      </ul>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Just 2-3 minutes a day. That's all it takes to <strong>take control of your finances</strong>.
       </p>
     </div>
   </Section>
@@ -1224,7 +1212,6 @@ const disconnectionRings = [
 
     document.querySelectorAll('.rocks-reveal').forEach((el) => observer.observe(el));
 
-    const methodImage = document.querySelector('.method-image-reveal');
-    if (methodImage) observer.observe(methodImage);
+    document.querySelectorAll('.method-image-reveal').forEach((el) => observer.observe(el));
   });
 </script>
