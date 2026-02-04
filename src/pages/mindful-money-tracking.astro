@@ -23,7 +23,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages } from '@/data/pages';
+import { pages, APP_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import FeatureList from '@/components/FeatureList.astro';
@@ -352,140 +352,271 @@ const disconnectionRings = [
     heading="The discipline of envelope budgeting"
     bg="stone"
   >
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        At the heart of the Finzen Method is <strong>envelope budgeting</strong>—also known as <strong>zero-based budgeting</strong>. Every dollar you earn gets assigned a purpose before the month begins.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        $2,000 paycheck? You decide where it goes: $800 to rent, $400 to groceries, $200 to savings, $150 to dining out, $100 to utilities. Every single dollar has a purpose. Nothing floats in limbo.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        This requires discipline. You can't spend money twice. When the "Dining Out" envelope is empty, you cook at home. When "Shopping" hits zero, you stop browsing.
-      </p>
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        <strong>Category budgeting</strong> creates boundaries. Those boundaries create freedom. You know exactly what you can spend without guilt, without anxiety, without wondering if you're okay.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Like tending a garden, <strong>envelope budget</strong> systems require daily attention. You log each expense. You watch your envelopes. You adjust when life happens. The practice builds awareness. The awareness builds control.
-      </p>
-      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
-        Want to dive deeper into envelope budgeting? See our complete <a href="/budgeting-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">budgeting guide</a>.
-      </p>
+    <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-0 max-w-4xl mx-auto">
+      <!-- Left column: text (on mobile: paras 1–3, then image+button, then paras 4–6) -->
+      <div class="flex-1 min-w-0 space-y-4 text-center md:text-left">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <strong>Envelope budgeting</strong> (or <strong>zero-based budgeting</strong>) means assigning every dollar a job before the month starts—rent, groceries, savings, and so on.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          How it works: you set limits per category. When "Dining Out" or "Shopping" hits zero, you stop.
+        </p>
+
+        <!-- Mobile only: image + CTA between second and third paragraph -->
+        <div class="flex flex-col items-center gap-4 py-2 md:hidden">
+          <div class="w-full max-w-[560px] rounded-lg overflow-hidden">
+            <img
+              src="/images/mindful-money-tracking/envelope_budgeting_light.png"
+              alt="Envelope budgeting — assign every dollar a job"
+              class="w-full h-auto rounded-lg block dark:hidden"
+            />
+            <img
+              src="/images/mindful-money-tracking/envelope_budgeting_dark.png"
+              alt="Envelope budgeting — assign every dollar a job"
+              class="w-full h-auto rounded-lg hidden dark:block"
+            />
+          </div>
+          <a
+            href={APP_URL}
+            class="inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          >
+            Set up your budget
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <strong>Category budgeting</strong> gives you clear limits—so you spend without guilt and see exactly where your money goes. Log daily, adjust when life changes, and your <strong>envelope budget</strong> stays in control.
+        </p>
+        <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
+          More on the method: <a href="/budgeting-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">full budgeting guide</a>.
+        </p>
+      </div>
+
+      <!-- Right column: image + CTA (desktop only); -ml-16 pulls image into text area so it can use empty space in image -->
+      <div class="hidden md:flex flex-shrink-0 flex-col items-center gap-4 w-[560px] md:-ml-8">
+        <div class="w-full rounded-lg overflow-hidden">
+          <img
+            src="/images/mindful-money-tracking/envelope_budgeting_light.png"
+            alt="Envelope budgeting — assign every dollar a job"
+            class="w-full h-auto rounded-lg block dark:hidden"
+          />
+          <img
+            src="/images/mindful-money-tracking/envelope_budgeting_dark.png"
+            alt="Envelope budgeting — assign every dollar a job"
+            class="w-full h-auto rounded-lg hidden dark:block"
+          />
+        </div>
+        <a
+          href={APP_URL}
+          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors whitespace-nowrap"
+        >
+          Set up your budget
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </Section>
 
   <!-- ============================================================
-       SECTION 5: FROM BEGINNER TO MASTER GARDENER
+       SECTION 5: BUILD HEALTHY FINANCIAL HABITS (neumorphic cards)
        ============================================================ -->
   <Section
-    heading="From beginner to master gardener"
+    heading="Build healthy financial habits"
+    align="center"
+  >
+    <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <!-- Card 1: Stop impulse spending -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="4" width="4" height="16" rx="1"/>
+            <rect x="14" y="4" width="4" height="16" rx="1"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Stop impulse spending</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          When you know you'll log it, you pause. That moment of reflection changes everything.
+        </p>
+      </div>
+      <!-- Card 2: Log daily -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Log daily</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          2–3 min daily. Log all your transactions. Understand where your money goes.
+        </p>
+      </div>
+      <!-- Card 3: See the full picture -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M7 14l4-4 4 4 5-8"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">See the full picture</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Spending, saving, and investing in one intuitive dashboard. Reach financial zen.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 6: CASH FLOW → EMERGENCY FUND → INVEST
+       ============================================================ -->
+  <Section
+    heading="Cash flow. Emergency fund. Invest the Rest."
     bg="stone"
     align="center"
+    class="!bg-gradient-to-b !from-white !to-[#ECECEC] dark:!from-[#1B1B1B] dark:!to-[#1B1B1B]"
   >
     <div class="mb-6 max-w-4xl mx-auto">
       <img
         src="/images/mindful-money-tracking/steps_light.png"
-        alt="Growth journey — from seed to mature bonsai, daily practice leads to mastery"
+        alt="Finzen method: cash flow positive, emergency fund, then portfolio investing"
         class="w-full max-w-full h-auto rounded-lg block dark:hidden"
       />
       <img
         src="/images/mindful-money-tracking/steps_dark.png"
-        alt="Growth journey — from seed to mature bonsai, daily practice leads to mastery"
+        alt="Finzen method: cash flow positive, emergency fund, then portfolio investing"
         class="w-full max-w-full h-auto rounded-lg hidden dark:block"
       />
     </div>
 
     <div class="max-w-2xl mx-auto space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Whether you're a broke college student learning <strong>budgeting for beginners</strong> or managing a multi-million dollar portfolio, the journey is the same: daily practice leads to mastery.
+      <p class="text-base font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Budget, emergency fund, and portfolio in one place.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Beginners find clarity. They stop wondering "where does my money go?" They develop <strong>financial habits</strong> that compound over months and years.
+        See your monthly spending, <strong>emergency fund</strong>, and how many months it covers. Ready to <strong>invest</strong>? Track <strong>stocks</strong>, <strong>ETFs</strong>, <strong>crypto</strong>, and <strong>forex</strong> in <strong>real time</strong>.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Advanced users find optimization. They track multi-asset portfolios. They forecast cash flow. They calculate risk-adjusted returns. They use Finzen as their <strong>financial wellness app</strong>—a complete system for understanding and growing wealth.
+        <strong>How much should you invest</strong>? Most people don't know because their <strong>budget</strong> and investments live in different apps. Finzen shows both together, so you see exactly what you can afford to risk - your spending, emergency cushion, and <strong>portfolio</strong> all in one place.
       </p>
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
-        "A seed becomes a sprout. A sprout becomes a tree. Same soil. Same water. Just time and intention."
-      </p>
+
+      <div class="pt-6 flex justify-center">
+        <a
+          href={APP_URL}
+          class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] text-white text-sm font-medium rounded-xl hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)] dark:bg-white dark:text-[#1B1B1B] dark:hover:-translate-y-1 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)] transition-all duration-200"
+        >
+          Get started →
+        </a>
+      </div>
     </div>
   </Section>
 
   <!-- ============================================================
-       SECTION 6: STOP IMPULSE BUYING
+       SECTION 6B: DATA VISUALIZATION
        ============================================================ -->
   <Section
-    heading="Break the impulse cycle"
-  >
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Want to <strong>stop impulse buying</strong>? Manual tracking is the solution hiding in plain sight.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Impulse spending thrives in the dark. The quick Amazon order at 11pm. The "treat yourself" $6 latte. The small purchases that balloon into $400 by month's end.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        When you know you'll have to log that purchase tonight—when you'll see it staring back at you in your <strong>daily expense tracker</strong>—you pause.
-      </p>
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        "Do I really want to log this?" That moment of reflection changes everything. Awareness is the cure.
-      </p>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 7: DISCIPLINE PAYS OFF
-       ============================================================ -->
-  <Section
-    heading="Discipline pays off"
+    heading="See your money, clearly"
+    subheading="Your data becomes visuals—no spreadsheets, no guesswork."
     bg="stone"
+    align="center"
   >
-    <!-- IMAGE PLACEHOLDER: Results/testimonials -->
-    <div class="bg-white dark:bg-neutral-900 border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 mb-6 text-center max-w-4xl mx-auto">
-      <p class="text-neutral-600 dark:text-neutral-400 font-medium mb-2">📸 Testimonials & Stats</p>
-      <p class="text-sm text-neutral-500 dark:text-neutral-500"><strong>Put image at:</strong> <code>public/images/mindful-money-tracking/testimonials-stats.jpg</code><br/>Stat callouts with earth tones OR nature photos with quotes<br/>Grid or ~1200px wide</p>
+    <!-- 3 screenshots: 16:9, rounded, soft shadows, overlapping pile with tilt, animate in when scrolled into view -->
+    <div class="screenshot-pile flex justify-center items-end mb-12 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px] -mt-12 max-sm:-mt-16 md:-mt-6">
+      <div class="screenshot-in-left screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 z-0">
+        <img src="/images/mindful-money-tracking/cashflow_light.png" alt="Cash flow view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/cashflow_dark.png" alt="Cash flow view" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+      <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
+        <img src="/images/mindful-money-tracking/networth_light.png" alt="Net worth view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/networth%20dark.png" alt="Net worth view" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+      <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
+        <img src="/images/mindful-money-tracking/spending_light.png" alt="Spending view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/spending_dark.png" alt="Spending view" class="w-full h-full object-cover hidden dark:block" />
+      </div>
     </div>
 
-    <div class="max-w-2xl space-y-4">
+    <style>
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-80px) rotate(-8deg); }
+        to { opacity: 1; transform: translateX(0) rotate(-6deg); }
+      }
+      @keyframes slideInBottom {
+        from { opacity: 0; transform: translateY(60px) rotate(0deg); }
+        to { opacity: 1; transform: translateY(0) rotate(2deg); }
+      }
+      @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(80px) rotate(8deg); }
+        to { opacity: 1; transform: translateX(0) rotate(6deg); }
+      }
+      /* Start off-screen; animate only when .screenshot-pile gets .in-view (scroll-triggered) */
+      .screenshot-pile .screenshot-in-left {
+        opacity: 0;
+        transform: translateX(-80px) rotate(-8deg);
+      }
+      .screenshot-pile .screenshot-in-bottom {
+        opacity: 0;
+        transform: translateY(60px) rotate(0deg);
+      }
+      .screenshot-pile .screenshot-in-right {
+        opacity: 0;
+        transform: translateX(80px) rotate(8deg);
+      }
+      .screenshot-pile.in-view .screenshot-in-left {
+        animation: slideInLeft 0.7s ease-out forwards;
+      }
+      .screenshot-pile.in-view .screenshot-in-bottom {
+        animation: slideInBottom 0.7s ease-out 0.15s forwards;
+      }
+      .screenshot-pile.in-view .screenshot-in-right {
+        animation: slideInRight 0.7s ease-out 0.3s forwards;
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const pile = document.querySelector('.screenshot-pile');
+        if (!pile) return;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+              }
+            });
+          },
+          { rootMargin: '0px 0px -80px 0px', threshold: 0.1 }
+        );
+        observer.observe(pile);
+      });
+    </script>
+
+    <div class="max-w-2xl mx-auto space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        A zen garden isn't built in a day. Neither is <strong>financial freedom</strong>.
+        Finzen turns your logged transactions into <strong>charts and reports</strong> that actually make sense. Sankey diagrams show cash flowing in and out. Net worth over time. Spending by category. Budget health at a glance. Portfolio performance and returns—all in one place.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        But here's what users report after a month of <strong>mindful budgeting</strong> with Finzen:
+        The goal isn't more data; it's <strong>visual storytelling</strong>. You see where your money goes, how your wealth grows, and where you're on track. Clarity without the clutter.
       </p>
-      <ul class="space-y-2 ml-6">
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          A feeling of connectedness with their finances
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          A personal relationship with their charts and statistics
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          No more money anxiety—just clarity
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          Fewer impulse purchases
-        </li>
-        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
-          Actual understanding of where their money goes
-        </li>
-      </ul>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Just 2-3 minutes a day. That's all it takes to <strong>take control of your finances</strong>.
-      </p>
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
-        "I spend less time managing my finances now than I did when everything was 'automated.' And I actually understand what's happening."
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
+        See how Finzen turns your data into charts: <a href="/personal-finance-charts" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">explore charts and reports</a>.
       </p>
     </div>
   </Section>
 
   <!-- ============================================================
-       SECTION 8: WHAT IS FINANCIAL WELLNESS?
+       SECTION 7: THIS IS FINANCIAL WELLNESS
        ============================================================ -->
   <Section
     heading="This is financial wellness"
+    align="center"
   >
-    <div class="max-w-2xl space-y-6">
+    <div class="max-w-2xl mx-auto space-y-6 text-left">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
         <strong>Financial wellness</strong> isn't just tracking numbers. It's building a relationship with your money. It's understanding + control + calm.
       </p>
@@ -521,10 +652,10 @@ const disconnectionRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 9: PRIVACY AS A SIDE EFFECT
+       SECTION 8: PRIVACY BY DEFAULT
        ============================================================ -->
   <Section
-    heading="Privacy as a side effect"
+    heading="Privacy by default"
     bg="stone"
   >
     <div class="max-w-2xl space-y-4">
@@ -544,28 +675,344 @@ const disconnectionRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 10: THE ZEN GARDEN AWAITS
+       SECTION 9: DISCIPLINE PAYS OFF
        ============================================================ -->
   <Section
-    heading="Your financial zen garden awaits"
+    heading="Discipline pays off"
+    bg="stone"
   >
+    <!-- Testimonial carousel: neumorphic cards, auto-loop -->
+    <div class="testimonial-carousel max-w-2xl mx-auto mb-10 overflow-hidden px-2">
+      <div class="testimonial-track flex transition-transform duration-500 ease-out w-[400%]">
+        <!-- Slide 1: 25% of track = one viewport width -->
+        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
+          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
+            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
+              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
+            </div>
+            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
+              "Finally feel in control. Two minutes a day and I actually know where my money goes."
+            </blockquote>
+            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Sarah M.</p>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
+          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
+            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
+              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
+            </div>
+            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
+              "No more anxiety before checking my accounts. The habit actually stuck."
+            </blockquote>
+            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">James K.</p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
+          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
+            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
+              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
+            </div>
+            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
+              "Charts that actually make sense. I see everything in one place now."
+            </blockquote>
+            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Priya L.</p>
+          </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="testimonial-slide flex-[0_0_25%] min-w-0 px-2">
+          <div class="rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] text-center">
+            <div class="w-14 h-14 rounded-full bg-neutral-200 dark:bg-neutral-700 mx-auto mb-4 flex items-center justify-center overflow-hidden">
+              <span class="text-xs text-neutral-400 dark:text-neutral-500" aria-hidden="true">Photo</span>
+            </div>
+            <blockquote class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed italic mb-4">
+              "Started with the budget, now I track my portfolio too. One app."
+            </blockquote>
+            <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Marcus T.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Dots -->
+      <div class="flex justify-center gap-2 mt-6" role="tablist" aria-label="Testimonial navigation">
+        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 1" data-index="0"></button>
+        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 2" data-index="1"></button>
+        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 3" data-index="2"></button>
+        <button type="button" class="testimonial-dot w-2 h-2 rounded-full bg-neutral-300 dark:bg-neutral-600 transition-all duration-300 aria-[current]:bg-neutral-700 dark:aria-[current]:bg-neutral-300 aria-[current]:w-6" aria-label="Testimonial 4" data-index="3"></button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const carousel = document.querySelector('.testimonial-carousel');
+        if (!carousel) return;
+        const track = carousel.querySelector('.testimonial-track');
+        const dots = carousel.querySelectorAll('.testimonial-dot');
+        const total = 4;
+        let index = 0;
+        let intervalId = 0;
+        function goTo(i) {
+          index = ((i % total) + total) % total;
+          if (track) track.style.transform = `translateX(-${index * 25}%)`;
+          dots.forEach((dot, d) => {
+            dot.setAttribute('aria-current', d === index ? 'true' : null);
+          });
+        }
+        function next() { goTo(index + 1); }
+        function startInterval() {
+          intervalId = setInterval(next, 5500);
+        }
+        function stopInterval() {
+          if (intervalId) clearInterval(intervalId);
+        }
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => { goTo(i); stopInterval(); startInterval(); });
+        });
+        carousel.addEventListener('mouseenter', stopInterval);
+        carousel.addEventListener('mouseleave', startInterval);
+        goTo(0);
+        startInterval();
+      });
+    </script>
+
     <div class="max-w-2xl space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Finzen combines <strong>mindful budgeting</strong>, <strong>conscious spending</strong>, and portfolio tracking in one seamless experience.
+        A zen garden isn't built in a day. Neither is <strong>financial freedom</strong>.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        No bank sync. No automation. No passive observation. Just you, your money, and 2-3 minutes of daily practice.
+        But here's what users report after a month of <strong>mindful budgeting</strong> with Finzen:
       </p>
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        Start tending your garden today.
+      <ul class="space-y-2 ml-6">
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          A feeling of connectedness with their finances
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          A personal relationship with their charts and statistics
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          No more money anxiety—just clarity
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          Fewer impulse purchases
+        </li>
+        <li class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed list-disc">
+          Actual understanding of where their money goes
+        </li>
+      </ul>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Just 2-3 minutes a day. That's all it takes to <strong>take control of your finances</strong>.
       </p>
     </div>
   </Section>
 
-  <CTABlock
-    heading="Begin your mindful money practice"
-    subtext="2-3 minutes a day. Complete clarity. No bank connection required. Free beta access."
-  />
+  <!-- ============================================================
+       SECTION 10: FAQ (SEO-optimized, neumorphic accordion)
+       All Q&A content is in the HTML for crawlers; CSS/JS only hide/show.
+       ============================================================ -->
+  <Section
+    heading="Frequently asked questions"
+    align="center"
+  >
+    <dl class="faq-accordion max-w-2xl mx-auto space-y-1 text-left" itemscope itemtype="https://schema.org/FAQPage">
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800 faq-item-open"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="true"
+            aria-controls="faq-answer-1"
+            id="faq-question-1"
+          >
+            <span itemprop="name">Why doesn't Finzen connect to my bank?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-1" class="faq-answer" role="region" aria-labelledby="faq-question-1" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Finzen is a <strong>budgeting app without bank sync</strong> by design. Manual entry serves two purposes: privacy and mindfulness. Your bank credentials never leave your bank, eliminating the risk of third-party data breaches. More importantly, logging each transaction yourself creates awareness—you can't fix what you don't feel connected to. This <strong>manual expense tracker</strong> approach helps you understand <strong>where your money goes</strong> in a way automated syncing never can.
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-2"
+            id="faq-question-2"
+          >
+            <span itemprop="name">How much time does this actually take each day?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-2" class="faq-answer" role="region" aria-labelledby="faq-question-2" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              2–3 minutes a day. That's it. Open the app, log today's transactions, check your budget status. Most people do it with their morning coffee or during an evening wind-down. The habit itself is part of the method—this small daily ritual builds awareness and helps you <strong>stop impulse buying</strong> because you know you'll be logging it later. Think of it like watering a plant: minimal time, maximum impact over time.
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-3"
+            id="faq-question-3"
+          >
+            <span itemprop="name">I'm anxious about money. Will this help?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-3" class="faq-answer" role="region" aria-labelledby="faq-answer-3" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Money anxiety usually comes from uncertainty—not knowing where you stand or where your money is going. Finzen addresses this directly. Daily logging turns vague worry into clear data. <strong>Envelope budgeting</strong> shows you exactly what you can spend in each category without guilt. Visual charts replace guesswork with understanding. Most users report feeling less <strong>anxious about money</strong> within the first month because the unknown becomes known. You move from "I think I'm okay" to "I know exactly where I stand."
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-4"
+            id="faq-question-4"
+          >
+            <span itemprop="name">What exactly can I track with Finzen?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-4" class="faq-answer" role="region" aria-labelledby="faq-answer-4" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Everything in one place. Your monthly budget using <strong>envelope budgeting</strong> with spending by category. Emergency fund progress and how many months of expenses it covers. <strong>Portfolio tracking</strong> for stocks, ETFs, crypto, forex, and physical commodities—with real-time prices and performance metrics. Cash flow analysis showing daily inflows and outflows. Net worth over time. The app connects all these pieces so you can see how your budget, emergency cushion, and investments work together.
+            </p>
+          </div>
+        </dd>
+      </div>
+    </dl>
+
+    <script>
+      (function () {
+        const accordion = document.querySelector('.faq-accordion');
+        if (!accordion) return;
+        const items = accordion.querySelectorAll('.faq-item');
+        const openClass = 'faq-item-open';
+
+        function closeAll() {
+          items.forEach((item) => {
+            item.classList.remove(openClass);
+            const btn = item.querySelector('.faq-trigger');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        function openItem(item) {
+          closeAll();
+          item.classList.add(openClass);
+          const btn = item.querySelector('.faq-trigger');
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+        }
+
+        function toggleItem(item) {
+          const isOpen = item.classList.contains(openClass);
+          if (isOpen) closeAll();
+          else openItem(item);
+        }
+
+        items.forEach((item) => {
+          const btn = item.querySelector('.faq-trigger');
+          if (!btn) return;
+          btn.addEventListener('click', () => toggleItem(item));
+        });
+      })();
+    </script>
+  </Section>
+
+  <!-- ============================================================
+       BEGIN YOUR MINDFUL MONEY PRACTICE (zen garden copy + CTA)
+       ============================================================ -->
+  <section class="w-full py-20 md:py-28 px-6 bg-[#ECECEC] dark:bg-[#1B1B1B]">
+    <div class="max-w-2xl mx-auto text-center space-y-5">
+      <h2 class="text-2xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+        Begin your mindful money practice
+      </h2>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Finzen combines <strong>mindful budgeting</strong>, <strong>conscious spending</strong>, and portfolio tracking in one seamless experience.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        No bank sync. No automation. No passive observation. Just you, your money, and 2–3 minutes of daily practice.
+      </p>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        Start tending your garden today.
+      </p>
+      <div class="pt-2">
+        <a
+          href={APP_URL}
+          class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl hover:bg-neutral-800 dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors shadow-sm"
+        >
+          Get Started Free
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <div class="flex justify-center pt-20 -mb-4 pb-0">
+        <a href="/" aria-label="Finzen — Home" class="flex items-center gap-4 text-[#0a0a0a] dark:text-white hover:opacity-80 transition-opacity">
+          <img src="/logo-light.webp" alt="" width="96" height="96" class="h-24 w-24 object-contain dark:hidden" />
+          <img src="/logo-dark.webp" alt="" width="96" height="96" class="h-24 w-24 object-contain hidden dark:block" />
+          <span class="font-logo text-7xl font-extrabold tracking-[0.01em]">Finzen</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <SiblingLinks slugs={meta.siblings} />
 
@@ -724,6 +1171,34 @@ const disconnectionRings = [
     text-align: center;
   }
   :global(.dark) .ring-label {
+    color: rgb(163 163 163);
+  }
+
+  /* FAQ accordion: minimal, clean design */
+  .faq-accordion .faq-question {
+    margin: 0;
+  }
+  .faq-accordion .faq-answer {
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+  }
+  .faq-accordion .faq-item-open .faq-answer {
+    max-height: 32rem;
+    opacity: 1;
+  }
+  .faq-accordion .faq-icon {
+    transition: transform 0.2s ease;
+  }
+  .faq-accordion .faq-item-open .faq-icon {
+    transform: rotate(180deg);
+  }
+  .faq-accordion .faq-trigger:hover .faq-icon {
+    color: rgb(115 115 115);
+  }
+  :global(.dark) .faq-accordion .faq-trigger:hover .faq-icon {
     color: rgb(163 163 163);
   }
 </style>
