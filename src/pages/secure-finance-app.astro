@@ -74,7 +74,7 @@ const meta = pages.secureFinanceApp;
         Most finance apps ask you to trust them with everything: your bank credentials, your transaction history, your spending patterns. Finzen takes a different approach. AES-256 encryption before data ever leaves your device. Zero-knowledge architecture so we can't read your financial information even if we wanted to. EU servers under GDPR protection. No bank connections, no broker sync, no third-party data sharing.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        This isn't just about compliance or checking boxes. It's about fundamentally rethinking what a <strong>secure finance app</strong> should be. Your bank can read your data. Traditional finance apps can read your data. We can't—and that's by design, not accident.
+        This isn't just about compliance or checking boxes. It's about fundamentally rethinking what a <strong>secure finance app</strong> should be. Your bank can read your data. Traditional finance apps can read your data. We can't - and that's by design, not accident.
       </p>
     </div>
   </Section>
@@ -126,13 +126,7 @@ const meta = pages.secureFinanceApp;
     bg="stone"
   >
     {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - AES-256-GCM encryption (industry standard)
-      - PBKDF2-SHA256 key derivation from your password
-      - We never see your encryption key
-      - Data encrypted before it leaves your device
-
-      Keywords to weave in: secure finance app, encrypted finance app
+      Keywords: secure finance app, encrypted finance app
     */}
     <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
       <!-- Image: left on desktop, above on mobile -->
@@ -146,29 +140,29 @@ const meta = pages.secureFinanceApp;
       <!-- Text + checkmarks: right on desktop, below image on mobile -->
       <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Every piece of financial data in Finzen is encrypted with AES-256-GCM — the same encryption standard used by banks and governments — before it ever leaves your device.]
+          Many apps claim to be secure but encrypt data on their servers. Finzen encrypts everything in your browser using AES-256-GCM before it ever leaves your device. This is the same standard used by banks and governments worldwide.
         </p>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Your encryption key is derived from your password using PBKDF2-SHA256. We never see it. We never store it. Even we can't read your data.]
+          Your encryption key is derived from your password and never transmitted anywhere. We don't store it. We don't see it. A truly <strong>encrypted finance app</strong> means even we can't access your budgets, transactions, or portfolio data.
         </p>
         <ul class="space-y-2 list-none pl-0 mt-1">
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span><strong>AES-256-GCM encryption</strong> — industry standard</span>
+            <span><strong>AES-256-GCM</strong> — military-grade encryption standard</span>
           </li>
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span><strong>Client-side encryption</strong> — data encrypted before upload</span>
+            <span><strong>Client-side encryption</strong> — locked before it leaves your device</span>
           </li>
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span><strong>Zero-knowledge architecture</strong> — we can't read your data</span>
+            <span><strong>Zero-knowledge</strong> — your keys never touch our servers</span>
           </li>
         </ul>
       </div>
@@ -182,53 +176,23 @@ const meta = pages.secureFinanceApp;
     heading="No bank connections. By design."
   >
     {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - We don't connect to banks because we don't need to
-      - Your bank credentials stay with your bank
-      - Manual entry = complete isolation
-      - A security boundary, not a limitation
-
-      Keywords to weave in: private finance app
-
-      TODO: Add image at /images/secure-finance-app/no-bank-sync.png
+      Keywords: private finance app
     */}
     <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
       <!-- Text: left on desktop, above on mobile -->
       <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Finzen never connects to your bank accounts. Never. Your bank credentials stay with your bank. Your broker credentials stay with your broker.]
+          Most finance apps want access to your bank. They need your login credentials or API tokens to pull transactions automatically. That's convenient, but it's also a single point of failure. One breach exposes everything.
         </p>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: You enter transactions manually. That's not a workaround — it's the architecture. The app can only ever contain what you choose to put into it.]
+          Finzen takes a different path. You log transactions manually: 2-3 minutes a day. Your bank credentials stay with your bank. Your broker credentials stay with your broker. A <strong>private finance app</strong> shouldn't need access to your accounts to help you manage them.
         </p>
-        <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
-          "This is a security boundary, not a limitation."
-        </p>
-        <ul class="space-y-2 list-none pl-0 mt-1">
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
-            </span>
-            <span>No third-party access to your accounts</span>
-          </li>
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
-            </span>
-            <span>Your credentials never leave your bank</span>
-          </li>
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
-            </span>
-            <span>Complete isolation by design</span>
-          </li>
-        </ul>
+
       </div>
       <!-- Image: right on desktop, below on mobile -->
       <div class="image-reveal-right w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-end mb-6 md:mb-0">
         <img
-          src="/images/secure-finance-app/no-bank-sync.png"
+          src="/images/secure-finance-app/banksync.png"
           alt="No bank connections — your credentials stay with your bank"
           class="w-full max-w-[260px] md:max-w-[320px] h-auto rounded-lg"
         />
@@ -244,19 +208,13 @@ const meta = pages.secureFinanceApp;
     bg="stone"
   >
     {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Data hosted in the European Union
-      - Subject to GDPR protections
-      - No data transfers to jurisdictions with weaker privacy laws
-      - Your data never leaves secure EU infrastructure
-
-      TODO: Add image at /images/secure-finance-app/eu-hosting.png
+      Keywords: GDPR finance app
     */}
     <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
       <!-- Image: left on desktop, above on mobile -->
       <div class="image-reveal-left w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
         <img
-          src="/images/secure-finance-app/eu-hosting.png"
+          src="/images/secure-finance-app/GDPR.png"
           alt="EU servers — GDPR compliant hosting"
           class="w-full max-w-[260px] md:max-w-[320px] h-auto rounded-lg"
         />
@@ -264,29 +222,29 @@ const meta = pages.secureFinanceApp;
       <!-- Text + checkmarks: right on desktop, below image on mobile -->
       <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Your encrypted data is stored on servers in the European Union, subject to GDPR — one of the world's strongest data protection frameworks.]
+          Where your data lives matters. Finzen stores your encrypted data on servers in the European Union, protected by GDPR - one of the world's strongest data protection frameworks. No fine print about transferring data to jurisdictions with weaker privacy laws.
         </p>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: No surprise transfers to countries with weaker privacy laws. Your data stays where privacy is protected by law.]
+          A <strong>GDPR finance app</strong> means real accountability. You have the right to access, correct, or delete your data at any time. Your financial information stays in the EU, governed by privacy regulations that put users first.
         </p>
         <ul class="space-y-2 list-none pl-0 mt-1">
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span><strong>EU data residency</strong> — hosted in Europe</span>
+            <span><strong>EU data residency</strong> — servers physically located in Europe (Frankfurt, Germany)</span>
           </li>
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span><strong>GDPR protections</strong> — strongest privacy laws</span>
+            <span><strong>GDPR rights</strong> — access, correction, and deletion guaranteed</span>
           </li>
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span><strong>No unexpected transfers</strong> — data stays in the EU</span>
+            <span><strong>No cross-border surprises</strong> — data stays where privacy is law</span>
           </li>
         </ul>
       </div>
@@ -302,19 +260,33 @@ const meta = pages.secureFinanceApp;
     {/*
       Personal story — solo developer, no conflicts of interest
     */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Finzen is a passion project built by a single developer. No investors demanding growth metrics. No board meetings discussing monetization strategies. No data brokers waiting for a feed.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        I built this because I wanted a <strong>private budgeting</strong> app that respected my financial data. Every architectural decision - from zero-knowledge encryption to refusing bank connections comes from that foundation. I have no one to sell your data to. No conflicts of interest. I work for my users, not advertisers.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        This app was built with love and care, obsessively refined over hundreds of hours. Privacy isn't a feature I tacked on, it's a core part of Finzen's philosophy.
-      </p>
-      <p class="text-sm text-neutral-500 dark:text-neutral-500">
-        <a href="/our-story" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Read the full story of how and why I built Finzen →</a>
-      </p>
+    <div class="flex flex-col md:flex-row md:items-center md:gap-12">
+      <!-- Text content -->
+      <div class="max-w-2xl space-y-4 flex-1">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Finzen is a passion project built by a single developer. No investors demanding growth metrics. No board meetings discussing monetization strategies. No data brokers waiting for a feed.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          I built this because I wanted a <strong>private budgeting</strong> app that respected my financial data. Every architectural decision - from zero-knowledge encryption to refusing bank connections comes from that foundation. I have no one to sell your data to. No conflicts of interest. I work for my users, not advertisers.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          This app was built with love and care, obsessively refined over hundreds of hours. Privacy isn't a feature I tacked on, it's a core part of Finzen's philosophy.
+        </p>
+        <div class="space-y-1.5 pt-1">
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            <a href="/our-story" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Read the full story of how and why I built Finzen →</a>
+          </p>
+          <p class="text-sm text-neutral-500 dark:text-neutral-500">
+            <a href="/privacy" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Read the full privacy policy →</a>
+          </p>
+        </div>
+      </div>
+      <!-- Logo + wordmark: right on desktop, hidden on mobile -->
+      <div class="hidden md:flex flex-col items-center gap-1 flex-shrink-0">
+        <img src="/logo-light.webp" alt="Finzen logo" width="80" height="80" class="h-20 w-20 object-contain dark:hidden" />
+        <img src="/logo-dark.webp" alt="Finzen logo" width="80" height="80" class="h-20 w-20 object-contain hidden dark:block" />
+        <span class="font-logo text-xl font-extrabold tracking-[0.01em] text-[#0a0a0a] dark:text-white">Finzen</span>
+      </div>
     </div>
   </Section>
 
@@ -326,20 +298,33 @@ const meta = pages.secureFinanceApp;
     bg="stone"
   >
     {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Manual entry is both a privacy feature AND a mindfulness feature
-      - The same architecture that protects you also makes you aware
-      - Link to Manual Finance App page
+      Link privacy benefits to mindfulness benefits — connect to Finzen Method
     */}
     <div class="max-w-2xl space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Here's what's interesting: the same design that protects your privacy also builds your financial awareness. Manual entry keeps your accounts isolated AND makes you pay attention to every transaction.]
+        Here's what's interesting: the same design that protects your privacy also builds your financial awareness. When you log transactions manually, you're not just keeping your bank credentials safe - you're paying attention. Every expense becomes a conscious choice. Every entry is a moment of reflection.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Security and mindfulness, built into the same architecture.]
+        2-3 minutes a day. That's all it takes. In exchange, you get both: an architecture that keeps your data private <em>and</em> a daily practice that keeps you connected to your money. Security and mindfulness, built into the same design.
+      </p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 pt-1">
+        <a href="/mindful-money-tracking" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about the Finzen Method →</a>
       </p>
     </div>
   </Section>
+
+  <!-- ============================================================
+       DASHBOARD IMAGE
+       ============================================================ -->
+  <section class="w-full -mt-12 md:-mt-16 pb-0 px-6">
+    <div class="dashboard-reveal w-full max-w-4xl mx-auto">
+      <img
+        src="/images/personal-finance-guide/finzen_dashboard.png"
+        alt="Finzen dashboard — secure, encrypted personal finance tracking"
+        class="w-full h-auto rounded-lg"
+      />
+    </div>
+  </section>
 
   <!-- ============================================================
        FINAL CTA: START PROTECTING YOUR FINANCIAL DATA
@@ -347,13 +332,13 @@ const meta = pages.secureFinanceApp;
   <section class="w-full py-20 md:py-28 px-6 bg-[#ECECEC] dark:bg-[#1B1B1B]">
     <div class="max-w-2xl mx-auto text-center space-y-5">
       <h2 class="text-2xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
-        Finance tracking that respects your privacy
+        Personal Finance tracking that respects your privacy
       </h2>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Most finance apps want access to everything. Your bank. Your broker. Your spending patterns. Your financial life becomes their data asset.]
+        Most finance apps want access to everything. Your bank logins. Your broker credentials. Your spending patterns. Your entire financial life becomes their data asset - to monetize, to sell, or to lose in the next breach.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen is different. AES-256 encrypted. EU hosted. No bank connections. Manual tracking that keeps your data yours.]
+        Finzen is different. AES-256 encrypted before data leaves your device. Zero-knowledge architecture. EU servers under GDPR. No bank connections. Your budgets, your investments, your net worth - visible only to you.
       </p>
       <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
         Your financial data belongs to you. Only you.
@@ -363,12 +348,15 @@ const meta = pages.secureFinanceApp;
           href={APP_URL}
           class="journey-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
         >
-          Get Started Free
+          Start Tracking — Free
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500">
+        No credit card required. No bank connections. Just privacy.
+      </p>
       <div class="flex justify-center pt-20 -mb-4 pb-0">
         <a href="/" aria-label="Finzen — Home" class="flex items-center gap-4 text-[#0a0a0a] dark:text-white hover:opacity-80 transition-opacity">
           <img src="/logo-light.webp" alt="Finzen logo" width="96" height="96" class="h-24 w-24 object-contain dark:hidden" />
@@ -436,6 +424,17 @@ const meta = pages.secureFinanceApp;
     transform: translateY(0);
   }
 
+  /* Dashboard reveal: from below + fade on reveal */
+  .dashboard-reveal {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .dashboard-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* Image reveal from left */
   .image-reveal-left {
     opacity: 0;
@@ -488,6 +487,9 @@ const meta = pages.secureFinanceApp;
 
     const heroImage = document.querySelector('.hero-image-reveal');
     if (heroImage) observer.observe(heroImage);
+
+    const dashboardReveal = document.querySelector('.dashboard-reveal');
+    if (dashboardReveal) observer.observe(dashboardReveal);
 
     document.querySelectorAll('.image-reveal-left').forEach((el) => observer.observe(el));
     document.querySelectorAll('.image-reveal-right').forEach((el) => observer.observe(el));
