@@ -99,13 +99,14 @@ export const pages: Record<string, PageMeta> = {
     footerLabel: 'Personal Finance Basics',
     inFooter: true,
     siblings: ['budgetingApp', 'mindfulMoneyTracking', 'personalFinanceCharts'],
+    ogImage: '/images/personal-finance-guide/og-personal-finance-guide.png',
   },
 
   mindfulMoneyTracking: {
     slug: 'mindful-money-tracking',
     title: 'Mindful Money Tracking — Intentional Finance | Finzen',
     description:
-      'A personal finance app without bank sync. Manual entry creates awareness. Every transaction is a choice. Build financial mindfulness through daily practice.',
+      'A personal finance app without bank sync. Manual entry creates awareness. 2–3 minutes a day. No bank sync. Build financial mindfulness through daily practice.',
     keywords: [
       'mindful money tracking',
       'manual expense tracker',
@@ -119,6 +120,7 @@ export const pages: Record<string, PageMeta> = {
     footerLabel: 'The Finzen Method',
     inFooter: true,
     siblings: ['secureFinanceApp', 'personalFinanceGuide', 'personalFinanceCharts'],
+    ogImage: '/images/mindful-money-tracking/og-mindful-money-tracking.png',
   },
 
   secureFinanceApp: {

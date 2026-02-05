@@ -17,7 +17,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages, APP_URL } from '@/data/pages';
+import { pages, APP_URL, SITE_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import FeatureList from '@/components/FeatureList.astro';
@@ -40,7 +40,31 @@ const overwhelmRings = [
   title={meta.title}
   description={meta.description}
   canonical={`/${meta.slug}`}
+  ogImage={meta.ogImage}
 >
+
+  {/* WebPage schema for rich results and crawl clarity */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: meta.title,
+      description: meta.description,
+      url: `${SITE_URL}/${meta.slug}`,
+    })}
+  </script>
+
+  {/* BreadcrumbList schema for SERP breadcrumbs */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Personal Finance Guide', item: `${SITE_URL}/${meta.slug}` },
+      ],
+    })}
+  </script>
 
   <AngleHero
     eyebrow="Personal Finance Made Simple"
@@ -411,7 +435,7 @@ const overwhelmRings = [
           href={APP_URL}
           class="inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors whitespace-nowrap"
         >
-          Create a budget
+          Create your budget
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -515,19 +539,19 @@ const overwhelmRings = [
       </p>
     </div>
 
-    <!-- 3 screenshots: overlapping pile with tilt, same as "See your finances visually" -->
+    <!-- 3 screenshots: spending (left), asset performance (middle), net worth (right) -->
     <div class="screenshot-pile flex justify-center items-end mt-16 mb-4 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px]">
       <div class="screenshot-in-left screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 z-0">
-        <img src="/images/mindful-money-tracking/cashflow_light.png" alt="Budget view" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/cashflow_dark.png" alt="Budget view" class="w-full h-full object-cover hidden dark:block" />
+        <img src="/images/mindful-money-tracking/spending_light.png" alt="Spending" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/spending_dark.png" alt="Spending" class="w-full h-full object-cover hidden dark:block" />
       </div>
       <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
-        <img src="/images/mindful-money-tracking/networth_light.png" alt="Net worth" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/networth dark.png" alt="Net worth" class="w-full h-full object-cover hidden dark:block" />
+        <img src="/images/personal-finance-guide/asset_performance_light.png" alt="Asset performance" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/personal-finance-guide/asset_performance_dark.png" alt="Asset performance" class="w-full h-full object-cover hidden dark:block" />
       </div>
       <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
-        <img src="/images/mindful-money-tracking/spending_light.png" alt="Spending charts" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/spending_dark.png" alt="Spending charts" class="w-full h-full object-cover hidden dark:block" />
+        <img src="/images/mindful-money-tracking/networth_light.png" alt="Net worth" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/networth_dark.png" alt="Net worth" class="w-full h-full object-cover hidden dark:block" />
       </div>
     </div>
   </Section>
@@ -581,10 +605,200 @@ const overwhelmRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 6: COMMON BUDGETING MISTAKES
+       SECTION 6: PERSONAL FINANCE RULES OF THUMB
        ============================================================ -->
   <Section
-    heading="Common mistakes to avoid"
+    heading="Personal Finance Rules of Thumb"
+    align="center"
+    bg="stone"
+  >
+    <div class="max-w-2xl mx-auto space-y-6 text-left">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center">
+        Master these personal finance rules and you'll avoid the mistakes that keep most people broke. They work at any income level.
+      </p>
+
+      <div class="mt-6">
+        <FeatureList
+          columns={2}
+          cardBg="white"
+          features={[
+            {
+              label: 'Spend less than you earn',
+              detail: 'The foundation of all personal finance. If you consistently spend more than you make, no investment strategy or budget hack will save you. Track it, measure it, fix it.'
+            },
+            {
+              label: '50/30/20 budgeting rule',
+              detail: '50% for needs (housing, food, utilities), 30% for wants (entertainment, dining out), 20% for savings and debt. It\'s a starting framework, adjust based on your situation.'
+            },
+            {
+              label: 'Build an emergency fund',
+              detail: '3-6 months of expenses in cash. Not invested. Not in crypto. Boring, accessible cash. This prevents life\'s inevitable surprises from becoming financial disasters.'
+            },
+            {
+              label: 'Prioritize high-interest debt',
+              detail: 'Credit cards at 20% APR are emergencies. Paying minimums while investing is like plugging one hole while drilling another. Kill the expensive debt first.'
+            },
+            {
+              label: 'Never invest more than you can afford to lose',
+              detail: 'Investments fluctuate. Markets crash. If losing the money would devastate you financially or emotionally, it shouldn\'t be invested. Emergency funds come before portfolios.'
+            },
+            {
+              label: 'If it sounds too good to be true, it is',
+              detail: 'Guaranteed 50% returns. Zero-risk investments. Get-rich-quick schemes. They prey on hope and ignorance. Real investing is boring, slow, and proven - not exciting and miraculous.'
+            },
+            {
+              label: 'DYOR — Do Your Own Research',
+              detail: 'Never invest in something you don\'t understand. Read the prospectus. Know what you own. If you can\'t explain it simply, you don\'t understand it well enough to risk money on it.'
+            },
+            {
+              label: 'Time in the market beats timing the market',
+              detail: 'Trying to predict market tops and bottoms usually fails. Consistent investing over decades beats attempting perfect entry points. Start now, invest regularly, stay invested.'
+            },
+            {
+              label: 'Compound interest & diversification',
+              detail: 'Einstein allegedly called compound interest the eighth wonder. Small amounts invested early grow exponentially. Diversification protects you when individual investments fail. Both are essential.'
+            },
+            {
+              label: 'Don\'t keep up with the Joneses',
+              detail: 'Your neighbor\'s new car and exotic vacations? Probably financed by debt they can\'t afford. Comparing yourself to others\' spending is how lifestyle creep happens. Live within your means, not theirs.'
+            },
+          ]}
+        />
+      </div>
+
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mt-6 text-center">
+        These aren't restrictions, they're guardrails. Follow them and you'll avoid most financial mistakes. Ignore them and you'll learn the expensive way why they exist.
+      </p>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 6C: THE DAILY RITUAL
+       ============================================================ -->
+  <Section class="pt-8 pb-16 md:py-24" bg="liquidity">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <img
+          src="/images/personal-finance-guide/daily-ritual.png"
+          alt="Daily ritual — tracking your finances"
+          class="w-full max-w-[220px] h-auto [filter:drop-shadow(0_8px_16px_rgba(0,0,0,0.15))] dark:[filter:drop-shadow(0_12px_24px_rgba(0,0,0,0.7))]"
+        />
+      </div>
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
+            It all starts with a plan
+          </h2>
+          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+            And making sure you stick to it
+          </p>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          You've learned the fundamentals: budget your spending, build liquidity, eliminate high-interest debt, invest the surplus. But knowing isn't enough. A written financial plan transforms intentions into actions.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Daily tracking is what makes it stick. It takes 30 seconds to log a transaction. That small habit creates awareness, reveals patterns, and keeps you accountable. 
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 11: THE PRIORITY ORDER
+       ============================================================ -->
+  <Section
+    heading="Recap: Personal Finance Flowchart "
+    subheading="How to prioritize your money. Do in order. Don't skip steps."
+    align="center"
+    bg="stone"
+  >
+    <div class="max-w-2xl mx-auto text-left">
+      <div class="flex flex-col items-stretch gap-0">
+        <!-- Priority 1 -->
+        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
+          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">1</span>
+          <div>
+            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Track your spending</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Before anything else, know where your money goes. You can't fix what you can't see. Even one week of tracking reveals surprising patterns. Make sure to spend less than you earn.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-center py-2 text-neutral-400 dark:text-neutral-500" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+
+        <!-- Priority 2 -->
+        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
+          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">2</span>
+          <div>
+            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Build a starter emergency fund ($1,000)</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              A small cash buffer prevents minor emergencies from becoming credit card debt. This is your first savings goal - small but critical.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-center py-2 text-neutral-400 dark:text-neutral-500" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+
+        <!-- Priority 3 -->
+        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
+          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">3</span>
+          <div>
+            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Pay off high-interest debt</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Credit cards charging 20%+ APR are emergencies. Pay minimums on everything else, throw all extra money at the highest-rate debt. Repeat until gone.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-center py-2 text-neutral-400 dark:text-neutral-500" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+
+        <!-- Priority 4 -->
+        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
+          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">4</span>
+          <div>
+            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Build a full emergency fund (3-6 months)</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Now expand that buffer to cover 3-6 months of expenses. This protects you from job loss, medical issues, or major repairs without touching investments.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-center py-2 text-neutral-400 dark:text-neutral-500" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+
+        <!-- Priority 5 -->
+        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
+          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">5</span>
+          <div>
+            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Invest for the future</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              With debt gone and emergencies covered, start investing. Build a portfolio diversified. Don't try to time the market - that's gambling. Consistency beats timing.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 p-5 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 text-center">
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <strong class="text-neutral-900 dark:text-neutral-100">The key insight:</strong> This order exists because each step protects the next. An emergency fund prevents new debt. No debt means more money to invest. It's a sequence, not a checklist.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ============================================================
+       SECTION 6B: COMMON PERSONAL FINANCE MISTAKES TO AVOID
+       ============================================================ -->
+  <Section
+    heading="Common personal finance mistakes to avoid"
     subheading="Learn from what trips most people up"
     align="center"
     class="common-mistakes-section"
@@ -626,7 +840,7 @@ const overwhelmRings = [
             <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Forgetting irregular expenses</h3>
           </div>
           <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            Car insurance, annual subscriptions, gifts, medical bills — they're predictable, just not monthly. Set aside a small amount each month for these "surprise" expenses that aren't actually surprises.
+            Car insurance, annual subscriptions, gifts, medical bills - they're predictable, just not monthly. Set aside a small amount each month for these "surprise" expenses that aren't actually surprises.
           </p>
         </div>
 
@@ -653,171 +867,215 @@ const overwhelmRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 6C: LIQUIDITY
+       PERSONAL FINANCE GUIDE (CHEATSHEET) — at a glance
        ============================================================ -->
-  <Section class="pt-8 pb-16 md:py-24">
-    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
-      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
-        <img
-          src="/images/personal-finance-guide/emergency_fund.png"
-          alt="Emergency fund — liquidity and runway"
-          class="w-full max-w-[260px] h-auto rounded-lg"
-        />
-      </div>
-      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
-            Liquidity
-          </h2>
-          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-            Why you need an emergency fund
-          </p>
-        </div>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Having money isn't enough - it needs to be liquid and available when you need it. Tracking your cashflow shows exactly how long your emergency fund will last. When you know your burn rate, you know your runway.
-        </p>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          An emergency fund (3–6 months of expenses) protects: your ability to weather job loss, medical bills, or car repairs without selling investments at a bad time. Liquidity means options. No liquidity means forced decisions.
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       SECTION 6B: Personal Finance Rules of Thumb
-       ============================================================ -->
-  <Section
-    heading="Personal Finance Rules of Thumb"
-    align="center"
-  >
-    <div class="max-w-2xl mx-auto space-y-6 text-left">
+  <Section heading="Your personal finance guide at a glance" align="center" bg="stone" class="!py-10 md:!py-14">
+    <div class="max-w-2xl mx-auto text-center mb-5">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        When choosing a personal finance tool, look for these beginner-friendly traits:
-      </p>
-
-      <div class="mt-6">
-        <FeatureList
-          columns={2}
-          features={[
-            {
-              label: 'No learning curve',
-              detail: 'You should be able to start tracking immediately. No lengthy tutorials or setup wizards. Open the app, add a transaction, done.'
-            },
-            {
-              label: 'Privacy first',
-              detail: 'Manual entry may seem old-school, but it means your bank credentials stay with your bank. And the act of logging builds awareness.'
-            },
-            {
-              label: 'Plain language',
-              detail: 'Good tools use words you understand. "Budget" not "allocation." "Spending" not "disbursements." Finance jargon is a red flag.'
-            },
-            {
-              label: 'No judgment',
-              detail: 'The best tools show you data without lecturing. Overspent this month? The data shows it. You decide what to do about it.'
-            },
-          ]}
-        />
-      </div>
-
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mt-6">
-        The goal is to find something you'll actually use consistently. The fanciest app in the world is worthless if you abandon it after a week.
+        Everything on this page, distilled into one visual. Print it, save it to your phone, or stick it on your fridge. The best financial plan is the one you actually remember.
       </p>
     </div>
-  </Section>
 
-
-  <!-- ============================================================
-       SECTION 11: THE PRIORITY ORDER
-       ============================================================ -->
-  <Section
-    heading="How to manage personal finances: the priority order"
-    subheading="Do these in order. Don't skip steps."
-    bg="stone"
-  >
-    <div class="max-w-3xl mx-auto">
-      <div class="space-y-4">
-        <!-- Priority 1 -->
-        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
-          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">1</span>
-          <div>
-            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Track your spending</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Before anything else, know where your money goes. You can't fix what you can't see. Even one week of tracking reveals surprising patterns.
-            </p>
-          </div>
-        </div>
-
-        <!-- Priority 2 -->
-        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
-          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">2</span>
-          <div>
-            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Build a starter emergency fund ($1,000)</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              A small cash buffer prevents minor emergencies from becoming credit card debt. This is your first savings goal — small but critical.
-            </p>
-          </div>
-        </div>
-
-        <!-- Priority 3 -->
-        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
-          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">3</span>
-          <div>
-            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Pay off high-interest debt</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Credit cards charging 20%+ APR are emergencies. Pay minimums on everything else, throw all extra money at the highest-rate debt. Repeat until gone.
-            </p>
-          </div>
-        </div>
-
-        <!-- Priority 4 -->
-        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
-          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">4</span>
-          <div>
-            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Build a full emergency fund (3-6 months)</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Now expand that buffer to cover 3-6 months of expenses. This protects you from job loss, medical issues, or major repairs without touching investments.
-            </p>
-          </div>
-        </div>
-
-        <!-- Priority 5 -->
-        <div class="priority-item flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-neutral-900 shadow-[4px_4px_12px_rgba(0,0,0,0.06),-2px_-2px_8px_rgba(0,0,0,0.02)] dark:shadow-[4px_4px_12px_rgba(0,0,0,0.4),-2px_-2px_6px_rgba(255,255,255,0.05)]">
-          <span class="flex-shrink-0 w-8 h-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center text-sm font-bold">5</span>
-          <div>
-            <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Invest for the future</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              With debt gone and emergencies covered, start investing. Retirement accounts first (tax advantages), then taxable accounts. Consistency beats timing.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-8 p-5 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 text-center">
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          <strong class="text-neutral-900 dark:text-neutral-100">The key insight:</strong> This order exists because each step protects the next. An emergency fund prevents new debt. No debt means more money to invest. It's a sequence, not a checklist.
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- ============================================================
-       PERSONAL FINANCE GUIDE (CHEATSHEET) — toward bottom
-       ============================================================ -->
-  <Section heading="Your personal finance guide at a glance" align="center" bg="stone">
-    <div class="w-full overflow-x-clip">
-      <div class="relative left-1/2 -translate-x-1/2 w-full md:w-max max-w-4xl mx-auto">
+    <div class="w-full overflow-hidden">
+      <div class="relative left-1/2 -translate-x-1/2 w-full md:w-max max-w-4xl mx-auto scale-110 origin-center">
         <img
+          id="cheatsheet-light-img"
           src="/images/personal-finance-guide/personal_finance_cheatsheet_light.png"
           alt="Personal finance guide cheatsheet — key principles at a glance"
-          class="w-full md:w-auto max-w-full h-auto rounded-lg block dark:hidden"
+          class="cheatsheet-img w-full md:w-auto max-w-full h-auto rounded-lg"
         />
         <img
+          id="cheatsheet-dark-img"
           src="/images/personal-finance-guide/personal_finance_cheatsheet_dark.png"
           alt="Personal finance guide cheatsheet — key principles at a glance"
-          class="w-full md:w-auto max-w-full h-auto rounded-lg hidden dark:block"
+          class="cheatsheet-img w-full md:w-auto max-w-full h-auto rounded-lg hidden"
         />
       </div>
     </div>
+
+    <div class="flex flex-col items-center justify-center gap-3 mt-5">
+      <!-- Mobile: toggle above button -->
+      <div class="flex sm:hidden items-center gap-1 p-0.5 rounded-lg bg-neutral-200 dark:bg-neutral-800">
+        <button
+          id="cheatsheet-light-btn-mobile"
+          class="cheatsheet-theme-btn p-2 rounded-md transition-all duration-200"
+          data-theme="light"
+          aria-label="Show light mode cheatsheet"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <button
+          id="cheatsheet-dark-btn-mobile"
+          class="cheatsheet-theme-btn p-2 rounded-md transition-all duration-200"
+          data-theme="dark"
+          aria-label="Show dark mode cheatsheet"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Desktop: toggle and button side by side -->
+      <div class="flex items-center justify-center gap-3">
+        <!-- Theme toggle (desktop only) -->
+        <div class="hidden sm:flex items-center gap-1 p-0.5 rounded-lg bg-neutral-200 dark:bg-neutral-800">
+          <button
+            id="cheatsheet-light-btn"
+            class="cheatsheet-theme-btn p-2 rounded-md transition-all duration-200"
+            data-theme="light"
+            aria-label="Show light mode cheatsheet"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+          <button
+            id="cheatsheet-dark-btn"
+            class="cheatsheet-theme-btn p-2 rounded-md transition-all duration-200"
+            data-theme="dark"
+            aria-label="Show dark mode cheatsheet"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+
+        <a
+          id="cheatsheet-download"
+          href="/downloads/personal-finance-cheatsheet-light.pdf"
+          download="personal-finance-cheatsheet.pdf"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-base font-medium rounded-xl hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors shadow-sm"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Cheatsheet
+        </a>
+      </div>
+
+      <span class="text-sm text-neutral-500 dark:text-neutral-400">Free PDF — no email required</span>
+    </div>
+
+    <script>
+      (function () {
+        const link = document.getElementById('cheatsheet-download');
+        const lightBtn = document.getElementById('cheatsheet-light-btn');
+        const darkBtn = document.getElementById('cheatsheet-dark-btn');
+        const lightBtnMobile = document.getElementById('cheatsheet-light-btn-mobile');
+        const darkBtnMobile = document.getElementById('cheatsheet-dark-btn-mobile');
+        const lightImg = document.getElementById('cheatsheet-light-img');
+        const darkImg = document.getElementById('cheatsheet-dark-img');
+
+        if (!link || !lightImg || !darkImg) return;
+
+        // State: track current cheatsheet theme (initialize from system)
+        let cheatsheetTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        let userHasManuallyToggled = false;
+
+        // Update UI based on current theme selection
+        function updateCheatsheetDisplay() {
+          // Update images
+          if (cheatsheetTheme === 'dark') {
+            lightImg.classList.add('hidden');
+            darkImg.classList.remove('hidden');
+          } else {
+            darkImg.classList.add('hidden');
+            lightImg.classList.remove('hidden');
+          }
+
+          // Update desktop toggle buttons
+          if (lightBtn && darkBtn) {
+            lightBtn.classList.toggle('bg-white', cheatsheetTheme === 'light');
+            lightBtn.classList.toggle('dark:bg-neutral-700', cheatsheetTheme === 'light');
+            lightBtn.classList.toggle('text-neutral-900', cheatsheetTheme === 'light');
+            lightBtn.classList.toggle('dark:text-neutral-100', cheatsheetTheme === 'light');
+            lightBtn.classList.toggle('shadow-sm', cheatsheetTheme === 'light');
+            lightBtn.classList.toggle('text-neutral-500', cheatsheetTheme !== 'light');
+            lightBtn.classList.toggle('dark:text-neutral-400', cheatsheetTheme !== 'light');
+
+            darkBtn.classList.toggle('bg-white', cheatsheetTheme === 'dark');
+            darkBtn.classList.toggle('dark:bg-neutral-700', cheatsheetTheme === 'dark');
+            darkBtn.classList.toggle('text-neutral-900', cheatsheetTheme === 'dark');
+            darkBtn.classList.toggle('dark:text-neutral-100', cheatsheetTheme === 'dark');
+            darkBtn.classList.toggle('shadow-sm', cheatsheetTheme === 'dark');
+            darkBtn.classList.toggle('text-neutral-500', cheatsheetTheme !== 'dark');
+            darkBtn.classList.toggle('dark:text-neutral-400', cheatsheetTheme !== 'dark');
+          }
+
+          // Update mobile toggle buttons
+          if (lightBtnMobile && darkBtnMobile) {
+            lightBtnMobile.classList.toggle('bg-white', cheatsheetTheme === 'light');
+            lightBtnMobile.classList.toggle('dark:bg-neutral-700', cheatsheetTheme === 'light');
+            lightBtnMobile.classList.toggle('text-neutral-900', cheatsheetTheme === 'light');
+            lightBtnMobile.classList.toggle('dark:text-neutral-100', cheatsheetTheme === 'light');
+            lightBtnMobile.classList.toggle('shadow-sm', cheatsheetTheme === 'light');
+            lightBtnMobile.classList.toggle('text-neutral-500', cheatsheetTheme !== 'light');
+            lightBtnMobile.classList.toggle('dark:text-neutral-400', cheatsheetTheme !== 'light');
+
+            darkBtnMobile.classList.toggle('bg-white', cheatsheetTheme === 'dark');
+            darkBtnMobile.classList.toggle('dark:bg-neutral-700', cheatsheetTheme === 'dark');
+            darkBtnMobile.classList.toggle('text-neutral-900', cheatsheetTheme === 'dark');
+            darkBtnMobile.classList.toggle('dark:text-neutral-100', cheatsheetTheme === 'dark');
+            darkBtnMobile.classList.toggle('shadow-sm', cheatsheetTheme === 'dark');
+            darkBtnMobile.classList.toggle('text-neutral-500', cheatsheetTheme !== 'dark');
+            darkBtnMobile.classList.toggle('dark:text-neutral-400', cheatsheetTheme !== 'dark');
+          }
+
+          // Update download link
+          link.href = `/downloads/personal-finance-cheatsheet-${cheatsheetTheme}.pdf`;
+        }
+
+        // Handle toggle button clicks
+        function setTheme(theme) {
+          cheatsheetTheme = theme;
+          userHasManuallyToggled = true;
+          updateCheatsheetDisplay();
+        }
+
+        if (lightBtn) lightBtn.addEventListener('click', () => setTheme('light'));
+        if (darkBtn) darkBtn.addEventListener('click', () => setTheme('dark'));
+        if (lightBtnMobile) lightBtnMobile.addEventListener('click', () => setTheme('light'));
+        if (darkBtnMobile) darkBtnMobile.addEventListener('click', () => setTheme('dark'));
+
+        // Initialize display
+        updateCheatsheetDisplay();
+
+        // Update cheatsheet theme when system theme changes (only if user hasn't manually toggled)
+        const observer = new MutationObserver(() => {
+          if (!userHasManuallyToggled) {
+            const systemIsDark = document.documentElement.classList.contains('dark');
+            cheatsheetTheme = systemIsDark ? 'dark' : 'light';
+            updateCheatsheetDisplay();
+          }
+        });
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      })();
+    </script>
   </Section>
 
   <!-- ============================================================
@@ -842,7 +1100,7 @@ const overwhelmRings = [
             aria-controls="faq-answer-1"
             id="faq-question-1"
           >
-            <span itemprop="name">Do I need to connect my bank?</span>
+            <span itemprop="name">How do I start managing my personal finances if I've never done it before?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -853,7 +1111,7 @@ const overwhelmRings = [
         <dd id="faq-answer-1" class="faq-answer" role="region" aria-labelledby="faq-question-1" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Some apps do, some don't. Bank sync is convenient but requires sharing credentials. Manual entry is slightly more effort but increases spending awareness and keeps your banking details private. Many people find that the act of entering transactions manually makes them more mindful of their spending.
+              Start by tracking your spending for one week. Don't change anything yet, just write down every transaction. This reveals where your money actually goes, not where you think it goes. Once you see patterns, create 5-6 broad budget categories (housing, food, transport, entertainment, savings). Set realistic limits based on what you learned. The biggest beginner mistake is trying to track 30+ categories from day one. Start simple, add complexity only when you need it.
             </p>
           </div>
         </dd>
@@ -873,7 +1131,7 @@ const overwhelmRings = [
             aria-controls="faq-answer-2"
             id="faq-question-2"
           >
-            <span itemprop="name">What if I miss a day?</span>
+            <span itemprop="name">Why do I always run out of money before payday?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -883,8 +1141,11 @@ const overwhelmRings = [
         </dt>
         <dd id="faq-answer-2" class="faq-answer" role="region" aria-labelledby="faq-question-2" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-3">
+              Living paycheck to paycheck usually means one of three things: you're spending more than you earn, you're not accounting for irregular expenses (insurance, gifts, annual subscriptions), or you lack visibility into where money actually goes. Small daily purchases add up invisibly - that $6 coffee becomes $180/month, $2,160/year.
+            </p>
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Life happens. The key is to pick up where you left off without guilt. Most tracking apps let you backdate entries. If you miss a few days, add what you remember and move on. Consistency over time matters more than daily perfection. A rough estimate is better than no data at all.
+              Track every transaction for one month. Most people discover $200-400 in "leakage" they didn't realize existed. Then budget for irregular expenses by setting aside money monthly - if car insurance costs $600/year, save $50/month so it's not a surprise. Cash flow tracking shows exactly how long your money lasts and where the gaps are.
             </p>
           </div>
         </dd>
@@ -904,7 +1165,7 @@ const overwhelmRings = [
             aria-controls="faq-answer-3"
             id="faq-question-3"
           >
-            <span itemprop="name">How long until I see results?</span>
+            <span itemprop="name">How much should I save before I start investing?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -914,8 +1175,11 @@ const overwhelmRings = [
         </dt>
         <dd id="faq-answer-3" class="faq-answer" role="region" aria-labelledby="faq-question-3" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-3">
+              Don't invest until you have 3-6 months of expenses saved in an emergency fund. This isn't being conservative - it's preventing disaster. Without liquidity, the first emergency (car repair, medical bill, job loss) forces you to sell investments at the worst possible time or rack up high-interest credit card debt.
+            </p>
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Awareness comes fast — usually within the first week. You'll spot spending you didn't realize was happening. A useful budget takes about a month of data. Real trends and insights emerge after 2-3 months. Most people who track consistently report finding $100-300/month in "invisible" spending they weren't aware of.
+              The order matters: build a starter emergency fund ($1,000), kill high-interest debt (anything over 6-8%), then complete your emergency fund, then invest. Investing while carrying 20% APR credit card debt is like filling a bathtub with the drain open. Track your net worth to see both emergency funds and investments grow together - they're different tools serving different purposes.
             </p>
           </div>
         </dd>
@@ -935,7 +1199,7 @@ const overwhelmRings = [
             aria-controls="faq-answer-4"
             id="faq-question-4"
           >
-            <span itemprop="name">Is this too simple for someone who wants advanced features?</span>
+            <span itemprop="name">What's the difference between good debt and bad debt?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -945,8 +1209,79 @@ const overwhelmRings = [
         </dt>
         <dd id="faq-answer-4" class="faq-answer" role="region" aria-labelledby="faq-question-4" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-3">
+              "Good" debt has three characteristics: low interest rate (under 4-6%), builds equity or income potential (mortgage, student loans for in-demand careers), and the asset typically appreciates or generates returns. "Bad" debt is high-interest (credit cards at 15-25%), used for depreciating assets (new cars, consumer goods), and drains your monthly cash flow.
+            </p>
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              The best finance tools scale with you. Start with basic expense tracking, then gradually explore budgeting, net worth tracking, and investment monitoring as you need them. Look for apps that offer advanced features without forcing them on you. Simple entry point, powerful ceiling.
+              The real test: can the thing you're borrowing for generate more value than the interest cost? A mortgage at 3.5% on a home that appreciates is mathematically sound. A credit card at 22% for clothes or dining out is financially destructive. Track your debts alongside your net worth - seeing the interest pile up monthly is a powerful motivator to eliminate it. Prioritize paying down anything over 6-8% before investing excess income.
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-5"
+            id="faq-question-5"
+          >
+            <span itemprop="name">How do I stop overspending on things I don't need?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-5" class="faq-answer" role="region" aria-labelledby="faq-question-5" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-3">
+              Overspending happens when spending is invisible or emotional. The solution is friction and awareness. Use envelope budgeting - allocate fixed amounts to categories, and when the envelope is empty, you're done for the month. This forces conscious decisions: "Do I really want this, or do I want to save this budget for something better?"
+            </p>
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Implement a 48-hour rule for non-essential purchases over $50. Write them down, wait two days, then decide. Most impulse purchases lose their appeal quickly. Manual transaction tracking (not automatic bank sync) creates natural friction - logging every purchase makes you confront spending patterns. When you have to write "$47 - impulse Amazon order" into your budget, you start questioning whether it was worth it.
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-6"
+            id="faq-question-6"
+          >
+            <span itemprop="name">Do I really need to track every single expense?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-6" class="faq-answer" role="region" aria-labelledby="faq-question-6" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-3">
+              Yes, if you want to actually understand your finances. The small stuff matters - it's not about the $3 coffee, it's about realizing you spent $90 this month on coffee without noticing. Untracked spending is invisible spending, and invisible spending is where budgets fail. You can't manage what you don't measure.
+            </p>
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              The good news: it takes 30 seconds per transaction. Log it when you spend it, not at the end of the week from memory. That daily ritual of recording transactions creates mindfulness - you become conscious of spending patterns instead of wondering where your money went. After 2-3 months, tracking becomes automatic habit, and your budget reflects reality instead of wishful thinking. Most people find $200-400/month in spending they didn't realize was happening.
             </p>
           </div>
         </dd>
@@ -993,37 +1328,49 @@ const overwhelmRings = [
   <!-- ============================================================
        BEGIN YOUR JOURNEY (CTA)
        ============================================================ -->
-  <section class="w-full py-20 md:py-28 px-6 bg-[#ECECEC] dark:bg-[#1B1B1B]">
-    <div class="max-w-2xl mx-auto text-center space-y-5">
-      <h2 class="text-2xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
-        Your first budget in 5 minutes
-      </h2>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        You now have the fundamentals: the rules of thumb, the progression from tracking to investing, and what to look for in a tool. The only thing left is to start.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Pick any method — a spreadsheet, an app, even pen and paper. What matters is starting. Track your spending for one week. That's it. The clarity that comes from knowing where your money goes changes everything.
-      </p>
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        If you want a simple tool that grows with you, give Finzen a try. It's free to start.
-      </p>
-      <div class="pt-2">
-        <a
-          href={APP_URL}
-          class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl hover:bg-neutral-800 dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors shadow-sm"
-        >
-          Get Started Free
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+  <section class="w-full pt-12 md:pt-16 pb-20 md:pb-28 px-6 bg-[#ECECEC] dark:bg-[#1B1B1B]">
+    <div class="max-w-4xl mx-auto text-center space-y-5">
+      <div class="flex justify-center mb-2">
+        <img src="/logo-light.webp" alt="Finzen logo" width="24" height="24" class="h-6 w-6 object-contain opacity-50 dark:hidden" />
+        <img src="/logo-dark.webp" alt="Finzen logo" width="24" height="24" class="h-6 w-6 object-contain opacity-50 hidden dark:block" />
       </div>
-      <div class="flex justify-center pt-20 -mb-4 pb-0">
-        <a href="/" aria-label="Finzen — Home" class="flex items-center gap-4 text-[#0a0a0a] dark:text-white hover:opacity-80 transition-opacity">
-          <img src="/logo-light.webp" alt="Finzen logo" width="96" height="96" class="h-24 w-24 object-contain dark:hidden" />
-          <img src="/logo-dark.webp" alt="Finzen logo" width="96" height="96" class="h-24 w-24 object-contain hidden dark:block" />
-          <span class="font-logo text-7xl font-extrabold tracking-[0.01em]">Finzen</span>
-        </a>
+      <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide mb-3">
+        Finzen
+      </p>
+      <h2 class="text-2xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+        The all-in-one personal finance tracker
+      </h2>
+
+      <!-- Finzen dashboard mockup -->
+      <div class="dashboard-reveal w-full max-w-3xl mx-auto my-8">
+        <img
+          src="/images/personal-finance-guide/finzen_dashboard.png"
+          alt="Finzen all-in-one dashboard — budget, cash flow, and portfolio tracking in one place"
+          class="w-full h-auto"
+        />
+      </div>
+
+      <div class="max-w-2xl mx-auto space-y-5">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          You've covered the essentials: budgeting, emergency funds, eliminating bad debt, and smart investing. Everything on this page lives in one place with Finzen - envelope budgeting to control spending, cash flow tracking to understand your runway, and portfolio management for every asset class from stocks to crypto.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          No bank sync means your credentials stay private. <a href="/mindful-money-tracking" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">Manual tracking in 2-3 minutes daily</a> builds awareness that automation can't match - you see patterns, make better decisions, and stay connected to your finances. Budget, emergency cushion, and investments all visible together, showing exactly where you stand and what you can afford to invest.
+        </p>
+        <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          If you want a simple tool that grows with you, give Finzen a try. It's free to start.
+        </p>
+        <div class="pt-2">
+          <a
+            href={APP_URL}
+            class="journey-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
+          >
+            Get Started Free
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1033,6 +1380,47 @@ const overwhelmRings = [
 </Layout>
 
 <style>
+  /* Journey CTA: same hover as header (float, scale, shadow, shine) */
+  .journey-cta {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  :global(.dark) .journey-cta {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .journey-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  :global(.dark) .journey-cta:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 6px 12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+  .journey-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(255, 255, 255, 0.35) 49%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.35) 51%,
+      transparent 55%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.45s ease;
+    pointer-events: none;
+  }
+  .journey-cta:hover::before {
+    transform: translateX(100%);
+  }
+  :global(.dark) .journey-cta::before {
+    display: none;
+  }
+
   /* Checklist styles */
   .checklist-container {
     text-align: left;
@@ -1046,12 +1434,12 @@ const overwhelmRings = [
     background: linear-gradient(to bottom, #1B1B1B, #171717);
   }
 
-  /* Common mistakes section: gradient background */
+  /* Common mistakes section: solid background (top color of previous gradient) */
   :global(.common-mistakes-section) {
-    background: linear-gradient(to bottom, #ffffff, #ECECEC);
+    background: #ffffff;
   }
   :global(.dark) :global(.common-mistakes-section) {
-    background: linear-gradient(to bottom, #171717, #1B1B1B);
+    background: #171717;
   }
 
   .checklist-item {
@@ -1122,6 +1510,17 @@ const overwhelmRings = [
     transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   }
   .hero-image-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Dashboard reveal: from below + fade on reveal */
+  .dashboard-reveal {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .dashboard-reveal.in-view {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1452,6 +1851,9 @@ const overwhelmRings = [
 
     const heroImage = document.querySelector('.hero-image-reveal');
     if (heroImage) observer.observe(heroImage);
+
+    const dashboardReveal = document.querySelector('.dashboard-reveal');
+    if (dashboardReveal) observer.observe(dashboardReveal);
 
     document.querySelectorAll('.rocks-reveal').forEach((el) => observer.observe(el));
 

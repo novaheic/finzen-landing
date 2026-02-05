@@ -23,7 +23,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages, APP_URL } from '@/data/pages';
+import { pages, APP_URL, SITE_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import FeatureList from '@/components/FeatureList.astro';
@@ -46,7 +46,31 @@ const disconnectionRings = [
   title={meta.title}
   description={meta.description}
   canonical={`/${meta.slug}`}
+  ogImage={meta.ogImage}
 >
+
+  {/* WebPage schema for rich results and crawl clarity */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: meta.title,
+      description: meta.description,
+      url: `${SITE_URL}/${meta.slug}`,
+    })}
+  </script>
+
+  {/* BreadcrumbList schema for SERP breadcrumbs */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Mindful Money Tracking', item: `${SITE_URL}/${meta.slug}` },
+      ],
+    })}
+  </script>
 
   <AngleHero
     eyebrow="The Finzen Method"
@@ -491,7 +515,7 @@ const disconnectionRings = [
       </div>
       <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
         <img src="/images/mindful-money-tracking/networth_light.png" alt="Net worth view" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/networth%20dark.png" alt="Net worth view" class="w-full h-full object-cover hidden dark:block" />
+        <img src="/images/mindful-money-tracking/networth_dark.png" alt="Net worth view" class="w-full h-full object-cover hidden dark:block" />
       </div>
       <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
         <img src="/images/mindful-money-tracking/spending_light.png" alt="Spending view" class="w-full h-full object-cover block dark:hidden" />
@@ -985,10 +1009,13 @@ const disconnectionRings = [
       <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
         The garden doesn't tend itself. But the practice? That's where the peace comes from.
       </p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+        New to budgeting? See our <a href="/personal-finance-guide" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">personal finance guide</a> for the essentials.
+      </p>
       <div class="pt-2">
         <a
           href={APP_URL}
-          class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl hover:bg-neutral-800 dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors shadow-sm"
+          class="journey-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
         >
           Get Started Free
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -1011,6 +1038,47 @@ const disconnectionRings = [
 </Layout>
 
 <style>
+  /* CTA button: same hover as header (float, scale, shadow, shine) */
+  .journey-cta {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  :global(.dark) .journey-cta {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .journey-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  :global(.dark) .journey-cta:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 6px 12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+  .journey-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(255, 255, 255, 0.35) 49%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.35) 51%,
+      transparent 55%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.45s ease;
+    pointer-events: none;
+  }
+  .journey-cta:hover::before {
+    transform: translateX(100%);
+  }
+  :global(.dark) .journey-cta::before {
+    display: none;
+  }
+
   /* Hero image: from below + fade on reveal */
   .hero-image-reveal {
     opacity: 0;
