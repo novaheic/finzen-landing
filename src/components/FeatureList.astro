@@ -45,11 +45,17 @@ const cardBgClass = cardBg === 'white' ? 'bg-white dark:bg-neutral-800' : 'bg-ne
 
   <ul class={gridClass} role="list">
     {features.map((feature) => (
-      <li class={`flex items-start gap-3 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700 ${cardBgClass}`}>
-        <span class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="text-white dark:text-neutral-900">
-            <path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <li class={`flex items-start gap-3 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700 ${cardBgClass} text-left`}>
+        <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
+          {feature.icon ? (
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="text-white dark:text-neutral-900">
+              <Fragment set:html={feature.icon} />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="text-white dark:text-neutral-900">
+              <path d="M2.5 6.5l2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          )}
         </span>
         <div>
           <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">{feature.label}</p>
