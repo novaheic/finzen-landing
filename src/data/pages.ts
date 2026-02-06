@@ -138,6 +138,7 @@ export const pages: Record<string, PageMeta> = {
     footerLabel: 'Privacy & Security',
     inFooter: true,
     siblings: ['mindfulMoneyTracking', 'portfolioTracker'],
+    ogImage: '/images/secure-finance-app/og-secure-finance-app.png',
   },
 
   personalFinanceCharts: {

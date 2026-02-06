@@ -9,10 +9,10 @@
  *     description="Meta description"
  *     canonical="/slug"
  *     ogImage="/custom-og.png"  // optional, falls back to default
+ *     keywords={['kw1', 'kw2']}  // optional, outputs meta name="keywords"
  *   />
  */
 
-import type { PageMeta } from '@/data/pages';
 import { SITE_URL, DEFAULT_OG_IMAGE, SITE_NAME } from '@/data/pages';
 
 interface Props {
@@ -20,9 +20,12 @@ interface Props {
   description: string;
   canonical: string;
   ogImage?: string;
+  /** Comma-separated or array; outputs meta name="keywords" when present (low impact, many engines ignore) */
+  keywords?: string[] | string;
 }
 
-const { title, description, canonical, ogImage } = Astro.props;
+const { title, description, canonical, ogImage, keywords } = Astro.props;
+const keywordsContent = keywords == null ? undefined : Array.isArray(keywords) ? keywords.join(', ') : keywords;
 const fullUrl = `${SITE_URL}${canonical}`;
 const resolvedOgImage = `${SITE_URL}${ogImage || DEFAULT_OG_IMAGE}`;
 
@@ -60,6 +63,7 @@ const schema = {
 
 <!-- Core Meta -->
 <meta name="description" content={description} />
+{keywordsContent && <meta name="keywords" content={keywordsContent} />}
 <meta name="robots" content="index, follow" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8" />

@@ -24,9 +24,11 @@ interface Props {
   description: string;
   canonical: string;
   ogImage?: string;
+  keywords?: string[] | string;
+  showHeaderCTA?: boolean;
 }
 
-const { title, description, canonical, ogImage } = Astro.props;
+const { title, description, canonical, ogImage, keywords, showHeaderCTA = true } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -46,6 +48,7 @@ const { title, description, canonical, ogImage } = Astro.props;
     description={description}
     canonical={canonical}
     ogImage={ogImage}
+    keywords={keywords}
   />
   <!-- Favicon: match browser/OS theme (tab color) via prefers-color-scheme -->
   <link rel="icon" type="image/webp" href="/logo-light.webp" media="(prefers-color-scheme: light)" id="favicon" />
@@ -62,7 +65,7 @@ const { title, description, canonical, ogImage } = Astro.props;
   </script>
 </head>
 <body>
-  <Header />
+  <Header showCTA={showHeaderCTA} />
 
   <main class="overflow-x-clip">
     <slot />

@@ -29,75 +29,538 @@ const meta = pages.ourStory;
 >
 
   <AngleHero
-    title="We built the finance app we wished existed"
-    subtitle="One tool. Complete picture. No compromises."
+    title="Hey, I'm Nova! 👋🏻"
+    subtitle="I'm the developer, researcher, educator, personal finance nerd, and ramen-lover who built Finzen."
     keyword="about finzen"
+    showCta={false}
   />
 
   <div class="w-full overflow-x-clip -mt-52 md:-mt-[21.2rem] mb-0 relative z-10 flex justify-center">
-    <div class="scale-[1.15] md:scale-100 origin-center w-max max-w-full md:w-[960px] md:max-w-none min-w-0 shrink-0">
+    <div class="photo-pile relative w-full max-w-[900px] h-[350px] md:h-[450px]">
+      <!-- Image 1 - slides in from left -->
       <img
-        src={`/images/${meta.slug}/hero_light.png`}
-        alt={meta.title}
-        class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
+        src="/images/our-story/nova1.png"
+        alt="Nova"
+        class="absolute top-1/2 left-1/2 w-[180px] md:w-[260px] h-auto rounded-lg photo-in-left"
       />
+
+      <!-- Image 2 - slides in from below, center, larger -->
       <img
-        src={`/images/${meta.slug}/hero_dark.png`}
-        alt={meta.title}
-        class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
+        src="/images/our-story/nova2.png"
+        alt="Nova"
+        class="absolute top-1/2 left-1/2 w-[220px] md:w-[300px] h-auto rounded-lg photo-in-bottom"
+      />
+
+      <!-- Image 3 - slides in from right -->
+      <img
+        src="/images/our-story/nova3.png"
+        alt="Nova"
+        class="absolute top-1/2 left-1/2 w-[180px] md:w-[260px] h-auto rounded-lg photo-in-right"
       />
     </div>
   </div>
 
-  <!-- Section 1: The Problem We Lived -->
+  <style>
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translate(calc(-135% - 80px), -45%); }
+      to { opacity: 1; transform: translate(-135%, -45%); }
+    }
+
+    @keyframes slideInBottom {
+      from { opacity: 0; transform: translate(-50%, calc(-50% + 60px)); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translate(calc(35% + 80px), -45%); }
+      to { opacity: 1; transform: translate(35%, -45%); }
+    }
+
+    /* Start off-screen; animate only when .photo-pile gets .in-view (scroll-triggered) */
+    .photo-pile .photo-in-left {
+      opacity: 0;
+      transform: translate(calc(-135% - 80px), -45%);
+      z-index: 10;
+    }
+
+    .photo-pile .photo-in-bottom {
+      opacity: 0;
+      transform: translate(-50%, calc(-50% + 60px));
+      z-index: 20;
+    }
+
+    .photo-pile .photo-in-right {
+      opacity: 0;
+      transform: translate(calc(35% + 80px), -45%);
+      z-index: 10;
+    }
+
+    .photo-pile.in-view .photo-in-left {
+      animation: slideInLeft 0.7s ease-out forwards;
+    }
+
+    .photo-pile.in-view .photo-in-bottom {
+      animation: slideInBottom 0.7s ease-out 0.15s forwards;
+    }
+
+    .photo-pile.in-view .photo-in-right {
+      animation: slideInRight 0.7s ease-out 0.3s forwards;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pile = document.querySelector('.photo-pile');
+      if (!pile) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        },
+        { rootMargin: '0px 0px -80px 0px', threshold: 0.1 }
+      );
+      observer.observe(pile);
+    });
+  </script>
+
+  <!-- Section 1: Why I built Finzen -->
   <Section
-    heading="The problem we lived every day"
+    heading="Why I built Finzen"
     bg="stone"
+    align="center"
     class="mt-4 md:mt-0 !pt-12 md:!pt-2"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Budgeting in one app (YNAB, Mint, etc.)
-      - Investments in another (Blockfolio, Delta, Personal Capital)
-      - Spending tracking somewhere else
-      - The inevitable spreadsheet holding it all together
-      - The frustration of fragmented financial data
-    */}
-    <div class="max-w-2xl space-y-4">
+    <div class="max-w-2xl mx-auto space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: We were tired of juggling multiple apps to get a complete picture of our finances. Budgeting in one app. Investments in another. Spending tracking somewhere else.]
+        I've used envelope budgeting for over a decade. It gave me control over my money when I needed it most. But once I started investing, I had a problem. Budget in one app, portfolio in another. They never talked to each other. I made due with Google Sheets, but it always felt like a temporary solution. I wanted a smooth user experience and beautiful data visualization.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: And eventually — inevitably — an ugly Google Sheet held together by duct tape and desperation, because it was the only place where everything lived in one spot.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: The budget didn't talk to the portfolio. The spending data lived in a different place than the savings goal. Nothing connected.]
+        So I tested dozens of personal finance tools. Great budgeting, terrible investment tracking. Or great investments, invasive bank connections. Nothing gave me the complete picture I needed. Eventually, I realized the tool I needed didn't exist. So I built it.
       </p>
     </div>
   </Section>
 
-  <!-- Section 2: The Solution We Built -->
+  <!-- Section 2: The Journey -->
   <Section
-    heading="So we built something different"
+    heading="The journey"
+    align="center"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - All-in-one from the ground up
-      - Not three apps pretending to be one
-      - Envelope budgeting + expense tracking + portfolio management
-      - Privacy-first, manual by design
-    */}
-    <div class="max-w-2xl space-y-4">
+    <div class="timeline-container max-w-2xl mx-auto">
+      <!-- Timeline item 1 -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Early 2024</div>
+          <h3 class="timeline-title">The idea</h3>
+          <p class="timeline-description">
+            Started mapping out what an all-in-one finance app should look like. Envelope budgeting + portfolio tracking + beautiful charts. No compromises.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline item 2 -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Spring 2024</div>
+          <h3 class="timeline-title">First prototype</h3>
+          <p class="timeline-description">
+            Built the first working version. Rough around the edges, but it worked. Budget categories, transaction logging, basic portfolio tracking.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline item 3 -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Summer 2024</div>
+          <h3 class="timeline-title">Visual redesign</h3>
+          <p class="timeline-description">
+            Rebuilt the entire UI from scratch. Clean, intuitive, beautiful. Added Sankey diagrams, trend charts, and portfolio analytics.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline item 4 -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">Fall 2024</div>
+          <h3 class="timeline-title">Private beta launch</h3>
+          <p class="timeline-description">
+            Opened to early users. Real feedback. Real usage. Iterating fast based on what people actually needed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline item 5 -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">2025 & beyond</div>
+          <h3 class="timeline-title">What's next</h3>
+          <p class="timeline-description">
+            Mobile app. Advanced forecasting. Shared budgets. Goal tracking. Building in public, one feature at a time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <style>
+    .timeline-container {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    /* Vertical line */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom,
+        rgb(212 212 212),
+        rgb(163 163 163),
+        rgb(212 212 212)
+      );
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    :global(.dark) .timeline-container::before {
+      background: linear-gradient(to bottom,
+        rgb(64 64 64),
+        rgb(115 115 115),
+        rgb(64 64 64)
+      );
+    }
+
+    .timeline-container.in-view::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 3rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-container.in-view .timeline-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-container.in-view .timeline-item:nth-child(1) { transition-delay: 0.1s; }
+    .timeline-container.in-view .timeline-item:nth-child(2) { transition-delay: 0.2s; }
+    .timeline-container.in-view .timeline-item:nth-child(3) { transition-delay: 0.3s; }
+    .timeline-container.in-view .timeline-item:nth-child(4) { transition-delay: 0.4s; }
+    .timeline-container.in-view .timeline-item:nth-child(5) { transition-delay: 0.5s; }
+
+    .timeline-marker {
+      position: absolute;
+      left: -34px;
+      top: 4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid rgb(23 23 23);
+      box-shadow: 0 0 0 4px rgb(245 245 245);
+    }
+
+    :global(.dark) .timeline-marker {
+      background: rgb(23 23 23);
+      border-color: rgb(250 250 250);
+      box-shadow: 0 0 0 4px rgb(38 38 38);
+    }
+
+    .timeline-content {
+      padding-left: 1rem;
+    }
+
+    .timeline-date {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgb(115 115 115);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+      text-align: left;
+    }
+
+    :global(.dark) .timeline-date {
+      color: rgb(163 163 163);
+    }
+
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: rgb(23 23 23);
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    :global(.dark) .timeline-title {
+      color: rgb(250 250 250);
+    }
+
+    .timeline-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgb(82 82 82);
+      text-align: left;
+    }
+
+    :global(.dark) .timeline-description {
+      color: rgb(163 163 163);
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const timeline = document.querySelector('.timeline-container');
+      if (!timeline) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        },
+        { rootMargin: '0px 0px -100px 0px', threshold: 0.1 }
+      );
+
+      observer.observe(timeline);
+    });
+  </script>
+
+  <!-- Section 3: Manual Tracking -->
+  <Section bg="stone" class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <!-- Image: left on desktop, above on mobile -->
+      <div class="method-image-container w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <img
+          src="/images/our-story/background.png"
+          alt="Manual transaction entry"
+          class="method-image w-full max-w-[260px] h-auto rounded-lg"
+        />
+      </div>
+      <!-- Title, subtitle, and content: right on desktop, below image on mobile -->
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
+            Manual tracking, by design
+          </h2>
+          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+            Why we don't sync to your bank
+          </p>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Most finance apps promise convenience through automation. But here's what I learned: when you enter each transaction manually, you stay connected to your money. That friction is the feature, not a bug.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Manual entry creates awareness. You can't fix what you don't feel connected to. Plus, your financial data never leaves your device unencrypted. Privacy through architecture, not just promises.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Section 4: Get in Touch -->
+  <Section align="center">
+    <div class="max-w-2xl mx-auto text-center space-y-6">
+      <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+        Let's connect
+      </h2>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen is an all-in-one personal finance app — not three separate tools stitched together, but a single experience designed from the ground up.]
+        Want to chat about personal finance, product development, or just say hi? Don't be a stranger!
       </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Envelope budgeting. Daily expense tracking. Portfolio management. Visual insights. All in one place, talking to each other.]
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+        <!-- LinkedIn Button -->
+        <a
+          href="https://www.linkedin.com/in/nova-heidt/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-button group inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#0077B5] text-white text-base font-medium rounded-xl transition-all duration-200"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          Connect on LinkedIn
+        </a>
+        <!-- Email Button -->
+        <a
+          href="mailto:nova@finzen.org"
+          class="contact-button group inline-flex items-center justify-center gap-3 px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-base font-medium rounded-xl transition-all duration-200"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          Send me an email
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <style>
+    .contact-button {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.3) 55%,
+        rgba(255, 255, 255, 0.2) 60%,
+        transparent 70%,
+        transparent 100%
+      );
+      transform: translateX(-100%) rotate(45deg);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+
+    .contact-button:hover::before {
+      transform: translateX(100%) rotate(45deg);
+    }
+
+    :global(.dark) .contact-button::before {
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.15) 55%,
+        rgba(0, 0, 0, 0.1) 60%,
+        transparent 70%,
+        transparent 100%
+      );
+    }
+
+    /* Manual tracking image animation */
+    .method-image {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .method-image-container.in-view .method-image {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const methodImage = document.querySelector('.method-image-container');
+      if (!methodImage) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        },
+        { rootMargin: '0px 0px -100px 0px', threshold: 0.1 }
+      );
+
+      observer.observe(methodImage);
+    });
+  </script>
+
+  <!-- Section 5: Investing -->
+  <Section
+    heading="Investing"
+    subheading="Asset allocation, diversification, and portfolio management"
+    bg="stone"
+  >
+    <div class="max-w-3xl mx-auto md:mx-0 space-y-8 md:space-y-6">
+      <!-- Paragraph 1: Asset Classes -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Diversify your portfolio:</strong> equities (stocks, ETFs, Mutual Funds,...), real estate, commodities, and crypto. Each carries different risk and return profiles. Most investors start with equities through index funds - broad exposure, low fees, proven track record (around 10% returns per year).
+        </p>
+      </div>
+
+      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+
+      <!-- Paragraph 2: Active vs Passive -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M18 17V9"/>
+            <path d="M13 17V5"/>
+            <path d="M8 17v-3"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Active vs. passive investing:</strong> Active management (picking individual stocks) usually loses to passive strategies after fees. Diversification across assets and sectors reduces risk. Dollar-cost averaging (DCA) - investing the same amount regularly - removes timing decisions and emotion.
+        </p>
+      </div>
+
+      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+
+      <!-- Paragraph 3: Track Portfolio -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Track your portfolio.</strong> Monitor allocation, rebalance annually, understand what you own. Never invest more than you can afford to lose. Risk tolerance isn't theoretical - it's what lets you sleep at night when markets drop 20%.
+        </p>
+      </div>
+
+      <!-- Learn more link -->
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 text-center md:text-left md:ml-16">
+        <a href="/portfolio-tracker" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about portfolio monitoring →</a>
       </p>
     </div>
   </Section>
 
-  <!-- Section 3: Our Philosophy -->
+  <!-- Section 6: Our Philosophy -->
   <Section
     heading="Our philosophy"
     bg="stone"
@@ -133,7 +596,7 @@ const meta = pages.ourStory;
     </div>
   </Section>
 
-  <!-- Section 4: The Build Story -->
+  <!-- Section 7: The Build Story -->
   <Section
     heading="700 hours of obsession"
   >
@@ -157,7 +620,7 @@ const meta = pages.ourStory;
     </div>
   </Section>
 
-  <!-- Section 5: For YNAB Users -->
+  <!-- Section 8: For YNAB Users -->
   <Section
     heading="If you love YNAB..."
     bg="stone"
@@ -181,7 +644,7 @@ const meta = pages.ourStory;
     </div>
   </Section>
 
-  <!-- Section 6: For Blockfolio/Portfolio App Users -->
+  <!-- Section 9: For Blockfolio/Portfolio App Users -->
   <Section
     heading="If you use Blockfolio or Delta..."
   >
@@ -204,7 +667,7 @@ const meta = pages.ourStory;
     </div>
   </Section>
 
-  <!-- Section 7: Be Your Own CFO (absorbed from old page) -->
+  <!-- Section 10: Be Your Own CFO (absorbed from old page) -->
   <Section
     heading="Be your own CFO"
     bg="stone"
