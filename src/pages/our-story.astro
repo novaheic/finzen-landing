@@ -13,20 +13,37 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages } from '@/data/pages';
+import { pages, APP_URL, SITE_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
-import CTABlock from '@/components/CTABlock.astro';
 import SiblingLinks from '@/components/SiblingLinks.astro';
 
 const meta = pages.ourStory;
+const aboutPageUrl = `${SITE_URL}/${meta.slug}`;
+
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: meta.title,
+  description: meta.description,
+  url: aboutPageUrl,
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Nova',
+    description: 'Developer and founder of Finzen. Built the all-in-one personal finance app—budgeting, spending tracking, and portfolio management—by hand.',
+    url: aboutPageUrl,
+  },
+};
 ---
 
 <Layout
   title={meta.title}
   description={meta.description}
   canonical={`/${meta.slug}`}
+  ogImage="/images/our-story/about_og.png"
 >
+
+  <script type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
 
   <AngleHero
     title="Hey, I'm Nova! 👋🏻"
@@ -151,60 +168,64 @@ const meta = pages.ourStory;
     <div class="timeline-container max-w-2xl mx-auto">
       <!-- Timeline item 1 -->
       <div class="timeline-item">
+        <div class="timeline-segment" aria-hidden="true"></div>
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <div class="timeline-date">Early 2024</div>
+          <div class="timeline-date">2020</div>
           <h3 class="timeline-title">The idea</h3>
           <p class="timeline-description">
-            Started mapping out what an all-in-one finance app should look like. Envelope budgeting + portfolio tracking + beautiful charts. No compromises.
+            Stuck at home during the pandemic, I had the idea and built the first prototype. It didn't quite live up to what I wanted - so I made due with a custom Google Sheet.
           </p>
         </div>
       </div>
 
       <!-- Timeline item 2 -->
       <div class="timeline-item">
+        <div class="timeline-segment" aria-hidden="true"></div>
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <div class="timeline-date">Spring 2024</div>
-          <h3 class="timeline-title">First prototype</h3>
+          <div class="timeline-date">2024</div>
+          <h3 class="timeline-title">Back to the drawing board</h3>
           <p class="timeline-description">
-            Built the first working version. Rough around the edges, but it worked. Budget categories, transaction logging, basic portfolio tracking.
+            I picked Finzen up again. Complete design overhaul, deep research, and serious planning. I mapped out every feature based on well-known <a href="/personal-finance-guide" class="font-medium underline decoration-neutral-300 dark:decoration-neutral-600 underline-offset-2 hover:text-neutral-800 hover:decoration-neutral-500 dark:hover:text-neutral-200 dark:hover:decoration-neutral-400 transition-colors">personal finance rules →</a>
           </p>
         </div>
       </div>
 
       <!-- Timeline item 3 -->
       <div class="timeline-item">
+        <div class="timeline-segment" aria-hidden="true"></div>
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <div class="timeline-date">Summer 2024</div>
-          <h3 class="timeline-title">Visual redesign</h3>
+          <div class="timeline-date">2025</div>
+          <h3 class="timeline-title">From mockups to reality</h3>
           <p class="timeline-description">
-            Rebuilt the entire UI from scratch. Clean, intuitive, beautiful. Added Sankey diagrams, trend charts, and portfolio analytics.
+            I spent 700+ hours going from designs to a real, working application. Building, testing, iterating - until it was something I'd actually want to use every day.
           </p>
         </div>
       </div>
 
       <!-- Timeline item 4 -->
       <div class="timeline-item">
+        <div class="timeline-segment" aria-hidden="true"></div>
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <div class="timeline-date">Fall 2024</div>
-          <h3 class="timeline-title">Private beta launch</h3>
+          <div class="timeline-date">January 2026</div>
+          <h3 class="timeline-title">Public beta</h3>
           <p class="timeline-description">
-            Opened to early users. Real feedback. Real usage. Iterating fast based on what people actually needed.
+            Launched the free public beta. Real users, real feedback. Building in public and shaping the product with the people who use it.
           </p>
         </div>
       </div>
 
-      <!-- Timeline item 5 -->
+      <!-- Timeline item 5 (last: no segment below) -->
       <div class="timeline-item">
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <div class="timeline-date">2025 & beyond</div>
-          <h3 class="timeline-title">What's next</h3>
+          <div class="timeline-date">TBD</div>
+          <h3 class="timeline-title">Finzen V1.0</h3>
           <p class="timeline-description">
-            Mobile app. Advanced forecasting. Shared budgets. Goal tracking. Building in public, one feature at a time.
+            Full release. The complete vision: one app for budget and portfolio, manual, private, and built for the long haul.
           </p>
         </div>
       </div>
@@ -217,35 +238,18 @@ const meta = pages.ourStory;
       padding-left: 40px;
     }
 
-    /* Vertical line */
-    .timeline-container::before {
-      content: '';
+    /* Line segment: one per item (except last); ends at top of next circle so it doesn’t show through during fade-in */
+    .timeline-segment {
       position: absolute;
-      left: 17px;
-      top: 0;
-      bottom: 0;
+      left: -23px;
+      top: 28px;
+      bottom: -4px;
       width: 2px;
-      background: linear-gradient(to bottom,
-        rgb(212 212 212),
-        rgb(163 163 163),
-        rgb(212 212 212)
-      );
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      background: rgb(212 212 212);
     }
 
-    :global(.dark) .timeline-container::before {
-      background: linear-gradient(to bottom,
-        rgb(64 64 64),
-        rgb(115 115 115),
-        rgb(64 64 64)
-      );
-    }
-
-    .timeline-container.in-view::before {
-      opacity: 1;
-      transform: translateX(0);
+    :global(.dark) .timeline-segment {
+      background: rgb(115 115 115);
     }
 
     .timeline-item {
@@ -366,17 +370,17 @@ const meta = pages.ourStory;
       <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
         <div>
           <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
-            Manual tracking, by design
+            How I got here
           </h2>
           <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-            Why we don't sync to your bank
+            From boglehead to crypto nerd
           </p>
         </div>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Most finance apps promise convenience through automation. But here's what I learned: when you enter each transaction manually, you stay connected to your money. That friction is the feature, not a bug.
+          My personal finance background began with passive investing and index fund strategies at a fintech startup. Ten years of envelope budgeting taught me how daily choices compound over time. That foundation led me toward alternative investments, especially digital assets, where I've spent the last four years researching and lecturing professionally.
         </p>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Manual entry creates awareness. You can't fix what you don't feel connected to. Plus, your financial data never leaves your device unencrypted. Privacy through architecture, not just promises.
+          Finzen is the result of that journey: bringing disciplined budgeting and contemporary investing together in one easy-to-use dashboard.
         </p>
       </div>
     </div>
@@ -478,12 +482,35 @@ const meta = pages.ourStory;
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* 700 hours dashboard image: same come-up animation */
+    .obsession-image {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .obsession-image-container.in-view .obsession-image {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* CTA section mobile image: same come-up animation */
+    .cta-image {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .cta-image-container.in-view .cta-image {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const methodImage = document.querySelector('.method-image-container');
-      if (!methodImage) return;
+      const animateContainers = document.querySelectorAll('.method-image-container, .obsession-image-container, .cta-image-container');
+      if (!animateContainers.length) return;
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -496,34 +523,37 @@ const meta = pages.ourStory;
         { rootMargin: '0px 0px -100px 0px', threshold: 0.1 }
       );
 
-      observer.observe(methodImage);
+      animateContainers.forEach((el) => observer.observe(el));
     });
   </script>
 
-  <!-- Section 5: Investing -->
+  <!-- Section 5: Everything you need to manage your money -->
   <Section
-    heading="Investing"
-    subheading="Asset allocation, diversification, and portfolio management"
+    heading="Everything you need to manage your money"
+    subheading="Built from years of testing what actually works"
     bg="stone"
   >
     <div class="max-w-3xl mx-auto md:mx-0 space-y-8 md:space-y-6">
-      <!-- Paragraph 1: Asset Classes -->
       <div class="flex flex-col md:flex-row gap-3 md:gap-4">
         <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            <path d="M2 12h20"/>
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 10h20"/>
+            <path d="M6 4v4"/>
+            <path d="M10 4v4"/>
+            <path d="M14 4v4"/>
           </svg>
         </div>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
-          <strong>Diversify your portfolio:</strong> equities (stocks, ETFs, Mutual Funds,...), real estate, commodities, and crypto. Each carries different risk and return profiles. Most investors start with equities through index funds - broad exposure, low fees, proven track record (around 10% returns per year).
-        </p>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2 text-center md:text-left">YNAB4 taught me budgeting, but left half the picture blank</h3>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left">
+            I used YNAB4 for years and loved the envelope budgeting discipline it instilled. But it only tracked spending, my investments lived in separate apps. I never had a complete view of my financial health, just fragments scattered across platforms.
+          </p>
+        </div>
       </div>
 
       <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
 
-      <!-- Paragraph 2: Active vs Passive -->
       <div class="flex flex-col md:flex-row gap-3 md:gap-4">
         <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -533,165 +563,159 @@ const meta = pages.ourStory;
             <path d="M8 17v-3"/>
           </svg>
         </div>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
-          <strong>Active vs. passive investing:</strong> Active management (picking individual stocks) usually loses to passive strategies after fees. Diversification across assets and sectors reduces risk. Dollar-cost averaging (DCA) - investing the same amount regularly - removes timing decisions and emotion.
-        </p>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2 text-center md:text-left">Blockfolio was perfect - until it disappeared</h3>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left">
+            For portfolio tracking, Blockfolio nailed it. Then FTX bought them weeks before collapsing, taking the entire platform down. I lost my favorite tracker overnight and realized I needed something that could monitor all my assets: crypto, stocks, forex, commodities in one place.
+          </p>
+        </div>
       </div>
 
       <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
 
-      <!-- Paragraph 3: Track Portfolio -->
       <div class="flex flex-col md:flex-row gap-3 md:gap-4">
         <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+            <path d="M12 2v4"/>
+            <path d="M12 18v4"/>
+            <path d="m4.93 4.93 2.83 2.83"/>
+            <path d="m16.24 16.24 2.83 2.83"/>
+            <path d="M2 12h4"/>
+            <path d="M18 12h4"/>
+            <path d="m4.93 19.07 2.83-2.83"/>
+            <path d="m16.24 7.76 2.83-2.83"/>
             <circle cx="12" cy="12" r="3"/>
           </svg>
         </div>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
-          <strong>Track your portfolio.</strong> Monitor allocation, rebalance annually, understand what you own. Never invest more than you can afford to lose. Risk tolerance isn't theoretical - it's what lets you sleep at night when markets drop 20%.
-        </p>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2 text-center md:text-left">A decade of experimentation led here</h3>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left">
+            After testing countless personal finance apps, the pattern was clear: budgeting tools ignored investments, portfolio trackers didn't handle cash flow, and nothing brought it all together. I was constantly juggling five different logins just to understand my full financial picture.
+          </p>
+        </div>
       </div>
 
-      <!-- Learn more link -->
-      <p class="text-sm text-neutral-500 dark:text-neutral-500 text-center md:text-left md:ml-16">
-        <a href="/portfolio-tracker" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about portfolio monitoring →</a>
+      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed text-center md:text-left md:ml-16 pt-2">
+        Finzen combines the best features I found across years of testing - so you can manage your complete financial life in one dashboard, DIY-style, without needing an advisor.
       </p>
     </div>
   </Section>
 
-  <!-- Section 6: Our Philosophy -->
-  <Section
-    heading="Our philosophy"
-    bg="stone"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Manual entry = awareness (not a limitation)
-      - Privacy = respect for your data
-      - Visualization = understanding, not just numbers
-      - Simplicity = accessibility without dumbing down
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        Manual entry creates awareness.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: We don't connect to banks or brokers. That's not a limitation — it's a design choice. When you enter each transaction yourself, you stay aware. You understand your money because you touch it every day.]
-      </p>
-
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mt-6">
-        Privacy is respect.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Your financial data is encrypted before it leaves your device. We never see it. We can't see it. That's how it should be.]
-      </p>
-
-      <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mt-6">
-        Visualization creates understanding.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Numbers in a spreadsheet don't tell a story. Sankey diagrams, trend charts, allocation breakdowns — these create actual insight.]
-      </p>
+  <!-- Section 6: Built with love -->
+  <Section>
+    <div class="obsession-image-container flex flex-col items-center -mt-10 mb-16">
+      <img
+        src="/images/personal-finance-guide/finzen_dashboard.png"
+        alt="Finzen dashboard showing budget and portfolio in one place"
+        class="obsession-image w-full max-w-2xl h-auto rounded-lg object-contain [filter:drop-shadow(0_25px_50px_rgba(0,0,0,0.2))] dark:[filter:drop-shadow(0_25px_50px_rgba(0,0,0,0.4))]"
+      />
     </div>
-  </Section>
-
-  <!-- Section 7: The Build Story -->
-  <Section
-    heading="700 hours of obsession"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - The builder story (your personal journey)
-      - Why this matters to you specifically
-      - Beta philosophy — building in public
-      - Invitation to be part of shaping the product
-    */}
-    <div class="max-w-2xl space-y-4">
+    <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-10 text-center">
+      Built with ♥
+    </h2>
+    <div class="max-w-2xl mx-auto space-y-4 text-center">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Your personal story here. What drove you to spend 700+ hours building this? What's your relationship with personal finance? What frustrated you about existing tools?]
+        Most finance apps are built by teams whose real customers are advertisers, data brokers, or VCs - not you. Finzen has no shareholders to please, no growth targets to hit, no exit strategy. Just one developer who wanted something better and spent 700+ hours building it.
       </p>
       <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 italic leading-relaxed">
-        "The finance app we always wished existed."
+        No shortcuts, no hype, no compromises - just a tool that does what it says.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: We're in beta. That means we're building in public, listening to users, and iterating fast. If you join now, you're not just using a product — you're helping shape it.]
+        Building something from scratch means every bug is embarrassing and every compliment feels personal. But it also means I can't hide behind corporate speak or pass the blame. This tool is as honest as I know how to make it.
       </p>
     </div>
   </Section>
 
-  <!-- Section 8: For YNAB Users -->
-  <Section
-    heading="If you love YNAB..."
-    bg="stone"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - YNAB is great for budgeting
-      - But it doesn't track investments
-      - Finzen = envelope budgeting + portfolio tracking
-      - For people who want the full picture
-
-      Keywords to weave in: YNAB, ynab4
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: YNAB taught millions of people how to budget with the envelope method. We love it. But if you also want to track your investments in the same place — YNAB can't help you.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen combines envelope budgeting with portfolio tracking. The complete picture. One app.]
-      </p>
+  <section class="w-full py-20 md:py-28 px-6 bg-[#ECECEC] dark:bg-[#1B1B1B]">
+    <div class="max-w-3xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center gap-10 md:gap-8">
+        <div class="flex-1 text-center md:text-left space-y-5 order-1">
+          <h2 class="text-2xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+            See if Finzen works for you
+          </h2>
+          <p class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Try it free and find out what happens when budgeting and investing finally live in the same place. Your privacy stays intact, your data stays yours, and you get to use something built with actual care instead of growth metrics. If it clicks, great. If not, no pressure - but I think you'll like it.
+          </p>
+          <div class="pt-2 flex justify-center md:justify-start">
+            <a
+              href={APP_URL}
+              class="journey-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
+            >
+              Get Started Free
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="cta-image-container flex-shrink-0 flex justify-center order-2">
+          <img
+            src="/images/our-story/mobile_networth_light.png"
+            alt="Finzen net worth screen on mobile"
+            width="220"
+            height="440"
+            class="cta-image w-[220px] h-auto max-w-[85vw] object-contain dark:hidden"
+          />
+          <img
+            src="/images/our-story/mobile_networth_dark.png"
+            alt="Finzen net worth screen on mobile"
+            width="220"
+            height="440"
+            class="cta-image w-[220px] h-auto max-w-[85vw] object-contain hidden dark:block"
+          />
+        </div>
+      </div>
+      <div class="flex justify-center pt-20 -mb-4 pb-0">
+        <a href="/" aria-label="Finzen — Home" class="flex items-center gap-4 text-[#0a0a0a] dark:text-white hover:opacity-80 transition-opacity">
+          <img src="/logo-light.webp" alt="Finzen logo" width="96" height="96" class="h-24 w-24 object-contain dark:hidden" />
+          <img src="/logo-dark.webp" alt="Finzen logo" width="96" height="96" class="h-24 w-24 object-contain hidden dark:block" />
+          <span class="font-logo text-7xl font-extrabold tracking-[0.01em]">Finzen</span>
+        </a>
+      </div>
     </div>
-  </Section>
+  </section>
 
-  <!-- Section 9: For Blockfolio/Portfolio App Users -->
-  <Section
-    heading="If you use Blockfolio or Delta..."
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Portfolio trackers are great for investments
-      - But they don't help with budgeting
-      - Finzen = portfolio tracking + envelope budgeting
-      - Manual, private, combined
-
-      Keywords to weave in: blockfolio, blockfolio alternative
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Portfolio trackers like Blockfolio and Delta are great for seeing your crypto and stocks. But they don't help you budget. They don't show your spending. They only show part of the picture.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen tracks your portfolio AND your budget. See how your monthly spending connects to your long-term wealth building.]
-      </p>
-    </div>
-  </Section>
-
-  <!-- Section 10: Be Your Own CFO (absorbed from old page) -->
-  <Section
-    heading="Be your own CFO"
-    bg="stone"
-  >
-    {/*
-      COPY PLACEHOLDER — Content absorbed from be-your-own-cfo.astro
-      - Stop outsourcing your financial awareness
-      - Tools to understand, plan, and grow
-      - Manually, privately, on your own terms
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Stop outsourcing your financial awareness. You don't need a financial advisor to understand your money. You need the right tools and the habit of paying attention.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen gives you the tools to understand, plan, and grow your finances — manually, privately, and on your own terms.]
-      </p>
-    </div>
-  </Section>
-
-  <CTABlock
-    heading="Join the beta"
-    subtext="Be part of building something better. Free to start. No bank connection required."
-  />
+  <style>
+    .journey-cta {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+    :global(.dark) .journey-cta {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+    .journey-cta:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    :global(.dark) .journey-cta:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 6px 12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+    .journey-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        transparent 45%,
+        rgba(255, 255, 255, 0.35) 49%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.35) 51%,
+        transparent 55%,
+        transparent 100%
+      );
+      transform: translateX(-100%);
+      transition: transform 0.45s ease;
+      pointer-events: none;
+    }
+    .journey-cta:hover::before {
+      transform: translateX(100%);
+    }
+    :global(.dark) .journey-cta::before {
+      display: none;
+    }
+  </style>
 
   <SiblingLinks slugs={meta.siblings} />
 

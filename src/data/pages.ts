@@ -164,7 +164,7 @@ export const pages: Record<string, PageMeta> = {
     slug: 'our-story',
     title: 'Our Story — Why We Built Finzen',
     description:
-      'Why we built an all-in-one personal finance app. The frustration with juggling tools. The inspiration. 700 hours of obsessive building.',
+      'The story behind Finzen: what happens when budgeting apps ignore portfolios, portfolio trackers ignore cash flow, and years of testing reveal no solution exists.',
     keywords: [
       'YNAB alternative',
       'blockfolio alternative',
