@@ -34,74 +34,146 @@ const meta = pages.budgetingApp;
 >
 
   <AngleHero
-    title="Finally, a budget that actually works"
-    subtitle="Envelope budgeting meets daily expense tracking. Set categories, track spending, see exactly where every dollar goes."
+    title="Budgeting App & Expense Tracking"
+    subtitle="Track spending, manage monthly expenses, and see where your money goes. Zero-based budgeting with real-time cashflow analysis."
     keyword="budget & expense tracker"
   />
 
-  <div class="w-full overflow-x-clip -mt-52 md:-mt-[21.2rem] mb-0 relative z-10 flex justify-center">
-    <div class="scale-[1.15] md:scale-100 origin-center w-max max-w-full md:w-[960px] md:max-w-none min-w-0 shrink-0">
-      <img
-        src={`/images/${meta.slug}/hero_light.png`}
-        alt={meta.title}
-        class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
-      />
-      <img
-        src={`/images/${meta.slug}/hero_dark.png`}
-        alt={meta.title}
-        class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
-      />
+  <div class="w-full overflow-x-clip -mt-56 md:-mt-[23rem] mb-0 relative z-10 flex justify-center">
+    <div class="hero-image-reveal w-max max-w-full min-w-0 shrink-0">
+      <div class="scale-[1.15] md:scale-100 origin-center md:w-[960px] md:max-w-none">
+        <img
+          src={`/images/${meta.slug}/hero_light.png`}
+          alt={meta.title}
+          class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src={`/images/${meta.slug}/hero_dark.png`}
+          alt={meta.title}
+          class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
+        />
+      </div>
     </div>
   </div>
 
-  <!-- Section 1: The Envelope Method -->
+  <!-- Section 1: What it is -->
   <Section
-    heading="Zero-based budgeting. Every dollar has a job."
+    heading="Track Spending, Manage Cashflow, Master Your Budget"
     bg="stone"
+    align="center"
     class="mt-4 md:mt-0 !pt-12 md:!pt-2"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - What zero-based / envelope budgeting actually means
-      - Give every dollar a purpose before the month begins
-      - Digital envelopes replace physical cash envelopes
-      - When an envelope is empty, spending stops (or you move money intentionally)
-
-      Keywords to weave in: envelope budgeting, zero based budgeting, budget planner
-    */}
-    <div class="max-w-2xl space-y-4">
+    <div class="max-w-2xl mx-auto">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Explain the envelope budgeting philosophy. Every dollar gets assigned to a category before you spend it. When the category is empty, you're done — or you consciously move money from another envelope.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: How Finzen implements this digitally. Create categories, set amounts, watch the balances change as you spend.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Why this works when other budgeting methods fail — it's proactive, not reactive.]
+        Finzen is a budgeting app that teaches you to <strong>track every dollar with intention</strong>. Built around zero-based budgeting, where every dollar has a job. It turns expense tracking from a chore into a 3-minute daily habit that puts you in the driver's seat. Whether you need a budget to stop living paycheck to paycheck or you're ready to <strong>level up your spending plan</strong>, you'll learn exactly where your money goes, how to organize it across spending categories, and how to use cash flow analysis to stay ahead instead of reacting.
       </p>
     </div>
   </Section>
 
-  <!-- Section 2: Expense Tracking -->
+  <!-- Section 2: Zero-Based Budgeting -->
   <Section
-    heading="Track every expense. Build real awareness."
+    heading="Zero-Based Budgeting: Give every dollar a job"
+    align="center"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Manual expense entry = intentional spending
-      - Quick daily routine (2-3 minutes)
-      - Real-time budget vs. actual
-      - See spending by category instantly
+    <div class="max-w-2xl mx-auto space-y-8">
+      <!-- Image between title and first paragraph (animate in from below when in view). Padding gives drop shadow room. -->
+      <div class="budget-envelope-reveal flex justify-center pt-4 pb-9 px-4 -mb-1">
+        <img
+          src="/images/budgeting-app/budget_envelope.png"
+          alt="Envelope budgeting: allocate dollars to categories"
+          class="w-full max-w-[200px] h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
+        />
+      </div>
 
-      Keywords to weave in: expense tracking, spending tracker, track spending, money tracker
-    */}
-    <div class="max-w-2xl space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: The power of manual expense tracking. When you enter each purchase, you become aware of your spending patterns.]
+        <strong class="text-neutral-800 dark:text-neutral-200">Zero-based budgeting</strong> means every dollar has a job before the month begins — unlike tracking after you spend, you decide where money goes first. It's the same idea as the classic envelope budget system: you allocate cash to envelopes (groceries, rent, fun) and when an envelope is empty, you stop or move money intentionally. Finzen brings that discipline into a <strong class="text-neutral-800 dark:text-neutral-200">digital cash envelope budgeting</strong> experience: allocate, spend down, and always see what's left.
       </p>
+
+      <!-- 3-step diagram between the two paragraphs -->
+      <div class="flex flex-col items-center pt-4 pb-0 -mb-4" aria-label="Budget cycle: Plan your month, Track your spending, Adjust your plan">
+        <div class="relative w-full max-w-[420px] aspect-square">
+          <svg class="absolute inset-0 w-full h-full text-neutral-300 dark:text-neutral-600" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+            <defs>
+              <marker id="cycle-arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="currentColor" />
+              </marker>
+            </defs>
+            <path d="M 321.2 130 A 140 140 0 1 1 78.8 130" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" marker-end="url(#cycle-arrowhead)" />
+            <path d="M 78.8 130 A 140 140 0 1 1 200 340" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" marker-end="url(#cycle-arrowhead)" />
+            <path d="M 200 340 A 140 140 0 1 1 321.2 130" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" marker-end="url(#cycle-arrowhead)" />
+          </svg>
+          <div class="absolute left-1/2 top-[21%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-3">
+            <div class="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] rounded-full bg-white dark:bg-neutral-800 flex items-center justify-center text-neutral-600 dark:text-neutral-400 ring-2 ring-neutral-200 dark:ring-neutral-700 shadow-sm flex-shrink-0">
+              <svg class="w-8 h-8 sm:w-9 sm:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center max-w-[5rem]">Plan your month</span>
+          </div>
+          <div class="absolute left-[80.3%] top-[67.5%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-3">
+            <div class="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] rounded-full bg-white dark:bg-neutral-800 flex items-center justify-center text-neutral-600 dark:text-neutral-400 ring-2 ring-neutral-200 dark:ring-neutral-700 shadow-sm flex-shrink-0">
+              <svg class="w-8 h-8 sm:w-9 sm:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center max-w-[5.5rem]">Track your spending</span>
+          </div>
+          <div class="absolute left-[19.7%] top-[67.5%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-3">
+            <div class="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] rounded-full bg-white dark:bg-neutral-800 flex items-center justify-center text-neutral-600 dark:text-neutral-400 ring-2 ring-neutral-200 dark:ring-neutral-700 shadow-sm flex-shrink-0">
+              <svg class="w-8 h-8 sm:w-9 sm:h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 text-center max-w-[5.5rem]">Adjust your plan</span>
+          </div>
+        </div>
+      </div>
+
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Budget vs. actual in real time. Know instantly if you're on track or overspending in any category.]
+        Use <strong class="text-neutral-800 dark:text-neutral-200">budget planner</strong> tools to plan your month ahead. Assign dollars to <strong class="text-neutral-800 dark:text-neutral-200">spending categories</strong> (or expense categories) before you spend, and use the budget calculator to set amounts per category. That way you finally answer <em>where does my money go</em> — not at the end of the month in a spreadsheet, but as a live picture. Category budgeting gives you structure; it replaces a static <strong class="text-neutral-800 dark:text-neutral-200">monthly budget template</strong> with real-time tracking so your <strong class="text-neutral-800 dark:text-neutral-200">spending plan</strong> is intentional instead of reactive.
       </p>
+
+      <!-- Budget bars: spent / budget; animate filling on scroll into view -->
+      <div class="budget-bars-container max-w-xl mx-auto">
+        <div class="space-y-3 rounded-xl border border-neutral-200 dark:border-neutral-700 p-4 bg-white dark:bg-neutral-900/50">
+          <div>
+            <div class="flex justify-between text-xs text-neutral-600 dark:text-neutral-400 mb-1">
+              <span>Groceries</span>
+              <span>$510 / $600</span>
+            </div>
+            <div class="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+              <div class="budget-bar-fill bar-fill-85 h-full rounded-full bg-emerald-500/80 dark:bg-emerald-500/70"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs text-neutral-600 dark:text-neutral-400 mb-1">
+              <span>Dining &amp; coffee</span>
+              <span>$120 / $200</span>
+            </div>
+            <div class="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+              <div class="budget-bar-fill bar-fill-60 h-full rounded-full bg-amber-500/80 dark:bg-amber-500/70"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs text-neutral-600 dark:text-neutral-400 mb-1">
+              <span>Transport</span>
+              <span>$150 / $150</span>
+            </div>
+            <div class="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+              <div class="budget-bar-fill bar-fill-100 h-full rounded-full bg-blue-500/80 dark:bg-blue-500/70"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs text-neutral-600 dark:text-neutral-400 mb-1">
+              <span>Subscriptions</span>
+              <span>$36 / $80</span>
+            </div>
+            <div class="h-2 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+              <div class="budget-bar-fill bar-fill-45 h-full rounded-full bg-violet-500/80 dark:bg-violet-500/70"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </Section>
 
@@ -109,26 +181,16 @@ const meta = pages.budgetingApp;
   <Section
     heading="Flexible categories that fit your life"
     bg="stone"
+    align="center"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Customizable spending categories
-      - Pre-built templates to get started
-      - Subcategories for granular tracking
-      - Category-level insights and breakdowns
-
-      Keywords to weave in: expense categories, spending categories, category budgeting
-    */}
-    <div class="max-w-2xl">
+    <div class="max-w-2xl mx-auto text-left">
       <FeatureList
         columns={2}
         features={[
-          { label: 'Custom Categories', detail: '[COPY: Create categories that match how you actually spend]' },
-          { label: 'Starter Templates', detail: '[COPY: Pre-built category sets for common budgeting styles]' },
-          { label: 'Subcategories', detail: '[COPY: Break down "Food" into Groceries, Dining Out, Coffee, etc.]' },
-          { label: 'Category Budgets', detail: '[COPY: Set monthly limits for each category]' },
-          { label: 'Rollover Options', detail: '[COPY: Unused budget rolls to next month or resets]' },
-          { label: 'Category Insights', detail: '[COPY: See spending trends per category over time]' },
+          { label: 'Custom Categories', detail: 'Create spending categories that match how you actually spend — not a one-size-fits-all list.', icon: '<path d="M9 2l5 5-7 7H2v-4l7-7z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>' },
+          { label: 'Starter Templates', detail: 'Pre-built category sets for common budgeting styles so you can start in minutes, then tweak.', icon: '<circle cx="8" cy="6" r="4" stroke="currentColor" stroke-width="1.25" fill="none"/><path d="M6 10v2.5h4V10" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>' },
+          { label: 'Subcategories', detail: 'Break down broad buckets like Food into Groceries, Dining Out, and Coffee for clearer tracking.', icon: '<path d="M4 13V7M8 13V4M12 13V2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>' },
+          { label: 'Category Budgets', detail: 'Set a monthly limit per category and see at a glance how much is left as you spend.', icon: '<path d="M2 4L8 8L14 4M14 4V12H2V4H14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
         ]}
       />
     </div>
@@ -138,21 +200,12 @@ const meta = pages.budgetingApp;
   <Section
     heading="See your cash flow clearly"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Money in vs. money out
-      - Spot spending leaks
-      - "Where does my money go?" answered
-      - Monthly and weekly views
-
-      Keywords to weave in: cash flow analysis, cashflow, where does my money go
-    */}
     <div class="max-w-2xl space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finally answer "where does my money go?" See income flowing in and expenses flowing out.]
+        Cash flow analysis in Finzen finally answers <em>where does my money go</em>. See income and expenses in one place — money in, money out, and what’s left. Monthly and weekly views keep you ahead instead of guessing.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Spot the leaks — those small recurring expenses that add up. Subscriptions, daily coffees, convenience purchases.]
+        Spot the leaks: subscriptions, daily coffees, and small recurring expenses that add up. When you see your cashflow in real time, you can plug the holes and keep more of what you earn.
       </p>
     </div>
   </Section>
@@ -162,23 +215,14 @@ const meta = pages.budgetingApp;
     heading="Budget reports that actually help"
     bg="stone"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Visual progress bars for each budget category
-      - Monthly spending summaries
-      - Trend charts over time
-      - Export options
-
-      Keywords to weave in: budget visualization, spending reports, monthly financial report
-    */}
-    <div class="max-w-2xl">
+    <div class="max-w-2xl mx-auto text-left">
       <FeatureList
         columns={2}
         features={[
-          { label: 'Budget Progress Bars', detail: '[COPY: See at a glance how much is left in each envelope]' },
-          { label: 'Monthly Summaries', detail: '[COPY: End-of-month reports showing budget performance]' },
-          { label: 'Spending Trends', detail: '[COPY: Track how your spending changes month to month]' },
-          { label: 'Category Breakdowns', detail: '[COPY: Pie charts and bar graphs by spending category]' },
+          { label: 'Budget Progress Bars', detail: 'See at a glance how much is left in each envelope so you know when to stop or move money.', icon: '<path d="M2 4L8 8L14 4M14 4V12H2V4H14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' },
+          { label: 'Monthly Summaries', detail: 'End-of-month spending reports show budget vs. actual — your monthly financial report in one view.', icon: '<path d="M4 13V7M8 13V4M12 13V2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>' },
+          { label: 'Spending Trends', detail: 'Track how your spending changes month to month and spot patterns before they become habits.', icon: '<path d="M2 11l3-4 3 2 3-4 3 2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>' },
+          { label: 'Category Breakdowns', detail: 'Charts and graphs by spending category so you see where the money goes at a glance.', icon: '<path d="M8 2v12M8 2L2 8h6M8 2l6 4H8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>' },
         ]}
       />
     </div>
@@ -188,18 +232,9 @@ const meta = pages.budgetingApp;
   <Section
     heading="Budget and invest in the same app"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Budgeting is step one — but what about investments?
-      - Finzen combines budgeting with portfolio tracking
-      - See the full picture: spending + saving + investing
-      - Link to Investment Portfolio page
-
-      Keywords to weave in: budgeting and investing
-    */}
     <div class="max-w-2xl space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Most budgeting apps stop at budgeting. But your financial life includes investments too. Finzen tracks both — so you see how your budget feeds your portfolio growth.]
+        Most budgeting apps stop at budgeting. Your financial life includes investments too. Finzen combines budgeting and investing in one place — track spending, see your cash flow, and watch your portfolio. One app for the full picture.
       </p>
     </div>
   </Section>
@@ -212,3 +247,80 @@ const meta = pages.budgetingApp;
   <SiblingLinks slugs={meta.siblings} />
 
 </Layout>
+
+<style>
+  /* Hero image: reveal from below when in view (use :global so selectors apply in Layout slot) */
+  :global(.hero-image-reveal) {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  :global(.hero-image-reveal.in-view) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Envelope image: reveal from below when scrolled into view (same pattern as hero) */
+  :global(.budget-envelope-reveal) {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  }
+  :global(.budget-envelope-reveal.in-view) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Budget bars: start at 0 width, fill when in view (staggered) */
+  :global(.budget-bar-fill) {
+    width: 0;
+  }
+  :global(.budget-bars-container.in-view .bar-fill-85) {
+    animation: budget-bar-fill-85 0.5s ease-out 0s forwards;
+  }
+  :global(.budget-bars-container.in-view .bar-fill-60) {
+    animation: budget-bar-fill-60 0.5s ease-out 0.12s forwards;
+  }
+  :global(.budget-bars-container.in-view .bar-fill-100) {
+    animation: budget-bar-fill-100 0.5s ease-out 0.24s forwards;
+  }
+  :global(.budget-bars-container.in-view .bar-fill-45) {
+    animation: budget-bar-fill-45 0.5s ease-out 0.36s forwards;
+  }
+  @keyframes budget-bar-fill-85 {
+    to { width: 85%; }
+  }
+  @keyframes budget-bar-fill-60 {
+    to { width: 60%; }
+  }
+  @keyframes budget-bar-fill-100 {
+    to { width: 100%; }
+  }
+  @keyframes budget-bar-fill-45 {
+    to { width: 45%; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -20px 0px' }
+    );
+
+    const heroImage = document.querySelector('.hero-image-reveal');
+    if (heroImage) observer.observe(heroImage);
+
+    const envelopeReveal = document.querySelector('.budget-envelope-reveal');
+    if (envelopeReveal) observer.observe(envelopeReveal);
+
+    const budgetBars = document.querySelector('.budget-bars-container');
+    if (budgetBars) observer.observe(budgetBars);
+  });
+</script>
