@@ -720,6 +720,99 @@ const faqSchema = JSON.stringify({
   </Section>
 
   <!-- ============================================================
+       SECTION 7B: LOG ON THE GO, CHECK IN ON THE BIG SCREEN
+       ============================================================ -->
+  <section class="log-big-screen w-full py-16 md:py-24 px-6 !bg-gradient-to-b !from-[#ECECEC] !to-white dark:!from-[#1B1B1B] dark:!to-neutral-900 text-neutral-800 dark:text-neutral-200">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="mb-10 space-y-3">
+        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+          Log on the go, check in on the big screen
+        </h2>
+      </div>
+
+      <!-- Two overlapping PNGs (transparent): method smaller/angled left, hero bigger to the right -->
+      <div class="log-big-pile flex justify-center items-end mb-12 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[200px] sm:min-h-[260px] md:min-h-[320px] -mt-8 max-sm:-mt-12 md:-mt-6">
+        <div class="log-big-method w-[88px] sm:w-[145px] md:w-[185px] flex-shrink-0 -mr-8 sm:-mr-12 md:-mr-16 z-0">
+          <img src="/images/mindful-money-tracking/method_light.png" alt="Finzen mobile — add transaction on the go" class="w-full h-auto block dark:hidden" />
+          <img src="/images/mindful-money-tracking/method_dark.png" alt="Finzen mobile — add transaction on the go" class="w-full h-auto hidden dark:block" />
+        </div>
+        <div class="log-big-plus hidden sm:flex flex-shrink-0 z-20 items-center justify-center ml-2 sm:ml-10 md:ml-16 -mr-6 sm:-mr-4 md:-mr-6 mb-20 sm:mb-24 md:mb-28" aria-hidden="true">
+          <span class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center text-white dark:text-neutral-900">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </div>
+        <div class="log-big-hero w-[268px] sm:w-[450px] md:w-[560px] flex-shrink-0 z-10 -ml-4 sm:-ml-6 md:-ml-10 mt-4 sm:mt-6 md:mt-8">
+          <img src="/images/portfolio-tracker/hero_light.png" alt="Finzen desktop — portfolio and overview on the big screen" class="w-full h-auto block dark:hidden" />
+          <img src="/images/portfolio-tracker/hero_dark.png" alt="Finzen desktop — portfolio and overview on the big screen" class="w-full h-auto hidden dark:block" />
+        </div>
+      </div>
+
+      <style>
+        @keyframes logBigSlideLeft {
+          from { opacity: 0; transform: translateX(-60px) rotate(-8deg); }
+          to { opacity: 1; transform: translateX(0) rotate(-6deg); }
+        }
+        @keyframes logBigSlideRight {
+          from { opacity: 0; transform: translateX(60px) rotate(8deg); }
+          to { opacity: 1; transform: translateX(0) rotate(5deg); }
+        }
+        .log-big-pile .log-big-method {
+          opacity: 0;
+          transform: translateX(-60px) rotate(-8deg);
+        }
+        .log-big-pile .log-big-hero {
+          opacity: 0;
+          transform: translateX(60px) rotate(8deg);
+        }
+        .log-big-pile.in-view .log-big-method {
+          animation: logBigSlideLeft 0.7s ease-out forwards;
+        }
+        .log-big-pile.in-view .log-big-hero {
+          animation: logBigSlideRight 0.7s ease-out 0.2s forwards;
+        }
+        .log-big-plus {
+          opacity: 0;
+        }
+        .log-big-pile.in-view .log-big-plus {
+          animation: logBigPlusIn 0.4s ease-out 0.35s forwards;
+        }
+        @keyframes logBigPlusIn {
+          from { opacity: 0; transform: scale(0.8); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .log-big-method {
+          transform-origin: center bottom;
+        }
+        .log-big-hero {
+          transform-origin: center bottom;
+        }
+      </style>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const pile = document.querySelector('.log-big-pile');
+          if (!pile) return;
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) entry.target.classList.add('in-view');
+              });
+            },
+            { rootMargin: '0px 0px -80px 0px', threshold: 0.1 }
+          );
+          observer.observe(pile);
+        });
+      </script>
+
+      <div class="max-w-2xl mx-auto text-center">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Let's face it - managing your finances is a big-screen activity. But Finzen works on all devices and is optimized for easy transaction logging on the go. Reports and dashboards look best on desktop. For best results: log on mobile, review on desktop.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        SECTION 8: PRIVACY BY DEFAULT
        ============================================================ -->
   <Section bg="stone" class="pt-8 pb-16 md:py-24">
