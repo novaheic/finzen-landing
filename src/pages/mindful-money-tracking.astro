@@ -40,6 +40,45 @@ const disconnectionRings = [
   { pct: 83, label: 'who set financial goals feel better about their finances within a year' },
   { pct: 69, label: 'of households have less than $1,000 in emergency savings' },
 ].map(({ pct, label }) => ({ pct, label, offset: C * (1 - pct / 100) }));
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: "Why doesn't Finzen connect to my bank?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Finzen is a budgeting app without bank sync by design. Manual entry serves two purposes: privacy and mindfulness. Your bank credentials never leave your bank, eliminating the risk of third-party data breaches. More importantly, logging each transaction yourself creates awareness - you can't fix what you don't feel connected to. This manual expense tracker approach helps you understand where your money goes in a way automated syncing never can."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How much time does this actually take each day?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "2–3 minutes a day. That's it. Open the app, log today's transactions, check your budget status. Most people do it with their morning coffee or during an evening wind-down. The habit itself is part of the method - this small daily ritual builds awareness and helps you stop impulse buying because you know you'll be logging it later. Think of it like watering a plant: minimal time, maximum impact over time."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: "I'm anxious about money. Will this help?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Money anxiety usually comes from uncertainty - not knowing where you stand or where your money is going. Finzen addresses this directly. Daily logging turns vague worry into clear data. Envelope budgeting shows you exactly what you can spend in each category without guilt. Visual charts replace guesswork with understanding. Most users report feeling less anxious about money within the first month because the unknown becomes known. You move from "I think I\'m okay" to "I know exactly where I stand."'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What exactly can I track with Finzen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Everything in one place. Your monthly budget using envelope budgeting with spending by category. Emergency fund progress and how many months of expenses it covers. Portfolio tracking for stocks, ETFs, crypto, forex, and physical commodities, with real-time prices and performance metrics. Cash flow analysis showing daily inflows and outflows. Net worth over time. The app connects all these pieces so you can see how your budget, emergency cushion, and investments work together.'
+      }
+    }
+  ]
+});
 ---
 
 <Layout
@@ -71,6 +110,9 @@ const disconnectionRings = [
       ],
     })}
   </script>
+
+  {/* FAQPage schema for FAQ rich results */}
+  <script type="application/ld+json" set:html={faqSchema} />
 
   <AngleHero
     eyebrow="The Finzen Method"

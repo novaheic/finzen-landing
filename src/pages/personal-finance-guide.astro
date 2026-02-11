@@ -34,6 +34,61 @@ const overwhelmRings = [
   { pct: 28, label: 'of households have a written financial plan' },
   { pct: 57, label: 'of Americans spend more than they earn' },
 ].map(({ pct, label }) => ({ pct, label, offset: C * (1 - pct / 100) }));
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: "How do I start managing my personal finances if I've never done it before?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Start by tracking your spending for one week. Don't change anything yet, just write down every transaction. This reveals where your money actually goes, not where you think it goes. Once you see patterns, create 5-6 broad budget categories (housing, food, transport, entertainment, savings). Set realistic limits based on what you learned. The biggest beginner mistake is trying to track 30+ categories from day one. Start simple, add complexity only when you need it."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Why do I always run out of money before payday?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Living paycheck to paycheck usually means one of three things: you're spending more than you earn, you're not accounting for irregular expenses (insurance, gifts, annual subscriptions), or you lack visibility into where money actually goes. Small daily purchases add up invisibly - that $6 coffee becomes $180/month, $2,160/year. Track every transaction for one month. Most people discover $200-400 in \"leakage\" they didn't realize existed. Then budget for irregular expenses by setting aside money monthly - if car insurance costs $600/year, save $50/month so it's not a surprise. Cash flow tracking shows exactly how long your money lasts and where the gaps are."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How much should I save before I start investing?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Don't invest until you have 3-6 months of expenses saved in an emergency fund. This isn't being conservative - it's preventing disaster. Without liquidity, the first emergency (car repair, medical bill, job loss) forces you to sell investments at the worst possible time or rack up high-interest credit card debt. The order matters: build a starter emergency fund ($1,000), kill high-interest debt (anything over 6-8%), then complete your emergency fund, then invest. Investing while carrying 20% APR credit card debt is like filling a bathtub with the drain open. Track your net worth to see both emergency funds and investments grow together - they're different tools serving different purposes."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: "What's the difference between good debt and bad debt?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "\"Good\" debt has three characteristics: low interest rate (under 4-6%), builds equity or income potential (mortgage, student loans for in-demand careers), and the asset typically appreciates or generates returns. \"Bad\" debt is high-interest (credit cards at 15-25%), used for depreciating assets (new cars, consumer goods), and drains your monthly cash flow. The real test: can the thing you're borrowing for generate more value than the interest cost? A mortgage at 3.5% on a home that appreciates is mathematically sound. A credit card at 22% for clothes or dining out is financially destructive. Track your debts alongside your net worth - seeing the interest pile up monthly is a powerful motivator to eliminate it. Prioritize paying down anything over 6-8% before investing excess income."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: "How do I stop overspending on things I don't need?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Overspending happens when spending is invisible or emotional. The solution is friction and awareness. Use envelope budgeting - allocate fixed amounts to categories, and when the envelope is empty, you're done for the month. This forces conscious decisions: \"Do I really want this, or do I want to save this budget for something better?\" Implement a 48-hour rule for non-essential purchases over $50. Write them down, wait two days, then decide. Most impulse purchases lose their appeal quickly. Manual transaction tracking (not automatic bank sync) creates natural friction - logging every purchase makes you confront spending patterns. When you have to write \"$47 - impulse Amazon order\" into your budget, you start questioning whether it was worth it."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I really need to track every single expense?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Yes, if you want to actually understand your finances. The small stuff matters - it's not about the $3 coffee, it's about realizing you spent $90 this month on coffee without noticing. Untracked spending is invisible spending, and invisible spending is where budgets fail. You can't manage what you don't measure. The good news: it takes 30 seconds per transaction. Log it when you spend it, not at the end of the week from memory. That daily ritual of recording transactions creates mindfulness - you become conscious of spending patterns instead of wondering where your money went. After 2-3 months, tracking becomes automatic habit, and your budget reflects reality instead of wishful thinking. Most people find $200-400/month in spending they didn't realize was happening."
+      }
+    }
+  ]
+});
 ---
 
 <Layout
@@ -65,6 +120,9 @@ const overwhelmRings = [
       ],
     })}
   </script>
+
+  {/* FAQPage schema for FAQ rich results */}
+  <script type="application/ld+json" set:html={faqSchema} />
 
   <AngleHero
     eyebrow="Personal Finance Made Simple"
