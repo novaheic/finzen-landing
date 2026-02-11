@@ -17,21 +17,80 @@ interface Props {
   heading: string;
   subtext?: string;
   buttonLabel?: string;
+  /** When true, render as a card (lighter in light mode, darker in dark mode, shadow, rounded). */
+  card?: boolean;
+  /** When true, show tiny logo + "Finzen" above the title (Montserrat extrabold, subtle grey). */
+  showBranding?: boolean;
+  /** 'filled' = solid button; 'outline' = border-only with hover fill (like personal-finance-guide). */
+  buttonVariant?: 'filled' | 'outline';
+  /** Optional small image below title, above subtext. Light and dark src. */
+  imageLight?: string;
+  imageDark?: string;
+  imageAlt?: string;
+  /** When true (and card is true), the card animates in from below on scroll. */
+  animateReveal?: boolean;
 }
 
 const {
   heading,
   subtext,
   buttonLabel = 'Get Started Free',
+  card = false,
+  showBranding = false,
+  buttonVariant = 'filled',
+  imageLight,
+  imageDark,
+  imageAlt = '',
+  animateReveal = false,
 } = Astro.props;
+
+const revealClass = card && animateReveal ? 'cta-card-reveal' : '';
+
+const showImage = imageLight || imageDark;
+
+const isOutline = buttonVariant === 'outline';
+const buttonClass = isOutline
+  ? 'inline-flex items-center gap-2 px-6 py-3 border-2 border-neutral-800 dark:border-neutral-200 text-neutral-800 dark:text-neutral-200 text-base font-medium rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors'
+  : 'inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl hover:bg-neutral-800 dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors shadow-sm';
 ---
 
-<section class="w-full py-20 md:py-28 px-6 bg-[#ECECEC] dark:bg-[#1B1B1B]">
-  <div class="max-w-2xl mx-auto text-center space-y-5">
+<section class:list={['w-full py-20 md:py-28 px-6', !card && 'bg-[#ECECEC] dark:bg-[#1B1B1B]']}>
+  <div class:list={['max-w-2xl mx-auto text-center space-y-5', card && 'rounded-2xl shadow-lg bg-white dark:bg-[#141414] py-12 md:py-16 px-8 md:px-12 border border-neutral-200/80 dark:border-neutral-800/80', revealClass]}>
+
+    {showBranding && (
+      <div class="flex items-center justify-center gap-1.5 text-neutral-500 dark:text-neutral-400">
+        <img src="/logo-light.webp" alt="" width="20" height="20" class="h-5 w-5 object-contain opacity-60 dark:hidden" />
+        <img src="/logo-dark.webp" alt="" width="20" height="20" class="h-5 w-5 object-contain opacity-60 hidden dark:block" />
+        <span class="font-logo text-sm font-extrabold tracking-[0.01em]">Finzen</span>
+      </div>
+    )}
 
     <h2 class="text-2xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
       {heading}
     </h2>
+
+    {showImage && (
+      <div class="flex justify-center">
+        {imageLight && (
+          <img
+            src={imageLight}
+            alt={imageAlt}
+            width="280"
+            height="160"
+            class="max-w-[200px] sm:max-w-[240px] w-full h-auto object-contain rounded-lg dark:hidden"
+          />
+        )}
+        {imageDark && (
+          <img
+            src={imageDark}
+            alt={imageAlt}
+            width="280"
+            height="160"
+            class="max-w-[200px] sm:max-w-[240px] w-full h-auto object-contain rounded-lg hidden dark:block"
+          />
+        )}
+      </div>
+    )}
 
     {subtext && (
       <p class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -40,10 +99,7 @@ const {
     )}
 
     <div class="pt-2">
-      <a
-        href={APP_URL}
-        class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl hover:bg-neutral-800 dark:bg-white dark:text-[#1B1B1B] dark:hover:bg-neutral-200 transition-colors shadow-sm"
-      >
+      <a href={APP_URL} class={buttonClass}>
         {buttonLabel}
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

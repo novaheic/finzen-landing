@@ -47,6 +47,7 @@ export const pages: Record<string, PageMeta> = {
     title: 'Budgeting App — Envelope Budgeting & Expense Tracking | Finzen',
     description:
       'Zero-based envelope budgeting meets daily expense tracking. Set spending categories, track every purchase, see budget vs. actual in real-time.',
+    ogImage: '/images/budgeting-app/og-budgeting-app.png',
     keywords: [
       'budgeting app',
       'budget app',
