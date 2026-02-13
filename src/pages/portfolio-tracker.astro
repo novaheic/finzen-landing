@@ -54,48 +54,39 @@ const meta = pages.portfolioTracker;
     </div>
   </div>
 
-  <!-- Section 1: Multi-Asset Portfolio -->
+  <!-- Section 1: Contemporary investing (under hero) -->
   <Section
-    heading="Every asset class. One unified view."
+    heading="DIY-Investing done right"
+    subheading="With great power comes great responsibility"
     align="center"
     bg="stone"
-    class="mt-4 md:mt-0 !pt-12 md:!pt-2"
+    class="mt-4 md:mt-0 !pt-14 md:!pt-10"
+  >
+    <div class="max-w-2xl mx-auto space-y-4 text-center">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Modern investors have unprecedented access: stocks, ETFs, crypto, commodities, forex, futures, and more. You can build a multi-asset portfolio that would have been impossible a decade ago. But with wealth scattered across multiple platforms, how do you actually know if you're winning? Your crypto might be up 40%, but if you don't account for your underperforming ETFs, shrinking cash reserves, and that commodity position you forgot about, you have no idea what your real returns are.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 2: Stop Guessing. Start Knowing. (6 cards) -->
+  <Section
+    heading="Stop Guessing. Start Knowing."
+    align="center"
+    class="!pt-8 md:!pt-12"
   >
     <div class="max-w-2xl mx-auto">
       <FeatureList
         columns={2}
         features={[
-          { label: 'Every Asset Class', detail: 'Track stocks, crypto, ETFs, commodities, forex, and futures in one unified dashboard—no more juggling apps.' },
+          { label: 'Every Asset Class', detail: 'Track stocks, crypto, ETFs, commodities, forex, and futures in one unified dashboard; no more juggling apps.' },
           { label: 'Visual Insights', detail: 'Transform complex portfolio data into beautiful Sankey diagrams, performance charts, and interactive analytics.' },
           { label: 'True Net Worth', detail: 'See your complete financial picture with real-time tracking of assets, investments, debts, and monthly growth.' },
-          { label: 'Institutional Analytics', detail: 'Get risk-adjusted returns, annualized volatility, and ROI calculations—professional metrics for every investor.' },
+          { label: 'Institutional-Grade Analytics', detail: 'Get risk-adjusted returns, annualized volatility, and ROI calculations. Professional metrics for every investor.' },
           { label: 'Smart Projections', detail: 'Forecast your financial future with data-driven predictions based on your actual performance and cash flow trends.' },
           { label: 'Budget Connected', detail: 'The only portfolio tracker that integrates with zero-based budgeting for complete financial clarity.' },
         ]}
       />
-    </div>
-  </Section>
-
-  <!-- Section 2: Real-Time Prices -->
-  <Section
-    heading="Real-time prices. Always current."
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Live market data for stocks and crypto
-      - 168+ currencies supported
-      - Automatic conversion to your base currency
-      - Historical price data
-
-      Keywords to weave in: stock tracker, crypto tracker, investment tracker
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen pulls real-time price data so your portfolio value is always current. Stocks, crypto, commodities — all updating live.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Support for 168+ currencies. Hold assets in USD, EUR, GBP, JPY — Finzen converts everything to your chosen base currency automatically.]
-      </p>
     </div>
   </Section>
 
