@@ -48,9 +48,9 @@ const { title, subtitle, eyebrow = 'Finzen', showCta = true } = Astro.props;
       {subtitle}
     </p>
 
-    <!-- CTA (optional) -->
+    <!-- CTA (optional): relative z-[30] so it stacks above overlapping hero images (e.g. portfolio-tracker laptop) and stays clickable -->
     {showCta && (
-      <div class="pt-4">
+      <div class="pt-4 relative z-[30]">
         <a
           href={APP_URL}
           class="hero-cta inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] text-white text-sm font-medium rounded-xl hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)] dark:bg-white dark:text-[#1B1B1B] dark:hover:-translate-y-1 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)] transition-all duration-200"

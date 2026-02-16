@@ -17,7 +17,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages } from '@/data/pages';
+import { pages, APP_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import FeatureList from '@/components/FeatureList.astro';
@@ -332,25 +332,25 @@ const ASSET_CLASSES = [
     </script>
   </Section>
 
-  <!-- See your money, clearly (from mindful-money-tracking) -->
+  <!-- Your investment portfolio at a glance -->
   <Section
-    heading="See your money, clearly"
-    subheading="Your data becomes visuals - no spreadsheets, no guesswork."
+    heading="Your investment portfolio at a glance"
+    subheading="Every data point you need to invest with confidence, in real-time."
     align="center"
     class="!bg-white dark:!bg-[#171717]"
   >
-    <div class="screenshot-pile flex justify-center items-end mb-12 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px] -mt-12 max-sm:-mt-16 md:-mt-6">
-      <div class="screenshot-in-left screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 z-0">
-        <img src="/images/mindful-money-tracking/cashflow_light.png" alt="Cash flow view" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/cashflow_dark.png" alt="Cash flow view" class="w-full h-full object-cover hidden dark:block" />
+    <div class="screenshot-pile flex justify-center items-end mb-20 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px] -mt-12 max-sm:-mt-16 md:-mt-6">
+      <div class="screenshot-in-left screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-[1200/759] rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 z-0">
+        <img src="/images/portfolio-tracker/allocation_light.png" alt="Allocation view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/portfolio-tracker/allocation_dark.png" alt="Allocation view" class="w-full h-full object-cover hidden dark:block" />
       </div>
-      <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
-        <img src="/images/mindful-money-tracking/networth_light.png" alt="Net worth view" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/networth_dark.png" alt="Net worth view" class="w-full h-full object-cover hidden dark:block" />
+      <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-[1200/759] rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
+        <img src="/images/portfolio-tracker/asset_light.png" alt="Asset view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/portfolio-tracker/asset_dark.png" alt="Asset view" class="w-full h-full object-cover hidden dark:block" />
       </div>
-      <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
-        <img src="/images/mindful-money-tracking/spending_light.png" alt="Spending view" class="w-full h-full object-cover block dark:hidden" />
-        <img src="/images/mindful-money-tracking/spending_dark.png" alt="Spending view" class="w-full h-full object-cover hidden dark:block" />
+      <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-[1200/759] rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
+        <img src="/images/portfolio-tracker/realtime_light.png" alt="Realtime view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/portfolio-tracker/realtime_dark.png" alt="Realtime view" class="w-full h-full object-cover hidden dark:block" />
       </div>
     </div>
 
@@ -409,68 +409,85 @@ const ASSET_CLASSES = [
     </script>
 
     <div class="max-w-2xl mx-auto space-y-8 md:space-y-6 mb-10">
-      <!-- Paragraph 1: Asset Classes -->
-      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
-        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            <path d="M2 12h20"/>
-          </svg>
-        </div>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
-          <strong>Diversify your portfolio:</strong> equities (stocks, ETFs, Mutual Funds,...), real estate, commodities, and crypto. Each carries different risk and return profiles. Most investors start with equities through index funds - broad exposure, low fees, proven track record (around 10% returns per year).
-        </p>
-      </div>
-
-      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
-
-      <!-- Paragraph 2: Active vs Passive -->
+      <!-- Portfolio Insights -->
       <div class="flex flex-col md:flex-row gap-3 md:gap-4">
         <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 3v18h18"/>
-            <path d="M18 17V9"/>
-            <path d="M13 17V5"/>
-            <path d="M8 17v-3"/>
+            <path d="M7 14l3-4 3 2 4-6"/>
           </svg>
         </div>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
-          <strong>Active vs. passive investing:</strong> Active management (picking individual stocks) usually loses to passive strategies after fees. Diversification across assets and sectors reduces risk. Dollar-cost averaging (DCA) - investing the same amount regularly - removes timing decisions and emotion.
+          <strong>Portfolio Insights</strong><br />
+          Your wealth story told in data. Monthly net worth snapshots, cumulative P/L trends, and long-term performance charts show you exactly how your investments are growing over time - not just today's balance.
         </p>
       </div>
 
       <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
 
-      <!-- Paragraph 3: Track Portfolio -->
+      <!-- Real-Time Performance -->
       <div class="flex flex-col md:flex-row gap-3 md:gap-4">
         <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-            <circle cx="12" cy="12" r="3"/>
+            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+            <path d="M21 21v-5h-5"/>
           </svg>
         </div>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
-          <strong>Track your portfolio.</strong> Monitor allocation, rebalance annually, understand what you own. Never invest more than you can afford to lose. Risk tolerance isn't theoretical - it's what lets you sleep at night when markets drop 20%.
+          <strong>Real-Time Performance</strong><br />
+          Don't wait for end-of-day reports. Your dashboard updates live as markets move, so you always know your current positions, today's gains or losses, and your exact net worth right now.
+        </p>
+      </div>
+
+      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+
+      <!-- Allocation & Assets -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 12v-10"/>
+            <path d="M12 12l8.66 5"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Allocation & Assets</strong><br />
+          See how your portfolio is distributed across stocks, crypto, commodities, and more. Then zoom in to analyze individual asset performance, compare returns by class, and identify what's working (and what's not).
         </p>
       </div>
     </div>
 
     <div class="max-w-2xl mx-auto space-y-4">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Finzen turns your logged transactions into <strong>charts and reports</strong> that actually make sense. Sankey diagrams show cash flowing in and out. Net worth over time. Spending by category. Budget health at a glance. Portfolio performance and returns - all in one place.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        The goal isn't more data; it's <strong>visual storytelling</strong>. You see where your money goes, how your wealth grows, and where you're on track. Clarity without the clutter.
+        Complete portfolio control means seeing everything: macro trends that guide strategy, real-time data that informs decisions, and granular metrics that reveal opportunities.<br />
+        <strong class="font-semibold text-neutral-800 dark:text-neutral-200 block mt-3 mb-2">That's what Finzen delivers.</strong>
       </p>
       <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
-        See how Finzen turns your data into charts: <a href="/personal-finance-charts" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">explore charts and reports</a>.
+        See how Finzen uses data visualization to support DIY Investors: <a href="/personal-finance-charts" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">explore charts and reports →</a>
       </p>
+      <div class="flex justify-center mt-8">
+        <a
+          href={APP_URL}
+          class="glance-cta inline-flex items-center gap-2 px-6 py-2.5 bg-[#0a0a0a] text-white text-sm font-medium rounded-full dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
+        >
+          Get Started
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </Section>
 
-  <!-- Why manual tracking (from mindful-money-tracking) -->
-  <Section bg="stone" class="pt-8 pb-16 md:py-24">
+  <!-- Institutional-Grade Analytics -->
+  <Section
+    heading="Institutional-Grade Analytics for Every Investor"
+    subheading="Professional metrics that actually make sense"
+    bg="stone"
+    class="pt-8 pb-16 md:py-24"
+  >
     <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
       <div class="method-image-reveal why-manual-tracking-img-wrap w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
         <img
@@ -485,36 +502,63 @@ const ASSET_CLASSES = [
         />
       </div>
       <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
-        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
-          Why manual tracking?
-        </h2>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Spending, saving, investing, debt - each entry is a decision you own. That awareness is the path to <strong>taking control of your finances</strong>.
+          Wondering if you're really beating the market? Finzen gives you the same performance analytics used by hedge funds and wealth managers: risk-adjusted returns, annualized volatility, Sharpe ratios, and more.
         </p>
-        <ul class="why-manual-tracking-list space-y-2 list-none pl-0 mt-1">
-          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        <ul class="why-manual-tracking-list space-y-3 list-none pl-0 mt-1">
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span>Notice easy-to-miss patterns</span>
+            <span class="why-manual-tracking-text flex flex-col gap-0">
+              <strong class="text-neutral-900 dark:text-neutral-100">Risk-Adjusted Returns</strong>
+              <span class="why-manual-tracking-detail">See your real performance relative to the risk you took</span>
+            </span>
           </li>
-          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span>See where your money really goes</span>
+            <span class="why-manual-tracking-text flex flex-col gap-0">
+              <strong class="text-neutral-900 dark:text-neutral-100">Annualized Volatility</strong>
+              <span class="why-manual-tracking-detail">Understand how stable (or wild) your investments are</span>
+            </span>
           </li>
-          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span>Feel connected to your cash flow and portfolio</span>
+            <span class="why-manual-tracking-text flex flex-col gap-0">
+              <strong class="text-neutral-900 dark:text-neutral-100">ROI Tracking</strong>
+              <span class="why-manual-tracking-detail">Know your actual returns, not just account balances</span>
+            </span>
           </li>
-          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span>Discipline compounds into wisdom</span>
+            <span class="why-manual-tracking-text flex flex-col gap-0">
+              <strong class="text-neutral-900 dark:text-neutral-100">Realized vs Unrealized Gains</strong>
+              <span class="why-manual-tracking-detail">Separate profits you've taken from paper gains</span>
+            </span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span class="why-manual-tracking-text flex flex-col gap-0">
+              <strong class="text-neutral-900 dark:text-neutral-100">Per-Asset Performance</strong>
+              <span class="why-manual-tracking-detail">Compare how each investment is actually performing</span>
+            </span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span class="why-manual-tracking-text flex flex-col gap-0">
+              <strong class="text-neutral-900 dark:text-neutral-100">Smart Projections</strong>
+              <span class="why-manual-tracking-detail">Data-driven forecasts based on your real track record</span>
+            </span>
           </li>
         </ul>
       </div>
@@ -889,6 +933,47 @@ const ASSET_CLASSES = [
     transform: translate(0);
   }
 
+  /* Your investment portfolio at a glance: CTA (matches header button styling) */
+  .glance-cta {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  :root.dark .glance-cta {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+  .glance-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  :root.dark .glance-cta:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 6px 12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+  .glance-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(255, 255, 255, 0.35) 49%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.35) 51%,
+      transparent 55%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.45s ease;
+    pointer-events: none;
+  }
+  .glance-cta:hover::before {
+    transform: translateX(100%);
+  }
+  :root.dark .glance-cta::before {
+    display: none;
+  }
+
   /* Budgeting made simple: same drop-shadow as Why manual tracking */
   .budgeting-simple-img-wrap img {
     filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
@@ -915,5 +1000,21 @@ const ASSET_CLASSES = [
   }
   :global(.dark) .why-manual-tracking-list .why-manual-tracking-check {
     color: rgb(255 255 255);
+  }
+  .why-manual-tracking-text {
+    line-height: 1.25;
+  }
+  .why-manual-tracking-detail {
+    font-size: 0.7rem;
+    line-height: 1.35;
+    color: rgb(115 115 115);
+    margin-top: 0.15em;
+  }
+  :root.dark .why-manual-tracking-detail {
+    color: rgb(163 163 163);
+  }
+  /* Align checkmark with first line of label (cap height) */
+  .why-manual-tracking-list .why-manual-tracking-check {
+    margin-top: 0.2em;
   }
 </style>
