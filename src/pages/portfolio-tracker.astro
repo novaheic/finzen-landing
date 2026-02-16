@@ -86,6 +86,19 @@ const logoEntries = LOGO_FILES.slice(0, LOGO_PLACEMENTS.length).map((file, i) =>
   file,
   ...LOGO_PLACEMENTS[i],
 }));
+
+// Asset class pills: palette colors (ger_palette) + icon per type
+const ASSET_PALETTE = ['#fc5c65', '#fd9644', '#fed330', '#26de81', '#2bcbba', '#45aaf2', '#4b7bec', '#a55eea'];
+const ASSET_CLASSES = [
+  { label: 'Stocks', supportLine: '15,000+ supported', color: ASSET_PALETTE[0], icon: 'trending' },
+  { label: 'Crypto', supportLine: '10,000+ cryptos & tokens', color: ASSET_PALETTE[1], icon: 'crypto' },
+  { label: 'ETFs', supportLine: '5,000+ supported', color: ASSET_PALETTE[2], icon: 'suitcase' },
+  { label: 'Mutual Funds', supportLine: '10,000+ covered', color: ASSET_PALETTE[3], icon: 'pie' },
+  { label: 'Futures', supportLine: '2,000+', color: ASSET_PALETTE[4], icon: 'forward' },
+  { label: 'Commodities', supportLine: 'Gold, Silver, Copper, Palladium', color: ASSET_PALETTE[5], icon: 'medal' },
+  { label: 'Forex', supportLine: '150+ Currencies', color: ASSET_PALETTE[6], icon: 'yen' },
+  { label: 'Index Funds', supportLine: '3,000+ Indices', color: ASSET_PALETTE[7], icon: 'grid' },
+];
 ---
 
 <Layout
@@ -182,77 +195,329 @@ const logoEntries = LOGO_FILES.slice(0, LOGO_PLACEMENTS.length).map((file, i) =>
     </div>
   </Section>
 
-  <!-- Section 3: Portfolio Performance -->
+  <!-- True Diversification Is Multi-Asset -->
   <Section
-    heading="Track performance over time"
+    heading="True Diversification Is Multi-Asset"
     bg="stone"
+    class="!bg-gradient-to-b !from-[#ECECEC] !to-white dark:!bg-[#1B1B1B] dark:!from-[#1B1B1B] dark:!to-[#1B1B1B]"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Total returns (realized + unrealized gains)
-      - Performance by asset class
-      - Historical tracking
-      - Cost basis and gain/loss calculations
+    <div class="envelope-section flex flex-col md:flex-row md:items-center gap-6 md:gap-0 max-w-4xl mx-auto">
+      <div class="flex-1 min-w-0 space-y-4 text-center md:text-left">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Portfolio diversification isn't about owning 50 different stocks. It's about owning asset classes that don't move together. When markets fall, commodities often rise. When crypto crashes, bonds stay stable. When currencies shift, your forex positions adapt. That's how you protect wealth and capture opportunities across every market condition.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          The problem? No platform lets you trade everything. Your stocks are with one broker, crypto on an exchange, commodities and forex scattered elsewhere. Provider fragmentation is inevitable.<br />
+          <strong class="font-semibold text-neutral-800 dark:text-neutral-200">Finzen eliminates tracking fragmentation.</strong>
+        </p>
 
-      Keywords to weave in: portfolio performance, investment returns, portfolio analysis
-    */}
-    <div class="max-w-2xl space-y-4">
+        <div class="flex flex-col items-center py-2 md:hidden">
+          <div class="envelope-reveal-mobile budgeting-simple-img-wrap w-full max-w-[400px] rounded-lg overflow-hidden">
+            <img
+              src="/images/portfolio-tracker/diversification.png"
+              alt="Portfolio diversification"
+              class="w-full h-auto rounded-lg block dark:hidden"
+            />
+            <img
+              src="/images/portfolio-tracker/diversification.png"
+              alt="Portfolio diversification"
+              class="w-full h-auto rounded-lg block hidden dark:block"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:flex flex-shrink-0 w-[400px] md:-ml-8">
+        <div class="envelope-reveal-desktop budgeting-simple-img-wrap w-full rounded-lg overflow-hidden">
+          <img
+            src="/images/portfolio-tracker/diversification.png"
+            alt="Portfolio diversification"
+            class="w-full h-auto rounded-lg block dark:hidden"
+          />
+          <img
+            src="/images/portfolio-tracker/diversification.png"
+            alt="Portfolio diversification"
+            class="w-full h-auto rounded-lg hidden dark:block"
+          />
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Asset classes -->
+  <Section
+    heading="Asset classes"
+    align="center"
+    bg="stone"
+    class="!pt-8 md:!pt-12 asset-classes-section dark:!bg-gradient-to-b dark:!from-[#171717] dark:!to-[#1B1B1B]"
+  >
+    <p class="max-w-2xl mx-auto mb-8 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center">
+      A modern portfolio is more than just stocks. Track crypto, commodities, forex, and every asset class you invest in - all in one dashboard. No more app juggling. No more blind spots.
+    </p>
+    <div class="asset-classes-pills mb-10 flex flex-wrap justify-center gap-4 sm:gap-5">
+      {ASSET_CLASSES.map((item, i) => (
+        <span class="asset-class-pill-wrap">
+          <span
+            class="asset-class-pill"
+            style={{ '--pill-delay': `${i * 60}ms`, '--pill-color': item.color }}
+          >
+          <span class="asset-class-pill-circle" aria-hidden="true">
+            {item.icon === 'trending' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            )}
+            {item.icon === 'crypto' && (
+              <span class="asset-class-pill-xi" aria-hidden="true">Ξ</span>
+            )}
+            {item.icon === 'suitcase' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M8 11h8"/></svg>
+            )}
+            {item.icon === 'pie' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            )}
+            {item.icon === 'forward' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+            )}
+            {item.icon === 'medal' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14L10 14 12 16 12 20 2 20 2 16 2 14"/><path d="M12 14L20 14 22 16 22 20 12 20 12 16 12 14"/><path d="M6 6L14 6 16 8 16 12 6 12 6 8 6 6"/></svg>
+            )}
+            {item.icon === 'yen' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 5 4-5M12 8v12"/><path d="M6 11h12"/><path d="M6 15h12"/></svg>
+            )}
+            {item.icon === 'grid' && (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            )}
+          </span>
+          <span class="asset-class-pill-text">
+            <span class="asset-class-pill-label">{item.label}</span>
+            <span class="asset-class-pill-support">{item.supportLine}</span>
+          </span>
+        </span>
+        </span>
+      ))}
+    </div>
+    <div class="max-w-2xl mx-auto space-y-4 text-center">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: See your total portfolio performance — realized gains from sales, unrealized gains from current holdings. Know exactly how your investments are doing.]
+        Every asset class. Every account. One complete view. That's how you track real portfolio performance - not just individual positions in isolation.
+      </p>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const pills = document.querySelector('.asset-classes-pills');
+        if (!pills) return;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add('in-view');
+            });
+          },
+          { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
+        );
+        observer.observe(pills);
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add('in-view');
+            });
+          },
+          { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
+        );
+        const envelopeSection = document.querySelector('.envelope-section');
+        if (envelopeSection) revealObserver.observe(envelopeSection);
+        document.querySelectorAll('.method-image-reveal').forEach((el) => revealObserver.observe(el));
+      });
+    </script>
+  </Section>
+
+  <!-- See your money, clearly (from mindful-money-tracking) -->
+  <Section
+    heading="See your money, clearly"
+    subheading="Your data becomes visuals - no spreadsheets, no guesswork."
+    align="center"
+    class="!bg-white dark:!bg-[#171717]"
+  >
+    <div class="screenshot-pile flex justify-center items-end mb-12 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[180px] md:min-h-[220px] -mt-12 max-sm:-mt-16 md:-mt-6">
+      <div class="screenshot-in-left screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 z-0">
+        <img src="/images/mindful-money-tracking/cashflow_light.png" alt="Cash flow view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/cashflow_dark.png" alt="Cash flow view" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+      <div class="screenshot-in-bottom screenshot-card w-[200px] sm:w-[260px] md:w-[390px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-12 sm:-mr-16 md:-mr-12 mt-6 sm:mt-8 md:mt-10 z-10">
+        <img src="/images/mindful-money-tracking/networth_light.png" alt="Net worth view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/networth_dark.png" alt="Net worth view" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+      <div class="screenshot-in-right screenshot-card w-[154px] sm:w-[220px] md:w-[330px] aspect-video rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 z-0">
+        <img src="/images/mindful-money-tracking/spending_light.png" alt="Spending view" class="w-full h-full object-cover block dark:hidden" />
+        <img src="/images/mindful-money-tracking/spending_dark.png" alt="Spending view" class="w-full h-full object-cover hidden dark:block" />
+      </div>
+    </div>
+
+    <style>
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-80px) rotate(-8deg); }
+        to { opacity: 1; transform: translateX(0) rotate(-6deg); }
+      }
+      @keyframes slideInBottom {
+        from { opacity: 0; transform: translateY(60px) rotate(0deg); }
+        to { opacity: 1; transform: translateY(0) rotate(2deg); }
+      }
+      @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(80px) rotate(8deg); }
+        to { opacity: 1; transform: translateX(0) rotate(6deg); }
+      }
+      .screenshot-pile .screenshot-in-left {
+        opacity: 0;
+        transform: translateX(-80px) rotate(-8deg);
+      }
+      .screenshot-pile .screenshot-in-bottom {
+        opacity: 0;
+        transform: translateY(60px) rotate(0deg);
+      }
+      .screenshot-pile .screenshot-in-right {
+        opacity: 0;
+        transform: translateX(80px) rotate(8deg);
+      }
+      .screenshot-pile.in-view .screenshot-in-left {
+        animation: slideInLeft 0.7s ease-out forwards;
+      }
+      .screenshot-pile.in-view .screenshot-in-bottom {
+        animation: slideInBottom 0.7s ease-out 0.15s forwards;
+      }
+      .screenshot-pile.in-view .screenshot-in-right {
+        animation: slideInRight 0.7s ease-out 0.3s forwards;
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const pile = document.querySelector('.screenshot-pile');
+        if (!pile) return;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+              }
+            });
+          },
+          { rootMargin: '0px 0px -80px 0px', threshold: 0.1 }
+        );
+        observer.observe(pile);
+      });
+    </script>
+
+    <div class="max-w-2xl mx-auto space-y-8 md:space-y-6 mb-10">
+      <!-- Paragraph 1: Asset Classes -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Diversify your portfolio:</strong> equities (stocks, ETFs, Mutual Funds,...), real estate, commodities, and crypto. Each carries different risk and return profiles. Most investors start with equities through index funds - broad exposure, low fees, proven track record (around 10% returns per year).
+        </p>
+      </div>
+
+      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+
+      <!-- Paragraph 2: Active vs Passive -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M18 17V9"/>
+            <path d="M13 17V5"/>
+            <path d="M8 17v-3"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Active vs. passive investing:</strong> Active management (picking individual stocks) usually loses to passive strategies after fees. Diversification across assets and sectors reduces risk. Dollar-cost averaging (DCA) - investing the same amount regularly - removes timing decisions and emotion.
+        </p>
+      </div>
+
+      <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+
+      <!-- Paragraph 3: Track Portfolio -->
+      <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+          <strong>Track your portfolio.</strong> Monitor allocation, rebalance annually, understand what you own. Never invest more than you can afford to lose. Risk tolerance isn't theoretical - it's what lets you sleep at night when markets drop 20%.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto space-y-4">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Finzen turns your logged transactions into <strong>charts and reports</strong> that actually make sense. Sankey diagrams show cash flowing in and out. Net worth over time. Spending by category. Budget health at a glance. Portfolio performance and returns - all in one place.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Break down performance by asset class. Is your crypto outperforming stocks? Are commodities dragging? See it clearly.]
+        The goal isn't more data; it's <strong>visual storytelling</strong>. You see where your money goes, how your wealth grows, and where you're on track. Clarity without the clutter.
+      </p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
+        See how Finzen turns your data into charts: <a href="/personal-finance-charts" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">explore charts and reports</a>.
       </p>
     </div>
   </Section>
 
-  <!-- Section 4: Net Worth Tracking -->
-  <Section
-    heading="Your net worth, over time"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Assets minus liabilities = net worth
-      - Net worth timeline chart
-      - Watch your trajectory over months and years
-      - Include non-investment assets (cash, property)
-
-      Keywords to weave in: net worth tracking, networth, wealth tracker, wealth management
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Net worth = everything you own minus everything you owe. Finzen tracks this over time, showing your financial trajectory.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: The net worth timeline is one of the most motivating charts in personal finance. Watch it grow over months and years.]
-      </p>
-    </div>
-  </Section>
-
-  <!-- Section 5: Asset Allocation -->
-  <Section
-    heading="Visualize your allocation"
-    bg="stone"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Diversification breakdown by asset type
-      - See if you're overweight in any area
-      - Allocation changes over time
-      - Rebalancing insights
-
-      Keywords to weave in: asset allocation, portfolio allocation, portfolio breakdown
-    */}
-    <div class="max-w-2xl">
-      <FeatureList
-        columns={2}
-        features={[
-          { label: 'Allocation Breakdown', detail: '[COPY: Pie charts showing % in stocks, crypto, commodities, etc.]' },
-          { label: 'Diversification Check', detail: '[COPY: See if you are too concentrated in any single asset or class]' },
-          { label: 'Allocation Over Time', detail: '[COPY: Track how your allocation shifts as markets move]' },
-          { label: 'Rebalancing Visibility', detail: '[COPY: Know when your portfolio drifts from target allocation]' },
-        ]}
-      />
+  <!-- Why manual tracking (from mindful-money-tracking) -->
+  <Section bg="stone" class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <div class="method-image-reveal why-manual-tracking-img-wrap w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <img
+          src="/images/portfolio-tracker/metrics.png"
+          alt="Portfolio metrics and analytics"
+          class="w-full max-w-[340px] h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/portfolio-tracker/metrics.png"
+          alt="Portfolio metrics and analytics"
+          class="w-full max-w-[340px] h-auto rounded-lg hidden dark:block"
+        />
+      </div>
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+          Why manual tracking?
+        </h2>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Spending, saving, investing, debt - each entry is a decision you own. That awareness is the path to <strong>taking control of your finances</strong>.
+        </p>
+        <ul class="why-manual-tracking-list space-y-2 list-none pl-0 mt-1">
+          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Notice easy-to-miss patterns</span>
+          </li>
+          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>See where your money really goes</span>
+          </li>
+          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Feel connected to your cash flow and portfolio</span>
+          </li>
+          <li class="flex items-center gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="why-manual-tracking-check shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Discipline compounds into wisdom</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </Section>
 
@@ -451,5 +716,204 @@ const logoEntries = LOGO_FILES.slice(0, LOGO_PLACEMENTS.length).map((file, i) =>
       animation-duration: 0.2s;
       animation-delay: 0ms;
     }
+  }
+
+  /* Asset classes: wrapper does hover lift/scale so animation doesn't block transform */
+  .asset-classes-pills {
+    min-height: 4.5rem;
+  }
+  .asset-class-pill-wrap {
+    display: inline-flex;
+    transition: transform 0.25s ease;
+  }
+  .asset-class-pill-wrap:hover {
+    transform: translateY(-4px) scale(1.03);
+  }
+  .asset-class-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 1.5rem 0.75rem 0.625rem;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: rgb(38 38 38);
+    background: linear-gradient(145deg, #fafafa 0%, #f0f0f0 100%);
+    border: none;
+    border-radius: 9999px;
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.07),
+      5px 5px 12px rgba(140, 140, 140, 0.5),
+      -5px -5px 12px rgba(255, 255, 255, 0.95),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transition: box-shadow 0.25s ease;
+  }
+  .asset-class-pill-wrap:hover .asset-class-pill {
+    box-shadow:
+      0 4px 14px rgba(0, 0, 0, 0.09),
+      10px 10px 22px rgba(120, 120, 120, 0.4),
+      -10px -10px 22px rgba(255, 255, 255, 1),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+  }
+  .asset-class-pill-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: 50%;
+    background-color: var(--pill-color, #4b7bec);
+    color: white;
+    flex-shrink: 0;
+  }
+  .asset-class-pill-circle svg {
+    width: 18px;
+    height: 18px;
+  }
+  .asset-class-pill-xi {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1;
+    color: inherit;
+  }
+  .asset-class-pill-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+    padding-right: 0.25rem;
+  }
+  .asset-class-pill-label {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .asset-class-pill-support {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgb(115 115 115);
+  }
+  :root.dark .asset-class-pill-support {
+    color: rgb(163 163 163);
+  }
+  @media (max-width: 500px) {
+    .asset-class-pill-support {
+      display: none;
+    }
+  }
+  @media (max-width: 400px) {
+    .asset-class-pill {
+      gap: 0.5rem;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+      font-size: 0.9375rem;
+    }
+    .asset-class-pill-circle {
+      width: 2rem;
+      height: 2rem;
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+    .asset-class-pill-circle svg {
+      width: 14px;
+      height: 14px;
+    }
+    .asset-class-pill-xi {
+      font-size: 0.875rem;
+    }
+    .asset-class-pill-label {
+      font-size: 0.9375rem;
+    }
+  }
+  .asset-classes-pills.in-view .asset-class-pill {
+    animation: asset-pill-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--pill-delay, 0ms);
+  }
+  :root.dark .asset-class-pill {
+    color: rgb(226 232 240);
+    background: linear-gradient(145deg, #3d3d3d 0%, #2a2a2a 100%);
+    box-shadow:
+      5px 5px 12px rgba(0, 0, 0, 0.45),
+      -3px -3px 8px rgba(80, 80, 80, 0.2),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+  }
+  :root.dark .asset-class-pill-wrap:hover .asset-class-pill {
+    box-shadow:
+      10px 10px 24px rgba(0, 0, 0, 0.55),
+      -5px -5px 14px rgba(80, 80, 80, 0.15),
+      inset 2px 2px 4px rgba(255, 255, 255, 0.07);
+  }
+  @keyframes asset-pill-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* True Diversification: image from right (desktop) / below (mobile) */
+  .envelope-reveal-mobile {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .envelope-reveal-desktop {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .envelope-section.in-view .envelope-reveal-mobile,
+  .envelope-section.in-view .envelope-reveal-desktop {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  /* Why manual tracking: image from left (desktop) / below (mobile) */
+  .method-image-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  @media (min-width: 768px) {
+    .method-image-reveal {
+      transform: translateX(-40px);
+    }
+  }
+  .method-image-reveal.in-view {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  /* Budgeting made simple: same drop-shadow as Why manual tracking */
+  .budgeting-simple-img-wrap img {
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+  }
+  :root.dark .budgeting-simple-img-wrap img {
+    filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.35)) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+  }
+
+  /* Why manual tracking: image drop-shadow (follows transparency) */
+  .why-manual-tracking-img-wrap img {
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+  }
+  :root.dark .why-manual-tracking-img-wrap img {
+    filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.35)) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+  }
+
+  /* Why manual tracking: checkmark aligned with first line of text */
+  .why-manual-tracking-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(163 163 163);
+    flex-shrink: 0;
+  }
+  :global(.dark) .why-manual-tracking-list .why-manual-tracking-check {
+    color: rgb(255 255 255);
   }
 </style>
