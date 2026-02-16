@@ -81,6 +81,7 @@ export const pages: Record<string, PageMeta> = {
     footerLabel: 'Portfolio & Net Worth',
     inFooter: true,
     siblings: ['budgetingApp', 'personalFinanceCharts', 'secureFinanceApp'],
+    ogImage: '/images/portfolio-tracker/portfolio_og.png',
   },
 
   personalFinanceGuide: {

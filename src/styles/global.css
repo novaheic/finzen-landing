@@ -80,3 +80,42 @@
   display: flex !important;
   color: #ffffff;
 }
+
+/* Portfolio tracker FAQ accordion (global so it applies inside Section slot) */
+#pt-faq .faq-accordion .faq-question {
+  margin: 0;
+}
+#pt-faq .faq-accordion .faq-answer {
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 0;
+}
+#pt-faq .faq-accordion .faq-item-open .faq-answer {
+  max-height: 32rem;
+  opacity: 1;
+}
+#pt-faq .faq-accordion .faq-icon {
+  transition: transform 0.2s ease;
+}
+#pt-faq .faq-accordion .faq-item-open .faq-icon {
+  transform: rotate(180deg);
+}
+#pt-faq .faq-accordion .faq-trigger:hover .faq-icon {
+  color: rgb(115 115 115);
+}
+.dark #pt-faq .faq-accordion .faq-trigger:hover .faq-icon {
+  color: rgb(163 163 163);
+}
+
+/* CTA card reveal (from below) — used on budgeting-app, portfolio-tracker, etc. */
+.cta-card-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.cta-card-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}

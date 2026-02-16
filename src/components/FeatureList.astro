@@ -30,22 +30,26 @@ interface Props {
   columns?: 1 | 2;
   /** Card background: default (neutral) or white in light mode */
   cardBg?: 'default' | 'white';
+  /** When set, wrapper and each card get this class (and -item) for scroll reveal animation */
+  revealClassName?: string;
 }
 
-const { heading, features, columns = 1, cardBg = 'default' } = Astro.props;
+const { heading, features, columns = 1, cardBg = 'default', revealClassName } = Astro.props;
 
 const gridClass = columns === 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'space-y-3';
 const cardBgClass = cardBg === 'white' ? 'bg-white dark:bg-neutral-800' : 'bg-neutral-100 dark:bg-neutral-800';
+const wrapperClass = revealClassName ? revealClassName : '';
+const itemClass = revealClassName ? `${revealClassName}-item` : '';
 ---
 
-<div>
+<div class={wrapperClass}>
   {heading && (
     <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">{heading}</h3>
   )}
 
   <ul class={gridClass} role="list">
     {features.map((feature) => (
-      <li class={`flex items-start gap-3 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700 ${cardBgClass} text-left`}>
+      <li class={`${itemClass} flex items-start gap-3 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700 ${cardBgClass} text-left`}>
         <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
           {feature.icon ? (
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="text-white dark:text-neutral-900">

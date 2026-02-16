@@ -17,7 +17,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages, APP_URL } from '@/data/pages';
+import { pages, APP_URL, SITE_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import FeatureList from '@/components/FeatureList.astro';
@@ -25,6 +25,45 @@ import CTABlock from '@/components/CTABlock.astro';
 import SiblingLinks from '@/components/SiblingLinks.astro';
 
 const meta = pages.portfolioTracker;
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How do you calculate risk-adjusted returns, and why is it better than just looking at total returns?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Risk-adjusted returns measure how much return you earned relative to the volatility (risk) you took to get there. A portfolio that returned 15% with low volatility is often better than one that returned 20% with massive swings, especially if those swings would have caused you to panic-sell at the bottom. The most common metric is the Sharpe ratio: (return minus risk-free rate) divided by volatility. A higher Sharpe means you\'re earning more return per unit of risk. Two portfolios with identical returns can have very different risk profiles. One might be a steady climb, the other a white-knuckle rollercoaster. Risk-adjusted metrics reveal which strategy is actually superior.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What's a healthy asset allocation for a diversified multi-asset portfolio?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "There's no one-size-fits-all answer. It depends on your age, risk tolerance, time horizon, and financial goals. Traditional advice suggests stocks/bonds ratios based on age (e.g., \"110 minus your age\" in stocks), but modern portfolios often include crypto (5-10% for aggressive investors), commodities (5-15% as inflation hedges), and alternative assets. The key principle: hold asset classes that don't move in perfect correlation. When stocks fall, commodities or forex might rise. Younger investors can tolerate more volatility and might go 60-70% equities, 10-15% crypto, 10-15% commodities, 5-10% cash. Older investors might prefer 40% stocks, 30% bonds, 20% commodities, 10% cash. Regular rebalancing (quarterly or semi-annually) maintains your target allocation as different assets outperform.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What's annualized volatility and how does it help me understand my portfolio risk?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Annualized volatility measures how much your portfolio value fluctuates over time, expressed as a percentage. A portfolio with 15% annualized volatility means you can expect the value to swing up or down by roughly 15% in a typical year. Low volatility (5-10%) suggests stable, predictable returns, think bonds or dividend stocks. High volatility (30-50%+) means wild swings, common with crypto or individual growth stocks. Knowing your portfolio's volatility helps you: (1) assess if you can stomach the ups and downs psychologically, (2) compare different investment strategies on a risk-adjusted basis, and (3) size positions appropriately. A volatile asset shouldn't dominate your portfolio. Volatility isn't inherently bad, but you need to know what you're signing up for.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What's portfolio concentration risk and how much is too much in one asset?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Concentration risk is when a single asset, sector, or asset class dominates your portfolio. If it crashes, you're in trouble. Classic example: Enron employees with 60% of retirement in company stock. In multi-asset portfolios, concentration often creeps in unintentionally. Maybe crypto boomed and now represents 40% of your net worth even though you only invested 10%. General guidelines: no single stock should exceed 5-10% of your portfolio, no single asset class should exceed 50-60% (except for very young, aggressive investors), and no single sector should dominate. Geographic concentration also matters. Don't put everything in your home country. The right concentration level depends on risk tolerance and time horizon, but if losing 50% of one position would derail your financial plans, you're too concentrated.",
+      },
+    },
+  ],
+});
 
 // Logo assets from personal-finance-charts (60px width, max 60px height)
 const LOGO_BASE = '/images/personal-finance-charts/assets';
@@ -105,11 +144,34 @@ const ASSET_CLASSES = [
   title={meta.title}
   description={meta.description}
   canonical={`/${meta.slug}`}
+  ogImage={meta.ogImage}
+  keywords={meta.keywords}
 >
+
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: meta.title,
+      description: meta.description,
+      url: `${SITE_URL}/${meta.slug}`,
+    })}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Portfolio Tracker', item: `${SITE_URL}/${meta.slug}` },
+      ],
+    })}
+  </script>
+  <script type="application/ld+json" set:html={faqSchema} />
 
   <AngleHero
     title="Live Multi-Asset Portfolio Tracking"
-    subtitle="Track stocks, crypto, ETFs, commodities, forex, and more in one beautiful dashboard. Always see your networth and portfolio in real time"
+    subtitle="Track stocks, crypto, ETFs, commodities, forex, and more in one beautiful dashboard. Always see your net worth and portfolio in real time"
     keyword="investment & portfolio tracker"
   />
 
@@ -117,10 +179,14 @@ const ASSET_CLASSES = [
   <div class="hero-with-logos -mt-56 md:-mt-[23rem] mb-0 relative z-10 w-full min-h-[280px] md:min-h-[320px] flex items-center justify-center overflow-visible">
     <!-- Logo layer: spread left/right, some overlapping center, behind/in front of laptop -->
     <div class="hero-logos-layer absolute inset-0 pointer-events-none" aria-hidden="true">
-      {logoEntries.map(({ file, left, top, scale, blur, z, shadow, delay }) => (
+      {logoEntries.map(({ file, left, top, scale, blur, z, shadow, delay }, i) => {
+        const floatDurations = [5, 6, 7, 4, 6, 5.5, 7, 4.5, 6, 5, 7, 5.5];
+        const doesFloat = i % 4 !== 0;
+        return (
         <div
           class="hero-logo-wrap"
           data-side={left < 50 ? 'left' : 'right'}
+          data-float={doesFloat ? 'yes' : 'no'}
           style={{
             '--logo-left': `${left}%`,
             '--logo-top': `${top}%`,
@@ -129,6 +195,10 @@ const ASSET_CLASSES = [
             '--logo-shadow': shadow,
             '--logo-z': z,
             '--logo-delay': `${delay}ms`,
+            ...(doesFloat && {
+              '--float-duration': `${floatDurations[i % floatDurations.length]}s`,
+              '--float-phase': String((i * 0.17) % 1),
+            }),
           }}
         >
           <img
@@ -140,7 +210,8 @@ const ASSET_CLASSES = [
             loading="eager"
           />
         </div>
-      ))}
+        );
+      })}
     </div>
     <!-- Laptop image (center, on top of back logos) -->
     <div class="hero-laptop-wrap relative z-20 flex justify-center w-full px-0">
@@ -183,6 +254,7 @@ const ASSET_CLASSES = [
     <div class="max-w-2xl mx-auto">
       <FeatureList
         columns={2}
+        revealClassName="stop-guessing-cards"
         features={[
           { label: 'All Major Asset Classes', detail: 'Track stocks, crypto, ETFs, commodities, forex, and futures in one unified dashboard; no more juggling apps.' },
           { label: 'Visual Insights', detail: 'Transform complex portfolio data into beautiful diagrams, performance charts, and interactive analytics.' },
@@ -328,6 +400,14 @@ const ASSET_CLASSES = [
         const envelopeSection = document.querySelector('.envelope-section');
         if (envelopeSection) revealObserver.observe(envelopeSection);
         document.querySelectorAll('.method-image-reveal').forEach((el) => revealObserver.observe(el));
+        const privacySection = document.querySelector('.privacy-section');
+        if (privacySection) revealObserver.observe(privacySection);
+        const stepsSection = document.querySelector('.steps-section');
+        if (stepsSection) revealObserver.observe(stepsSection);
+        const ctaCard = document.querySelector('.cta-card-reveal');
+        if (ctaCard) revealObserver.observe(ctaCard);
+        const stopGuessingCards = document.querySelector('.stop-guessing-cards');
+        if (stopGuessingCards) revealObserver.observe(stopGuessingCards);
       });
     </script>
   </Section>
@@ -565,52 +645,437 @@ const ASSET_CLASSES = [
     </div>
   </Section>
 
-  <!-- Section 6: Why No Broker Sync -->
+  <!-- Section 6: Privacy-first investment tracking -->
   <Section
-    heading="Privacy-first portfolio tracking"
+    heading="Privacy-First Investment Tracking"
+    subheading="Your Portfolio Data Stays Yours"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Why Finzen doesn't connect to brokers
-      - Manual entry = you control what's tracked
-      - Security through isolation
-      - Your broker credentials stay with you
-
-      Link to: Privacy-First Finance page
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen doesn't connect to your brokerage accounts. That's intentional. You enter your holdings manually — which means your broker credentials never leave your broker.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: This is a security boundary, not a limitation. Your financial data stays encrypted and isolated.]
-      </p>
+    <div class="privacy-section flex flex-col md:flex-row md:items-center gap-6 md:gap-8 max-w-4xl">
+      <div class="flex-1 min-w-0 space-y-4">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Most portfolio trackers need access to your accounts. One breach, total exposure. Some fintechs sell your holding data outright.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Finzen encrypts everything client-side with AES-256 before transmission. Zero-knowledge architecture means encryption keys never touch our servers. No broker sync, no exchange API, EU-based under GDPR. We physically cannot decrypt your portfolio data.
+        </p>
+        <p class="text-base font-bold text-neutral-900 dark:text-neutral-100 leading-relaxed">
+          Your investments. Your data. Your control.
+        </p>
+        <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-2">
+          <a href="/secure-finance-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">Privacy & Security →</a>
+        </p>
+      </div>
+      <div class="privacy-security-reveal flex-shrink-0 w-full max-w-[320px] md:max-w-[280px] md:w-auto mx-auto md:mx-0">
+        <img
+          src="/images/mindful-money-tracking/security.png"
+          alt="Privacy-first: your data stays with you"
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
     </div>
   </Section>
 
-  <!-- Section 7: Combined with Budgeting -->
+  <!-- Section 7: From Investment Growth to Budget Control -->
   <Section
-    heading="Investments + budgeting in one app"
+    heading="From Investment Growth to Budget Control"
+    align="center"
     bg="stone"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Most portfolio trackers ignore budgeting
-      - Finzen shows how your budget feeds your investments
-      - Complete financial picture
-      - Link to Budget & Expense Tracker page
-    */}
-    <div class="max-w-2xl space-y-4">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-4 max-w-4xl mx-auto">
+      <!-- Card 1: Investments -->
+      <div class="budget-report-card w-full md:flex-1 max-w-sm flex flex-col items-center text-center rounded-2xl p-8 md:py-10 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-20 h-20 rounded-2xl bg-neutral-100 dark:bg-neutral-800 grid place-items-center mb-5 text-neutral-600 dark:text-neutral-400 flex-shrink-0" aria-hidden="true">
+          <svg class="w-10 h-10 block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMid meet">
+            <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3">Investments</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Track portfolio performance, returns, and allocation. See real-time net worth, analyze risk-adjusted metrics, and project future wealth across all asset classes.
+        </p>
+      </div>
+
+      <!-- Plus in circle: middle on desktop, between cards on mobile -->
+      <div class="flex-shrink-0 w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-neutral-600 dark:text-neutral-300" aria-hidden="true">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </div>
+
+      <!-- Card 2: Budget -->
+      <div class="budget-report-card w-full md:flex-1 max-w-sm flex flex-col items-center text-center rounded-2xl p-8 md:py-10 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-20 h-20 rounded-2xl bg-neutral-100 dark:bg-neutral-800 grid place-items-center mb-5 text-neutral-600 dark:text-neutral-400 flex-shrink-0" aria-hidden="true">
+          <svg class="w-10 h-10 block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMid meet">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3">Budget</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Know your spending baseline, cashflow, and what's truly available to invest. Envelope budgeting shows your runway and prevents investing money you might need.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto mt-10 text-center">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Portfolio trackers usually ignore budgeting. Budgeting apps usually ignore investments. Finzen does both — so you can see how your monthly budget feeds your long-term wealth building.]
+        You can't build a solid investment strategy without knowing your spending reality. How much can you safely invest this month? That depends on your cashflow. How large should your cash reserves be before adding to risky assets? That depends on your actual monthly expenses. Investing and budgeting aren't separate problems. Track your portfolio to measure growth, but track your budget to know what you can afford to risk - and what you need to keep liquid.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mt-4 font-bold text-neutral-800 dark:text-neutral-200">
+        Finzen keeps it connected so your investment decisions are based on reality, not guesses.
+      </p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
+        <a href="/budgeting-app" class="underline hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">Learn more about budgeting and cashflow →</a>
       </p>
     </div>
   </Section>
 
+  <!-- Track Everything in 3 Steps (portfolio-tracker angle) -->
+  <Section
+    heading="Track Everything in 3 Steps"
+    subheading="Simple setup. Daily awareness. Long-term clarity."
+  >
+    <div class="steps-section max-w-3xl mx-auto space-y-12">
+
+      <!-- Step 1: Add Your Accounts -->
+      <div class="space-y-3 text-center md:text-left">
+        <div class="flex items-center justify-center gap-3 md:justify-start">
+          <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
+            <span class="text-lg font-semibold text-white dark:text-neutral-900">1</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Add Your Accounts</h3>
+        </div>
+        <div class="flex flex-col text-center md:flex-row md:items-center md:gap-6 md:text-left">
+          <div class="space-y-3 md:flex-1 md:min-w-0 mb-4 md:mb-0">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Set up your investment accounts, crypto wallets, and asset holdings once. Takes 5–10 minutes. No account connections - just input your assets.
+            </p>
+          </div>
+          <div class="step-image-reveal step-image-reveal-1 flex justify-center md:flex-shrink-0 md:mb-0">
+            <img
+              src="/images/portfolio-tracker/pencil.png"
+              alt="Add your investment accounts and asset holdings"
+              class="w-[80px] h-auto rounded-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center py-0 my-0 -mt-8" aria-hidden="true">
+        <svg class="w-5 h-5 text-neutral-400 dark:text-neutral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </div>
+
+      <!-- Step 2: Log Daily Activity -->
+      <div class="space-y-3 text-center md:text-left">
+        <div class="flex items-center justify-center gap-3 md:justify-start">
+          <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
+            <span class="text-lg font-semibold text-white dark:text-neutral-900">2</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Log Daily Activity</h3>
+        </div>
+        <div class="flex flex-col text-center md:flex-row md:items-center md:gap-6 md:text-left">
+          <div class="space-y-3 md:flex-1 md:min-w-0 mb-4 md:mb-0">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Spend 2–3 minutes recording your transactions. Quick manual entry keeps you connected to every decision and transaction.
+            </p>
+          </div>
+          <div class="step-image-reveal step-image-reveal-2 flex justify-center md:flex-shrink-0 md:mb-0">
+            <img
+              src="/images/mindful-money-tracking/daily-ritual.png"
+              alt="Log daily transactions in 2–3 minutes"
+              class="w-[80px] h-auto rounded-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center py-0 my-0 -mt-8" aria-hidden="true">
+        <svg class="w-5 h-5 text-neutral-400 dark:text-neutral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </div>
+
+      <!-- Step 3: Review & Optimize -->
+      <div class="space-y-3 text-center md:text-left">
+        <div class="flex items-center justify-center gap-3 md:justify-start">
+          <div class="w-10 h-10 rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center flex-shrink-0">
+            <span class="text-lg font-semibold text-white dark:text-neutral-900">3</span>
+          </div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Review & Optimize</h3>
+        </div>
+        <div class="flex flex-col text-center md:flex-row md:items-center md:gap-6 md:text-left">
+          <div class="space-y-3 md:flex-1 md:min-w-0 mb-4 md:mb-0">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Check your dashboard to see performance trends, rebalance allocations, and track progress toward your financial goals.
+            </p>
+          </div>
+          <div class="step-image-reveal step-image-reveal-3 flex justify-center md:flex-shrink-0 md:mb-0">
+            <img
+              src="/images/mindful-money-tracking/observe.png"
+              alt="Review dashboard and track progress toward your goals"
+              class="w-[80px] h-auto rounded-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </Section>
+
+  <!-- Testimonials (from mindful-money-tracking) -->
+  <Section
+    heading="Trusted by Investors Worldwide"
+    bg="stone"
+    align="center"
+  >
+    <!-- Three neumorphic review cards: wider, 3 in a row when space; 2 + 1 when it doesn't fit; stacked on mobile -->
+    <div class="review-pile flex flex-wrap items-stretch justify-center gap-y-8 gap-x-4 md:gap-6 max-w-5xl mx-auto mb-10 px-4">
+      <div class="review-card w-full min-w-0 sm:min-w-[280px] flex-[1_1_320px] max-w-[360px] rounded-xl p-5 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden flex-shrink-0 ring-1 ring-neutral-200 dark:ring-neutral-700" aria-hidden="true">
+            <img src="/images/portfolio-tracker/reviews/Lisa.png" alt="" width="40" height="40" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 min-w-0 text-left">
+            <p class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 text-left">Lisa Chen</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 text-left flex items-center gap-1">
+              <span>31</span>
+              <span>•</span>
+              <svg width="16" height="12" viewBox="0 0 16 12" class="inline-block flex-shrink-0 rounded-sm">
+                <rect width="16" height="6" fill="#ED2939"/>
+                <rect y="6" width="16" height="6" fill="#fff"/>
+              </svg>
+              <span>Singapore</span>
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed text-left">"Went from financial anxiety to actual clarity. Seeing my crypto, stocks, and emergency fund in one dashboard helped me realize I was over-invested in volatile assets. Rebalanced in a week. Sleeping better now."</p>
+      </div>
+      <div class="review-card review-card-center w-full min-w-0 sm:min-w-[280px] flex-[1_1_320px] max-w-[360px] rounded-xl p-5 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden flex-shrink-0 ring-1 ring-neutral-200 dark:ring-neutral-700" aria-hidden="true">
+            <img src="/images/portfolio-tracker/reviews/Miguel.png" alt="" width="40" height="40" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 min-w-0 text-left">
+            <p class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 text-left">Miguel A.</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 text-left flex items-center gap-1">
+              <span>34</span>
+              <span>•</span>
+              <svg width="16" height="12" viewBox="0 0 16 12" class="inline-block flex-shrink-0 rounded-sm">
+                <rect width="16" height="4" fill="#AA151B"/>
+                <rect y="4" width="16" height="4" fill="#F1BF00"/>
+                <rect y="8" width="16" height="4" fill="#AA151B"/>
+              </svg>
+              <span>Spain</span>
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed text-left">"I was using five different apps and still had no idea if I was diversified properly. Finzen's asset allocation view showed me I had 60% in crypto and almost nothing in stable assets. Wake-up call I needed. And the privacy model is perfect for EU users."</p>
+      </div>
+      <div class="review-card w-full min-w-0 sm:min-w-[280px] flex-[1_1_320px] max-w-[360px] rounded-xl p-5 bg-white dark:bg-neutral-900 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)]">
+        <div class="flex items-start gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden flex-shrink-0 ring-1 ring-neutral-200 dark:ring-neutral-700" aria-hidden="true">
+            <img src="/images/portfolio-tracker/reviews/Marcus.png" alt="" width="40" height="40" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 min-w-0 text-left">
+            <p class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 text-left">Marcus T.</p>
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 text-left flex items-center gap-1">
+              <span>28</span>
+              <span>•</span>
+              <svg width="16" height="12" viewBox="0 0 16 12" class="inline-block flex-shrink-0 rounded-sm">
+                <rect width="16" height="4" fill="#000"/>
+                <rect y="4" width="16" height="4" fill="#DD0000"/>
+                <rect y="8" width="16" height="4" fill="#FFCE00"/>
+              </svg>
+              <span>Germany</span>
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed text-left">"I was tracking crypto in Delta, stocks in Yahoo Finance, and my gold holdings in a spreadsheet. Finzen finally gave me one place to see my actual net worth. The portfolio dashboard is incredible."</p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ (portfolio & risk) -->
+  <Section
+    heading="Common questions"
+    align="center"
+  >
+    <div id="pt-faq">
+    <dl class="faq-accordion max-w-2xl mx-auto space-y-1 text-left" itemscope itemtype="https://schema.org/FAQPage">
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-1"
+            id="faq-question-1"
+          >
+            <span itemprop="name">How do you calculate risk-adjusted returns, and why is it better than just looking at total returns?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-1" class="faq-answer" role="region" aria-labelledby="faq-question-1" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Risk-adjusted returns measure how much return you earned relative to the volatility (risk) you took to get there. A portfolio that returned 15% with low volatility is often better than one that returned 20% with massive swings, especially if those swings would have caused you to panic-sell at the bottom. The most common metric is the Sharpe ratio: (return minus risk-free rate) divided by volatility. A higher Sharpe means you're earning more return per unit of risk. Two portfolios with identical returns can have very different risk profiles. One might be a steady climb, the other a white-knuckle rollercoaster. Risk-adjusted metrics reveal which strategy is actually superior.
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-2"
+            id="faq-question-2"
+          >
+            <span itemprop="name">What's a healthy asset allocation for a diversified multi-asset portfolio?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-2" class="faq-answer" role="region" aria-labelledby="faq-question-2" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              There's no one-size-fits-all answer. It depends on your age, risk tolerance, time horizon, and financial goals. Traditional advice suggests stocks/bonds ratios based on age (e.g., "110 minus your age" in stocks), but modern portfolios often include crypto (5-10% for aggressive investors), commodities (5-15% as inflation hedges), and alternative assets. The key principle: hold asset classes that don't move in perfect correlation. When stocks fall, commodities or forex might rise. Younger investors can tolerate more volatility and might go 60-70% equities, 10-15% crypto, 10-15% commodities, 5-10% cash. Older investors might prefer 40% stocks, 30% bonds, 20% commodities, 10% cash. Regular rebalancing (quarterly or semi-annually) maintains your target allocation as different assets outperform.
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-3"
+            id="faq-question-3"
+          >
+            <span itemprop="name">What's annualized volatility and how does it help me understand my portfolio risk?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-3" class="faq-answer" role="region" aria-labelledby="faq-question-3" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Annualized volatility measures how much your portfolio value fluctuates over time, expressed as a percentage. A portfolio with 15% annualized volatility means you can expect the value to swing up or down by roughly 15% in a typical year. Low volatility (5-10%) suggests stable, predictable returns, think bonds or dividend stocks. High volatility (30-50%+) means wild swings, common with crypto or individual growth stocks. Knowing your portfolio's volatility helps you: (1) assess if you can stomach the ups and downs psychologically, (2) compare different investment strategies on a risk-adjusted basis, and (3) size positions appropriately. A volatile asset shouldn't dominate your portfolio. Volatility isn't inherently bad, but you need to know what you're signing up for.
+            </p>
+          </div>
+        </dd>
+      </div>
+
+      <div
+        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <dt class="faq-question">
+          <button
+            type="button"
+            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
+            aria-expanded="false"
+            aria-controls="faq-answer-4"
+            id="faq-question-4"
+          >
+            <span itemprop="name">What's portfolio concentration risk and how much is too much in one asset?</span>
+            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l4 4 4-4"/>
+              </svg>
+            </span>
+          </button>
+        </dt>
+        <dd id="faq-answer-4" class="faq-answer" role="region" aria-labelledby="faq-question-4" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
+            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Concentration risk is when a single asset, sector, or asset class dominates your portfolio. If it crashes, you're in trouble. Classic example: Enron employees with 60% of retirement in company stock. In multi-asset portfolios, concentration often creeps in unintentionally. Maybe crypto boomed and now represents 40% of your net worth even though you only invested 10%. General guidelines: no single stock should exceed 5-10% of your portfolio, no single asset class should exceed 50-60% (except for very young, aggressive investors), and no single sector should dominate. Geographic concentration also matters. Don't put everything in your home country. The right concentration level depends on risk tolerance and time horizon, but if losing 50% of one position would derail your financial plans, you're too concentrated.
+            </p>
+          </div>
+        </dd>
+      </div>
+    </dl>
+
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function () {
+        var accordion = document.querySelector('#pt-faq .faq-accordion');
+        if (!accordion) return;
+        var items = accordion.querySelectorAll('.faq-item');
+        var openClass = 'faq-item-open';
+
+        function closeAll() {
+          items.forEach(function (item) {
+            item.classList.remove(openClass);
+            var btn = item.querySelector('.faq-trigger');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        function openItem(item) {
+          closeAll();
+          item.classList.add(openClass);
+          var btn = item.querySelector('.faq-trigger');
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+        }
+
+        function toggleItem(item) {
+          var isOpen = item.classList.contains(openClass);
+          if (isOpen) closeAll();
+          else openItem(item);
+        }
+
+        items.forEach(function (item) {
+          var btn = item.querySelector('.faq-trigger');
+          if (!btn) return;
+          btn.addEventListener('click', function () { toggleItem(item); });
+        });
+      });
+    </script>
+    </div>
+  </Section>
 
   <CTABlock
-    heading="See your complete portfolio"
-    subtext="Stocks, crypto, commodities, forex — all in one view. No broker connection required."
+    heading="Start Tracking Your Portfolio"
+    subtext="Stop guessing at your portfolio performance. Track stocks, crypto, commodities, and every asset class in one private dashboard. Get institutional-grade analytics without the institutional fees. Start tracking your complete wealth today."
+    card
+    showBranding
+    buttonVariant="outline"
+    imageLight="/images/portfolio-tracker/hero_light.png"
+    imageDark="/images/portfolio-tracker/hero_dark.png"
+    imageAlt="Portfolio tracker"
+    animateReveal
   />
 
   <SiblingLinks slugs={meta.siblings} />
@@ -648,6 +1113,19 @@ const ASSET_CLASSES = [
     /* drop-shadow follows logo shape (no square halo on transparent/non-square logos) */
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, calc(0.15 * var(--logo-shadow))))
             drop-shadow(0 2px 4px rgba(0, 0, 0, calc(0.1 * var(--logo-shadow))));
+  }
+
+  /* Only logos with data-float="yes" get the subtle drift; each has different duration and phase */
+  .hero-logo-wrap[data-float="yes"] .hero-logo-img {
+    animation: hero-logo-float var(--float-duration, 6s) ease-in-out infinite;
+    animation-delay: calc(1200ms + var(--logo-delay, 0ms) + (var(--float-phase, 0) * 5000ms));
+  }
+
+  @keyframes hero-logo-float {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(4px, -4px); }
+    50% { transform: translate(-3px, 3px); }
+    75% { transform: translate(3px, 4px); }
   }
 
   .hero-laptop-wrap {
@@ -917,6 +1395,53 @@ const ASSET_CLASSES = [
     transform: translate(0);
   }
 
+  /* Privacy-first section: image from right */
+  .privacy-security-reveal {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .privacy-section.in-view .privacy-security-reveal {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  /* Track Everything in 3 Steps: images from right (desktop) / below (mobile) */
+  .step-image-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  @media (min-width: 768px) {
+    .step-image-reveal {
+      transform: translateX(60px);
+    }
+  }
+  .steps-section.in-view .step-image-reveal {
+    opacity: 1;
+    transform: translate(0);
+  }
+  .step-image-reveal-1 { transition-delay: 0ms; }
+  .step-image-reveal-2 { transition-delay: 180ms; }
+  .step-image-reveal-3 { transition-delay: 360ms; }
+
+  /* Stop Guessing. Start Knowing.: 6 cards animate in one after the other */
+  .stop-guessing-cards-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .stop-guessing-cards.in-view .stop-guessing-cards-item {
+    opacity: 1;
+    transform: translate(0);
+  }
+  .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(1) { transition-delay: 0ms; }
+  .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(2) { transition-delay: 80ms; }
+  .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(3) { transition-delay: 160ms; }
+  .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(4) { transition-delay: 240ms; }
+  .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(5) { transition-delay: 320ms; }
+  .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(6) { transition-delay: 400ms; }
+
   /* Why manual tracking: image from left (desktop) / below (mobile) */
   .method-image-reveal {
     opacity: 0;
@@ -1017,4 +1542,5 @@ const ASSET_CLASSES = [
   .why-manual-tracking-list .why-manual-tracking-check {
     margin-top: 0.2em;
   }
+
 </style>
