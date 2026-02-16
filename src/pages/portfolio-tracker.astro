@@ -55,29 +55,30 @@ const LOGO_FILES = [
 
 // Placement: left %, top %, scale, blur(px), zIndex, shadow strength, animation delay (ms)
 // Balanced: 11 left (0–32%), 11 right (66–100%). Sharp (blur: 0): Bitcoin, JPY, Nvidia, Apple, Google, Microsoft, ethereum, GameStop, Chainlink, Tsmc.
+// Delays compressed so last icons come in sooner (total sequence ~1.4s instead of ~2s)
 const LOGO_PLACEMENTS: Array<{ left: number; top: number; scale: number; blur: number; z: number; shadow: number; delay: number }> = [
-  { left: 6, top: 15, scale: 0.78, blur: 3, z: 2, shadow: 0.45, delay: 80 },   // 0 aave
-  { left: 10, top: 70, scale: 0.88, blur: 2, z: 2, shadow: 0.55, delay: 140 }, // 1 Amazon
-  { left: 14, top: 42, scale: 0.95, blur: 0, z: 3, shadow: 0.65, delay: 200 },  // 2 Apple
-  { left: 18, top: 78, scale: 0.72, blur: 3, z: 1, shadow: 0.4, delay: 260 },   // 3 avalanche
-  { left: 8, top: 28, scale: 0.92, blur: 0, z: 3, shadow: 0.7, delay: 320 },   // 4 Bitcoin
-  { left: 22, top: 55, scale: 0.8, blur: 2, z: 2, shadow: 0.5, delay: 380 },   // 5 Bitcoin_Cash
-  { left: 68, top: 18, scale: 0.7, blur: 3, z: 1, shadow: 0.35, delay: 440 },   // 6 bnb (right)
-  { left: 70, top: 58, scale: 0.74, blur: 3, z: 1, shadow: 0.4, delay: 500 },   // 7 business (right)
-  { left: 75, top: 62, scale: 0.9, blur: 0, z: 3, shadow: 0.6, delay: 560 },    // 8 Chainlink (right)
-  { left: 94, top: 78, scale: 0.76, blur: 2, z: 2, shadow: 0.45, delay: 620 },  // 9 dollar-sign (right)
-  { left: 20, top: 35, scale: 0.82, blur: 0, z: 2, shadow: 0.5, delay: 680 },   // 10 ethereum
-  { left: 66, top: 44, scale: 0.78, blur: 2, z: 2, shadow: 0.48, delay: 740 },  // 11 euro (right)
-  { left: 4, top: 50, scale: 0.8, blur: 0, z: 2, shadow: 0.5, delay: 800 },      // 12 GameStop
-  { left: 24, top: 26, scale: 0.9, blur: 0, z: 3, shadow: 0.65, delay: 860 },   // 13 Google
-  { left: 78, top: 22, scale: 0.88, blur: 0, z: 3, shadow: 0.65, delay: 920 },  // 14 jpy
-  { left: 28, top: 74, scale: 0.92, blur: 0, z: 3, shadow: 0.7, delay: 980 },   // 15 Microsoft
-  { left: 72, top: 36, scale: 0.8, blur: 3, z: 1, shadow: 0.45, delay: 1040 },  // 16 monero (right)
-  { left: 80, top: 48, scale: 0.9, blur: 0, z: 3, shadow: 0.65, delay: 520 },   // 17 Nvidia (earlier animation)
-  { left: 32, top: 38, scale: 0.76, blur: 2, z: 2, shadow: 0.48, delay: 160 },  // 18 SAP
-  { left: 82, top: 70, scale: 0.84, blur: 2, z: 2, shadow: 0.52, delay: 220 },   // 19 solana (right)
-  { left: 92, top: 54, scale: 0.78, blur: 2, z: 2, shadow: 0.5, delay: 280 },   // 20 T-Mobile (right)
-  { left: 86, top: 14, scale: 0.82, blur: 0, z: 2, shadow: 0.55, delay: 340 },   // 21 Tsmc (right)
+  { left: 6, top: 15, scale: 0.78, blur: 3, z: 2, shadow: 0.45, delay: 40 },   // 0 aave
+  { left: 10, top: 70, scale: 0.88, blur: 1, z: 2, shadow: 0.55, delay: 70 },  // 0.5 Amazon
+  { left: 14, top: 42, scale: 0.95, blur: 0, z: 3, shadow: 0.65, delay: 100 }, // 2 Apple
+  { left: 18, top: 78, scale: 0.72, blur: 3, z: 1, shadow: 0.4, delay: 130 },  // 3 avalanche
+  { left: 8, top: 28, scale: 0.92, blur: 0, z: 3, shadow: 0.7, delay: 160 },   // 4 Bitcoin
+  { left: 22, top: 55, scale: 0.8, blur: 2, z: 2, shadow: 0.5, delay: 190 },   // 5 Bitcoin_Cash
+  { left: 68, top: 18, scale: 0.7, blur: 3, z: 1, shadow: 0.35, delay: 220 },   // 6 bnb (right)
+  { left: 70, top: 58, scale: 0.74, blur: 3, z: 1, shadow: 0.4, delay: 250 },    // 7 business (right)
+  { left: 75, top: 82, scale: 0.9, blur: 0, z: 3, shadow: 0.6, delay: 280 },   // 8 Chainlink (right, lower)
+  { left: 94, top: 78, scale: 0.76, blur: 2, z: 2, shadow: 0.45, delay: 310 },  // 9 dollar-sign (right)
+  { left: 20, top: 35, scale: 0.82, blur: 0, z: 2, shadow: 0.5, delay: 340 },  // 10 ethereum
+  { left: 66, top: 44, scale: 0.78, blur: 2, z: 2, shadow: 0.48, delay: 370 },  // 11 euro (right)
+  { left: 4, top: 50, scale: 0.8, blur: 0, z: 2, shadow: 0.5, delay: 400 },   // 12 GameStop
+  { left: 24, top: 26, scale: 0.9, blur: 0, z: 3, shadow: 0.65, delay: 430 },  // 13 Google
+  { left: 78, top: 22, scale: 0.88, blur: 0, z: 3, shadow: 0.65, delay: 460 },  // 14 jpy
+  { left: 28, top: 74, scale: 0.92, blur: 0, z: 3, shadow: 0.7, delay: 490 },  // 15 Microsoft
+  { left: 72, top: 36, scale: 0.8, blur: 3, z: 1, shadow: 0.45, delay: 520 },   // 16 monero (right)
+  { left: 80, top: 48, scale: 0.9, blur: 0, z: 3, shadow: 0.65, delay: 260 },   // 17 Nvidia
+  { left: 32, top: 38, scale: 0.76, blur: 2, z: 2, shadow: 0.48, delay: 80 },   // 18 SAP
+  { left: 82, top: 70, scale: 0.84, blur: 2, z: 2, shadow: 0.52, delay: 110 },  // 19 solana (right)
+  { left: 92, top: 54, scale: 0.78, blur: 2, z: 2, shadow: 0.5, delay: 140 },   // 20 T-Mobile (right)
+  { left: 86, top: 14, scale: 0.82, blur: 0, z: 2, shadow: 0.55, delay: 170 },  // 21 Tsmc (right)
 ];
 
 // Ensure we only use as many placements as we have logos
@@ -170,8 +171,8 @@ const logoEntries = LOGO_FILES.slice(0, LOGO_PLACEMENTS.length).map((file, i) =>
       <FeatureList
         columns={2}
         features={[
-          { label: 'Every Asset Class', detail: 'Track stocks, crypto, ETFs, commodities, forex, and futures in one unified dashboard; no more juggling apps.' },
-          { label: 'Visual Insights', detail: 'Transform complex portfolio data into beautiful Sankey diagrams, performance charts, and interactive analytics.' },
+          { label: 'All Major Asset Classes', detail: 'Track stocks, crypto, ETFs, commodities, forex, and futures in one unified dashboard; no more juggling apps.' },
+          { label: 'Visual Insights', detail: 'Transform complex portfolio data into beautiful diagrams, performance charts, and interactive analytics.' },
           { label: 'True Net Worth', detail: 'See your complete financial picture with real-time tracking of assets, investments, debts, and monthly growth.' },
           { label: 'Institutional-Grade Analytics', detail: 'Get risk-adjusted returns, annualized volatility, and ROI calculations. Professional metrics for every investor.' },
           { label: 'Smart Projections', detail: 'Forecast your financial future with data-driven predictions based on your actual performance and cash flow trends.' },
