@@ -25,6 +25,15 @@ import CTABlock from '@/components/CTABlock.astro';
 import SiblingLinks from '@/components/SiblingLinks.astro';
 
 const meta = pages.personalFinanceCharts;
+
+// Ring stats for "The disconnect" section
+const R = 48;
+const C = 2 * Math.PI * R;
+const disconnectionRings = [
+  { pct: 25, plus: true, label: "of Americans say they're afraid to check their finances because they'll realize how much they're spending." },
+  { pct: 86, label: 'of people who track their income and expenses say it has helped them get out, or stay out, of debt.' },
+  { pct: 60, plus: true, label: 'of investors do not understand all the types of investments they hold in their own portfolio.' },
+].map(({ pct, label, plus }) => ({ pct, label, plus, offset: C * (1 - pct / 100) }));
 ---
 
 <Layout
@@ -111,6 +120,100 @@ const meta = pages.personalFinanceCharts;
       opacity: 1;
       transform: translateX(0);
     }
+
+    /* The disconnect: ring stats */
+    .disconnection-rings {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 768px) {
+      .disconnection-rings {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+    }
+    .ring-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+    .disconnection-rings.in-view .ring-item {
+      animation: ring-appear 0.6s ease-out var(--ring-delay) forwards;
+    }
+    @keyframes ring-appear {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .ring-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .ring-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .ring-track {
+      stroke: rgb(229 229 229);
+    }
+    :global(.dark) .ring-track {
+      stroke: rgb(64 64 64);
+    }
+    .ring-progress {
+      stroke: rgb(23 23 23);
+      stroke-linecap: round;
+      stroke-dashoffset: 301.59;
+    }
+    .disconnection-rings.in-view .ring-progress {
+      animation: ring-fill 0.9s ease-out var(--ring-delay) forwards;
+    }
+    :global(.dark) .ring-progress {
+      stroke: rgb(250 250 250);
+    }
+    @keyframes ring-fill {
+      from {
+        stroke-dashoffset: 301.59;
+      }
+      to {
+        stroke-dashoffset: var(--ring-offset);
+      }
+    }
+    .ring-pct {
+      position: relative;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: rgb(23 23 23);
+      line-height: 1;
+    }
+    :global(.dark) .ring-pct {
+      color: rgb(250 250 250);
+    }
+    .ring-label {
+      font-size: 0.875rem;
+      line-height: 1.4;
+      color: rgb(82 82 82);
+      max-width: 18rem;
+      margin: 0;
+      text-align: center;
+    }
+    :global(.dark) .ring-label {
+      color: rgb(163 163 163);
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -123,6 +226,8 @@ const meta = pages.personalFinanceCharts;
         { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
       );
       document.querySelectorAll('.money-skills-image-reveal').forEach((el) => observer.observe(el));
+      const disconnectionRings = document.querySelector('.disconnection-rings');
+      if (disconnectionRings) observer.observe(disconnectionRings);
     });
   </script>
 
@@ -165,7 +270,53 @@ const meta = pages.personalFinanceCharts;
     </div>
   </Section>
 
-  <!-- Section 2: Budget Visualization -->
+  <!-- Section 2: Great financial decisions start with a clear picture. -->
+  <Section
+    heading="Good financial decisions start with a clear picture."
+    align="center"
+  >
+    <div class="disconnection-rings mb-20">
+      {disconnectionRings.map(({ pct, label, offset, plus }, i) => (
+        <div class="ring-item" style={`--ring-offset: ${offset}; --ring-delay: ${i * 0.12}s`}>
+          <div class="ring-wrapper">
+            <svg class="ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+              <circle
+                class="ring-track"
+                cx="60"
+                cy="60"
+                r={R}
+                fill="none"
+                stroke-width="6"
+              />
+              <circle
+                class="ring-progress"
+                cx="60"
+                cy="60"
+                r={R}
+                fill="none"
+                stroke-width="6"
+                stroke-dasharray={C}
+                transform="rotate(-90 60 60)"
+              />
+            </svg>
+            <span class="ring-pct">{pct}%{plus ? '+' : ''}</span>
+          </div>
+          <p class="ring-label">{label}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="max-w-2xl space-y-4 text-center mx-auto">
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Most people have a rough sense of their finances. A ballpark. A feeling. But feelings aren't clarity, and a ballpark is just another word for a guess. The gap between what people think is happening with their money and what's actually happening is where anxiety lives.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        <strong>Visibility changes everything. Not just for the numbers, but for the behavior.</strong>
+      </p>
+    </div>
+  </Section>
+
+  <!-- Section 3: Budget Visualization -->
   <Section
     heading="Budget charts that make sense"
   >
@@ -188,7 +339,7 @@ const meta = pages.personalFinanceCharts;
     </div>
   </Section>
 
-  <!-- Section 3: Spending Trends -->
+  <!-- Section 4: Spending Trends -->
   <Section
     heading="Trends reveal what snapshots hide"
     bg="stone"
@@ -212,7 +363,7 @@ const meta = pages.personalFinanceCharts;
     </div>
   </Section>
 
-  <!-- Section 4: Portfolio Visualizations -->
+  <!-- Section 5: Portfolio Visualizations -->
   <Section
     heading="Portfolio at a glance"
   >
@@ -238,7 +389,7 @@ const meta = pages.personalFinanceCharts;
     </div>
   </Section>
 
-  <!-- Section 5: Net Worth Timeline -->
+  <!-- Section 6: Net Worth Timeline -->
   <Section
     heading="Watch your net worth grow"
     bg="stone"
@@ -262,7 +413,7 @@ const meta = pages.personalFinanceCharts;
     </div>
   </Section>
 
-  <!-- Section 6: Monthly Reports -->
+  <!-- Section 7: Monthly Reports -->
   <Section
     heading="Monthly financial reports"
   >
@@ -286,7 +437,7 @@ const meta = pages.personalFinanceCharts;
     </div>
   </Section>
 
-  <!-- Section 7: Visuals From Daily Habit -->
+  <!-- Section 8: Visuals From Daily Habit -->
   <Section
     heading="The magic comes from consistency"
     bg="stone"
