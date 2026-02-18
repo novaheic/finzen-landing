@@ -34,49 +34,134 @@ const meta = pages.personalFinanceCharts;
 >
 
   <AngleHero
-    title="See your money. Actually understand it."
-    subtitle="Sankey flows, trend charts, portfolio breakdowns. Your data becomes insight."
+    title="Your Finances, Visualized"
+    subtitle="Monthly report cards, Sankey cash flows, spending trends, portfolio performance, net worth over time. This is what financial clarity looks like."
     keyword="financial insights & charts"
   />
 
-  <div class="w-full overflow-x-clip -mt-52 md:-mt-[21.2rem] mb-0 relative z-10 flex justify-center">
-    <div class="scale-[1.15] md:scale-100 origin-center w-max max-w-full md:w-[960px] md:max-w-none min-w-0 shrink-0">
-      <img
-        src={`/images/${meta.slug}/hero_light.png`}
-        alt={meta.title}
-        class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
-      />
-      <img
-        src={`/images/${meta.slug}/hero_dark.png`}
-        alt={meta.title}
-        class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
-      />
+  <!-- Hero: phone (left, in front) + laptop (right, behind), slide-in + drop-shadow -->
+  <div class="hero-dual w-full overflow-x-clip -mt-32 md:-mt-[12rem] mb-0 relative z-10 flex justify-center items-end">
+    <div class="hero-dual-inner relative flex justify-center items-end gap-0 w-full max-w-[1200px] min-h-0 md:min-h-[320px] px-4 -translate-y-20 md:translate-y-0">
+      <!-- Laptop: slightly right of center, animates in from right, behind phone -->
+      <div class="hero-laptop-wrap absolute inset-0 flex justify-center items-end pointer-events-none">
+        <div class="hero-laptop-pos translate-x-[6%] md:translate-x-[12%] -translate-y-8 md:translate-y-0">
+          <div class="hero-laptop-inner scale-[1.08] sm:scale-100 md:scale-100 origin-center w-max max-w-[100vw] sm:max-w-[640px] md:max-w-[1000px] min-w-0 shrink-0">
+          <img
+            src="/images/mindful-money-tracking/hero_light.png"
+            alt="Finzen dashboard on laptop"
+            class="hero-device-img w-auto max-w-full h-auto block dark:hidden"
+          />
+          <img
+            src="/images/mindful-money-tracking/hero_dark.png"
+            alt="Finzen dashboard on laptop"
+            class="hero-device-img w-auto max-w-full h-auto hidden dark:block"
+          />
+          </div>
+        </div>
+      </div>
+      <!-- Phone: left of center, in front, animates in from left -->
+      <div class="hero-phone-wrap relative z-10 flex justify-center items-end translate-x-[-82%] md:translate-x-[-78%]">
+        <div class="hero-phone-inner scale-[0.85] sm:scale-[0.9] md:scale-100 origin-bottom w-max max-w-[140px] sm:max-w-[175px] md:max-w-[240px] min-w-0 shrink-0">
+          <img
+            src="/images/our-story/mobile_networth_light.png"
+            alt="Finzen net worth on phone"
+            class="hero-device-img w-auto max-w-full h-auto block dark:hidden"
+          />
+          <img
+            src="/images/our-story/mobile_networth_dark.png"
+            alt="Finzen net worth on phone"
+            class="hero-device-img w-auto max-w-full h-auto hidden dark:block"
+          />
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Section 1: The Sankey Spending Flow -->
-  <Section
-    heading="The Sankey spending flow"
-    bg="stone"
-    class="mt-4 md:mt-0 !pt-12 md:!pt-2"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - What a Sankey diagram is
-      - Income → Categories → Savings/Investments
-      - See exactly how money flows through your life
-      - The signature Finzen visualization
+  <style>
+    .hero-dual .hero-device-img {
+      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.15)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+    }
+    .dark .hero-dual .hero-device-img {
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4)) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.2));
+    }
+    @keyframes heroSlideInLeft {
+      0% { opacity: 0; transform: translateX(-60px); }
+      25% { opacity: 1; transform: translateX(-45px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes heroSlideInRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .hero-dual .hero-laptop-inner {
+      opacity: 0;
+      animation: heroSlideInRight 0.7s ease-out 0.15s forwards;
+    }
+    .hero-dual .hero-phone-inner {
+      opacity: 0;
+      animation: heroSlideInLeft 0.7s ease-out forwards;
+    }
+    /* Money skills section: image animates in from the right on scroll */
+    .money-skills-image-reveal {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .money-skills-image-reveal.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('in-view');
+          });
+        },
+        { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
+      );
+      document.querySelectorAll('.money-skills-image-reveal').forEach((el) => observer.observe(el));
+    });
+  </script>
 
-      Keywords to weave in: budget sankey, money flow chart, cash flow visual
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: The Sankey diagram shows how money flows through your finances. Income enters on one side. Spending categories branch off. Savings and investments collect on the other side.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: At a glance, you see the whole picture: where the biggest flows are, where money pools, where it leaks. It's financial storytelling in visual form.]
-      </p>
-      {/* PLACEHOLDER: Add Sankey diagram screenshot/mockup */}
+  <!-- Section 1: Great financial decisions start with a clear picture -->
+  <Section
+    heading="Great financial decisions start with a clear picture"
+    bg="stone"
+    class="-mt-12 !pt-0 md:mt-0 md:!pt-10"
+  >
+    <div class="flex flex-col md:flex-row md:items-start md:gap-8 lg:gap-10">
+      <!-- Text column (left on desktop) -->
+      <div class="flex-1 min-w-0 max-w-2xl overflow-hidden">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+          Whether you're trying to cut spending, grow your portfolio, or simply stop wondering where your paycheck went - visibility is the first step. Not spreadsheets. Not bank statements. A real, visual understanding of your financial life.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+          That's what Finzen is built around. From monthly Sankey cash flow to the real-time net worth chart, every visualization is designed to give you insight you can act on.
+        </p>
+        <!-- Mobile only: after second paragraph (animates in from right) -->
+        <div class="money-skills-image-reveal md:hidden max-[449px]:hidden mb-4 min-[380px]:float-right min-[380px]:ml-4 min-[380px]:mb-4 min-[380px]:mt-0 w-fit">
+          <img
+            src="/images/personal-finance-charts/sankey.png"
+            alt="Sankey spending flow — money in, money out"
+            class="rounded-lg max-w-[180px] min-[380px]:max-w-[200px] mx-auto min-[380px]:mx-0 block"
+          />
+        </div>
+        <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-0">
+          Your money has a story. It's time you read it.
+        </p>
+        <div class="clear-both md:clear-none"></div>
+      </div>
+      <!-- Image: right column on desktop only (animates in from right) -->
+      <div class="money-skills-image-reveal hidden md:block flex-shrink-0 w-full md:max-w-[320px] lg:max-w-[340px] p-6 lg:p-8">
+        <img
+          src="/images/personal-finance-charts/sankey.png"
+          alt="Sankey spending flow — money in, money out"
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
     </div>
   </Section>
 
