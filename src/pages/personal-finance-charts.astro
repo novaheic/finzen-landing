@@ -121,6 +121,14 @@ const disconnectionRings = [
       transform: translateX(0);
     }
 
+    /* Sankey image: drop shadow in light mode only (image has transparency) */
+    .sankey-img {
+      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.1)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.06));
+    }
+    :global(.dark) .sankey-img {
+      filter: none;
+    }
+
     /* The disconnect: ring stats */
     .disconnection-rings {
       display: grid;
@@ -214,6 +222,29 @@ const disconnectionRings = [
     :global(.dark) .ring-label {
       color: rgb(163 163 163);
     }
+
+    /* Trends section demo card: profit/loss */
+    .text-profit { color: #22c55e; }
+    .text-loss { color: #ef4444; }
+    :global(.dark) .text-profit { color: #4ade80; }
+    :global(.dark) .text-loss { color: #f87171; }
+
+    /* Stop Guessing. Start Knowing. – 6 cards animate in */
+    .stop-guessing-cards-item {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .stop-guessing-cards.in-view .stop-guessing-cards-item {
+      opacity: 1;
+      transform: translate(0);
+    }
+    .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(1) { transition-delay: 0ms; }
+    .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(2) { transition-delay: 80ms; }
+    .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(3) { transition-delay: 160ms; }
+    .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(4) { transition-delay: 240ms; }
+    .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(5) { transition-delay: 320ms; }
+    .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(6) { transition-delay: 400ms; }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -228,6 +259,64 @@ const disconnectionRings = [
       document.querySelectorAll('.money-skills-image-reveal').forEach((el) => observer.observe(el));
       const disconnectionRings = document.querySelector('.disconnection-rings');
       if (disconnectionRings) observer.observe(disconnectionRings);
+      const stopGuessingCards = document.querySelector('.stop-guessing-cards');
+      if (stopGuessingCards) observer.observe(stopGuessingCards);
+
+      // Trends demo card: count-up on first view, then random updates every few seconds
+      const trendsCards = document.querySelector('.trends-demo-cards');
+      if (!trendsCards) return;
+      const formatCurrency = (n) => '€' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const animateValue = (el, fromVal, toVal, formatter, duration = 600) => {
+        const startTime = performance.now();
+        const step = (now) => {
+          const t = Math.min((now - startTime) / duration, 1);
+          const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          const current = fromVal + (toVal - fromVal) * eased;
+          el.textContent = formatter ? formatter(current) : Math.round(current);
+          if (t < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+      let nwTotal = 0, nwInv = 0;
+      const totalEl = trendsCards.querySelector('.trends-nw-total');
+      const invEl = trendsCards.querySelector('.trends-nw-inv');
+      const inEl = trendsCards.querySelector('.trends-nw-in');
+      const outEl = trendsCards.querySelector('.trends-nw-out');
+      const discEl = trendsCards.querySelector('.trends-nw-disc');
+      const runFirstAnimation = () => {
+        nwTotal = 2847.5;
+        nwInv = 412.3;
+        if (totalEl) animateValue(totalEl, 0, nwTotal, formatCurrency, 800);
+        if (invEl) { invEl.textContent = '+€0.00'; invEl.classList.add('text-profit'); invEl.classList.remove('text-loss'); animateValue(invEl, 0, nwInv, (n) => '+' + formatCurrency(n).slice(1), 800); }
+        if (inEl) animateValue(inEl, 0, 5200, formatCurrency, 800);
+        if (outEl) animateValue(outEl, 0, 2764.8, formatCurrency, 800);
+        if (discEl) animateValue(discEl, 0, 2435.2, formatCurrency, 800);
+      };
+      const runRandomUpdate = () => {
+        const invDelta = (Math.random() * 100 - 50); // ±50
+        const newInv = nwInv + invDelta;
+        const totalDelta = invDelta + (Math.random() * 60 - 30); // move with inv + ±30
+        const newTotal = Math.max(1200, Math.min(4200, nwTotal + totalDelta));
+        if (totalEl) animateValue(totalEl, nwTotal, newTotal, formatCurrency);
+        if (invEl) {
+          invEl.classList.toggle('text-profit', newInv >= 0);
+          invEl.classList.toggle('text-loss', newInv < 0);
+          animateValue(invEl, nwInv, newInv, (n) => (n >= 0 ? '+' : '-') + formatCurrency(Math.abs(n)).slice(1));
+        }
+        nwTotal = newTotal;
+        nwInv = newInv;
+      };
+      const trendsObserver = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0]?.isIntersecting) return;
+          trendsCards.classList.add('in-view');
+          trendsObserver.disconnect();
+          runFirstAnimation();
+          setInterval(runRandomUpdate, 7500);
+        },
+        { threshold: 0.2 }
+      );
+      trendsObserver.observe(trendsCards);
     });
   </script>
 
@@ -251,7 +340,7 @@ const disconnectionRings = [
           <img
             src="/images/personal-finance-charts/sankey.png"
             alt="Sankey spending flow — money in, money out"
-            class="rounded-lg max-w-[180px] min-[380px]:max-w-[200px] mx-auto min-[380px]:mx-0 block"
+            class="sankey-img rounded-lg max-w-[180px] min-[380px]:max-w-[200px] mx-auto min-[380px]:mx-0 block"
           />
         </div>
         <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-0">
@@ -264,15 +353,15 @@ const disconnectionRings = [
         <img
           src="/images/personal-finance-charts/sankey.png"
           alt="Sankey spending flow — money in, money out"
-          class="w-full h-auto rounded-lg"
+          class="sankey-img w-full h-auto rounded-lg"
         />
       </div>
     </div>
   </Section>
 
-  <!-- Section 2: Great financial decisions start with a clear picture. -->
+  <!-- Section 2: See your money clearly. Watch your decisions improve. -->
   <Section
-    heading="Good financial decisions start with a clear picture."
+    heading="See your money clearly. Watch your decisions improve."
     align="center"
   >
     <div class="disconnection-rings mb-20">
@@ -316,7 +405,86 @@ const disconnectionRings = [
     </div>
   </Section>
 
-  <!-- Section 3: Budget Visualization -->
+  <!-- Section 3: Monthly Report (with Net Worth Change demo card) -->
+  <Section
+    heading="The Overview: Your Month at a Glance"
+    subheading="Every number that mattered this month, organized into one clean, actionable report."
+    align="center"
+    bg="stone"
+  >
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-center gap-8 lg:gap-10">
+      <div class="min-w-0 max-w-2xl space-y-4 text-left mx-auto lg:mx-0 order-2 lg:order-1">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Most people end the month with a vague sense of how it went. Too much on dining out, maybe. A decent month for the portfolio. Probably saved something. Probably.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Finzen's Monthly Overview replaces that vague feeling with a complete picture. Every month you track gets its live own report: how your spending compared to your budget, how your net worth moved, what your investments returned, and your discretionary income.
+        </p>
+      </div>
+      <div class="trends-demo-cards grid grid-cols-1 gap-4 flex-shrink-0 w-full max-w-[300px] mx-auto lg:mx-0 order-1 lg:order-2">
+        <!-- Net Worth Change card (demo values, animate on view) -->
+        <div class="trends-card trends-nw-card rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-4 shadow-sm text-left">
+          <div class="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">Net Worth Change</div>
+          <div class="text-2xl sm:text-3xl font-semibold leading-tight mb-3 text-neutral-900 dark:text-neutral-100">
+            <span class="trends-nw-total" data-value="2847.5">€0</span>
+          </div>
+          <div class="text-xs space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-[13px] text-neutral-600 dark:text-neutral-400 font-semibold">Investment P/L</span>
+              <span class="text-base font-semibold text-profit trends-nw-inv" data-value="412.3">+€0</span>
+            </div>
+            <div class="flex items-center justify-between pl-3">
+              <span class="text-neutral-600 dark:text-neutral-400">Inflows</span>
+              <span class="font-semibold text-neutral-600 dark:text-neutral-400 trends-nw-in" data-value="5200">€0</span>
+            </div>
+            <div class="flex items-center justify-between pl-3">
+              <span class="text-neutral-600 dark:text-neutral-400">Outflows</span>
+              <span class="font-semibold text-neutral-600 dark:text-neutral-400">-<span class="trends-nw-out" data-value="2764.8">€0</span></span>
+            </div>
+            <div class="pt-1 mt-1 border-t border-neutral-300 dark:border-neutral-600"></div>
+            <div class="flex items-center justify-between">
+              <span class="text-[13px] text-neutral-600 dark:text-neutral-400 font-semibold">Discretionary Income</span>
+              <span class="text-base font-semibold text-profit trends-nw-disc" data-value="2435.2">€0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center font-semibold text-neutral-800 dark:text-neutral-200 mt-8 mb-0">
+      One live report. Every month. No more guessing.
+    </p>
+    <div class="mt-6 flex justify-center">
+      <img
+        src="/images/personal-finance-charts/report_annotated_light.png"
+        alt="Monthly report overview — annotated"
+        class="w-full max-w-3xl h-auto rounded-lg block dark:hidden"
+      />
+      <img
+        src="/images/personal-finance-charts/report_annotated_dark.png"
+        alt="Monthly report overview — annotated"
+        class="w-full max-w-3xl h-auto rounded-lg hidden dark:block"
+      />
+    </div>
+    <div class="max-w-2xl mx-auto mt-12">
+      <FeatureList
+        columns={2}
+        revealClassName="stop-guessing-cards"
+        features={[
+          { label: 'Net Worth Change', detail: 'Did you end the month richer or poorer, and why. Income, Expenses, Investments.' },
+          { label: 'Discretionary Income', detail: 'What was left of your income after every bill, budget, and expense.' },
+          { label: 'Assets & Debts', detail: 'The value of everything you own and owe, side by side. Vs. last month' },
+          { label: 'Budget Health', detail: 'How much is left to budget, and how much of budgeted is left to spend.' },
+          { label: 'Returns by Asset Class', detail: 'What each part of your portfolio actually made or lost this month.' },
+          { label: 'Spending Trends', detail: "How this month's habits compared to last month's, category by category." },
+        ]}
+      />
+    </div>
+    <p class="text-center text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto mt-10 mb-0">
+      The monthly overview compiles the most important metrics from across your Finzen dashboard into one convenient snapshot, updated in real time, so you always know exactly how your month is shaping up.
+    </p>
+  </Section>
+
+  <!-- Section 4: Budget Visualization -->
   <Section
     heading="Budget charts that make sense"
   >
@@ -335,30 +503,6 @@ const disconnectionRings = [
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
         [COPY: One look and you know exactly where you stand in every category.]
-      </p>
-    </div>
-  </Section>
-
-  <!-- Section 4: Spending Trends -->
-  <Section
-    heading="Trends reveal what snapshots hide"
-    bg="stone"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Monthly/weekly trend lines
-      - Spot patterns over time
-      - "Am I spending more on food than last month?"
-      - Long-term perspective
-
-      Keywords to weave in: personal finance charts, money charts
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: A single month's spending doesn't tell you much. But three months? Six months? A year? Now you see patterns. Now you see whether things are improving or getting worse.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen's trend charts show your spending over time — by category, by total, by whatever you want to track.]
       </p>
     </div>
   </Section>
