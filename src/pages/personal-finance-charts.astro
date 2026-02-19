@@ -129,6 +129,34 @@ const disconnectionRings = [
       filter: none;
     }
 
+    /* Cashflow section image: strong shadow in light mode (white on white separation); dark = glow only */
+    .cashflow-img {
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1)) drop-shadow(0 14px 36px rgba(0, 0, 0, 0.22)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+    }
+    :global(.dark) .cashflow-img {
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+    }
+
+    /* Cashflow section: first image animates in from left, second (Sankey) from right */
+    .cashflow-reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .cashflow-reveal-left.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .cashflow-reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .cashflow-reveal-right.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     /* The disconnect: ring stats */
     .disconnection-rings {
       display: grid;
@@ -257,6 +285,7 @@ const disconnectionRings = [
         { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
       );
       document.querySelectorAll('.money-skills-image-reveal').forEach((el) => observer.observe(el));
+      document.querySelectorAll('.cashflow-reveal-left, .cashflow-reveal-right').forEach((el) => observer.observe(el));
       const disconnectionRings = document.querySelector('.disconnection-rings');
       if (disconnectionRings) observer.observe(disconnectionRings);
       const stopGuessingCards = document.querySelector('.stop-guessing-cards');
@@ -362,6 +391,7 @@ const disconnectionRings = [
   <!-- Section 2: See your money clearly. Watch your decisions improve. -->
   <Section
     heading="See your money clearly. Watch your decisions improve."
+    subheading="The power of data visualization and visual storytelling."
     align="center"
   >
     <div class="disconnection-rings mb-20">
@@ -484,9 +514,10 @@ const disconnectionRings = [
     </p>
   </Section>
 
-  <!-- Section 4: Budget Visualization -->
+  <!-- Section 4: Your Cashflow, Mapped -->
   <Section
-    heading="Budget charts that make sense"
+    heading="Your Cashflow, Mapped"
+    subheading="Stop wondering where your paycheck went. The answer is right here."
   >
     {/*
       COPY PLACEHOLDER — Suggested talking points:
@@ -497,45 +528,62 @@ const disconnectionRings = [
 
       Keywords to weave in: budget visualization, visual budget, expense charts
     */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Numbers in a table don't tell you much. Progress bars do. Each budget category shows a visual bar — green when you're on track, yellow when you're getting close, red when you've overspent.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: One look and you know exactly where you stand in every category.]
-      </p>
+    <div class="flex flex-col md:flex-row md:items-start md:gap-8 lg:gap-10">
+      <!-- Image: left on desktop, above copy on mobile (animates in from left) -->
+      <div class="cashflow-reveal-left flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-1 mb-6 md:mb-0">
+        <img
+          src="/images/budgeting-app/cashflow_light.png"
+          alt="Finzen cashflow dashboard — inflows, outflows, liquidity and TIA"
+          class="cashflow-img w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/budgeting-app/cashflow_dark.png"
+          alt="Finzen cashflow dashboard — inflows, outflows, liquidity and TIA"
+          class="cashflow-img w-full h-auto rounded-lg hidden dark:block"
+        />
+      </div>
+      <!-- Copy: right on desktop, below image on mobile -->
+      <div class="flex-1 min-w-0 max-w-2xl space-y-4 order-2 md:order-2">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Numbers in a table don't tell you much. Progress bars do. Each budget category shows a visual bar — green when you're on track, yellow when you're getting close, red when you've overspent.]
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: One look and you know exactly where you stand in every category.]
+        </p>
+      </div>
+    </div>
+
+    <!-- Sankey continuation: text left, image right (on mobile: image above text) -->
+    <div class="flex flex-col md:flex-row md:items-start md:gap-8 lg:gap-10 mt-12 lg:mt-16">
+      <!-- Copy: left on desktop, below image on mobile -->
+      <div class="flex-1 min-w-0 max-w-2xl space-y-4 order-2 md:order-1 mb-6 md:mb-0 md:mt-8">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: A Sankey diagram shows every euro from income to category — unemployment, investments, savings on the left; bills, needs, wants, and each subcategory on the right. One view, your whole month.]
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: No more guessing where it went. You see the flow.]
+        </p>
+      </div>
+      <!-- Image: right on desktop, above copy on mobile (animates in from right) -->
+      <div class="cashflow-reveal-right flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-2 mb-8 md:mb-0 md:mt-8">
+        <img
+          src="/images/budgeting-app/sankey_light.png"
+          alt="Finzen Sankey — money in, money out by category"
+          class="cashflow-img w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/budgeting-app/sankey_dark.png"
+          alt="Finzen Sankey — money in, money out by category"
+          class="cashflow-img w-full h-auto rounded-lg hidden dark:block"
+        />
+      </div>
     </div>
   </Section>
 
-  <!-- Section 5: Portfolio Visualizations -->
+  <!-- Section 5: Your Spending, Visualized -->
   <Section
-    heading="Portfolio at a glance"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Asset allocation pie charts
-      - Performance over time
-      - Diversification view
-      - Multi-asset breakdown
-
-      Keywords to weave in: financial analytics
-    */}
-    <div class="max-w-2xl">
-      <FeatureList
-        columns={2}
-        features={[
-          { label: 'Allocation Pie Chart', detail: '[COPY: See your portfolio split across asset classes]' },
-          { label: 'Performance Timeline', detail: '[COPY: Track portfolio value over weeks, months, years]' },
-          { label: 'Asset Breakdown', detail: '[COPY: Drill into stocks, crypto, commodities, etc.]' },
-          { label: 'Diversification View', detail: '[COPY: Spot over-concentration at a glance]' },
-        ]}
-      />
-    </div>
-  </Section>
-
-  <!-- Section 6: Net Worth Timeline -->
-  <Section
-    heading="Watch your net worth grow"
+    heading="Your Spending, Visualized"
+    subheading="Envelope budgeting meets deep analytics. Understand your spending."
     bg="stone"
   >
     {/*
@@ -557,7 +605,7 @@ const disconnectionRings = [
     </div>
   </Section>
 
-  <!-- Section 7: Monthly Reports -->
+  <!-- Section 6: Monthly Reports -->
   <Section
     heading="Monthly financial reports"
   >
@@ -581,7 +629,7 @@ const disconnectionRings = [
     </div>
   </Section>
 
-  <!-- Section 8: Visuals From Daily Habit -->
+  <!-- Section 7: Visuals From Daily Habit -->
   <Section
     heading="The magic comes from consistency"
     bg="stone"
