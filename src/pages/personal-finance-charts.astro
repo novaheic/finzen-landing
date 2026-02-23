@@ -42,13 +42,57 @@ const ASSET_PILLS_3 = [
   { label: 'Time-in-account (TIA)', supportLine: 'How long your money stays in your account before being spent.', color: GER_PALETTE[4], icon: 'clock' },
   { label: 'Liquidity flow', supportLine: 'Visualize income and outflow patterns. See your cashflow.', color: GER_PALETTE[12], icon: 'pie' },
 ];
+
+// FAQPage structured data for rich results (charts/visualization FAQ)
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need to connect my bank account to see my charts and reports?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "No. Finzen is built around manual entry, which means no bank sync, no broker connections, and no exchange APIs. You log your transactions yourself — typically 2 to 3 minutes a day — and every chart, report, and visualization is generated from that data. Your financial picture stays completely private, and the charts update in real time as you log."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does it take before the charts become useful?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Most users find real value within the first month. Your monthly overview becomes meaningful after your first full month of logging, and charts like spending trends and net worth history get richer the longer you track. That said, your budget, cash flow, and Sankey diagram are useful from day one — even a week of data reveals patterns most people have never seen before."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Why is data visualization so important for personal finance?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Numbers in a spreadsheet tell you what happened. Visualization tells you what it means. When you can see your spending as a Sankey flow rather than a list of transactions, patterns that were invisible become obvious. When your net worth is a chart instead of a calculation, the trajectory becomes motivating rather than abstract. Research consistently shows that people who have a clear visual understanding of their finances make better spending decisions, save more consistently, and feel significantly less anxiety about money. The goal of financial data visualization is not to make things look pretty — it is to make the right action feel obvious."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: "Is Finzen's data visualization available on mobile?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Yes. Finzen works on both desktop and mobile, and the charts and reports are fully accessible on both. Most users log transactions on mobile throughout the day and review their reports and visualizations on desktop, though both experiences are designed to be clean and intuitive."
+      }
+    }
+  ]
+});
 ---
 
 <Layout
   title={meta.title}
   description={meta.description}
   canonical={`/${meta.slug}`}
+  ogImage={meta.ogImage}
 >
+
+  <!-- FAQPage structured data for rich results -->
+  <script type="application/ld+json" set:html={faqSchema} />
 
   <AngleHero
     title="Your Finances, Visualized"

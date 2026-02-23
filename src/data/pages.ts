@@ -160,6 +160,7 @@ export const pages: Record<string, PageMeta> = {
     footerLabel: 'Charts, Reports & Insights',
     inFooter: true,
     siblings: ['budgetingApp', 'portfolioTracker', 'mindfulMoneyTracking'],
+    ogImage: '/images/personal-finance-charts/og_personal_finance_charts.png',
   },
 
   ourStory: {
