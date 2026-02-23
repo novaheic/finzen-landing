@@ -810,7 +810,7 @@ const ASSET_PILLS_3 = [
       background: linear-gradient(to bottom, #ECECEC 0%, #FFFFFF 100%) !important;
     }
     :global(.dark .faq-gradient-bg) {
-      background: linear-gradient(to bottom, #171717 0%, #1B1B1B 100%) !important;
+      background: linear-gradient(to bottom, #1B1B1B 0%, #171717 100%) !important;
     }
     /* FAQ accordion (from budgeting-app) */
     :global(.faq-accordion) .faq-question {
@@ -1626,9 +1626,9 @@ const ASSET_PILLS_3 = [
     </div>
   </Section>
 
-  <!-- FAQ (from budgeting-app, gradient bg) -->
+  <!-- FAQ (charts & visualization) -->
   <Section
-    heading="Common budgeting questions"
+    heading="Common questions"
     align="center"
     class="faq-gradient-bg"
   >
@@ -1647,7 +1647,7 @@ const ASSET_PILLS_3 = [
             aria-controls="faq-answer-1"
             id="faq-question-1"
           >
-            <span itemprop="name">How can I stop overspending on things I don't really need?</span>
+            <span itemprop="name">Do I need to connect my bank account to see my charts and reports?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -1658,7 +1658,7 @@ const ASSET_PILLS_3 = [
         <dd id="faq-answer-1" class="faq-answer" role="region" aria-labelledby="faq-question-1" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              The trick is catching overspending before it becomes a pattern. Set category limits that reflect what you actually want to spend, not what you think you should spend. When you see your dining-out category at €180/€200 by the 20th of the month, that visual feedback creates a natural pause. Track spending as it happens so you know what's left, and suddenly that impulse purchase competes with your other priorities. Financial awareness is what changes spending habits.
+              No. Finzen is built around manual entry, which means no bank sync, no broker connections, and no exchange APIs. You log your transactions yourself — typically 2 to 3 minutes a day — and every chart, report, and visualization is generated from that data. Your financial picture stays completely private, and the charts update in real time as you log.
             </p>
           </div>
         </dd>
@@ -1678,7 +1678,7 @@ const ASSET_PILLS_3 = [
             aria-controls="faq-answer-2"
             id="faq-question-2"
           >
-            <span itemprop="name">I'm new to budgeting. Where do I start?</span>
+            <span itemprop="name">How long does it take before the charts become useful?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -1689,7 +1689,7 @@ const ASSET_PILLS_3 = [
         <dd id="faq-answer-2" class="faq-answer" role="region" aria-labelledby="faq-question-2" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Start with one month. Log your income, create spending categories that match your actual life (rent, groceries, transport, fun money), and assign every dollar until you hit zero unassigned. Use starter templates if you need guidance. Then track spending for 30 days—just a few minutes daily. Don't aim for perfection; aim for awareness. After one month, you'll see your real patterns, and month two gets easier. Budgeting for beginners is about building the habit first, optimizing later. For more on the basics, see our <a href="/personal-finance-guide" class="underline hover:text-neutral-700 dark:hover:text-neutral-300">personal finance guide</a>.
+              Most users find real value within the first month. Your monthly overview becomes meaningful after your first full month of logging, and charts like spending trends and net worth history get richer the longer you track. That said, your budget, cash flow, and Sankey diagram are useful from day one — even a week of data reveals patterns most people have never seen before.
             </p>
           </div>
         </dd>
@@ -1709,7 +1709,7 @@ const ASSET_PILLS_3 = [
             aria-controls="faq-answer-3"
             id="faq-question-3"
           >
-            <span itemprop="name">What's the difference between a spending plan and a budget?</span>
+            <span itemprop="name">Why is data visualization so important for personal finance?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -1720,7 +1720,7 @@ const ASSET_PILLS_3 = [
         <dd id="faq-answer-3" class="faq-answer" role="region" aria-labelledby="faq-question-3" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              A budget is often backward-looking: what you spent last month. A spending plan is forward-looking: what you're going to spend this month and why. Zero-based budgeting combines both. You plan at the start (spending plan), then track against that plan (budget management) as the month unfolds. The best budget software turns your plan into a live tracker so you're always comparing intention against reality.
+              Numbers in a spreadsheet tell you what happened. Visualization tells you what it means. When you can see your spending as a Sankey flow rather than a list of transactions, patterns that were invisible become obvious. When your net worth is a chart instead of a calculation, the trajectory becomes motivating rather than abstract. Research consistently shows that people who have a clear visual understanding of their finances make better spending decisions, save more consistently, and feel significantly less anxiety about money. The goal of financial data visualization is not to make things look pretty — it is to make the right action feel obvious.
             </p>
           </div>
         </dd>
@@ -1740,7 +1740,7 @@ const ASSET_PILLS_3 = [
             aria-controls="faq-answer-4"
             id="faq-question-4"
           >
-            <span itemprop="name">Can budgeting help if I'm living paycheck to paycheck?</span>
+            <span itemprop="name">Is Finzen's data visualization available on mobile?</span>
             <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6l4 4 4-4"/>
@@ -1751,38 +1751,7 @@ const ASSET_PILLS_3 = [
         <dd id="faq-answer-4" class="faq-answer" role="region" aria-labelledby="faq-question-4" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
           <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
             <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Yes. Zero-based budgeting works especially well when money is tight because every dollar gets a specific job before you spend it. Start by budgeting what you have right now, not what you hope to earn next month. Assign money to must-pay bills first, then essentials, then whatever's left. Envelope budgeting shows you exactly what's available without touching money that's already allocated. Seeing your cashflow clearly is often the first step to breaking the cycle.
-            </p>
-          </div>
-        </dd>
-      </div>
-
-      <div
-        class="faq-item border-b border-neutral-200 dark:border-neutral-800"
-        itemscope
-        itemprop="mainEntity"
-        itemtype="https://schema.org/Question"
-      >
-        <dt class="faq-question">
-          <button
-            type="button"
-            class="faq-trigger w-full flex items-center justify-between gap-4 text-left py-5 text-base font-medium text-neutral-900 dark:text-neutral-100 transition-colors"
-            aria-expanded="false"
-            aria-controls="faq-answer-5"
-            id="faq-question-5"
-          >
-            <span itemprop="name">Do I really need a budget if I'm not struggling with money?</span>
-            <span class="faq-icon flex-shrink-0 w-4 h-4 text-neutral-400 dark:text-neutral-500 transition-transform duration-200" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 6l4 4 4-4"/>
-              </svg>
-            </span>
-          </button>
-        </dt>
-        <dd id="faq-answer-5" class="faq-answer" role="region" aria-labelledby="faq-question-5" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-          <div class="faq-answer-inner pb-6 pt-0" itemprop="text">
-            <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              Even if you're not in financial trouble, a budget shows you opportunities you're missing. Where could you cut €100/month without noticing? Which spending categories are creeping up? How much could you actually save or invest if you were intentional? A spending plan isn't about fixing problems—it's about optimizing what's already working. People with healthy finances often benefit most from budget management because they have room to make strategic choices. Tracking monthly spending turns vague financial goals into concrete actions.
+              Yes. Finzen works on both desktop and mobile, and the charts and reports are fully accessible on both. Most users log transactions on mobile throughout the day and review their reports and visualizations on desktop, though both experiences are designed to be clean and intuitive.
             </p>
           </div>
         </dd>
@@ -1828,7 +1797,7 @@ const ASSET_PILLS_3 = [
 
   <CTABlock
     heading="Take Control of Your Money"
-    subtext="Free to get started. No credit card. Build a budget that actually works in under 10 minutes, then track spending in 3 minutes a day. See where your money goes, master your cashflow, and finally feel in control."
+    subtext="Free to get started. No credit card. Log your first transactions today and watch your financial picture come to life in real time. Spending flows, net worth trends, portfolio performance. Every chart builds itself from your data, two minutes a day at a time. Start logging. Start seeing."
     card
     showBranding
     buttonVariant="outline"
@@ -1836,11 +1805,6 @@ const ASSET_PILLS_3 = [
     imageDark="/images/mindful-money-tracking/envelope_budgeting_dark.png"
     imageAlt="Envelope budgeting"
     animateReveal
-  />
-
-  <CTABlock
-    heading="Start seeing your financial story"
-    subtext="Daily entries. Beautiful visualizations. A complete picture — over time."
   />
 
   <SiblingLinks slugs={meta.siblings} />
