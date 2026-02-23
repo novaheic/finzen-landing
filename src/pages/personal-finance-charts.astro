@@ -1583,7 +1583,26 @@ const faqSchema = JSON.stringify({
   <!-- Your Progress (achievements preview) -->
   <Section class="pt-8 pb-16 md:py-24">
     <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
-      <div class="achievements-preview-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+      <!-- On mobile: order 1 = heading, 2 = achievements, 3 = body. Wrapper uses contents so children participate in parent order. -->
+      <div class="contents md:flex md:flex-col md:w-1/2 md:min-w-0 md:order-2 md:gap-4">
+        <div class="order-1 w-full text-center md:text-left">
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
+            Your Progress. Unlocked.
+          </h2>
+          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide">
+            55+ Achievements to Unlock
+          </p>
+        </div>
+        <div class="order-3 w-full md:min-w-0 text-center md:text-left">
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Most finance apps make you feel behind. Finzen tracks how far you've come - through streaks, net worth growth, investing consistency, and cashflow habits. Every achievement is tied to real behavior, every rarity score shows you how few people got there, and every unlock tells you exactly what to chase next.
+          </p>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mt-4">
+            <strong class="font-semibold text-neutral-700 dark:text-neutral-300">Small habits compound. So do the wins.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="achievements-preview-reveal w-full md:w-1/2 flex-shrink-0 order-2 md:order-1 flex justify-center md:justify-start pt-4 md:pt-0 mb-6 md:mb-0">
         <section class="achievements-preview" aria-label="Achievements preview">
           <div class="achievements-preview-grid">
             <!-- EARNED 1 -->
@@ -1651,22 +1670,6 @@ const faqSchema = JSON.stringify({
             </div>
           </div>
         </section>
-      </div>
-      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
-            Your Progress. Unlocked.
-          </h2>
-          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide">
-            55+ Achievements to Unlock
-          </p>
-        </div>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Most finance apps make you feel behind. Finzen tracks how far you've come - through streaks, net worth growth, investing consistency, and cashflow habits. Every achievement is tied to real behavior, every rarity score shows you how few people got there, and every unlock tells you exactly what to chase next.
-        </p>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Small habits compound. So do the wins.
-        </p>
       </div>
     </div>
   </Section>
