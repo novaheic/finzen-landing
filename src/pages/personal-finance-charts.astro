@@ -89,6 +89,7 @@ const faqSchema = JSON.stringify({
   description={meta.description}
   canonical={`/${meta.slug}`}
   ogImage={meta.ogImage}
+  keywords={meta.keywords}
 >
 
   <!-- FAQPage structured data for rich results -->
@@ -1385,15 +1386,15 @@ const faqSchema = JSON.stringify({
           <!-- Left: realtime phone peeking out, angled -->
           <div class="phone-peek phone-peek-left absolute left-0 bottom-0 z-0 w-[190px] md:w-[212px] origin-bottom-left" aria-hidden="true">
             <div class="phone-reveal phone-reveal-left">
-              <img src="/images/personal-finance-charts/mobile_realtime_light.png" alt="" class="w-full h-auto rounded-lg block dark:hidden drop-shadow-lg" />
-              <img src="/images/personal-finance-charts/mobile_realtime_dark.png" alt="" class="w-full h-auto rounded-lg hidden dark:block drop-shadow-lg" />
+              <img src="/images/personal-finance-charts/mobile_realtime_light.png" alt="Finzen app — realtime view" class="w-full h-auto rounded-lg block dark:hidden drop-shadow-lg" />
+              <img src="/images/personal-finance-charts/mobile_realtime_dark.png" alt="Finzen app — realtime view" class="w-full h-auto rounded-lg hidden dark:block drop-shadow-lg" />
             </div>
           </div>
           <!-- Right: composition phone peeking out, angled -->
           <div class="phone-peek phone-peek-right absolute right-0 bottom-0 z-0 w-[190px] md:w-[212px] origin-bottom-right" aria-hidden="true">
             <div class="phone-reveal phone-reveal-right">
-              <img src="/images/personal-finance-charts/mobile_composition_light.png" alt="" class="w-full h-auto rounded-lg block dark:hidden drop-shadow-lg" />
-              <img src="/images/personal-finance-charts/mobile_composition_dark.png" alt="" class="w-full h-auto rounded-lg hidden dark:block drop-shadow-lg" />
+              <img src="/images/personal-finance-charts/mobile_composition_light.png" alt="Finzen app — composition view" class="w-full h-auto rounded-lg block dark:hidden drop-shadow-lg" />
+              <img src="/images/personal-finance-charts/mobile_composition_dark.png" alt="Finzen app — composition view" class="w-full h-auto rounded-lg hidden dark:block drop-shadow-lg" />
             </div>
           </div>
           <!-- Center: net worth phone in front -->
