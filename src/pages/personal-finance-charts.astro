@@ -442,6 +442,72 @@ const ASSET_PILLS_3 = [
       transition-delay: 0ms;
     }
 
+    /* Bigger Picture section: three phones stacked, side ones angled */
+    .phones-stack {
+      padding-bottom: 0.5rem;
+      min-height: 320px;
+    }
+    @media (min-width: 768px) and (max-width: 1030px) {
+      .phones-stack {
+        transform: scale(0.7) translateX(80px);
+        transform-origin: left center;
+      }
+    }
+    @media (max-width: 570px) {
+      .phones-stack {
+        min-height: 220px;
+        transform: scale(0.68);
+        transform-origin: center center;
+      }
+    }
+    @media (max-width: 420px) {
+      .phones-stack {
+        min-height: 180px;
+        transform: scale(0.58);
+        transform-origin: center center;
+      }
+    }
+    /* Pull text up only when phones are scaled down (≤570px) */
+    @media (max-width: 569px) {
+      .bigger-picture-text { margin-top: -3rem; }
+    }
+    .phone-peek-left {
+      transform: rotate(-6deg) translateY(-50px) translateX(-96px);
+    }
+    .phone-peek-right {
+      transform: rotate(5.5deg) translateY(-30px) translateX(96px);
+    }
+
+    /* Each phone animates in independently: center from below, left from left, right from right */
+    .phone-reveal {
+      opacity: 0;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .phone-reveal-left {
+      transform: translateX(-56px);
+    }
+    .phone-reveal-center {
+      transform: translateY(32px);
+    }
+    .phone-reveal-right {
+      transform: translateX(56px);
+    }
+    .method-image-reveal.in-view .phone-reveal-center {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0ms;
+    }
+    .method-image-reveal.in-view .phone-reveal-left {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 220ms;
+    }
+    .method-image-reveal.in-view .phone-reveal-right {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 330ms;
+    }
+
     /* Why manual tracking section: image reveal (from mindful-money-tracking) */
     .method-image-reveal {
       opacity: 0;
@@ -935,52 +1001,77 @@ const ASSET_PILLS_3 = [
     </div>
   </Section>
 
-  <!-- Section 5: Why manual tracking (duplicate from mindful-money-tracking) -->
-  <Section bg="stone" class="pt-8 pb-16 md:py-24">
+  <!-- Section 5: The Bigger Picture (three phones) -->
+  <Section bg="stone" class="pt-6 pb-10 md:py-16">
     <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
-      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
-        <img
-          src="/images/our-story/mobile_networth_light.png"
-          alt="Finzen mobile app — net worth chart and monthly breakdown"
-          class="w-full max-w-[260px] h-auto rounded-lg block dark:hidden"
-        />
-        <img
-          src="/images/our-story/mobile_networth_dark.png"
-          alt="Finzen mobile app — net worth chart and monthly breakdown"
-          class="w-full max-w-[260px] h-auto rounded-lg hidden dark:block"
-        />
+      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-2 md:mb-0">
+        <div class="phones-stack relative w-full max-w-[320px] mx-auto md:mx-0 flex items-end justify-center">
+          <!-- Left: realtime phone peeking out, angled -->
+          <div class="phone-peek phone-peek-left absolute left-0 bottom-0 z-0 w-[190px] md:w-[212px] origin-bottom-left" aria-hidden="true">
+            <div class="phone-reveal phone-reveal-left">
+              <img src="/images/personal-finance-charts/mobile_realtime_light.png" alt="" class="w-full h-auto rounded-lg block dark:hidden drop-shadow-lg" />
+              <img src="/images/personal-finance-charts/mobile_realtime_dark.png" alt="" class="w-full h-auto rounded-lg hidden dark:block drop-shadow-lg" />
+            </div>
+          </div>
+          <!-- Right: composition phone peeking out, angled -->
+          <div class="phone-peek phone-peek-right absolute right-0 bottom-0 z-0 w-[190px] md:w-[212px] origin-bottom-right" aria-hidden="true">
+            <div class="phone-reveal phone-reveal-right">
+              <img src="/images/personal-finance-charts/mobile_composition_light.png" alt="" class="w-full h-auto rounded-lg block dark:hidden drop-shadow-lg" />
+              <img src="/images/personal-finance-charts/mobile_composition_dark.png" alt="" class="w-full h-auto rounded-lg hidden dark:block drop-shadow-lg" />
+            </div>
+          </div>
+          <!-- Center: net worth phone in front -->
+          <div class="phone-reveal phone-reveal-center relative z-10 w-full max-w-[260px]">
+            <img
+              src="/images/our-story/mobile_networth_light.png"
+              alt="Finzen mobile app — net worth chart and monthly breakdown"
+              class="w-full h-auto rounded-lg block dark:hidden drop-shadow-xl"
+            />
+            <img
+              src="/images/our-story/mobile_networth_dark.png"
+              alt="Finzen mobile app — net worth chart and monthly breakdown"
+              class="w-full h-auto rounded-lg hidden dark:block drop-shadow-xl"
+            />
+          </div>
+        </div>
       </div>
-      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+      <div class="bigger-picture-text w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
         <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
-          Why manual tracking?
+          Net Worth: The Big Picture
         </h2>
-        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Spending, saving, investing, debt - each entry is a decision you own. That awareness is the path to <strong>taking control of your finances</strong>.
+        <p class="text-base text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          Track your net worth in real-time.
         </p>
-        <ul class="space-y-2 list-none pl-0 mt-1">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Net worth is the single most honest number in personal finance. Not your salary, not your savings account balance, not how well your portfolio did last month — your net worth. Everything you own minus everything you owe. That's the number that actually tells you where you stand.
+        </p>
+        <ul class="space-y-4 list-none pl-0 mt-1">
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span>Notice easy-to-miss patterns</span>
+            <span>
+              <span class="font-medium text-neutral-800 dark:text-neutral-200">Real-time net worth</span>
+              <span class="block text-sm text-neutral-500 dark:text-neutral-400 mt-0.5 leading-relaxed">Your net worth updates the moment you log a transaction or the market moves, so the number you see is always the number you can trust.</span>
+            </span>
           </li>
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span>See where your money really goes</span>
+            <span>
+              <span class="font-medium text-neutral-800 dark:text-neutral-200">Monthly assets & liabilities</span>
+              <span class="block text-sm text-neutral-500 dark:text-neutral-400 mt-0.5 leading-relaxed">Every month gets its own snapshot of what you owned and what you owed, so you can look back and see exactly how the balance has shifted over time.</span>
+            </span>
           </li>
           <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <span class="check-minimal check-align shrink-0" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
             </span>
-            <span>Feel connected to your cash flow and portfolio</span>
-          </li>
-          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <span class="check-minimal check-align shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            <span>
+              <span class="font-medium text-neutral-800 dark:text-neutral-200">Net worth composition</span>
+              <span class="block text-sm text-neutral-500 dark:text-neutral-400 mt-0.5 leading-relaxed">See how your net worth is built, broken down by asset class, so you know not just what it is but what it's made of.</span>
             </span>
-            <span>Discipline compounds into wisdom</span>
           </li>
         </ul>
       </div>
