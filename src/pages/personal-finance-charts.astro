@@ -17,7 +17,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages } from '@/data/pages';
+import { pages, APP_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import FeatureList from '@/components/FeatureList.astro';
@@ -476,6 +476,36 @@ const ASSET_PILLS_3 = [
     }
     .phone-peek-right {
       transform: rotate(5.5deg) translateY(-30px) translateX(96px);
+    }
+
+    /* Finzen Method section CTA — hero-style shine (light mode) */
+    .method-cta-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .method-cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        transparent 45%,
+        rgba(255, 255, 255, 0.35) 49%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.35) 51%,
+        transparent 55%,
+        transparent 100%
+      );
+      transform: translateX(-100%);
+      transition: transform 0.45s ease;
+      pointer-events: none;
+    }
+    .method-cta-btn:hover::before {
+      transform: translateX(100%);
+    }
+    :global(.dark) .method-cta-btn::before {
+      display: none;
     }
 
     /* Each phone animates in independently: center from below, left from left, right from right */
@@ -1040,7 +1070,7 @@ const ASSET_PILLS_3 = [
           Net Worth: The Big Picture
         </h2>
         <p class="text-base text-neutral-500 dark:text-neutral-400 leading-relaxed">
-          Track your net worth in real-time.
+          Track your assets and debts in real-time.
         </p>
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
           Net worth is the single most honest number in personal finance. Not your salary, not your savings account balance, not how well your portfolio did last month — your net worth. Everything you own minus everything you owe. That's the number that actually tells you where you stand.
@@ -1078,27 +1108,91 @@ const ASSET_PILLS_3 = [
     </div>
   </Section>
 
-  <!-- Section 6: Monthly Reports -->
+  <!-- The Finzen Method -->
   <Section
-    heading="Monthly financial reports"
+    heading="The Finzen Method"
+    subheading="Small Practice. Big Picture."
+    align="center"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - Comprehensive monthly summary
-      - Budget performance recap
-      - Spending by category
-      - Portfolio changes
-      - Net worth delta
+    <div class="w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 md:gap-4 items-stretch">
+      <!-- Card 1: Log -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">1. Log</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          When you know you'll log it, you pause. That moment of reflection changes everything.
+        </p>
+      </div>
+      <div class="flex md:hidden items-center justify-center text-neutral-300 dark:text-neutral-700 py-1" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6l5 5 5-5"/>
+        </svg>
+      </div>
+      <div class="hidden md:flex items-center justify-center text-neutral-300 dark:text-neutral-700" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 3l5 5-5 5"/>
+        </svg>
+      </div>
+      <!-- Card 2: See -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">2. See</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          2–3 min daily. Log all your transactions. Understand where your money goes.
+        </p>
+      </div>
+      <div class="flex md:hidden items-center justify-center text-neutral-300 dark:text-neutral-700 py-1" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6l5 5 5-5"/>
+        </svg>
+      </div>
+      <div class="hidden md:flex items-center justify-center text-neutral-300 dark:text-neutral-700" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 3l5 5-5 5"/>
+        </svg>
+      </div>
+      <!-- Card 3: Grow -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 6l-9.5 9.5-5-5L1 18"/>
+            <path d="M17 6h6v6"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">3. Grow</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Spending, saving, and investing in one intuitive dashboard. Reach financial zen.
+        </p>
+      </div>
+    </div>
 
-      Keywords to weave in: monthly financial report
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: At the end of each month, Finzen generates a report: How did your budget perform? Where did you spend the most? How did your portfolio change? What's your net worth now vs. last month?]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: It's your personal financial statement — automatically generated from your daily entries.]
-      </p>
+    <!-- CTA + link to Finzen Method -->
+    <div class="method-cta flex flex-col items-center gap-3 pt-8">
+      <a
+        href={APP_URL}
+        class="method-cta-btn inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] text-white text-sm font-medium rounded-xl hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)] dark:bg-white dark:text-[#1B1B1B] dark:hover:-translate-y-1 dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.65)] transition-all duration-200"
+      >
+        Start using Finzen today
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a
+        href={`/${pages.mindfulMoneyTracking.slug}`}
+        class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 underline underline-offset-2 transition-colors"
+      >
+        Learn more about the Finzen method
+      </a>
     </div>
   </Section>
 
