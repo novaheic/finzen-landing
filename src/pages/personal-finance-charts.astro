@@ -554,6 +554,17 @@ const ASSET_PILLS_3 = [
       transform: translate(0);
     }
 
+    /* Portfolio hero image: animate in from below */
+    .portfolio-hero-reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .portfolio-hero-reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .check-minimal {
       color: rgb(163 163 163);
       display: inline-flex;
@@ -644,6 +655,7 @@ const ASSET_PILLS_3 = [
       if (disconnectionRings) observer.observe(disconnectionRings);
       const stopGuessingCards = document.querySelector('.stop-guessing-cards');
       if (stopGuessingCards) observer.observe(stopGuessingCards);
+      document.querySelectorAll('.portfolio-hero-reveal').forEach((el) => observer.observe(el));
 
       // Trends demo card: count-up on first view, then random updates every few seconds
       const trendsCards = document.querySelector('.trends-demo-cards');
@@ -1196,27 +1208,39 @@ const ASSET_PILLS_3 = [
     </div>
   </Section>
 
-  <!-- Section 7: Visuals From Daily Habit -->
+  <!-- Section 7: Portfolio in one place -->
   <Section
-    heading="The magic comes from consistency"
+    heading="Monitor your portfolio in one place."
+    subheading="Stocks, crypto, ETFs, commodities, forex - all your asset classes, one unified dashboard, institutional grade analytics."
     bg="stone"
+    align="center"
   >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - These visualizations emerge from your daily entries
-      - Day 1: Not much to see
-      - Week 2: Patterns start
-      - Month 1: Real insights
-      - Month 3+: Full story
-
-      Link to Manual Finance App page
-    */}
-    <div class="max-w-2xl space-y-4">
+    <div class="portfolio-hero-reveal w-full max-w-6xl mx-auto flex justify-center -mt-10 px-2">
+      <img
+        src="/images/portfolio-tracker/hero_light.png"
+        alt="Finzen portfolio dashboard — stocks, crypto, ETFs, commodities, forex in one view"
+        class="w-full max-w-full h-auto rounded-xl block dark:hidden scale-[1.15]"
+      />
+      <img
+        src="/images/portfolio-tracker/hero_dark.png"
+        alt="Finzen portfolio dashboard — stocks, crypto, ETFs, commodities, forex in one view"
+        class="w-full max-w-full h-auto rounded-xl hidden dark:block scale-[1.15]"
+      />
+    </div>
+    <div class="max-w-2xl mx-auto space-y-4 mt-8">
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: All these beautiful visualizations come from one simple habit: entering your transactions daily. Day one, there's not much to see. But after a week, patterns emerge. After a month, you have real insights. After three months, you have a complete financial story.]
+        Portfolio tracking with Finzen tells you how you're actually performing.
       </p>
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: The visual power isn't magic — it's the reward for your daily practice.]
+        Every asset you hold feeds into a unified performance view. Stocks, crypto, ETFs, commodities, forex, mutual funds across 15,000+ supported assets, updated in real time. Cumulative and monthly P&L charted over time. Per-asset breakdowns that show exactly how your portfolio is doing, regardless of your investment horizon.
+      </p>
+      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        For investors who want to go deeper, Finzen calculates risk-adjusted returns, annualized volatility, and Sharpe ratios alongside data-driven projections built from your actual track record. The same metrics professional wealth managers rely on.
+      </p>
+      <p class="text-sm mt-4">
+        <a href={`/${pages.portfolioTracker.slug}`} class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 underline underline-offset-2 transition-colors">
+          Learn more about portfolio management with Finzen →
+        </a>
       </p>
     </div>
   </Section>
