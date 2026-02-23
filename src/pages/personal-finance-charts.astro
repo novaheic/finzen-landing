@@ -34,6 +34,14 @@ const disconnectionRings = [
   { pct: 86, label: 'of people who track their income and expenses say it has helped them get out, or stay out, of debt.' },
   { pct: 60, plus: true, label: 'of investors do not understand all the types of investments they hold in their own portfolio.' },
 ].map(({ pct, label, plus }) => ({ pct, label, plus, offset: C * (1 - pct / 100) }));
+
+// Cashflow insight pills (equal width, same neumorphic style) — ger palette, mixed hues
+const GER_PALETTE = ['#fc5c65', '#fd9644', '#fed330', '#26de81', '#2bcbba', '#0fb9b1', '#20bf6b', '#f7b731', '#fa8231', '#eb3b5a', '#45aaf2', '#4b7bec', '#a55eea', '#d1d8e0', '#778ca3', '#4b6584', '#a5b1c2', '#8854d0', '#3867d6', '#2d98da'];
+const ASSET_PILLS_3 = [
+  { label: 'Runway', supportLine: 'Know how long your liquid funds will last based on past spending.', color: GER_PALETTE[0], icon: 'trending' },
+  { label: 'Time-in-account (TIA)', supportLine: 'How long your money stays in your account before being spent.', color: GER_PALETTE[4], icon: 'clock' },
+  { label: 'Liquidity flow', supportLine: 'Visualize income and outflow patterns. See your cashflow.', color: GER_PALETTE[12], icon: 'pie' },
+];
 ---
 
 <Layout
@@ -273,29 +281,200 @@ const disconnectionRings = [
     .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(4) { transition-delay: 240ms; }
     .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(5) { transition-delay: 320ms; }
     .stop-guessing-cards.in-view .stop-guessing-cards-item:nth-child(6) { transition-delay: 400ms; }
+
+    /* Cashflow pills — equal width (grid so all three same size) */
+    .asset-classes-pills {
+      min-height: 4.5rem;
+      width: 100%;
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .asset-classes-pills {
+        grid-template-columns: 1fr;
+      }
+    }
+    .asset-classes-pills .asset-class-pill-wrap.asset-class-pill-equal {
+      min-width: 0;
+    }
+    .asset-classes-pills .asset-class-pill-wrap.asset-class-pill-equal .asset-class-pill {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .asset-class-pill-wrap {
+      display: inline-flex;
+      transition: transform 0.25s ease;
+    }
+    .asset-class-pill-wrap:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+    .asset-class-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 0.75rem 1.5rem 0.75rem 0.625rem;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: rgb(38 38 38);
+      background: linear-gradient(145deg, #fafafa 0%, #f0f0f0 100%);
+      border: none;
+      border-radius: 9999px;
+      box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.07),
+        5px 5px 12px rgba(140, 140, 140, 0.5),
+        -5px -5px 12px rgba(255, 255, 255, 0.95),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      transition: box-shadow 0.25s ease;
+    }
+    .asset-class-pill-wrap:hover .asset-class-pill {
+      box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.09),
+        10px 10px 22px rgba(120, 120, 120, 0.4),
+        -10px -10px 22px rgba(255, 255, 255, 1),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+    }
+    .asset-class-pill-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      min-width: 2.75rem;
+      min-height: 2.75rem;
+      border-radius: 50%;
+      background-color: var(--pill-color, #4b7bec);
+      color: white;
+      flex-shrink: 0;
+    }
+    .asset-class-pill-circle svg {
+      width: 18px;
+      height: 18px;
+    }
+    .asset-class-pill-xi {
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1;
+      color: inherit;
+    }
+    .asset-class-pill-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.125rem;
+      padding-right: 0.25rem;
+    }
+    .asset-class-pill-label {
+      font-size: 1.0625rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .asset-class-pill-support {
+      font-size: 0.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: rgb(115 115 115);
+    }
+    :global(.dark) .asset-class-pill-support {
+      color: rgb(163 163 163);
+    }
+    /* Subtext always visible on this page (including mobile); portfolio-tracker hides it on small screens */
+    @media (max-width: 400px) {
+      .asset-class-pill {
+        gap: 0.5rem;
+        padding: 0.5rem 1rem 0.5rem 0.5rem;
+        font-size: 0.9375rem;
+      }
+      .asset-class-pill-circle {
+        width: 2rem;
+        height: 2rem;
+        min-width: 2rem;
+        min-height: 2rem;
+      }
+      .asset-class-pill-circle svg {
+        width: 14px;
+        height: 14px;
+      }
+      .asset-class-pill-xi {
+        font-size: 0.875rem;
+      }
+      .asset-class-pill-label {
+        font-size: 0.9375rem;
+      }
+    }
+    .asset-classes-pills.in-view .asset-class-pill {
+      animation: asset-pill-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: var(--pill-delay, 0ms);
+    }
+    :global(.dark) .asset-class-pill {
+      color: rgb(226 232 240);
+      background: linear-gradient(145deg, #3d3d3d 0%, #2a2a2a 100%);
+      box-shadow:
+        5px 5px 12px rgba(0, 0, 0, 0.45),
+        -3px -3px 8px rgba(80, 80, 80, 0.2),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+    }
+    :global(.dark) .asset-class-pill-wrap:hover .asset-class-pill {
+      box-shadow:
+        10px 10px 24px rgba(0, 0, 0, 0.55),
+        -5px -5px 14px rgba(80, 80, 80, 0.15),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.07);
+    }
+    @keyframes asset-pill-in {
+      0% { opacity: 0; transform: translateY(10px) scale(1); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Spending donut: smooth minimal fade-in of segments (no stagger) */
+    .donut-seg {
+      stroke-dasharray: 0 452.4;
+      stroke-dashoffset: 0;
+      transition: stroke-dasharray 1s ease-out, stroke-dashoffset 1s ease-out;
+      cursor: pointer;
+    }
+    .spending-donut-wrap.in-view .donut-seg {
+      transition-delay: 0ms;
+    }
+
+    /* Why manual tracking section: image reveal (from mindful-money-tracking) */
+    .method-image-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    @media (min-width: 768px) {
+      .method-image-reveal {
+        transform: translateX(-40px);
+      }
+    }
+    .method-image-reveal.in-view {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    .check-minimal {
+      color: rgb(163 163 163);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .check-minimal.check-align {
+      margin-top: 0.35em;
+    }
+    :global(.dark) .check-minimal {
+      color: rgb(255 255 255);
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add('in-view');
-          });
-        },
-        { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
-      );
-      document.querySelectorAll('.money-skills-image-reveal').forEach((el) => observer.observe(el));
-      document.querySelectorAll('.cashflow-reveal-left, .cashflow-reveal-right').forEach((el) => observer.observe(el));
-      const disconnectionRings = document.querySelector('.disconnection-rings');
-      if (disconnectionRings) observer.observe(disconnectionRings);
-      const stopGuessingCards = document.querySelector('.stop-guessing-cards');
-      if (stopGuessingCards) observer.observe(stopGuessingCards);
-
-      // Trends demo card: count-up on first view, then random updates every few seconds
-      const trendsCards = document.querySelector('.trends-demo-cards');
-      if (!trendsCards) return;
-      const formatCurrency = (n) => '€' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const animateValue = (el, fromVal, toVal, formatter, duration = 600) => {
+        if (!el) return;
         const startTime = performance.now();
         const step = (now) => {
           const t = Math.min((now - startTime) / duration, 1);
@@ -306,6 +485,74 @@ const disconnectionRings = [
         };
         requestAnimationFrame(step);
       };
+
+      const C = 2 * Math.PI * 72;
+      const PCT = [28, 22, 18, 14, 10, 8];
+      const TOTAL_SPEND = 3200;
+      const defaultLabel = 'Total spending';
+      const defaultValue = '$3,200';
+      const formatDollar = (n) => '$' + Number(n).toLocaleString('en-US', { maximumFractionDigits: 0 });
+      let offset = 0;
+      const donutObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const wrap = entry.target;
+            wrap.classList.add('in-view');
+            const segs = wrap.querySelectorAll('.donut-seg');
+            segs.forEach((seg, i) => {
+              const pct = PCT[i];
+              const length = (pct / 100) * C;
+              seg.style.strokeDasharray = `${length} ${C - length}`;
+              seg.style.strokeDashoffset = `${-offset}`;
+              offset += length;
+            });
+            const valueEl = document.getElementById('donut-value');
+            if (valueEl) animateValue(valueEl, 0, TOTAL_SPEND, formatDollar, 800);
+            donutObserver.disconnect();
+          });
+        },
+        { threshold: 0.2 }
+      );
+      const donutWrap = document.querySelector('.spending-donut-wrap');
+      if (donutWrap) {
+        donutObserver.observe(donutWrap);
+        const labelEl = document.getElementById('donut-label');
+        const valueEl = document.getElementById('donut-value');
+        donutWrap.querySelectorAll('.donut-seg').forEach((seg) => {
+          seg.addEventListener('mouseenter', () => {
+            if (labelEl) labelEl.textContent = seg.getAttribute('data-category') || defaultLabel;
+            if (valueEl) valueEl.textContent = '$' + Number(seg.getAttribute('data-amount')).toLocaleString();
+          });
+          seg.addEventListener('mouseleave', () => {
+            if (labelEl) labelEl.textContent = defaultLabel;
+            if (valueEl) valueEl.textContent = defaultValue;
+          });
+        });
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('in-view');
+          });
+        },
+        { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
+      );
+      document.querySelectorAll('.money-skills-image-reveal').forEach((el) => observer.observe(el));
+      document.querySelectorAll('.cashflow-reveal-left, .cashflow-reveal-right').forEach((el) => observer.observe(el));
+      document.querySelectorAll('.method-image-reveal').forEach((el) => observer.observe(el));
+      const assetPills = document.querySelector('.asset-classes-pills');
+      if (assetPills) observer.observe(assetPills);
+      const disconnectionRings = document.querySelector('.disconnection-rings');
+      if (disconnectionRings) observer.observe(disconnectionRings);
+      const stopGuessingCards = document.querySelector('.stop-guessing-cards');
+      if (stopGuessingCards) observer.observe(stopGuessingCards);
+
+      // Trends demo card: count-up on first view, then random updates every few seconds
+      const trendsCards = document.querySelector('.trends-demo-cards');
+      if (!trendsCards) return;
+      const formatCurrency = (n) => '€' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       let nwTotal = 0, nwInv = 0;
       const totalEl = trendsCards.querySelector('.trends-nw-total');
       const invEl = trendsCards.querySelector('.trends-nw-inv');
@@ -582,28 +829,161 @@ const disconnectionRings = [
     </div>
   </Section>
 
-  <!-- Section 5: Your Spending, Visualized -->
-  <Section
-    heading="Your Spending, Visualized"
-    subheading="Envelope budgeting meets deep analytics. Understand your spending."
-    bg="stone"
-  >
-    {/*
-      COPY PLACEHOLDER — Suggested talking points:
-      - The most motivating chart in personal finance
-      - Assets minus liabilities over time
-      - See your financial trajectory
-      - Celebrate the upward trend
+  <!-- Cashflow insight pills: Runway, TIA, Liquidity flow (equal width) -->
+  <div class="w-full py-6 md:py-8 flex justify-center">
+    <div class="asset-classes-pills flex flex-wrap justify-center gap-4 sm:gap-5">
+      {ASSET_PILLS_3.map((item, i) => (
+        <span class="asset-class-pill-wrap asset-class-pill-equal">
+          <span
+            class="asset-class-pill"
+            style={{ '--pill-delay': `${i * 60}ms`, '--pill-color': item.color }}
+          >
+            <span class="asset-class-pill-circle" aria-hidden="true">
+              {item.icon === 'trending' && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              )}
+              {item.icon === 'clock' && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              )}
+              {item.icon === 'pie' && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+              )}
+            </span>
+            <span class="asset-class-pill-text">
+              <span class="asset-class-pill-label">{item.label}</span>
+              <span class="asset-class-pill-support">{item.supportLine}</span>
+            </span>
+          </span>
+        </span>
+      ))}
+    </div>
+  </div>
 
-      Keywords to weave in: net worth tracking
-    */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: The net worth timeline might be the most motivating chart in personal finance. It shows your total assets minus your total liabilities — over time.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: When that line trends upward, you know you're building wealth. Even small gains feel meaningful when you can see the trajectory.]
-      </p>
+  <!-- Section 4b: Smarter Spending Starts Here (duplicate layout, title/subtitle right-aligned only) -->
+  <Section
+    heading="Smarter Spending Starts Here"
+    subheading="See not just what you spent, but how your habits are shifting over time."
+    headingAlign="right"
+  >
+    <div class="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10">
+      <!-- Donut chart: left on desktop, vertically centered with text -->
+      <div class="cashflow-reveal-left flex-shrink-0 w-full max-w-[300px] md:max-w-[260px] lg:max-w-[320px] mx-auto md:mx-0 order-1 md:order-1 mb-6 md:mb-0">
+        <div class="spending-donut-wrap relative rounded-xl bg-white dark:bg-neutral-900 p-2 md:p-3" aria-hidden="true">
+          <div class="relative w-full">
+            <svg class="spending-donut w-full h-auto block" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Track (full circle, dim) -->
+              <circle cx="100" cy="100" r="72" stroke="currentColor" stroke-width="24" fill="none" class="text-neutral-200 dark:text-neutral-700" transform="rotate(-90 100 100)" />
+              <!-- Segments: 28, 22, 18, 14, 10, 8 (biggest to smallest) -->
+              <circle cx="100" cy="100" r="72" stroke="#26de81" stroke-width="24" fill="none" stroke-linecap="round" class="donut-seg" data-category="Food" data-amount="896" data-pct="28" transform="rotate(-90 100 100)" />
+              <circle cx="100" cy="100" r="72" stroke="#45aaf2" stroke-width="24" fill="none" stroke-linecap="round" class="donut-seg" data-category="Transport" data-amount="704" data-pct="22" transform="rotate(-90 100 100)" />
+              <circle cx="100" cy="100" r="72" stroke="#a55eea" stroke-width="24" fill="none" stroke-linecap="round" class="donut-seg" data-category="Bills" data-amount="576" data-pct="18" transform="rotate(-90 100 100)" />
+              <circle cx="100" cy="100" r="72" stroke="#fd9644" stroke-width="24" fill="none" stroke-linecap="round" class="donut-seg" data-category="Shopping" data-amount="448" data-pct="14" transform="rotate(-90 100 100)" />
+              <circle cx="100" cy="100" r="72" stroke="#fc5c65" stroke-width="24" fill="none" stroke-linecap="round" class="donut-seg" data-category="Other" data-amount="320" data-pct="10" transform="rotate(-90 100 100)" />
+              <circle cx="100" cy="100" r="72" stroke="#2bcbba" stroke-width="24" fill="none" stroke-linecap="round" class="donut-seg" data-category="Subscriptions" data-amount="256" data-pct="8" transform="rotate(-90 100 100)" />
+            </svg>
+            <!-- Center hole: total or hover category + amount -->
+            <div class="spending-donut-center absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+              <span id="donut-label" class="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Total spending</span>
+              <span id="donut-value" class="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mt-0.5">$0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copy: right on desktop, below image on mobile -->
+      <div class="flex-1 min-w-0 max-w-2xl space-y-4 order-2 md:order-2">
+        <p class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Spending Graphs</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          The spending tab breaks down every category and tag into clean donut charts and monthly bar graphs, so you can see not just what you spent, but how your patterns are shifting over time. Which categories are creeping up month after month? The monthly trend bars make it immediately obvious, without digging through transactions.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Drill into any category to see subcategory breakdowns, filter by tag, or zoom out to the full year.
+        </p>
+      </div>
+    </div>
+
+    <!-- Budget Overview: text left, image right (on mobile: image above text) -->
+    <div class="flex flex-col md:flex-row md:items-start md:gap-8 lg:gap-10 mt-12 lg:mt-16">
+      <!-- Copy: left on desktop, below image on mobile -->
+      <div class="flex-1 min-w-0 max-w-2xl space-y-4 order-2 md:order-1 mb-6 md:mb-0 md:mt-12">
+        <p class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Budget Overview</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          The budget page is where intention meets reality. Set a spending limit for each category, log your transactions throughout the month, and watch your remaining balance update in real time. No mental math, no end of month surprises.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Every envelope shows you exactly how much you allocated, how much you have used, and how much is left, at a glance.
+        </p>
+        <p class="text-base font-medium text-neutral-700 dark:text-neutral-300 mt-4 mb-0">
+          <a href="/budgeting-app" class="inline-flex items-center gap-2 text-neutral-800 dark:text-neutral-200 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors">
+            Learn more about budgeting
+            <span aria-hidden="true">→</span>
+          </a>
+        </p>
+      </div>
+      <!-- Image: right on desktop, above copy on mobile (animates in from right) -->
+      <div class="cashflow-reveal-right flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-2 mb-8 md:mb-0 md:mt-12">
+        <img
+          src="/images/budgeting-app/budget_view_light.png"
+          alt="Finzen budget view — categories, budgeted, spent, balance"
+          class="cashflow-img w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/budgeting-app/budget_view_dark.png"
+          alt="Finzen budget view — categories, budgeted, spent, balance"
+          class="cashflow-img w-full h-auto rounded-lg hidden dark:block"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <!-- Section 5: Why manual tracking (duplicate from mindful-money-tracking) -->
+  <Section bg="stone" class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <div class="method-image-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <img
+          src="/images/our-story/mobile_networth_light.png"
+          alt="Finzen mobile app — net worth chart and monthly breakdown"
+          class="w-full max-w-[260px] h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/our-story/mobile_networth_dark.png"
+          alt="Finzen mobile app — net worth chart and monthly breakdown"
+          class="w-full max-w-[260px] h-auto rounded-lg hidden dark:block"
+        />
+      </div>
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+          Why manual tracking?
+        </h2>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Spending, saving, investing, debt - each entry is a decision you own. That awareness is the path to <strong>taking control of your finances</strong>.
+        </p>
+        <ul class="space-y-2 list-none pl-0 mt-1">
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Notice easy-to-miss patterns</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>See where your money really goes</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Feel connected to your cash flow and portfolio</span>
+          </li>
+          <li class="flex items-start gap-3 text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <span class="check-minimal check-align shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l3 3 7-7"/></svg>
+            </span>
+            <span>Discipline compounds into wisdom</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </Section>
 
