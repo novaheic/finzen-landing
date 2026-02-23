@@ -565,6 +565,228 @@ const ASSET_PILLS_3 = [
       transform: translateY(0);
     }
 
+    /* Achievements preview (Liquidity section): stacked cards + stagger animation */
+    .achievements-preview {
+      padding: 0.25rem 0;
+      width: 100%;
+      max-width: 380px;
+    }
+    .achievements-preview-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.875rem;
+      margin: 0;
+    }
+    .achievements-preview-reveal .achievement-card {
+      opacity: 0;
+      transform: translateX(-24px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out, background-color 0.15s ease;
+    }
+    .achievements-preview-reveal.in-view .achievement-card { opacity: 1; transform: translateX(0); }
+    .achievements-preview-reveal.in-view .achievement-card:nth-child(1) { transition-delay: 0ms; }
+    .achievements-preview-reveal.in-view .achievement-card:nth-child(2) { transition-delay: 200ms; }
+    .achievements-preview-reveal.in-view .achievement-card:nth-child(3) { transition-delay: 400ms; }
+    .achievement-card {
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08), -4px -4px 12px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .achievement-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 8px 10px 20px rgba(0, 0, 0, 0.1), -4px -4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .achievement-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .achievement-icon-wrap {
+      position: relative;
+      flex-shrink: 0;
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+    .progress-ring {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .progress-ring circle {
+      fill: none;
+      stroke-width: 6;
+      stroke-linecap: round;
+    }
+    .progress-ring-bg {
+      stroke: #d1d5db;
+    }
+    .progress-ring-fill {
+      transition: stroke-dashoffset 0.5s;
+    }
+    .progress-ring-earned {
+      stroke: #2BCBBA;
+      stroke-dasharray: 264;
+      stroke-dashoffset: 0;
+    }
+    .progress-ring-partial {
+      stroke: #2BCBBA;
+      stroke-dasharray: 264;
+      stroke-dashoffset: calc(264 - (var(--progress, 0) / 100) * 264);
+    }
+    .progress-ring-locked {
+      stroke: #9ca3af;
+      stroke-dasharray: 264;
+      stroke-dashoffset: 264;
+    }
+    .achievement-emoji {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .achievement-emoji-muted {
+      font-size: 0.875rem;
+      filter: grayscale(1);
+      opacity: 0.5;
+    }
+    .achievement-lock {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    .achievement-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .achievement-title {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin: 0 0 0.125rem;
+      color: #111827;
+    }
+    .achievement-desc {
+      font-size: 0.6875rem;
+      color: #4b5563;
+      margin: 0 0 0.25rem;
+    }
+    .achievement-title-locked {
+      color: #6b7280;
+    }
+    .achievement-desc-locked {
+      color: #9ca3af;
+    }
+    .achievement-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.125rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+      font-size: 0.625rem;
+      font-weight: 500;
+    }
+    .achievement-badge-got-it {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+    .achievement-badge-check {
+      color: #16a34a;
+    }
+    .achievement-progress-text {
+      font-size: 0.625rem;
+      font-weight: 500;
+      color: #4f46e5;
+      margin: 0.125rem 0 0;
+    }
+    .achievement-progress-locked {
+      color: #6b7280;
+    }
+    .achievement-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+    .achievement-bar {
+      flex: 0 0 70%;
+      height: 0.5rem;
+      background: #e5e7eb;
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+    .achievement-bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: #9ca3af;
+      transition: width 0.3s;
+    }
+    .achievement-pct {
+      font-size: 0.5rem;
+      color: #6b7280;
+      flex: 1;
+    }
+    .achievement-pct strong {
+      font-weight: 600;
+    }
+    /* Dark mode — card, text, rings, badge, bars per spec */
+    :global(.dark) .achievement-card {
+      background: #1B1B1B;
+      box-shadow: 8px 8px 18px rgba(0, 0, 0, 0.5), 10px 10px 30px rgba(0, 0, 0, 0.12), -3px -3px 6px rgba(255, 255, 255, 0.08);
+    }
+    :global(.dark) .achievement-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 8px 10px 22px rgba(0, 0, 0, 0.55), 10px 10px 32px rgba(0, 0, 0, 0.14), -3px -3px 6px rgba(255, 255, 255, 0.08);
+    }
+    :global(.dark) .achievement-title {
+      color: #f3f4f6;
+    }
+    :global(.dark) .achievement-desc {
+      color: #9ca3af;
+    }
+    :global(.dark) .achievement-title-locked {
+      color: #9ca3af;
+    }
+    :global(.dark) .achievement-desc-locked {
+      color: #6b7280;
+    }
+    :global(.dark) .achievement-badge-got-it {
+      background: #1f2937;
+      color: #9ca3af;
+    }
+    :global(.dark) .achievement-badge-check {
+      color: #4ade80;
+    }
+    :global(.dark) .achievement-progress-text {
+      color: #2BCBBA;
+    }
+    :global(.dark) .achievement-progress-locked {
+      color: #9ca3af;
+    }
+    :global(.dark) .achievement-bar {
+      background: #374151;
+    }
+    :global(.dark) .achievement-bar-fill {
+      background: #6b7280;
+    }
+    :global(.dark) .achievement-pct {
+      color: #9ca3af;
+    }
+    :global(.dark) .progress-ring-bg {
+      stroke: #4b5563;
+    }
+    :global(.dark) .progress-ring-locked {
+      stroke: #6b7280;
+    }
+
     .check-minimal {
       color: rgb(163 163 163);
       display: inline-flex;
@@ -656,6 +878,7 @@ const ASSET_PILLS_3 = [
       const stopGuessingCards = document.querySelector('.stop-guessing-cards');
       if (stopGuessingCards) observer.observe(stopGuessingCards);
       document.querySelectorAll('.portfolio-hero-reveal').forEach((el) => observer.observe(el));
+      document.querySelectorAll('.achievements-preview-reveal').forEach((el) => observer.observe(el));
 
       // Trends demo card: count-up on first view, then random updates every few seconds
       const trendsCards = document.querySelector('.trends-demo-cards');
@@ -1245,6 +1468,96 @@ const ASSET_PILLS_3 = [
     </div>
   </Section>
 
+  <!-- Your Progress (achievements preview) -->
+  <Section class="pt-8 pb-16 md:py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:gap-6">
+      <div class="achievements-preview-reveal w-full md:w-1/2 flex-shrink-0 order-first md:order-none flex justify-center md:justify-start mb-6 md:mb-0">
+        <section class="achievements-preview" aria-label="Achievements preview">
+          <div class="achievements-preview-grid">
+            <!-- EARNED 1 -->
+            <div class="achievement-card">
+              <div class="achievement-main">
+                <div class="achievement-icon-wrap">
+                  <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-ring-bg" cx="50" cy="50" r="42"/>
+                    <circle class="progress-ring-fill progress-ring-earned" cx="50" cy="50" r="42"/>
+                  </svg>
+                  <span class="achievement-emoji">🌤️</span>
+                </div>
+                <div class="achievement-body">
+                  <h3 class="achievement-title">Weekend Warrior</h3>
+                  <p class="achievement-desc">Log transactions for 3 consecutive days</p>
+                  <span class="achievement-badge achievement-badge-got-it"><span class="achievement-badge-check">✓</span> Got it! · 2 days ago</span>
+                </div>
+              </div>
+              <div class="achievement-footer">
+                <div class="achievement-bar"><div class="achievement-bar-fill" style="width: 28%"></div></div>
+                <span class="achievement-pct"><strong>28%</strong> of users have this achievement</span>
+              </div>
+            </div>
+            <!-- UNLOCKED (in progress) -->
+            <div class="achievement-card">
+              <div class="achievement-main">
+                <div class="achievement-icon-wrap">
+                  <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-ring-bg" cx="50" cy="50" r="42"/>
+                    <circle class="progress-ring-fill progress-ring-partial" cx="50" cy="50" r="42" style="--progress: 65"/>
+                  </svg>
+                  <span class="achievement-emoji achievement-emoji-muted">📅</span>
+                </div>
+                <div class="achievement-body">
+                  <h3 class="achievement-title">Full Week</h3>
+                  <p class="achievement-desc">Log transactions for 7 consecutive days</p>
+                  <p class="achievement-progress-text">Progress: 65%</p>
+                </div>
+              </div>
+              <div class="achievement-footer">
+                <div class="achievement-bar"><div class="achievement-bar-fill" style="width: 18%"></div></div>
+                <span class="achievement-pct"><strong>18%</strong> of users have this achievement</span>
+              </div>
+            </div>
+            <!-- LOCKED -->
+            <div class="achievement-card achievement-card-locked">
+              <div class="achievement-main">
+                <div class="achievement-icon-wrap">
+                  <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-ring-bg" cx="50" cy="50" r="42"/>
+                    <circle class="progress-ring-fill progress-ring-locked" cx="50" cy="50" r="42"/>
+                  </svg>
+                  <span class="achievement-lock">🔒</span>
+                </div>
+                <div class="achievement-body">
+                  <h3 class="achievement-title achievement-title-locked">Locked</h3>
+                  <p class="achievement-desc achievement-desc-locked">Requirement will become visible once unlocked</p>
+                  <p class="achievement-progress-text achievement-progress-locked">Unlock "Full Week" first</p>
+                </div>
+              </div>
+              <div class="achievement-footer">
+                <div class="achievement-bar"><div class="achievement-bar-fill" style="width: 5%"></div></div>
+                <span class="achievement-pct"><strong>5%</strong> of users have this achievement</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="w-full md:w-1/2 min-w-0 flex flex-col gap-4 order-last md:order-none">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight mb-2">
+            Your Progress. For Real.
+          </h2>
+          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+            55+ Achievements to Unlock
+          </p>
+        </div>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Most finance apps make you feel behind. Finzen tracks how far you've come - through streaks, net worth growth, investing consistency, and cashflow habits. Every achievement is tied to real behavior, every rarity score shows you how few people got there, and every unlock tells you exactly what to chase next.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Small habits compound. So do the wins.
+        </p>
+      </div>
+    </div>
+  </Section>
 
   <CTABlock
     heading="Start seeing your financial story"
