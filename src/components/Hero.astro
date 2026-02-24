@@ -19,31 +19,29 @@ const heroLinks = [
   <div class="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
   <!-- Left column: copy + CTA + links -->
   <div class="max-w-xl lg:max-w-none flex-1 space-y-5 text-left order-2 lg:order-1 min-w-0 mt-8 lg:mt-0">
-    <!-- Small text / Eyebrow -->
-    <p class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-      Finzen: The zen personal finance tracker
-    </p>
+    <!-- Small text / Eyebrow + H1 + Subtext (animate from below) -->
+    <div class="hero-text-in space-y-5">
+      <p class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+        Finzen: The zen personal finance tracker
+      </p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
+        Budget. Track. Invest.<br />
+        The all-in-one personal finance dashboard.
+      </h1>
+      <p class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        Finzen simplifies money management by connecting envelope budgeting, cashflow tracking, and portfolio management in one seamless experience. Designed to help you see the full picture.
+      </p>
+    </div>
 
-    <!-- H1 -->
-    <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
-      Budget. Track. Invest.<br />
-      The all-in-one personal finance dashboard.
-    </h1>
-
-    <!-- Subtext -->
-    <p class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-Finzen simplifies money management by connecting envelope budgeting, cashflow tracking, and portfolio management in one seamless experience. Designed to help you see the full picture.
-    </p>
-
-    <!-- 4 pill-shaped tags (same style as "no bank sync") -->
+    <!-- 4 pill-shaped tags (animate in one by one from right) -->
     <div class="flex flex-wrap gap-2">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+      <span class="hero-tag hero-tag-1 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
         <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <polygon points="12 2 15 9 22 9 17 14 18 21 12 17 6 21 7 14 2 9 9 9" />
         </svg>
         5 Rated
       </span>
-      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+      <span class="hero-tag hero-tag-2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
         <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="20 12 20 22 4 22 4 12" />
           <rect x="2" y="7" width="20" height="5" />
@@ -53,14 +51,14 @@ Finzen simplifies money management by connecting envelope budgeting, cashflow tr
         </svg>
         Free to Start
       </span>
-      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+      <span class="hero-tag hero-tag-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
         <svg class="w-4 h-4 text-violet-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
           <path d="M22 4L12 14.01l-3-3" />
         </svg>
         Privacy-first
       </span>
-      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+      <span class="hero-tag hero-tag-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
         <svg class="w-4 h-4 text-rose-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
         </svg>
@@ -68,8 +66,8 @@ Finzen simplifies money management by connecting envelope budgeting, cashflow tr
       </span>
     </div>
 
-    <!-- Main CTA -->
-    <div class="pt-2">
+    <!-- Main CTA + links (fade/slide in after tags) -->
+    <div class="hero-cta-in space-y-2">
       <a
         href={APP_URL}
         class="hero-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
@@ -79,10 +77,7 @@ Finzen simplifies money management by connecting envelope budgeting, cashflow tr
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-    </div>
-
-    <!-- 3 links to other pages with arrow -->
-    <div class="flex flex-wrap gap-x-6 gap-y-1 pt-2">
+      <div class="flex flex-wrap gap-x-6 gap-y-1 pt-2">
       {heroLinks.map((page) => (
         <a
           href={`/${page.slug}`}
@@ -94,13 +89,14 @@ Finzen simplifies money management by connecting envelope budgeting, cashflow tr
           </svg>
         </a>
       ))}
+      </div>
     </div>
   </div>
 
-  <!-- Right column: image + floating rectangles (overflow-visible so cards aren't clipped) -->
+  <!-- Right column: image + floating rectangles (no opacity/transform on this wrapper so cards' backdrop-filter works) -->
   <div class="flex-1 w-full min-w-0 max-w-[550px] lg:max-w-none mx-auto order-1 lg:order-2 relative overflow-visible">
     <div class="relative overflow-visible">
-      <div class="rounded-2xl overflow-visible hero-image-wrap">
+      <div class="rounded-2xl overflow-visible hero-image-wrap hero-image-grow">
         <div class="hero-image-scale">
           <img
             src="/images/mindful-money-tracking/hero_light.png"
@@ -117,7 +113,7 @@ Finzen simplifies money management by connecting envelope budgeting, cashflow tr
 
       <!-- Floating card: top right (positioned outside image frame) -->
       <div class="hero-float hero-float-tr absolute">
-        <div class="hero-float-card hero-float-bob flex items-center gap-3 p-3 bg-white dark:bg-white/[0.08] dark:backdrop-blur-[8px] dark:border-white/10 rounded-xl border border-neutral-200">
+        <div class="hero-float-card hero-float-bob flex items-center gap-3 p-3 bg-white dark:bg-white/[0.08] dark:backdrop-blur-[12px] dark:border-white/10 rounded-xl border border-neutral-200">
           <div class="hero-float-card-icon flex-shrink-0 w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
             <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
               <circle cx="12" cy="12" r="8" stroke-dasharray="13 4 13 4 13 4" />
@@ -150,6 +146,74 @@ Finzen simplifies money management by connecting envelope budgeting, cashflow tr
 </section>
 
 <style>
+  /* Image area grows in with light rotation (wrapper only; cards stay outside so backdrop-filter works) */
+  @keyframes hero-image-grow-in {
+    from {
+      opacity: 0;
+      transform: scale(0.92) rotate(-2.5deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  .hero-image-grow {
+    opacity: 0;
+    animation: hero-image-grow-in 0.75s ease-out 0.1s forwards;
+  }
+
+  /* Entrance: text block from below */
+  @keyframes hero-text-in {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .hero-text-in {
+    opacity: 0;
+    animation: hero-text-in 0.6s ease-out 0.2s forwards;
+  }
+
+  /* Entrance: tags one by one from right */
+  @keyframes hero-tag-in {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .hero-tag {
+    opacity: 0;
+    animation: hero-tag-in 0.32s ease-out forwards;
+  }
+  .hero-tag-1 { animation-delay: 0.38s; }
+  .hero-tag-2 { animation-delay: 0.46s; }
+  .hero-tag-3 { animation-delay: 0.54s; }
+  .hero-tag-4 { animation-delay: 0.62s; }
+
+  /* Entrance: CTA + links fade/slide up */
+  @keyframes hero-cta-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .hero-cta-in {
+    opacity: 0;
+    animation: hero-cta-in 0.5s ease-out 0.78s forwards;
+  }
+
   @keyframes hero-float-bob {
     0%, 100% {
       transform: translateY(0);
