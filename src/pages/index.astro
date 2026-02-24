@@ -38,6 +38,15 @@ import TrustBadge from '@/components/TrustBadge.astro';
 import CTABlock from '@/components/CTABlock.astro';
 
 const meta = pages.home;
+
+// Donut rings for "One app. The full picture." (same as mindful-money-tracking disconnect section)
+const R = 48;
+const C = 2 * Math.PI * R;
+const fullPictureRings = [
+  { pct: 78, label: 'of workers live paycheck to paycheck, regardless of income level' },
+  { pct: 27, label: 'Only 27% of Americans feel confident enough to create an investment plan' },
+  { pct: 83, label: 'of people who use envelope budgeting report an improved financial situation' },
+].map(({ pct, label }) => ({ pct, label, offset: C * (1 - pct / 100) }));
 ---
 
 <Layout
@@ -57,8 +66,10 @@ const meta = pages.home;
        Stop juggling apps and spreadsheets.
        ============================================================ -->
   <Section
-    heading="One app. The full picture."
-    subheading="Stop juggling. Start understanding."
+    heading="Managing your finances takes discipline"
+    subheading="Let's be honest"
+    subtitleAbove
+    align="center"
     bg="stone"
   >
     {/*
@@ -70,16 +81,50 @@ const meta = pages.home;
 
       Keywords to weave in: personal finance app, all in one personal finance app
     */}
-    <div class="max-w-2xl space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Most people manage their finances across a patchwork of tools — a budgeting app here, an investment tracker there, a spreadsheet holding it all together. It never quite works.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Finzen was built to fix this. It combines envelope budgeting, expense tracking, and portfolio management in one seamless experience. Not three apps pretending to be one — a single tool designed from the ground up.]
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        [COPY: Where your money is. Where it's going. How to grow it. All in one place.]
-      </p>
+    <div class="space-y-4 flex flex-col items-center">
+      <div class="max-w-2xl w-full">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Most people manage their finances across a patchwork of tools — a budgeting app here, an investment tracker there, a spreadsheet holding it all together. It never quite works.]
+        </p>
+      </div>
+      <div class="disconnection-rings my-12 w-full">
+        {fullPictureRings.map(({ pct, label, offset }, i) => (
+          <div class="ring-item" style={`--ring-offset: ${offset}; --ring-delay: ${i * 0.12}s`}>
+            <div class="ring-wrapper">
+              <svg class="ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                <circle
+                  class="ring-track"
+                  cx="60"
+                  cy="60"
+                  r={R}
+                  fill="none"
+                  stroke-width="6"
+                />
+                <circle
+                  class="ring-progress"
+                  cx="60"
+                  cy="60"
+                  r={R}
+                  fill="none"
+                  stroke-width="6"
+                  stroke-dasharray={C}
+                  transform="rotate(-90 60 60)"
+                />
+              </svg>
+              <span class="ring-pct">{pct}%</span>
+            </div>
+            <p class="ring-label">{label}</p>
+          </div>
+        ))}
+      </div>
+      <div class="max-w-2xl w-full space-y-4">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Finzen was built to fix this. It combines envelope budgeting, expense tracking, and portfolio management in one seamless experience. Not three apps pretending to be one — a single tool designed from the ground up.]
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Where your money is. Where it's going. How to grow it. All in one place.]
+        </p>
+      </div>
     </div>
   </Section>
 
@@ -313,4 +358,112 @@ const meta = pages.home;
     buttonLabel="Get Started Free"
   />
 
+  <style>
+    .disconnection-rings {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 768px) {
+      .disconnection-rings {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+    }
+    .ring-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+    .disconnection-rings.in-view .ring-item {
+      animation: ring-appear 0.6s ease-out var(--ring-delay) forwards;
+    }
+    @keyframes ring-appear {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .ring-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .ring-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .ring-track {
+      stroke: rgb(229 229 229);
+    }
+    :global(.dark) .ring-track {
+      stroke: rgb(64 64 64);
+    }
+    .ring-progress {
+      stroke: rgb(23 23 23);
+      stroke-linecap: round;
+      stroke-dashoffset: 301.59;
+    }
+    .disconnection-rings.in-view .ring-progress {
+      animation: ring-fill 0.9s ease-out var(--ring-delay) forwards;
+    }
+    :global(.dark) .ring-progress {
+      stroke: rgb(250 250 250);
+    }
+    @keyframes ring-fill {
+      from {
+        stroke-dashoffset: 301.59;
+      }
+      to {
+        stroke-dashoffset: var(--ring-offset);
+      }
+    }
+    .ring-pct {
+      position: relative;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: rgb(23 23 23);
+      line-height: 1;
+    }
+    :global(.dark) .ring-pct {
+      color: rgb(250 250 250);
+    }
+    .ring-label {
+      font-size: 0.875rem;
+      line-height: 1.4;
+      color: rgb(82 82 82);
+      max-width: 18rem;
+      margin: 0;
+      text-align: center;
+    }
+    :global(.dark) .ring-label {
+      color: rgb(163 163 163);
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('in-view');
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -20px 0px' }
+      );
+      const rings = document.querySelector('.disconnection-rings');
+      if (rings) observer.observe(rings);
+    });
+  </script>
 </Layout>
