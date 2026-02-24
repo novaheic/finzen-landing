@@ -1,41 +1,70 @@
 ---
 /**
- * Hero.astro — Homepage hero. Consolidation hook.
- * This is the opening statement. Sets tone for the entire page.
- *
- * Content is provisional — final copy TBD during beta.
- * Structure: tagline → headline → subtext → CTA → contextual angle links
- *
- * Narrative intent: "Stop juggling. One app does it all."
- * Layered with calm, mindful tone — not hype.
+ * Hero.astro — Homepage hero. Two-column layout.
+ * Left: eyebrow, H1, subtext, 4 pill tags, CTA, 3 angle links with arrows.
+ * Right: hero image (light/dark) with floating stat cards (top-right, bottom-left).
  */
 
-import { APP_URL } from '@/data/pages';
+import { APP_URL, anglePages } from '@/data/pages';
+
+// Pick 3 angle pages for the hero links (excluding our-story)
+const heroLinks = anglePages.filter((p) => p.slug !== 'our-story').slice(0, 3);
 ---
 
-<section class="w-full min-h-[70vh] flex flex-col items-center justify-center px-6 py-24 bg-gradient-to-b from-[#ECECEC] to-neutral-200 dark:from-[#1B1B1B] dark:to-neutral-900">
-  <div class="max-w-3xl mx-auto text-center space-y-6">
-
-    <!-- Eyebrow / Tagline -->
-    <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100 uppercase tracking-widest">
+<section class="w-full min-h-[70vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 px-6 py-24 bg-gradient-to-b from-[#ECECEC] to-neutral-200 dark:from-[#1B1B1B] dark:to-neutral-900">
+  <div class="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+  <!-- Left column: copy + CTA + links -->
+  <div class="max-w-xl lg:max-w-none flex-1 space-y-5 text-left order-2 lg:order-1 min-w-0">
+    <!-- Small text / Eyebrow -->
+    <p class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
       Personal finance. All in one place.
     </p>
 
-    <!-- Main Headline — consolidation hook -->
-    <h1 class="text-3xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
+    <!-- H1 -->
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
       Budget. Track. Invest.<br />
       Finally, one place for all of it.
     </h1>
 
-    <!-- Subtext — expand the promise -->
-    <p class="text-base md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+    <!-- Subtext -->
+    <p class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
       Finzen combines envelope budgeting, spending tracking, and portfolio management
       into one beautifully simple app. Privacy-first. No bank connections. Just a clear,
       complete picture of your finances.
     </p>
 
-    <!-- Primary CTA — same hover as header CTA: float, scale, shadow, shine -->
-    <div class="pt-4">
+    <!-- 4 pill-shaped tags (same style as "no bank sync") -->
+    <div class="flex flex-wrap gap-2">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+        <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <polygon points="12 2 15 9 22 9 17 14 18 21 12 17 6 21 7 14 2 9 9 9" />
+        </svg>
+        5 Rated
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        100% Free
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+        <svg class="w-4 h-4 text-violet-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <path d="M22 4L12 14.01l-3-3" />
+        </svg>
+        Privacy-first
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
+        <svg class="w-4 h-4 text-rose-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+        No bank sync
+      </span>
+    </div>
+
+    <!-- Main CTA -->
+    <div class="pt-2">
       <a
         href={APP_URL}
         class="hero-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
@@ -47,22 +76,103 @@ import { APP_URL } from '@/data/pages';
       </a>
     </div>
 
-    <!-- Contextual angle links -->
-    <div class="pt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-      <a href="/privacy-first-finance-app" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-        Privacy first →
-      </a>
-      <a href="/visual-financial-insights" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-        See your money →
-      </a>
-      <a href="/manual-personal-finance-app" class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-        Why manual →
-      </a>
+    <!-- 3 links to other pages with arrow -->
+    <div class="flex flex-wrap gap-x-6 gap-y-1 pt-2">
+      {heroLinks.map((page) => (
+        <a
+          href={`/${page.slug}`}
+          class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors inline-flex items-center gap-1"
+        >
+          {page.footerLabel}
+          <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      ))}
     </div>
+  </div>
+
+  <!-- Right column: image + floating rectangles (overflow-visible so cards aren't clipped) -->
+  <div class="flex-1 w-full min-w-0 max-w-[550px] lg:max-w-none mx-auto order-1 lg:order-2 relative overflow-visible">
+    <div class="relative overflow-visible">
+      <div class="rounded-2xl overflow-visible hero-image-wrap">
+        <div class="hero-image-scale">
+          <img
+            src="/images/mindful-money-tracking/hero_light.png"
+            alt="Finzen app — budget, track, and invest in one place"
+            class="w-full h-auto block dark:hidden"
+          />
+          <img
+            src="/images/mindful-money-tracking/hero_dark.png"
+            alt="Finzen app — budget, track, and invest in one place"
+            class="w-full h-auto hidden dark:block"
+          />
+        </div>
+      </div>
+
+      <!-- Floating card: top right (positioned outside image frame) -->
+      <div class="hero-float hero-float-tr absolute flex items-center gap-3 p-3 bg-white dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-600">
+        <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
+          <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200 leading-tight">One app</p>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-tight">Budget, track, invest</p>
+        </div>
+      </div>
+
+      <!-- Floating card: bottom left (positioned outside image frame) -->
+      <div class="hero-float hero-float-bl absolute flex items-center gap-3 p-3 bg-white dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-600">
+        <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
+          <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-neutral-800 dark:text-neutral-200 leading-tight">Privacy-first</p>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-tight">Your data stays yours</p>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </section>
 
 <style>
+  .hero-image-wrap {
+    position: relative;
+  }
+  .hero-image-scale {
+    transform: scale(1.42);
+    transform-origin: center center;
+  }
+  @media (min-width: 1024px) {
+    .hero-image-scale {
+      transform: scale(1.48) translateY(-5%);
+    }
+  }
+  .hero-float-tr {
+    top: 0;
+    right: 0;
+    transform: translate(1rem, -1rem);
+  }
+  .hero-float-bl {
+    bottom: 0;
+    left: 0;
+    transform: translate(-1rem, 1rem);
+  }
+  @media (min-width: 1024px) {
+    .hero-float-tr {
+      transform: translate(1.25rem, -1.25rem);
+    }
+    .hero-float-bl {
+      transform: translate(-1.25rem, 1.25rem);
+    }
+  }
   /* Match header CTA hover: float, scale, shadow, shine */
   .hero-cta {
     position: relative;
