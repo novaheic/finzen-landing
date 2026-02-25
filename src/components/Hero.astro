@@ -1,7 +1,7 @@
 ---
 /**
  * Hero.astro — Homepage hero. Two-column layout.
- * Left: eyebrow, H1, subtext, 4 pill tags, CTA, 3 angle links with arrows.
+ * Left: eyebrow, H1, subtext, CTA, 3 angle links with arrows.
  * Right: hero image (light/dark) with floating stat cards (top-right, bottom-left).
  */
 
@@ -15,8 +15,8 @@ const heroLinks = [
 ];
 ---
 
-<section class="w-full min-h-[70vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 px-6 py-24 bg-gradient-to-b from-[#ECECEC] to-neutral-200 dark:from-[#1B1B1B] dark:to-neutral-900">
-  <div class="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+<section class="w-full min-h-[70vh] lg:min-h-[92vh] flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 px-6 pt-12 pb-12 lg:pt-32 lg:pb-28 bg-gradient-to-b from-[#ECECEC] to-neutral-200 dark:from-[#1B1B1B] dark:to-neutral-900">
+  <div class="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 lg:-translate-y-11">
   <!-- Left column: copy + CTA + links -->
   <div class="max-w-xl lg:max-w-none flex-1 space-y-5 text-left order-2 lg:order-1 min-w-0 mt-8 lg:mt-0">
     <!-- Small text / Eyebrow + H1 + Subtext (animate from below) -->
@@ -25,49 +25,16 @@ const heroLinks = [
         Finzen: The zen personal finance tracker
       </p>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight tracking-tight">
-        Budget. Track. Invest.<br />
+        
         The all-in-one personal finance dashboard.
       </h1>
-      <p class="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+      <p class="mt-6 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
         Finzen simplifies money management by connecting envelope budgeting, cashflow tracking, and portfolio management in one seamless experience. Designed to help you see the full picture.
       </p>
     </div>
 
-    <!-- 4 pill-shaped tags (animate in one by one from right) -->
-    <div class="flex flex-wrap gap-2">
-      <span class="hero-tag hero-tag-1 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
-        <svg class="w-4 h-4 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <polygon points="12 2 15 9 22 9 17 14 18 21 12 17 6 21 7 14 2 9 9 9" />
-        </svg>
-        5 Rated
-      </span>
-      <span class="hero-tag hero-tag-2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
-        <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="20 12 20 22 4 22 4 12" />
-          <rect x="2" y="7" width="20" height="5" />
-          <line x1="12" y1="22" x2="12" y2="7" />
-          <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-          <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-        </svg>
-        Free to Start
-      </span>
-      <span class="hero-tag hero-tag-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
-        <svg class="w-4 h-4 text-violet-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          <path d="M22 4L12 14.01l-3-3" />
-        </svg>
-        Privacy-first
-      </span>
-      <span class="hero-tag hero-tag-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-600">
-        <svg class="w-4 h-4 text-rose-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-        </svg>
-        Built with Love
-      </span>
-    </div>
-
-    <!-- Main CTA + links (fade/slide in after tags) -->
-    <div class="hero-cta-in space-y-2">
+    <!-- Main CTA + links -->
+    <div class="hero-cta-in pt-8 pb-2 min-[620px]:pb-4 space-y-2">
       <a
         href={APP_URL}
         class="hero-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
@@ -77,7 +44,7 @@ const heroLinks = [
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-      <div class="flex flex-wrap gap-x-6 gap-y-1 pt-2">
+      <div class="hidden min-[620px]:flex flex-wrap gap-x-6 gap-y-0 pt-10">
       {heroLinks.map((page) => (
         <a
           href={`/${page.slug}`}
@@ -178,26 +145,6 @@ const heroLinks = [
     animation: hero-text-in 0.6s ease-out 0.2s forwards;
   }
 
-  /* Entrance: tags one by one from right */
-  @keyframes hero-tag-in {
-    from {
-      opacity: 0;
-      transform: translateX(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  .hero-tag {
-    opacity: 0;
-    animation: hero-tag-in 0.32s ease-out forwards;
-  }
-  .hero-tag-1 { animation-delay: 0.38s; }
-  .hero-tag-2 { animation-delay: 0.46s; }
-  .hero-tag-3 { animation-delay: 0.54s; }
-  .hero-tag-4 { animation-delay: 0.62s; }
-
   /* Entrance: CTA + links fade/slide up */
   @keyframes hero-cta-in {
     from {
@@ -211,7 +158,7 @@ const heroLinks = [
   }
   .hero-cta-in {
     opacity: 0;
-    animation: hero-cta-in 0.5s ease-out 0.78s forwards;
+    animation: hero-cta-in 0.5s ease-out 0.5s forwards;
   }
 
   @keyframes hero-float-bob {
