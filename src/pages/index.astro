@@ -33,7 +33,6 @@ import Layout from '@/layouts/Layout.astro';
 import { pages, anglePages } from '@/data/pages';
 import Hero from '@/components/Hero.astro';
 import Section from '@/components/Section.astro';
-import FeatureList from '@/components/FeatureList.astro';
 import TrustBadge from '@/components/TrustBadge.astro';
 import CTABlock from '@/components/CTABlock.astro';
 
@@ -216,26 +215,42 @@ const fullPictureRings = [
   </section>
 
   <!-- ============================================================
-       SECTION 4: FEATURE OVERVIEW
-       Quick hits on all capabilities
+       SECTION 4: ZEN GARDEN (from mindful-money-tracking)
        ============================================================ -->
   <Section
-    heading="Everything in one place"
-    subheading="Budget. Track. Invest. See."
+    heading="You don't hire someone else to tend your zen garden"
     bg="stone"
   >
-    <div class="mt-4">
-      <FeatureList
-        columns={2}
-        features={[
-          { label: 'Envelope Budgeting', detail: '[COPY: Zero-based budgeting. Every dollar has a job.]' },
-          { label: 'Expense Tracking', detail: '[COPY: Manual entry for awareness. 2-3 minutes daily.]' },
-          { label: 'Portfolio Tracking', detail: '[COPY: Stocks, ETFs, crypto, commodities, forex. Real-time prices.]' },
-          { label: 'Net Worth Timeline', detail: '[COPY: Track your financial trajectory over time.]' },
-          { label: 'Sankey Spending Flow', detail: '[COPY: See how money flows from income to spending to savings.]' },
-          { label: 'Multi-Currency Support', detail: '[COPY: 168+ currencies. Automatic conversion.]' },
-        ]}
-      />
+    <div class="flex flex-col md:flex-row md:items-start md:gap-8 lg:gap-10">
+      <!-- Text column (left on desktop) -->
+      <div class="flex-1 min-w-0 max-w-2xl overflow-hidden">
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+          A zen garden isn't built overnight. It's tended daily. Each stone placed intentionally. Each pattern raked with care. The practice itself creates the mastery.
+        </p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+          Your finances work the same way. Most people are on autopilot with their money. You can't fix what you don't feel connected to.
+        </p>
+        <!-- Mobile only: image after second paragraph -->
+        <div class="md:hidden max-[449px]:hidden mb-4 min-[380px]:float-right min-[380px]:ml-4 min-[380px]:mb-4 min-[380px]:mt-0 w-fit">
+          <img
+            src="/images/mindful-money-tracking/stones.png"
+            alt="Zen garden stones — intentional, mindful placement"
+            class="rounded-lg max-w-[140px] min-[380px]:max-w-[160px] mx-auto min-[380px]:mx-0 block"
+          />
+        </div>
+        <p class="text-lg font-medium text-neutral-700 dark:text-neutral-300 leading-relaxed mb-0">
+          Finzen is a <strong>manual expense tracker</strong> by design. Every transaction you log is a stone placed intentionally. Every daily entry is a moment of awareness.
+        </p>
+        <div class="clear-both md:clear-none"></div>
+      </div>
+      <!-- Image: right column on desktop only -->
+      <div class="hidden md:block flex-shrink-0 w-full md:max-w-[270px] lg:max-w-[270px] p-6 lg:p-8">
+        <img
+          src="/images/mindful-money-tracking/stones.png"
+          alt="Zen garden stones — intentional, mindful placement"
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
     </div>
   </Section>
 
