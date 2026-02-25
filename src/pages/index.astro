@@ -71,6 +71,7 @@ const fullPictureRings = [
     subtitleAbove
     align="center"
     bg="stone"
+    class="bg-white dark:bg-[#1B1B1B]"
   >
     <div class="space-y-4 flex flex-col items-center">
       <div class="max-w-2xl w-full">
@@ -120,53 +121,99 @@ const fullPictureRings = [
   </Section>
 
   <!-- ============================================================
-       SECTION 3: HOW IT WORKS
-       Simple steps: Budget → Track → Invest → See
+       SECTION 3: BUDGET. TRACK. INVEST.
+       Everything in one intuitive dashboard
        ============================================================ -->
-  <Section heading="How it works" align="center">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4">
-      <!-- Step 1: Budget -->
-      <div class="text-center space-y-3">
-        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
-          <span class="text-lg font-semibold text-white dark:text-neutral-900">1</span>
+  <section class="w-full py-16 md:py-24 bg-[#ECECEC] dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200">
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- Laptop (center, behind) + mobile in front, left -->
+      <div class="how-it-works-hero relative flex justify-center items-center min-h-[280px] md:min-h-[380px] mb-3 overflow-visible -translate-y-4 md:-translate-y-6">
+        <!-- Mobile: in front, left (slides in from left when in view) -->
+        <div class="how-it-works-mobile absolute left-4 md:left-[5.5%] bottom-0 z-20 w-[100px] md:w-[155px] lg:w-[175px] -translate-y-[18%] md:-translate-y-[12%]">
+          <div class="how-it-works-mobile-anim">
+            <img
+              src="/images/personal-finance-charts/mobile_realtime_light.png"
+              alt="Finzen app — realtime view on phone"
+              class="w-full h-auto block dark:hidden"
+            />
+            <img
+              src="/images/personal-finance-charts/mobile_realtime_dark.png"
+              alt="Finzen app — realtime view on phone"
+              class="w-full h-auto hidden dark:block"
+            />
+          </div>
         </div>
-        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Budget</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Set up envelope budgets. Every dollar gets a job. Zero-based, clear, intentional.]
+        <!-- Laptop: large, center, behind (slides in from right when in view) -->
+        <div class="how-it-works-hero-img relative z-10 w-full min-w-[400px] max-w-[540px] sm:max-w-[700px] md:max-w-[860px] lg:max-w-[1000px] mx-auto -translate-y-6 md:-translate-y-8">
+          <div class="how-it-works-hero-anim">
+            <img
+              src="/images/landing/networth_light.png"
+              alt="Finzen net worth dashboard — budget, track, invest in one place"
+              class="w-full h-auto block dark:hidden"
+            />
+            <img
+              src="/images/landing/networth_dark.png"
+              alt="Finzen net worth dashboard — budget, track, invest in one place"
+              class="w-full h-auto hidden dark:block"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="mb-10 space-y-3 text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100 leading-tight">
+          Budget. Track. Invest.
+        </h2>
+        <p class="text-base text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+          Everything in one intuitive dashboard
         </p>
       </div>
-      <!-- Step 2: Track -->
-      <div class="text-center space-y-3">
-        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
-          <span class="text-lg font-semibold text-white dark:text-neutral-900">2</span>
+      <div class="max-w-3xl mx-auto space-y-8 md:space-y-6">
+        <!-- Paragraph 1: Envelope-based budgeting -->
+        <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+          <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <path d="M22 6l-10 7L2 6"/>
+            </svg>
+          </div>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+            <strong class="text-neutral-800 dark:text-neutral-200">Envelope-based budgeting:</strong> Assign every dollar a job before you spend it. Split your income into categories and track spending against each in real time. When a category runs low, you know immediately. No surprises, no guessing, no month-end regret.
+          </p>
         </div>
-        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Track</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Log your spending manually. Quick, intentional. See budget vs. actual in real time.]
-        </p>
-      </div>
-      <!-- Step 3: Invest -->
-      <div class="text-center space-y-3">
-        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
-          <span class="text-lg font-semibold text-white dark:text-neutral-900">3</span>
+        <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+        <!-- Paragraph 2: Multi-asset portfolio tracking -->
+        <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+          <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v18h18"/>
+              <path d="M18 17V9"/>
+              <path d="M13 17V5"/>
+              <path d="M8 17v-3"/>
+            </svg>
+          </div>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+            <strong class="text-neutral-800 dark:text-neutral-200">Multi-asset portfolio tracking:</strong> Stocks, ETFs, crypto, commodities, forex — all in one dashboard. Track real-time prices, total returns, and net worth across every asset you own. Finzen calculates annualized performance and projections so you always know where your wealth stands.
+          </p>
         </div>
-        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Invest</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Track stocks, crypto, commodities, forex — with real-time prices. All in one portfolio view.]
-        </p>
-      </div>
-      <!-- Step 4: See -->
-      <div class="text-center space-y-3">
-        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
-          <span class="text-lg font-semibold text-white dark:text-neutral-900">4</span>
+        <hr class="w-20 border-0 border-t border-neutral-300 dark:border-neutral-600 mx-auto md:hidden" aria-hidden="true" />
+        <!-- Paragraph 3: Visual reports & dashboards -->
+        <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+          <div class="w-10 h-10 md:w-12 md:h-12 md:mt-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed text-center md:text-left flex-1">
+            <strong class="text-neutral-800 dark:text-neutral-200">Visual reports &amp; dashboards:</strong> Your daily transactions become a complete picture of your financial life. Spending trends, budget health, net worth over time, and a Sankey diagram mapping every dollar from income to outcome. Clear, visual, and actually actionable.
+          </p>
         </div>
-        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">See</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          [COPY: Watch it all connect. Sankey flows, portfolio breakdowns, net worth over time.]
+        <p class="text-sm text-neutral-500 dark:text-neutral-500 text-center md:text-left md:ml-16">
+          <a href="/personal-finance-charts" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about Finzen's visual storytelling →</a>
         </p>
       </div>
     </div>
-  </Section>
+  </section>
 
   <!-- ============================================================
        SECTION 4: FEATURE OVERVIEW
@@ -216,6 +263,44 @@ const fullPictureRings = [
       <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
         [COPY: Finzen is designed to make financial management feel less like a chore and more like a practice. Beautiful interfaces. Intuitive navigation. A tool you come back to because it helps.]
       </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
+          <span class="text-lg font-semibold text-white dark:text-neutral-900">1</span>
+        </div>
+        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Budget</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Set up envelope budgets. Every dollar gets a job. Zero-based, clear, intentional.]
+        </p>
+      </div>
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
+          <span class="text-lg font-semibold text-white dark:text-neutral-900">2</span>
+        </div>
+        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Track</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Log your spending manually. Quick, intentional. See budget vs. actual in real time.]
+        </p>
+      </div>
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
+          <span class="text-lg font-semibold text-white dark:text-neutral-900">3</span>
+        </div>
+        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Invest</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Track stocks, crypto, commodities, forex — with real-time prices. All in one portfolio view.]
+        </p>
+      </div>
+      <div class="text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-neutral-800 dark:bg-neutral-200 flex items-center justify-center">
+          <span class="text-lg font-semibold text-white dark:text-neutral-900">4</span>
+        </div>
+        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">See</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          [COPY: Watch it all connect. Sankey flows, portfolio breakdowns, net worth over time.]
+        </p>
+      </div>
     </div>
   </Section>
 
@@ -350,6 +435,25 @@ const fullPictureRings = [
   />
 
   <style>
+    /* How it works: device images slide in when section enters view */
+    .how-it-works-mobile-anim {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .how-it-works-hero.in-view .how-it-works-mobile-anim {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .how-it-works-hero-anim {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.6s ease-out 0.1s, transform 0.6s ease-out 0.1s;
+    }
+    .how-it-works-hero.in-view .how-it-works-hero-anim {
+      opacity: 1;
+      transform: translateX(0);
+    }
     .disconnection-rings {
       display: grid;
       grid-template-columns: 1fr;
@@ -455,6 +559,8 @@ const fullPictureRings = [
       );
       const rings = document.querySelector('.disconnection-rings');
       if (rings) observer.observe(rings);
+      const howItWorksHero = document.querySelector('.how-it-works-hero');
+      if (howItWorksHero) observer.observe(howItWorksHero);
     });
   </script>
 </Layout>
