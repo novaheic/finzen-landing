@@ -304,8 +304,61 @@ const fullPictureRings = [
           </div>
           <p class="text-xs font-medium text-neutral-600 dark:text-neutral-400 text-center leading-tight">Privacy first design. All data stored fully encrypted on EU servers.</p>
         </div>
-        <div class="bento-cell rounded-xl p-4 md:p-6 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col justify-center md:col-start-3 md:row-start-2 md:row-span-2">
-          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">6</p>
+        <div class="bento-cell rounded-xl p-4 md:p-5 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col gap-3 md:col-start-3 md:row-start-2 md:row-span-2">
+          <!--
+            Mini Sankey: 3 sources → hub → 6 expense arms   ViewBox 280×140
+            CP-left x=70, CP-right x=200. Gaps: left=6px, right=4px.
+
+            Left sources centred on hub y=10..115 (h=105):
+              Salary     65%  node y=10..70 (h=60) → hub-L y=10..78 (h=68)
+              Freelance  25%  node y=76..99 (h=23) → hub-L y=78..104(h=26)
+              Other      10%  node y=105..115(h=10)→ hub-L y=104..115(h=11)
+            Hub: x=128, y=10, w=10, h=105
+
+            Hub-R exits (x=138) → dest nodes (4 px gaps):
+              Housing      28% h=29  hub y=10..39   dest y=10  h=29  (→y=43)
+              Food         17% h=18  hub y=39..57   dest y=43  h=18  (→y=65)
+              Transport    10% h=11  hub y=57..68   dest y=65  h=11  (→y=80)
+              Savings      22% h=23  hub y=68..91   dest y=80  h=23  (→y=107)
+              Subscriptions12% h=12  hub y=91..103  dest y=107 h=12  (→y=123)
+              Lifestyle    11% h=12  hub y=103..115 dest y=123 h=12  (→135)
+          -->
+          <div class="bento-sankey flex-1 min-h-0 max-h-[160px] md:max-h-[180px] w-full overflow-hidden mb-4">
+            <div class="sankey-reveal h-full w-full">
+              <svg viewBox="0 0 280 140" class="w-full h-full" aria-hidden="true" preserveAspectRatio="none">
+                <!-- Left source nodes: left corners rounded (r=3), right edge flush with flows -->
+                <path class="sk-sa" d="M7,10  L12,10  L12,70  L7,70  Q4,70  4,67  L4,13  Q4,10  7,10  Z" />
+                <path class="sk-fr" d="M7,76  L12,76  L12,99  L7,99  Q4,99  4,96  L4,79  Q4,76  7,76  Z" />
+                <path class="sk-ot" d="M7,105 L12,105 L12,115 L7,115 Q4,115 4,112 L4,108 Q4,105 7,105 Z" />
+                <!-- Left → Hub flows: solid colours at 55% opacity -->
+                <path fill="#20bf6b" fill-opacity="0.55" d="M12,10  C70,10  70,10  128,10  L128,78  C70,78  70,70  12,70  Z" />
+                <path fill="#0fb9b1" fill-opacity="0.50" d="M12,76  C70,76  70,78  128,78  L128,104 C70,104 70,99  12,99  Z" />
+                <path fill="#2bcbba" fill-opacity="0.45" d="M12,105 C70,105 70,104 128,104 L128,115 C70,115 70,115 12,115 Z" />
+                <!-- Hub node: sharp, on top of flows -->
+                <rect class="sk-hub" x="128" y="10" width="10" height="105" />
+                <!-- Hub → Right flows: solid colours at 55% opacity -->
+                <path fill="#fc5c65" fill-opacity="0.55" d="M138,10  C200,10  200,10  262,10  L262,39  C200,39  200,39  138,39  Z" />
+                <path fill="#fd9644" fill-opacity="0.55" d="M138,39  C200,39  200,43  262,43  L262,61  C200,61  200,57  138,57  Z" />
+                <path fill="#fed330" fill-opacity="0.55" d="M138,57  C200,57  200,65  262,65  L262,76  C200,76  200,68  138,68  Z" />
+                <path fill="#26de81" fill-opacity="0.58" d="M138,68  C200,68  200,80  262,80  L262,103 C200,103 200,91  138,91  Z" />
+                <path fill="#a55eea" fill-opacity="0.55" d="M138,91  C200,91  200,107 262,107 L262,119 C200,119 200,103 138,103 Z" />
+                <path fill="#fa8231" fill-opacity="0.55" d="M138,103 C200,103 200,123 262,123 L262,135 C200,135 200,115 138,115 Z" />
+                <!-- Right destination nodes: right corners rounded (r=2), left edge flush with flows -->
+                <path class="sk-d1" d="M262,10  L268,10  Q270,10  270,12  L270,37  Q270,39  268,39  L262,39  Z" />
+                <path class="sk-d2" d="M262,43  L268,43  Q270,43  270,45  L270,59  Q270,61  268,61  L262,61  Z" />
+                <path class="sk-d3" d="M262,65  L268,65  Q270,65  270,67  L270,74  Q270,76  268,76  L262,76  Z" />
+                <path class="sk-d4" d="M262,80  L268,80  Q270,80  270,82  L270,101 Q270,103 268,103 L262,103 Z" />
+                <path class="sk-d5" d="M262,107 L268,107 Q270,107 270,109 L270,117 Q270,119 268,119 L262,119 Z" />
+                <path class="sk-d6" d="M262,123 L268,123 Q270,123 270,125 L270,133 Q270,135 268,135 L262,135 Z" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-base font-semibold text-neutral-900 dark:text-white leading-tight">
+            Visual Storytelling
+          </h3>
+          <p class="text-base text-neutral-400 dark:text-neutral-500 leading-snug">
+            Stunning graphs that show you your financial situation at a glance. Investments, spending, real-time net worth, and more.
+          </p>
         </div>
       </div>
     </div>
@@ -790,6 +843,31 @@ const fullPictureRings = [
     :global(.dark) .ring-label {
       color: rgb(163 163 163);
     }
+    /* ── Bento card 6: Mini Sankey ── */
+    /* Income source nodes — green/teal: "money in" */
+    .sk-sa   { fill: #20bf6b; }
+    .sk-fr   { fill: #0fb9b1; }
+    .sk-ot   { fill: #2bcbba; }
+    /* Hub bar */
+    .sk-hub  { fill: #a5b1c2; }
+    :global(.dark) .sk-hub { fill: #4b6584; }
+    /* Right destination nodes: solid palette colours */
+    .sk-d1   { fill: #fc5c65; }
+    .sk-d2   { fill: #fd9644; }
+    .sk-d3   { fill: #fed330; }
+    .sk-d4   { fill: #26de81; }
+    .sk-d5   { fill: #a55eea; }
+    .sk-d6   { fill: #fa8231; }
+    /* Wipe reveal: left-to-right when card enters viewport */
+    .sankey-reveal {
+      clip-path: inset(0 100% 0 0);
+    }
+    .bento-sankey.in-view .sankey-reveal {
+      animation: sankey-wipe 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.15s forwards;
+    }
+    @keyframes sankey-wipe {
+      to { clip-path: inset(0 0% 0 0); }
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -807,6 +885,8 @@ const fullPictureRings = [
       if (howItWorksHero) observer.observe(howItWorksHero);
       const cashflowPile = document.querySelector('.cashflow-pile');
       if (cashflowPile) observer.observe(cashflowPile);
+      const bentoSankey = document.querySelector('.bento-sankey');
+      if (bentoSankey) observer.observe(bentoSankey);
     });
   </script>
 </Layout>
