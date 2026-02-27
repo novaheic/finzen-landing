@@ -434,7 +434,14 @@ const fullPictureRings = [
         <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
           Finzen makes it easy to keep a monthly budget. Set limits, track your spending, and revise. See how your spending is evolving over time to avoid lifestyle creep and running out of liquid funds.
         </p>
-
+        <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-2">
+          <a href="/budgeting-app" class="inline-flex items-center gap-1.5 underline hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">
+            Budgeting with Finzen
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </p>
       </div>
       <!-- Image: right on desktop, above copy on mobile (animates in from right) -->
       <div class="cashflow-reveal-right flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-2 mb-8 md:mb-0">
@@ -451,8 +458,8 @@ const fullPictureRings = [
       </div>
     </div>
 
-    <!-- Third subsection: repeat of Cashflow Overview layout (tighter top margin to match subsection 2) -->
-    <div class="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10 mt-4 lg:mt-8">
+    <!-- Third subsection: tight top margin on mobile; on desktop match spacing between 1 and 2 -->
+    <div class="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10 mt-4 md:mt-12 lg:mt-16">
       <!-- Image: left on desktop, above copy on mobile (animates in from left) -->
       <div class="cashflow-reveal-left flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-1 mb-6 md:mb-0">
         <img
@@ -680,9 +687,9 @@ const fullPictureRings = [
     </div>
   </Section>
 
-  <!-- Trusted by Investors Worldwide (from portfolio-tracker) -->
+  <!-- What our users are saying -->
   <Section
-    heading="Trusted by Investors Worldwide"
+    heading="What our users are saying"
     align="center"
     class="!bg-white dark:!bg-[#171717]"
   >
@@ -782,16 +789,25 @@ const fullPictureRings = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 text-left">
       <!-- For you -->
       <div class="space-y-3">
-        <h3 class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 uppercase tracking-wider">This is for you if</h3>
+        <h3 class="flex items-center gap-2 text-sm font-semibold text-neutral-900 dark:text-neutral-100 uppercase tracking-wider">
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          </span>
+          This is for you if
+        </h3>
         <ul class="space-y-2">
           {[
-            "[COPY: You want budgeting and investing in one place]",
-            "[COPY: You're tired of spreadsheets that do everything badly]",
-            "[COPY: Privacy matters more than convenience]",
-            "[COPY: You want to understand your money, not just track it]",
+            "You're tired of juggling multiple apps and a spreadsheet.",
+            "You want to actually understand your money.",
+            "You're ready to spend 2-3 minuts a day logging.",
+            "You want a personal finance tool that grows with you.",
           ].map((item) => (
             <li class="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-              <span class="mt-0.5 text-neutral-800 dark:text-neutral-200">✓</span>
+              <span class="mt-0.5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </span>
               {item}
             </li>
           ))}
@@ -799,16 +815,25 @@ const fullPictureRings = [
       </div>
       <!-- Not for you -->
       <div class="space-y-3">
-        <h3 class="text-sm font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">This is not for you if</h3>
+        <h3 class="flex items-center gap-2 text-sm font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </span>
+          This is not for you if
+        </h3>
         <ul class="space-y-2">
           {[
-            "[COPY: You want automatic bank sync]",
-            "[COPY: You need investment or tax advice]",
-            "[COPY: You want a 'set it and forget it' tool]",
-            "[COPY: You only care about one area of finance]",
+            "You want your bank account to sync automatically.",
+            "You're looking for investment advice or robo-trading.",
+            "You want a fire-and-forget app you check once a month.",
+            "You're happy with separate apps for budgeting and investing.",
           ].map((item) => (
             <li class="flex items-start gap-2 text-sm text-neutral-500 dark:text-neutral-400">
-              <span class="mt-0.5 text-neutral-400 dark:text-neutral-500">✕</span>
+              <span class="mt-0.5 shrink-0 text-red-500 dark:text-red-400" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </span>
               {item}
             </li>
           ))}
