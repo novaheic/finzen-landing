@@ -259,7 +259,7 @@ const fullPictureRings = [
   </Section>
 
   <!-- Bento box section: desktop = top row 3 cells, bottom row 3 cells with middle split in two -->
-  <section class="w-full pt-12 md:pt-16 dark:pt-16 dark:md:pt-24 pb-16 md:pb-24 bg-gradient-to-b from-[#ECECEC] to-white dark:from-[#171717] dark:to-[#1B1B1B] text-neutral-800 dark:text-neutral-200">
+  <section class="w-full pt-12 md:pt-16 dark:pt-16 dark:md:pt-24 pb-16 md:pb-24 bg-[#ECECEC] dark:bg-gradient-to-b dark:from-[#171717] dark:to-[#1B1B1B] text-neutral-800 dark:text-neutral-200">
     <div class="max-w-4xl mx-auto px-6">
       <div class="bento-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
         <!-- Top row: 3 even cells -->
@@ -317,13 +317,22 @@ const fullPictureRings = [
             2–3 min a day &nbsp;·&nbsp; Desktop &amp; mobile
           </p>
         </div>
-        <div class="bento-cell bento-cell-half rounded-xl p-4 md:p-6 bg-black dark:bg-white border-0 shadow-[0_4px_24px_rgba(0,0,0,0.1)] dark:shadow-none min-h-[110px] md:min-h-0 flex flex-col justify-center items-center md:items-center md:col-start-2 md:row-start-2">
-          <a href="/" aria-label="Finzen — Home" class="flex items-center gap-3">
-            <img src="/logo-dark.webp" alt="" width="48" height="48" class="h-12 w-12 object-contain block dark:hidden" />
-            <img src="/logo-light.webp" alt="" width="48" height="48" class="h-12 w-12 object-contain hidden dark:block" />
-            <span class="font-logo text-4xl font-extrabold text-white dark:text-[#0a0a0a] tracking-[0.01em]">Finzen</span>
-          </a>
-        </div>
+        <a
+          href="https://app.finzen.org"
+          class="bento-cell bento-cell-half rounded-xl p-4 md:p-6 bg-black dark:bg-white border-0 shadow-[0_4px_24px_rgba(0,0,0,0.1)] dark:shadow-none min-h-[110px] md:min-h-0 flex flex-col justify-center items-center md:items-center md:col-start-2 md:row-start-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#ECECEC] dark:focus-visible:ring-offset-[#171717] focus-visible:ring-white/70 dark:focus-visible:ring-black/70 transition-colors duration-200 hover:bg-neutral-950 dark:hover:bg-neutral-50"
+          aria-label="Try Finzen today for free"
+        >
+          <div class="flex flex-col items-center gap-2">
+            <div class="flex items-center gap-3">
+              <img src="/logo-dark.webp" alt="" width="48" height="48" class="h-12 w-12 object-contain block dark:hidden" />
+              <img src="/logo-light.webp" alt="" width="48" height="48" class="h-12 w-12 object-contain hidden dark:block" />
+              <span class="font-logo text-4xl font-extrabold text-white dark:text-[#0a0a0a] tracking-[0.01em]">Finzen</span>
+            </div>
+            <p class="text-xs md:text-sm font-medium tracking-wide text-neutral-200/90 dark:text-neutral-900/90 group-hover:text-white dark:group-hover:text-black">
+              Try Finzen today for free →
+            </p>
+          </div>
+        </a>
         <div class="bento-cell bento-cell-half rounded-xl p-3 md:p-4 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[110px] md:min-h-0 flex flex-col justify-center items-center gap-1.5 md:col-start-2 md:row-start-3">
           <div class="flex items-center justify-center">
             <img src="/images/landing/GDPR_bento.png" alt="EU GDPR" class="w-24 h-24 object-contain" />
@@ -390,39 +399,208 @@ const fullPictureRings = [
     </div>
   </section>
 
-  <!-- Cash Flow Analysis & Visual Budget Reports (from budgeting-app) -->
+  <!-- Section: Features-->
   <Section
-    heading="Cash Flow Analysis & Visual Budget Reports"
-    bg="stone"
-    align="center"
-    class="!bg-white dark:!bg-[#171717]"
+    heading="Features"
+    subheading="Finzen makes it easy to see how your finance are doing."
   >
-    <div class="cashflow-pile flex justify-center items-end mb-12 max-w-4xl mx-auto px-2 sm:px-4 overflow-visible min-h-[160px] sm:min-h-[200px] md:min-h-[260px] max-sm:mt-6 -mt-12 md:-mt-6">
-      <div class="cashflow-in-left screenshot-card w-[200px] sm:w-[260px] md:w-[380px] aspect-[700/543] rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 -mr-10 sm:-mr-14 md:-mr-12 z-0">
-        <img src="/images/budgeting-app/sankey_light.png" alt="Cash flow Sankey — see where your money flows" width="700" height="543" class="screenshot-card-img w-full h-full object-cover block dark:hidden" />
-        <img src="/images/budgeting-app/sankey_dark.png" alt="Cash flow Sankey — see where your money flows" width="700" height="543" class="screenshot-card-img w-full h-full object-cover hidden dark:block" />
+    <div class="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10">
+      <!-- Image: left on desktop, above copy on mobile (animates in from left) -->
+      <div class="cashflow-reveal-left flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-1 mb-6 md:mb-0">
+        <img
+          src="/images/landing/portfolio_light.png"
+          alt="Finzen portfolio tracker dashboard"
+          class="cashflow-img w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/landing/portfolio_dark.png"
+          alt="Finzen portfolio tracker dashboard"
+          class="cashflow-img w-full h-auto rounded-lg hidden dark:block"
+        />
       </div>
-      <div class="cashflow-in-right screenshot-card w-[220px] sm:w-[280px] md:w-[400px] aspect-[700/543] rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-[0_20px_40px_-8px_rgba(0,0,0,0.15),0_32px_80px_-16px_rgba(0,0,0,0.2)] dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] border border-neutral-200 dark:border-neutral-600/50 flex-shrink-0 mt-6 sm:mt-8 md:mt-10 z-10">
-        <img src="/images/budgeting-app/cashflow_light.png" alt="Cashflow breakdown — inflows, outflows, discretionary income" width="700" height="543" class="screenshot-card-img w-full h-full object-cover block dark:hidden" />
-        <img src="/images/budgeting-app/cashflow_dark.png" alt="Cashflow breakdown — inflows, outflows, discretionary income" width="700" height="543" class="screenshot-card-img w-full h-full object-cover hidden dark:block" />
+      <!-- Copy: right on desktop, below image on mobile -->
+      <div class="flex-1 min-w-0 max-w-2xl space-y-4 order-2 md:order-2">
+        <p class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Portfolio Management Made Simple</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          The cash flow tab tracks every dollar moving in and out, updated in real time as you log. See daily and monthly inflows and outflows as clean bar charts, track your averages, and forecast how long your current balance will last based on your actual spending patterns.
+        </p>
       </div>
     </div>
 
-    <div class="max-w-2xl mx-auto space-y-4">
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-        Budgeting tells you the plan. Cashflow tracking shows you the reality. Finzen's cash flow analysis breaks down your monthly spending into daily patterns, inflows vs. outflows, and shows you exactly how many months of runway you have at current burn rates.
-      </p>
-      <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed font-bold">
-        Your cash flows become visible: what comes in, what goes out, what stays.
-      </p>
-      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-4">
-        <a href="/personal-finance-charts" class="inline-flex items-center gap-1.5 underline hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">
-          Explore charts and reports
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Sankey continuation: text left, image right (on mobile: image above text) -->
+    <div class="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10 mt-12 lg:mt-16">
+      <!-- Copy: left on desktop, below image on mobile -->
+      <div class="flex-1 min-w-0 max-w-2xl space-y-4 order-2 md:order-1 mb-6 md:mb-0">
+        <p class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Manage Your Budget</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          The Sankey diagram traces every dollar from the moment it arrives to where it ultimately lands, across every spending category, savings bucket, and investment account.
+        </p>
+
+      </div>
+      <!-- Image: right on desktop, above copy on mobile (animates in from right) -->
+      <div class="cashflow-reveal-right flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-2 mb-8 md:mb-0">
+        <img
+          src="/images/budgeting-app/budget_view_light.png"
+          alt="Finzen budgeting view — assign every dollar a job"
+          class="cashflow-img w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/budgeting-app/budget_view_dark.png"
+          alt="Finzen budgeting view — assign every dollar a job"
+          class="cashflow-img w-full h-auto rounded-lg hidden dark:block"
+        />
+      </div>
+    </div>
+
+    <!-- Third subsection: repeat of Cashflow Overview layout -->
+    <div class="flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10 mt-12 lg:mt-16">
+      <!-- Image: left on desktop, above copy on mobile (animates in from left) -->
+      <div class="cashflow-reveal-left flex-shrink-0 w-full max-w-[700px] md:max-w-[440px] lg:max-w-[520px] mx-auto md:mx-0 order-1 md:order-1 mb-6 md:mb-0">
+        <img
+          src="/images/budgeting-app/sankey_light.png"
+          alt="Finzen Sankey — money in, money out by category"
+          class="cashflow-img w-full h-auto rounded-lg block dark:hidden"
+        />
+        <img
+          src="/images/budgeting-app/sankey_dark.png"
+          alt="Finzen Sankey — money in, money out by category"
+          class="cashflow-img w-full h-auto rounded-lg hidden dark:block"
+        />
+      </div>
+      <!-- Copy: right on desktop, below image on mobile -->
+      <div class="flex-1 min-w-0 max-w-2xl space-y-4 order-2 md:order-2">
+        <p class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">Visual Reports</p>
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          The cash flow tab tracks every dollar moving in and out, updated in real time as you log. See daily and monthly inflows and outflows as clean bar charts, track your averages, and forecast how long your current balance will last based on your actual spending patterns.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- How it works + Pricing: full-width bg #ECECEC / #1B1B1B -->
+  <section class="w-full bg-[#ECECEC] dark:bg-[#1B1B1B] text-neutral-800 dark:text-neutral-200 py-12 md:py-16 pb-16 md:pb-24">
+    <!-- How it works -->
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="mb-10 text-center text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100">How it works</h2>
+      <div class="how-it-works-steps grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+        <!-- Step 1 -->
+        <div class="how-it-works-step relative flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="flex items-center gap-4 md:gap-0 md:flex-col md:items-start w-full">
+            <span class="how-it-works-num flex-shrink-0 w-12 h-12 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold text-lg flex items-center justify-center" aria-hidden="true">1</span>
+            <div class="md:mt-4 flex-1 min-w-0">
+              <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Step one title</h3>
+              <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Short description of what happens in this step. Replace with your own copy.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="how-it-works-step relative flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="flex items-center gap-4 md:gap-0 md:flex-col md:items-start w-full">
+            <span class="how-it-works-num flex-shrink-0 w-12 h-12 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold text-lg flex items-center justify-center" aria-hidden="true">2</span>
+            <div class="md:mt-4 flex-1 min-w-0">
+              <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Step two title</h3>
+              <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Short description of what happens in this step. Replace with your own copy.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="how-it-works-step relative flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="flex items-center gap-4 md:gap-0 md:flex-col md:items-start w-full">
+            <span class="how-it-works-num flex-shrink-0 w-12 h-12 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold text-lg flex items-center justify-center" aria-hidden="true">3</span>
+            <div class="md:mt-4 flex-1 min-w-0">
+              <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">Step three title</h3>
+              <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">Short description of what happens in this step. Replace with your own copy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="max-w-4xl mx-auto px-6 mt-20 lg:mt-24">
+      <h2 class="mb-6 text-center text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-100">Pricing</h2>
+      <div class="max-w-md mx-auto">
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-[#141414] shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.25)] overflow-hidden">
+          <div class="p-6 md:p-8 text-center">
+            <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide uppercase rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300 mb-4">
+              Open Beta
+            </span>
+            <h3 class="text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Free to use</h3>
+            <p class="text-neutral-500 dark:text-neutral-400 text-sm mb-6">Full access while we're in open beta. No credit card required.</p>
+            <div class="flex flex-col items-center gap-3 text-left text-sm text-neutral-600 dark:text-neutral-400 mb-8">
+              <span class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                All features included
+              </span>
+              <span class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                No bank connection required
+              </span>
+              <span class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-500 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                Your data stays private
+              </span>
+            </div>
+            <a
+              href="https://app.finzen.org"
+              class="inline-flex items-center gap-2 w-full justify-center px-6 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-colors hover:opacity-90"
+            >
+              Get started free
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <Section
+    heading="Finzen is for everyone"
+    align="center"
+  >
+    <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <!-- Card 1: Pause before you spend -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="4" width="4" height="16" rx="1"/>
+            <rect x="14" y="4" width="4" height="16" rx="1"/>
           </svg>
-        </a>
-      </p>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Pause before you spend</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          When you know you'll log every purchase, you think twice. That pause keeps you inside your category limits and cuts impulse spending.
+        </p>
+      </div>
+      <!-- Card 2: Track spending daily -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Track spending daily</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          2–3 minutes a day. Log each transaction and assign it to a category. You'll always know what's left in each envelope and where your money goes.
+        </p>
+      </div>
+      <!-- Card 3: See every category at a glance -->
+      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M7 14l4-4 4 4 5-8"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">See your spending</h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Budget view, spending trends, and category breakdowns in one place. No guesswork - understand your budget and track your spending.
+        </p>
+      </div>
     </div>
   </Section>
 
@@ -476,54 +654,6 @@ const fullPictureRings = [
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- Habits that make your budget stick (from budgeting-app) -->
-  <Section
-    heading="Habits that make your budget stick"
-    align="center"
-  >
-    <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-      <!-- Card 1: Pause before you spend -->
-      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="6" y="4" width="4" height="16" rx="1"/>
-            <rect x="14" y="4" width="4" height="16" rx="1"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Pause before you spend</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          When you know you'll log every purchase, you think twice. That pause keeps you inside your category limits and cuts impulse spending.
-        </p>
-      </div>
-      <!-- Card 2: Track spending daily -->
-      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 11l3 3L22 4"/>
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Track spending daily</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          2–3 minutes a day. Log each transaction and assign it to a category. You'll always know what's left in each envelope and where your money goes.
-        </p>
-      </div>
-      <!-- Card 3: See every category at a glance -->
-      <div class="habit-card rounded-2xl p-6 md:p-8 bg-white dark:bg-neutral-900 transition-transform duration-200 hover:-translate-y-1 shadow-[8px_8px_16px_rgba(0,0,0,0.08),-4px_-4px_12px_rgba(0,0,0,0.04)] dark:shadow-[8px_8px_18px_rgba(0,0,0,0.5),10px_10px_30px_rgba(0,0,0,0.12),-3px_-3px_6px_rgba(255,255,255,0.08)] flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4 text-neutral-600 dark:text-neutral-400" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 3v18h18"/>
-            <path d="M7 14l4-4 4 4 5-8"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">See your spending</h3>
-        <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          Budget view, spending trends, and category breakdowns in one place. No guesswork - understand your budget and track your spending.
         </p>
       </div>
     </div>
@@ -869,6 +999,37 @@ const fullPictureRings = [
     :global(.dark) .ring-label {
       color: rgb(163 163 163);
     }
+
+    /* Cashflow section image: even shadow on all sides (no x/y offset) in light and dark */
+    .cashflow-img {
+      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1))
+        drop-shadow(0 0 24px rgba(0, 0, 0, 0.18))
+        drop-shadow(0 0 4px rgba(0, 0, 0, 0.06));
+    }
+    :global(.dark) .cashflow-img {
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.5))
+        drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+    }
+
+    /* Cashflow section: first image animates in from left, second (Sankey) from right */
+    .cashflow-reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .cashflow-reveal-left.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .cashflow-reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .cashflow-reveal-right.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
     /* ── Bento card 6: Mini Sankey ── */
     /* Income source nodes — green/teal: "money in" */
     .sk-sa   { fill: #20bf6b; }
@@ -885,6 +1046,13 @@ const fullPictureRings = [
     .sk-d5   { fill: #a55eea; }
     .sk-d6   { fill: #fa8231; }
     /* Wipe reveal: left-to-right when card enters viewport */
+    /* How it works: step numbers */
+    .how-it-works-num {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+    :global(.dark) .how-it-works-num {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
     .sankey-reveal {
       clip-path: inset(0 100% 0 0);
     }
@@ -909,8 +1077,9 @@ const fullPictureRings = [
       if (rings) observer.observe(rings);
       const howItWorksHero = document.querySelector('.how-it-works-hero');
       if (howItWorksHero) observer.observe(howItWorksHero);
-      const cashflowPile = document.querySelector('.cashflow-pile');
-      if (cashflowPile) observer.observe(cashflowPile);
+      document
+        .querySelectorAll('.cashflow-reveal-left, .cashflow-reveal-right')
+        .forEach((el) => observer.observe(el));
       const bentoSankey = document.querySelector('.bento-sankey');
       if (bentoSankey) observer.observe(bentoSankey);
     });
