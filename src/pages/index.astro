@@ -265,11 +265,11 @@ const fullPictureRings = [
         <!-- Top row: 3 even cells -->
         <!-- Card 1: All-in-one Dashboard — image top, title + text below -->
         <div class="bento-cell rounded-xl p-4 md:p-5 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col gap-3 md:col-start-1 md:row-start-1 overflow-hidden">
-          <div class="flex-1 min-h-0 overflow-hidden rounded-lg">
+          <div class="w-full md:flex-1 md:min-h-0 overflow-hidden rounded-lg">
             <img
               src="/images/landing/dashboard_bento.png"
               alt="Finzen all-in-one dashboard"
-              class="w-full h-full object-cover object-top"
+              class="w-full h-auto max-h-[160px] md:max-h-none md:h-full object-contain object-top"
             />
           </div>
           <h3 class="text-base font-semibold text-neutral-900 dark:text-white leading-tight">
@@ -295,12 +295,12 @@ const fullPictureRings = [
             Assign every dollar a job before you spend it. Split your income into categories, track in real time, and stop the guessing.
           </p>
         </div>
-        <div class="bento-cell rounded-xl pt-4 px-4 md:pt-6 md:px-6 pb-0 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col justify-end items-center md:col-start-3 md:row-start-1 overflow-hidden">
-          <img src="/images/landing/bento_phone_light.png" alt="" class="w-full flex-1 min-h-0 object-contain object-bottom block dark:hidden" />
-          <img src="/images/landing/bento_phone_dark.png" alt="" class="w-full flex-1 min-h-0 object-contain object-bottom hidden dark:block" />
+        <div class="bento-cell rounded-xl pt-4 px-4 md:pt-6 md:px-6 pb-0 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[160px] md:min-h-[308px] flex flex-col justify-end items-center md:col-start-3 md:row-start-1 overflow-hidden">
+          <img src="/images/landing/bento_phone_light.png" alt="" class="w-auto max-h-[340px] md:w-full md:max-h-none md:flex-1 md:min-h-0 object-contain object-bottom block dark:hidden" />
+          <img src="/images/landing/bento_phone_dark.png" alt="" class="w-auto max-h-[340px] md:w-full md:max-h-none md:flex-1 md:min-h-0 object-contain object-bottom hidden dark:block" />
         </div>
         <!-- Bottom row: left (full height), middle split into two, right (full height) -->
-        <div class="bento-cell rounded-xl p-4 md:p-5 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col justify-between items-stretch text-left md:col-start-1 md:row-start-2 md:row-span-2">
+        <div class="bento-cell rounded-xl p-5 md:p-6 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col justify-between gap-5 items-stretch text-left md:col-start-1 md:row-start-2 md:row-span-2">
           <h3 class="text-base font-semibold text-neutral-900 dark:text-white leading-tight">
             No finance degree required.
           </h3>
@@ -308,7 +308,7 @@ const fullPictureRings = [
             src="/images/landing/emojis.webp"
             alt=""
             aria-hidden="true"
-            class="w-full h-28 object-cover rounded-xl"
+            class="w-full h-auto max-h-[96px] md:max-h-none md:h-28 object-contain rounded-xl"
           />
           <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
             Made for everyone.<br> Whether you're logging your first paycheck or managing a multi-million dollar portfolio.
