@@ -263,11 +263,37 @@ const fullPictureRings = [
     <div class="max-w-4xl mx-auto px-6">
       <div class="bento-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
         <!-- Top row: 3 even cells -->
-        <div class="bento-cell rounded-xl p-4 md:p-6 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col justify-center md:col-start-1 md:row-start-1">
-          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">1</p>
+        <!-- Card 1: All-in-one Dashboard — image top, title + text below -->
+        <div class="bento-cell rounded-xl p-4 md:p-5 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col gap-3 md:col-start-1 md:row-start-1 overflow-hidden">
+          <div class="flex-1 min-h-0 overflow-hidden rounded-lg">
+            <img
+              src="/images/landing/dashboard_bento.png"
+              alt="Finzen all-in-one dashboard"
+              class="w-full h-full object-cover object-top"
+            />
+          </div>
+          <h3 class="text-base font-semibold text-neutral-900 dark:text-white leading-tight">
+            All-in-one Dashboard
+          </h3>
+          <p class="text-base text-neutral-400 dark:text-neutral-500 leading-snug">
+            Budget, invest, and track — your full financial life in one view.
+          </p>
         </div>
-        <div class="bento-cell rounded-xl p-4 md:p-6 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col justify-center md:col-start-2 md:row-start-1">
-          <p class="text-sm font-medium text-neutral-500 dark:text-neutral-400">2</p>
+        <!-- Card 2: Envelope Budgeting — title top, image middle, text below -->
+        <div class="bento-cell rounded-xl p-4 md:p-5 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col gap-3 md:col-start-2 md:row-start-1 overflow-hidden">
+          <h3 class="text-base font-semibold text-neutral-900 dark:text-white leading-tight">
+            Envelope Budgeting
+          </h3>
+          <div class="w-full flex justify-center py-6">
+            <img
+              src="/images/landing/envelope_bento.png"
+              alt="Envelope budgeting — assign every dollar a job"
+              class="h-[148px] w-auto object-contain rounded-lg"
+            />
+          </div>
+          <p class="text-base text-neutral-400 dark:text-neutral-500 leading-snug">
+            Assign every dollar a job before you spend it. Split your income into categories, track in real time, and stop the guessing.
+          </p>
         </div>
         <div class="bento-cell rounded-xl pt-4 px-4 md:pt-6 md:px-6 pb-0 bg-white/80 dark:bg-[#0f0f0f] border-0 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-none min-h-[220px] md:min-h-[308px] flex flex-col justify-end items-center md:col-start-3 md:row-start-1 overflow-hidden">
           <img src="/images/landing/bento_phone_light.png" alt="" class="w-full flex-1 min-h-0 object-contain object-bottom block dark:hidden" />
