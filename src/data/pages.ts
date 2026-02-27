@@ -29,6 +29,7 @@ export const pages: Record<string, PageMeta> = {
     title: 'Finzen — Budget, Track Spending & Investments in One App',
     description:
       'All-in-one personal finance software. Envelope budgeting, expense tracking, and portfolio management combined. Privacy-first, AES-256 encrypted, no bank sync.',
+    ogImage: '/images/landing/finzen_og.png',
     keywords: [
       'personal finance app',
       'personal finance software',
