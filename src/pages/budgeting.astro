@@ -17,7 +17,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages, APP_URL } from '@/data/pages';
+import { pages, APP_URL, SITE_URL } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import FeatureList from '@/components/FeatureList.astro';
@@ -79,8 +79,28 @@ const faqSchema = JSON.stringify({
   description={meta.description}
   canonical={`/${meta.slug}`}
   ogImage={meta.ogImage}
+  keywords={meta.keywords}
 >
 
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: meta.title,
+      description: meta.description,
+      url: `${SITE_URL}/${meta.slug}`,
+    })}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Budgeting', item: `${SITE_URL}/${meta.slug}` },
+      ],
+    })}
+  </script>
   <!-- FAQPage structured data for rich results -->
   <script type="application/ld+json" set:html={faqSchema} />
 

@@ -13,7 +13,7 @@
  *   />
  */
 
-import { SITE_URL, DEFAULT_OG_IMAGE, SITE_NAME } from '@/data/pages';
+import { SITE_URL, DEFAULT_OG_IMAGE, SITE_NAME, ORGANIZATION_SAME_AS } from '@/data/pages';
 
 interface Props {
   title: string;
@@ -54,7 +54,23 @@ const schema = {
   author: {
     '@type': 'Organization',
     name: 'Finzen',
+    url: SITE_URL,
   },
+};
+
+/**
+ * Schema.org Organization — for brand / knowledge panel rich results.
+ * Social links: edit ORGANIZATION_SAME_AS in src/data/pages.ts.
+ */
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo-light.webp`,
+  description:
+    'Finzen is an all-in-one personal finance app: envelope budgeting, spending tracking, and portfolio management. Privacy-first, AES-256 encrypted, EU-hosted.',
+  ...(ORGANIZATION_SAME_AS.length > 0 && { sameAs: ORGANIZATION_SAME_AS }),
 };
 ---
 
@@ -90,6 +106,7 @@ const schema = {
 
 <!-- Schema.org Structured Data -->
 <script type="application/ld+json">{JSON.stringify(schema)}</script>
+<script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
 
 <!-- Favicon: in Layout (matches browser tab color: light/dark) -->
 

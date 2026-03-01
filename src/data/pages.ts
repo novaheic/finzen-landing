@@ -210,3 +210,17 @@ export const SITE_NAME = 'Finzen';
 /** Default OG image when a page doesn't set ogImage (1200×630 recommended). */
 export const DEFAULT_OG_IMAGE = '/images/landing/finzen_og.png';
 export const SITE_URL = 'https://finzen.app';
+
+/**
+ * Social links shown in the footer. Same URLs are used for Organization schema (sameAs).
+ * Add or edit here; footer and SEO stay in sync.
+ */
+export const SOCIAL_LINKS: ReadonlyArray<{ href: string; label: string; icon: 'instagram' | 'reddit' | 'linkedin' | 'email' }> = [
+  { href: 'https://www.instagram.com/finzen.app/', label: 'Instagram', icon: 'instagram' },
+  { href: 'https://www.reddit.com/r/finzen_app/', label: 'Reddit', icon: 'reddit' },
+  { href: 'https://www.linkedin.com/company/finzen-org/', label: 'LinkedIn', icon: 'linkedin' },
+  { href: 'mailto:hi@finzen.org', label: 'Email', icon: 'email' },
+];
+
+/** Organization schema sameAs: public profile URLs only (no mailto). */
+export const ORGANIZATION_SAME_AS: string[] = SOCIAL_LINKS.filter((l) => l.href.startsWith('http')).map((l) => l.href);

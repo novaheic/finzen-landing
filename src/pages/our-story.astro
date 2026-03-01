@@ -41,10 +41,29 @@ const aboutPageSchema = {
   description={meta.description}
   canonical={`/${meta.slug}`}
   ogImage="/images/our-story/about_og.png"
+  keywords={meta.keywords}
 >
 
   <script type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
-
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: meta.title,
+      description: meta.description,
+      url: aboutPageUrl,
+    })}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Our Story', item: aboutPageUrl },
+      ],
+    })}
+  </script>
   <AngleHero
     title="Hey, I'm Nova! 👋🏻"
     subtitle="I'm the developer, researcher, educator, personal finance nerd, and ramen-lover who built Finzen."
