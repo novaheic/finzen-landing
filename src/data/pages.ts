@@ -21,14 +21,16 @@ export interface PageMeta {
   inFooter: boolean;
   /** Sibling angle pages this page should link to (by slug) */
   siblings: string[];
+  /** Optional: image directory under /public/images (defaults to slug). Use when URL slug changed but assets stayed. */
+  imageBase?: string;
 }
 
 export const pages: Record<string, PageMeta> = {
   home: {
     slug: '',
-    title: 'Finzen — Budget, Track Spending & Investments in One App',
+    title: 'Finzen - The Zen Personal Finance Tracker',
     description:
-      'All-in-one personal finance software. Envelope budgeting, expense tracking, and portfolio management combined. Privacy-first, AES-256 encrypted, no bank sync.',
+      'The all in one personal finance dashboard. Envelope-budgeting, expense tracking, and portfolio management in one. Designed to give you a calm, clear view of your money.',
     ogImage: '/images/landing/finzen_og.png',
     keywords: [
       'personal finance app',
@@ -44,10 +46,10 @@ export const pages: Record<string, PageMeta> = {
   },
 
   budgetingApp: {
-    slug: 'budgeting-app',
-    title: 'Budgeting App — Envelope Budgeting & Expense Tracking | Finzen',
+    slug: 'budgeting',
+    title: 'Budgeting with Finzen - Spend with Intention',
     description:
-      'Zero-based envelope budgeting meets daily expense tracking. Set spending categories, track every purchase, see budget vs. actual in real-time.',
+      'Give every dollar a purpose. Set spending envelopes by category, log purchases as you go, and see your remaining budget update in real time.',
     ogImage: '/images/budgeting-app/og-budgeting-app.png',
     keywords: [
       'budgeting app',
@@ -66,9 +68,9 @@ export const pages: Record<string, PageMeta> = {
 
   portfolioTracker: {
     slug: 'portfolio-tracker',
-    title: 'Portfolio Tracker — Stocks, Crypto, ETFs & Net Worth | Finzen',
+    title: 'The Zen Portfolio Tracker - Finzen',
     description:
-      'Track stocks, ETFs, crypto, forex, and commodities in one portfolio view. Real-time prices, multi-asset allocation, net worth over time.',
+      'Stocks, ETFs, crypto, forex, and commodities - all in one beautiful dashboard. Track your performance, and watch your net worth grow in real time.',
     keywords: [
       'portfolio tracker',
       'investment tracker',
@@ -87,9 +89,9 @@ export const pages: Record<string, PageMeta> = {
 
   personalFinanceGuide: {
     slug: 'personal-finance-guide',
-    title: 'Personal Finance Guide — Start Managing Money Today | Finzen',
+    title: 'Personal Finance Made Simple - Finzen',
     description:
-      'Personal finance made simple. No finance degree required. Clean interface, powerful insights. Perfect for beginners or anyone overwhelmed by complex apps.',
+      'Managing money doesn\'t have to feel overwhelming. Finzen is built for people who just want to know where they stand - no spreadsheets, no stress.',
     keywords: [
       'personal finance guide',
       'personal finance for beginners',
@@ -106,10 +108,10 @@ export const pages: Record<string, PageMeta> = {
   },
 
   mindfulMoneyTracking: {
-    slug: 'mindful-money-tracking',
-    title: 'Mindful Money Tracking — Intentional Finance | Finzen',
+    slug: 'the-finzen-method',
+    title: 'Mindfulness for Your Money - Finzen',
     description:
-      'A personal finance app without bank sync. Manual entry creates awareness. 2–3 minutes a day. No bank sync. Build financial mindfulness through daily practice.',
+      'Spend 2-3 minutes a day logging your expenses and you\'ll understand your money better than any bank sync ever could. No automation. Just awareness.',
     keywords: [
       'mindful money tracking',
       'manual expense tracker',
@@ -127,10 +129,11 @@ export const pages: Record<string, PageMeta> = {
   },
 
   secureFinanceApp: {
-    slug: 'secure-finance-app',
-    title: 'Secure Finance App — AES-256 Encrypted, EU Hosted | Finzen',
+    slug: 'privacy-and-security',
+    imageBase: 'secure-finance-app',
+    title: 'Security & Privacy - Finzen',
     description:
-      'Your financial data encrypted with AES-256-GCM. EU servers, GDPR compliant. No bank connections, no wallet sync. Finzen never touches your accounts.',
+      'Finzen uses AES-256 encryption, EU servers, and zero-knowledge architecture. We can\'t read your financial data even if we wanted to. Privacy by design.',
     keywords: [
       'secure finance app',
       'private finance app',
@@ -145,10 +148,10 @@ export const pages: Record<string, PageMeta> = {
   },
 
   personalFinanceCharts: {
-    slug: 'personal-finance-charts',
-    title: 'Personal Finance Charts — Sankey, Trends & Reports | Finzen',
+    slug: 'data-visualization',
+    title: 'See Your Money Clearly - Finzen',
     description:
-      'Sankey spending flows, portfolio breakdowns, budget charts, and net worth timelines. Turn daily entries into beautiful, actionable financial visualizations.',
+      'Log your spending, get the full picture. Daily entries become spending flows, budget charts, portfolio views, and a net worth timeline. All in one place.',
     keywords: [
       'personal finance charts',
       'budget sankey',
@@ -166,9 +169,9 @@ export const pages: Record<string, PageMeta> = {
 
   ourStory: {
     slug: 'our-story',
-    title: 'Our Story — Why We Built Finzen',
+    title: 'Finzen | The Story Behind Finzen',
     description:
-      'The story behind Finzen: what happens when budgeting apps ignore portfolios, portfolio trackers ignore cash flow, and years of testing reveal no solution exists.',
+      'No app did budgeting and investing well, so we built one. The story of years of testing, a lot of ramen, and a finance app made the way it should\'ve been.',
     keywords: [
       'YNAB alternative',
       'blockfolio alternative',
@@ -204,10 +207,6 @@ export const APP_URL = 'https://app.finzen.org';
  * Site-wide defaults
  */
 export const SITE_NAME = 'Finzen';
-/**
- * NOTE: OG images should be PNG for maximum compatibility.
- * The current og-image.svg is a placeholder — convert to PNG (1200×630) before launch.
- * Use a tool like Inkscape, Figma export, or an online converter.
- */
-export const DEFAULT_OG_IMAGE = '/og-image.svg';
+/** Default OG image when a page doesn't set ogImage (1200×630 recommended). */
+export const DEFAULT_OG_IMAGE = '/images/landing/finzen_og.png';
 export const SITE_URL = 'https://finzen.app';

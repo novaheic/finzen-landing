@@ -1,6 +1,6 @@
 ---
 /**
- * /secure-finance-app
+ * /privacy-and-security
  *
  * Angle: Security-conscious users, privacy advocates, EU users
  * Audience: People who care about data privacy and encryption
@@ -24,6 +24,7 @@ import CTABlock from '@/components/CTABlock.astro';
 import SiblingLinks from '@/components/SiblingLinks.astro';
 
 const meta = pages.secureFinanceApp;
+const imageBase = meta.imageBase ?? meta.slug;
 ---
 
 <Layout
@@ -46,12 +47,12 @@ const meta = pages.secureFinanceApp;
       <!-- Mobile: responsive + scale up. Desktop: fixed width, no scale, can overflow left/right -->
       <div class="scale-[1.15] md:scale-100 origin-center md:w-[960px] md:max-w-none">
         <img
-          src={`/images/${meta.slug}/hero_light.png`}
+          src={`/images/${imageBase}/hero_light.png`}
           alt={meta.title}
           class="w-auto max-w-full md:w-full h-auto rounded-lg block dark:hidden"
         />
         <img
-          src={`/images/${meta.slug}/hero_dark.png`}
+          src={`/images/${imageBase}/hero_dark.png`}
           alt={meta.title}
           class="w-auto max-w-full md:w-full h-auto rounded-lg block hidden dark:block"
         />
@@ -310,7 +311,7 @@ const meta = pages.secureFinanceApp;
         2-3 minutes a day. That's all it takes. In exchange, you get both: an architecture that keeps your data private <em>and</em> a daily practice that keeps you connected to your money. Security and mindfulness, built into the same design.
       </p>
       <p class="text-sm text-neutral-500 dark:text-neutral-500 pt-1">
-        <a href="/mindful-money-tracking" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about the Finzen Method →</a>
+        <a href="/the-finzen-method" class="underline hover:text-neutral-700 dark:hover:text-neutral-400 transition-colors">Learn more about the Finzen Method →</a>
       </p>
     </div>
   </Section>

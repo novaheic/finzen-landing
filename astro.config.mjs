@@ -21,4 +21,12 @@ export default defineConfig({
 
   // Enforce consistent trailing slash behavior
   trailingSlash: 'never',
+
+  // Redirect old page URLs to new ones (SEO + bookmarks)
+  redirects: {
+    '/secure-finance-app': '/privacy-and-security',
+    '/personal-finance-charts': '/data-visualization',
+    '/mindful-money-tracking': '/the-finzen-method',
+    '/budgeting-app': '/budgeting',
+  },
 });
