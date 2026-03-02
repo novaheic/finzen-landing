@@ -7,7 +7,7 @@ Based on analysis of 200 keywords. This plan provides SEO-optimized URLs, metada
 ## Site Architecture Overview
 
 ```
-finzen.app/
+finzen.org/
 ├── index.astro                        (Landing - all-in-one pitch)
 ├── budget-expense-tracker.astro       (NEW - Expense/Budget focus)
 ├── investment-portfolio-tracker.astro (NEW - Investment/Portfolio/Net Worth)

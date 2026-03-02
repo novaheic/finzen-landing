@@ -209,7 +209,7 @@ export const APP_URL = 'https://app.finzen.org';
 export const SITE_NAME = 'Finzen';
 /** Default OG image when a page doesn't set ogImage (1200×630 recommended). */
 export const DEFAULT_OG_IMAGE = '/images/landing/finzen_og.png';
-export const SITE_URL = 'https://finzen.app';
+export const SITE_URL = 'https://finzen.org';
 
 /**
  * Social links shown in the footer. Same URLs are used for Organization schema (sameAs).

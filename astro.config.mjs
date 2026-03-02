@@ -8,7 +8,7 @@ export default defineConfig({
   },
 
   // Production URL — update before launch
-  site: 'https://finzen.app',
+  site: 'https://finzen.org',
 
   integrations: [
     sitemap({
