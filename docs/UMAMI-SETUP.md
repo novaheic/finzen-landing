@@ -1,6 +1,13 @@
 # Umami analytics – setup and troubleshooting
 
-This site loads the Umami script only when `PUBLIC_UMAMI_WEBSITE_ID` is set. The value is **baked in at build time** (e.g. on Cloudflare Pages when the build runs).
+This site loads the Umami script when a website ID is available. The value is **baked in at build time** (e.g. on Cloudflare Pages when the build runs).
+
+**Where the ID comes from (in order):**
+
+1. **Env var** `PUBLIC_UMAMI_WEBSITE_ID` (e.g. set in Cloudflare Pages → Settings → Environment variables).
+2. **Fallback in repo** `src/config/analytics.ts` → `FALLBACK_UMAMI_WEBSITE_ID`.
+
+If you set the fallback in the repo, you don’t depend on Cloudflare remembering the env var, so it won’t “disappear” after redeploys. The website ID is not secret (it’s in the page HTML).
 
 ## Checklist when realtime stays at 0
 
