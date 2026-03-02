@@ -8,7 +8,7 @@
  * The website ID is not secret (it appears in the page HTML). Setting the
  * fallback here avoids relying on Cloudflare env vars persisting.
  */
-const FALLBACK_UMAMI_WEBSITE_ID = 'fcff4ca4-dac6-4c81-93a8-e8a61de6e489';
+const FALLBACK_UMAMI_WEBSITE_ID = 'f02d28c2-2a15-4a90-b4a3-8906129ba1f5';
 
 export const UMAMI_WEBSITE_ID =
   (import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || '').trim() || FALLBACK_UMAMI_WEBSITE_ID;
