@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
@@ -29,4 +31,6 @@ export default defineConfig({
     '/mindful-money-tracking': '/the-finzen-method',
     '/budgeting-app': '/budgeting',
   },
+
+  adapter: cloudflare(),
 });
