@@ -63,6 +63,14 @@ const { title, description, canonical, ogImage, keywords, showHeaderCTA = true }
       }
     })();
   </script>
+  <!-- Umami analytics (only when PUBLIC_UMAMI_WEBSITE_ID is set) -->
+  {import.meta.env.PUBLIC_UMAMI_WEBSITE_ID && (
+    <script
+      async
+      src={import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'}
+      data-website-id={import.meta.env.PUBLIC_UMAMI_WEBSITE_ID}
+    />
+  )}
 </head>
 <body>
   <Header showCTA={showHeaderCTA} />
