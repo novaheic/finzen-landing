@@ -2,7 +2,7 @@
 title: "Why Tracking Net Worth Matters More Than Tracking Income"
 description: "Income tells you what comes in. Net worth tells you what stays. Here is why tracking your net worth is the single best habit for long-term financial health."
 date: "2026-02-18"
-image: /images/blog/why-you-should-track-net-worth.svg
+image: /images/blog/why-you-should-track-your-net-worth.png
 keywords:
   - net worth tracking
   - personal finance

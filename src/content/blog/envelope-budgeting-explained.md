@@ -2,7 +2,7 @@
 title: "Envelope Budgeting Explained: Why It Works Better Than Tracking Alone"
 description: "Envelope budgeting gives every dollar a job before you spend it. Learn how the method works, why it outperforms simple expense tracking, and how to get started."
 date: "2026-03-05"
-image: /images/blog/envelope-budgeting-explained.svg
+image: /images/blog/envelope-budgeting-explained.png
 keywords:
   - envelope budgeting
   - zero based budgeting

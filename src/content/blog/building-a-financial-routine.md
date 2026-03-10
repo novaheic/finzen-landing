@@ -2,7 +2,7 @@
 title: "How to Build a 5-Minute Daily Financial Routine"
 description: "Spending just a few minutes a day on your finances creates more awareness than any automated tool. Here is a simple routine that actually sticks."
 date: "2026-01-29"
-image: /images/blog/building-a-financial-routine.svg
+image: /images/blog/building-a-financial-routine.png
 keywords:
   - financial routine
   - daily money habit
