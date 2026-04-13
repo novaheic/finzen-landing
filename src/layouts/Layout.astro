@@ -44,6 +44,52 @@ const { title, description, canonical, ogImage, keywords, showHeaderCTA = true }
       document.documentElement.classList.toggle('dark', dark);
     })();
   </script>
+  <script is:inline>
+    (function() {
+      function syncThemedPictures() {
+        const isDark = document.documentElement.classList.contains('dark');
+        const pictures = document.querySelectorAll('picture');
+        pictures.forEach((picture) => {
+          const sources = Array.from(picture.querySelectorAll('source'));
+          const hasDarkThemeSource = sources.some((source) =>
+            (source.getAttribute('media') || '').includes('prefers-color-scheme: dark')
+          );
+          if (!hasDarkThemeSource) return;
+
+          sources.forEach((source) => {
+            if (!source.dataset.themeVariant) {
+              const sourceMedia = source.getAttribute('media') || '';
+              source.dataset.themeVariant = sourceMedia.includes('prefers-color-scheme: dark') ? 'dark' : 'light';
+            }
+            const isSourceDark = source.dataset.themeVariant === 'dark';
+            source.setAttribute('media', isDark ? (isSourceDark ? 'all' : 'not all') : (isSourceDark ? 'not all' : 'all'));
+          });
+
+          const fallbackImg = picture.querySelector('img');
+          if (!fallbackImg) return;
+          const currentSrc = fallbackImg.getAttribute('src');
+          if (!currentSrc) return;
+          const darkSrc = currentSrc.replace('_light.', '_dark.');
+          const lightSrc = currentSrc.replace('_dark.', '_light.');
+          if (isDark && darkSrc !== currentSrc) fallbackImg.setAttribute('src', darkSrc);
+          if (!isDark && lightSrc !== currentSrc) fallbackImg.setAttribute('src', lightSrc);
+        });
+      }
+
+      function initThemePictureSync() {
+        syncThemedPictures();
+        window.addEventListener('finzen:theme-change', syncThemedPictures);
+        const rootObserver = new MutationObserver(syncThemedPictures);
+        rootObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initThemePictureSync);
+      } else {
+        initThemePictureSync();
+      }
+    })();
+  </script>
   <SEO
     title={title}
     description={description}
@@ -51,6 +97,7 @@ const { title, description, canonical, ogImage, keywords, showHeaderCTA = true }
     ogImage={ogImage}
     keywords={keywords}
   />
+  <slot name="head" />
   <!-- Favicon: match browser/OS theme (tab color) via prefers-color-scheme -->
   <link rel="icon" type="image/webp" href="/logo-light.webp" media="(prefers-color-scheme: light)" id="favicon" />
   <link rel="icon" type="image/webp" href="/logo-dark.webp" media="(prefers-color-scheme: dark)" />

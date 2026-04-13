@@ -65,16 +65,44 @@ const heroLinks = [
     <div class="relative overflow-visible">
       <div class="rounded-2xl overflow-visible hero-image-wrap hero-image-grow">
         <div class="hero-image-scale">
-          <img
-            src="/images/mindful-money-tracking/hero_light.png"
-            alt="Finzen app — budget, track, and invest in one place"
-            class="w-full h-auto block dark:hidden"
-          />
-          <img
-            src="/images/mindful-money-tracking/hero_dark.png"
-            alt="Finzen app — budget, track, and invest in one place"
-            class="w-full h-auto hidden dark:block"
-          />
+          <picture>
+            <source
+              media="(prefers-color-scheme: dark)"
+              type="image/avif"
+              srcset="/images/mindful-money-tracking/hero_dark-640.avif 640w, /images/mindful-money-tracking/hero_dark-960.avif 960w, /images/mindful-money-tracking/hero_dark-1334.avif 1334w"
+              sizes="(min-width: 1024px) 50vw, 90vw"
+            />
+            <source
+              media="(prefers-color-scheme: dark)"
+              type="image/webp"
+              srcset="/images/mindful-money-tracking/hero_dark-640.webp 640w, /images/mindful-money-tracking/hero_dark-960.webp 960w, /images/mindful-money-tracking/hero_dark-1334.webp 1334w"
+              sizes="(min-width: 1024px) 50vw, 90vw"
+            />
+            <source
+              media="(prefers-color-scheme: dark)"
+              srcset="/images/mindful-money-tracking/hero_dark.png"
+            />
+            <source
+              type="image/avif"
+              srcset="/images/mindful-money-tracking/hero_light-640.avif 640w, /images/mindful-money-tracking/hero_light-960.avif 960w, /images/mindful-money-tracking/hero_light-1334.avif 1334w"
+              sizes="(min-width: 1024px) 50vw, 90vw"
+            />
+            <source
+              type="image/webp"
+              srcset="/images/mindful-money-tracking/hero_light-640.webp 640w, /images/mindful-money-tracking/hero_light-960.webp 960w, /images/mindful-money-tracking/hero_light-1334.webp 1334w"
+              sizes="(min-width: 1024px) 50vw, 90vw"
+            />
+            <img
+              src="/images/mindful-money-tracking/hero_light.png"
+              alt="Finzen app — budget, track, and invest in one place"
+              class="w-full h-auto block"
+              width="1334"
+              height="800"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
         </div>
       </div>
 

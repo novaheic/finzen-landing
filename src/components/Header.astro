@@ -219,6 +219,7 @@ const { showCTA = true } = Astro.props;
         const html = document.documentElement;
         const isDark = html.classList.toggle('dark');
         localStorage.setItem('finzen-theme', isDark ? 'dark' : 'light');
+        window.dispatchEvent(new CustomEvent('finzen:theme-change', { detail: { dark: isDark } }));
         syncThemeToggle();
       });
     }
