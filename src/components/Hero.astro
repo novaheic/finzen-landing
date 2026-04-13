@@ -5,7 +5,7 @@
  * Right: hero image (light/dark) with floating stat cards (top-right, bottom-left).
  */
 
-import { APP_URL, pages } from '@/data/pages';
+import { APP_URL, APP_DEMO_URL, pages } from '@/data/pages';
 
 // Hero links: The Finzen Method, Personal Finance Basics, Privacy & Security
 const heroLinks = [
@@ -35,15 +35,24 @@ const heroLinks = [
 
     <!-- Main CTA + links -->
     <div class="hero-cta-in pt-8 pb-2 min-[620px]:pb-4 space-y-2">
-      <a
-        href={APP_URL}
-        class="hero-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
-      >
-        Launch Finzen
-        <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <div class="flex flex-wrap gap-3 items-center">
+        <a
+          href={APP_URL}
+          class="hero-cta inline-flex items-center gap-2 px-7 py-3.5 bg-[#0a0a0a] text-white text-base font-medium rounded-xl dark:bg-white dark:text-[#1B1B1B] transition-all duration-200"
+        >
+          Launch Finzen
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a
+          href={APP_DEMO_URL}
+          rel="noopener noreferrer"
+          class="hero-cta-secondary inline-flex items-center justify-center px-7 py-3.5 text-base font-medium rounded-xl border border-neutral-300/90 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 bg-white/40 dark:bg-white/[0.04] hover:bg-white/70 dark:hover:bg-white/[0.08] hover:text-neutral-900 dark:hover:text-neutral-200 hover:border-neutral-400 dark:hover:border-neutral-500 transition-all duration-200"
+        >
+          Live demo
+        </a>
+      </div>
       <div class="hidden min-[620px]:flex flex-wrap gap-x-6 gap-y-0 pt-10">
       {heroLinks.map((page) => (
         <a

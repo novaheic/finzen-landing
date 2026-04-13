@@ -203,6 +203,9 @@ export const anglePages = [
  */
 export const APP_URL = 'https://app.finzen.org';
 
+/** Interactive demo (no sign-up). */
+export const APP_DEMO_URL = 'https://app.finzen.org/demo';
+
 /**
  * Site-wide defaults
  */
