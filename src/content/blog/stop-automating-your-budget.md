@@ -103,6 +103,12 @@ Start engaging.
 
 Use Finzen today. Embrace the friction that saves you money, and build habits that last far beyond the first month.
 
+## Related guides in Finzen
+
+- [Budgeting app and expense tracking](/budgeting/) to apply manual logging and category control.
+- [Cash flow and visualization page](/data-visualization/) to review spending patterns over time.
+- [The Finzen Method](/the-finzen-method/) for a lightweight daily process that reinforces discipline.
+
 ## Works cited
 
 - Lukas, Marcel, and Ray Charles “Chuck” Howard. “The Influence of Budgets on Consumer Spending.” *Journal of Consumer Research*, vol. 49, no. 4, Dec. 2022, pp. 697–720. [https://doi.org/10.1093/jcr/ucac024](https://doi.org/10.1093/jcr/ucac024)

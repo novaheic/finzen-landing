@@ -63,6 +63,12 @@ We do this for now, but we also invest in stocks, ETFs, cryptocurrencies, forex,
 
 At Finzen, we’ve solved this by developing an app where you can track all your money—whether it flows into an investment or sits in PayPal, Revolut, or any other account—in a single dashboard. You can see all the details and insights with Finzen.
 
+## Related guides in Finzen
+
+- [Portfolio tracker](/portfolio-tracker/) to monitor multi-asset performance and net worth.
+- [Budgeting app](/budgeting/) to keep day-to-day spending aligned with investing goals.
+- [Charts and reports](/data-visualization/) to spot cash flow and performance trends faster.
+
 ## Photo credit
 
 - Unsplash photo: [https://unsplash.com/de/fotos/eine-person-die-ein-handy-vor-einen-aktienchart-halt-K5mPtONmpHM](https://unsplash.com/de/fotos/eine-person-die-ein-handy-vor-einen-aktienchart-halt-K5mPtONmpHM)

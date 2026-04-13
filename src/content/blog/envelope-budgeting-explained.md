@@ -49,3 +49,9 @@ The first month will not be perfect. That is normal. The goal is awareness, not 
 Some apps automate categorization using bank syncs. Convenient, but you lose the awareness that makes budgeting work. Manually logging a purchase takes seconds and creates a mental checkpoint — a brief moment where you consciously acknowledge a spending decision.
 
 That small friction is what turns passive tracking into active money management.
+
+## Related guides in Finzen
+
+- [Budgeting app and expense tracker](/budgeting/) to put envelope budgeting into practice.
+- [Personal finance guide](/personal-finance-guide/) for a simple step-by-step money system.
+- [The Finzen Method](/the-finzen-method/) for a daily routine that makes your budget stick.

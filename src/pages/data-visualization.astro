@@ -92,17 +92,19 @@ const faqSchema = JSON.stringify({
   keywords={meta.keywords}
 >
 
-  <script type="application/ld+json">
-    {JSON.stringify({
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: meta.title,
       description: meta.description,
       url: `${SITE_URL}/${meta.slug}`,
     })}
-  </script>
-  <script type="application/ld+json">
-    {JSON.stringify({
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -110,7 +112,7 @@ const faqSchema = JSON.stringify({
         { '@type': 'ListItem', position: 2, name: 'Data Visualization', item: `${SITE_URL}/${meta.slug}` },
       ],
     })}
-  </script>
+  />
   <!-- FAQPage structured data for rich results -->
   <script type="application/ld+json" set:html={faqSchema} />
 

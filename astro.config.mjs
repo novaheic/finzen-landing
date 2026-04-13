@@ -20,7 +20,7 @@ export default defineConfig({
   ],
 
   // Enforce consistent trailing slash behavior
-  trailingSlash: 'never',
+  trailingSlash: 'always',
 
   // Redirect old page URLs to new ones (SEO + bookmarks)
   redirects: {

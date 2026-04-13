@@ -48,3 +48,9 @@ The first number might be negative. That is okay. What matters is the direction.
 ## Beyond the budget
 
 Budgeting tells you where your money goes this month. Net worth tells you where your life is going this decade. Both matter, but if you are only tracking one, track net worth. It is the metric that connects daily decisions to long-term outcomes.
+
+## Related guides in Finzen
+
+- [Portfolio tracker and net worth tools](/portfolio-tracker/) to track wealth across all asset types.
+- [Budgeting page](/budgeting/) to improve the monthly inputs that drive your net worth trend.
+- [Data visualization reports](/data-visualization/) to read your progress with charts, not just raw numbers.

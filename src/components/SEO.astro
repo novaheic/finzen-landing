@@ -26,7 +26,8 @@ interface Props {
 
 const { title, description, canonical, ogImage, keywords } = Astro.props;
 const keywordsContent = keywords == null ? undefined : Array.isArray(keywords) ? keywords.join(', ') : keywords;
-const fullUrl = `${SITE_URL}${canonical}`;
+const normalizedCanonical = canonical === '/' ? '/' : canonical.endsWith('/') ? canonical : `${canonical}/`;
+const fullUrl = `${SITE_URL}${normalizedCanonical}`;
 const resolvedOgImage = `${SITE_URL}${ogImage || DEFAULT_OG_IMAGE}`;
 
 /**
@@ -105,8 +106,8 @@ const organizationSchema = {
 <meta name="twitter:image" content={resolvedOgImage} />
 
 <!-- Schema.org Structured Data -->
-<script type="application/ld+json">{JSON.stringify(schema)}</script>
-<script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 
 <!-- Favicon: in Layout (matches browser tab color: light/dark) -->
 

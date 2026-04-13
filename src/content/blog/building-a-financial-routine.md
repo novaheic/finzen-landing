@@ -50,3 +50,9 @@ This is not about guilt or restriction. It is about connection. People who manua
 **Do not aim for perfection.** Forgot to log Tuesday's lunch? Enter it Wednesday. Missed a whole weekend? Estimate and move on. A slightly inaccurate log you maintain beats a perfect system you abandon.
 
 The goal is not to become an accountant. The goal is to stay connected to your money so that the big decisions — the ones that actually move the needle — are informed by real awareness instead of vague feelings.
+
+## Related guides in Finzen
+
+- [Budgeting app and expense tracking workflow](/budgeting/) for your daily check-in loop.
+- [Portfolio tracking and net worth view](/portfolio-tracker/) to connect spending with long-term growth.
+- [The Finzen Method](/the-finzen-method/) to build a consistent 2-3 minute money habit.
