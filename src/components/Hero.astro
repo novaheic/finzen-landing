@@ -79,13 +79,13 @@ const heroLinks = [
               media="(prefers-color-scheme: dark)"
               type="image/avif"
               srcset="/images/mindful-money-tracking/hero_dark-640.avif 640w, /images/mindful-money-tracking/hero_dark-960.avif 960w, /images/mindful-money-tracking/hero_dark-1334.avif 1334w"
-              sizes="(min-width: 1024px) 50vw, 90vw"
+              sizes="(min-width: 1331px) 50vw, (min-width: 1024px) 55vw, 70vw"
             />
             <source
               media="(prefers-color-scheme: dark)"
               type="image/webp"
               srcset="/images/mindful-money-tracking/hero_dark-640.webp 640w, /images/mindful-money-tracking/hero_dark-960.webp 960w, /images/mindful-money-tracking/hero_dark-1334.webp 1334w"
-              sizes="(min-width: 1024px) 50vw, 90vw"
+              sizes="(min-width: 1331px) 50vw, (min-width: 1024px) 55vw, 70vw"
             />
             <source
               media="(prefers-color-scheme: dark)"
@@ -94,12 +94,12 @@ const heroLinks = [
             <source
               type="image/avif"
               srcset="/images/mindful-money-tracking/hero_light-640.avif 640w, /images/mindful-money-tracking/hero_light-960.avif 960w, /images/mindful-money-tracking/hero_light-1334.avif 1334w"
-              sizes="(min-width: 1024px) 50vw, 90vw"
+              sizes="(min-width: 1331px) 50vw, (min-width: 1024px) 55vw, 70vw"
             />
             <source
               type="image/webp"
               srcset="/images/mindful-money-tracking/hero_light-640.webp 640w, /images/mindful-money-tracking/hero_light-960.webp 960w, /images/mindful-money-tracking/hero_light-1334.webp 1334w"
-              sizes="(min-width: 1024px) 50vw, 90vw"
+              sizes="(min-width: 1331px) 50vw, (min-width: 1024px) 55vw, 70vw"
             />
             <img
               src="/images/mindful-money-tracking/hero_light.png"
@@ -196,6 +196,16 @@ const heroLinks = [
   .hero-cta-in {
     opacity: 0;
     animation: hero-cta-in 0.5s ease-out 0.5s forwards;
+  }
+  @media (max-width: 767px) {
+    /* Keep above-the-fold content paint-ready on mobile for LCP. */
+    .hero-image-grow,
+    .hero-text-in,
+    .hero-cta-in {
+      opacity: 1;
+      animation: none;
+      transform: none;
+    }
   }
 
   @keyframes hero-float-bob {
