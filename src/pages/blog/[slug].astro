@@ -166,6 +166,13 @@ const articleSchema = JSON.stringify({
     text-underline-offset: 2px;
   }
 
+  .prose :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
   .prose :global(blockquote) {
     border-left: 3px solid #d4d4d4;
     padding-left: 1rem;

@@ -26,8 +26,7 @@ interface Props {
 
 const { title, description, canonical, ogImage, keywords } = Astro.props;
 const keywordsContent = keywords == null ? undefined : Array.isArray(keywords) ? keywords.join(', ') : keywords;
-const normalizedCanonical = canonical === '/' ? '/' : canonical.endsWith('/') ? canonical : `${canonical}/`;
-const fullUrl = `${SITE_URL}${normalizedCanonical}`;
+const fullUrl = `${SITE_URL}${canonical}`;
 const resolvedOgImage = `${SITE_URL}${ogImage || DEFAULT_OG_IMAGE}`;
 
 /**
