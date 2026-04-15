@@ -1084,6 +1084,31 @@ const fullPictureRings = [
     </div>
   </Section>
 
+  <!-- As seen in -->
+  <Section heading="As seen in" align="center" bg="stone" class="py-10 md:py-12">
+    <div class="as-seen-grid mt-2">
+      <a
+        href="https://toolfio.com"
+        target="_blank"
+        rel="dofollow noopener noreferrer"
+        class="as-seen-badge"
+        aria-label="Featured on Toolfio"
+      >
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://toolfio.com/toolfio-dark-badge.png" />
+          <img
+            src="https://toolfio.com/toolfio-light-badge.png"
+            alt="Featured on Toolfio"
+            width="200"
+            height="54"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </a>
+    </div>
+  </Section>
+
   <!-- ============================================================
        SECTION 10: CTA
        Final conversion point.
@@ -1326,6 +1351,29 @@ const fullPictureRings = [
     }
     @keyframes sankey-wipe {
       to { clip-path: inset(0 0% 0 0); }
+    }
+
+    .as-seen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+      justify-content: center;
+      gap: 1rem;
+    }
+    .as-seen-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      border-radius: 0.75rem;
+      background: rgba(255, 255, 255, 0.7);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .as-seen-badge:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+    :global(.dark) .as-seen-badge {
+      background: rgba(23, 23, 23, 0.7);
     }
   </style>
   <script>
