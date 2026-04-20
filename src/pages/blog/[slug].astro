@@ -161,6 +161,78 @@ const articleSchema = JSON.stringify({
     margin-bottom: 0.5rem;
   }
 
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.75rem 0;
+    display: table;
+    overflow-x: visible;
+    white-space: normal;
+    border: 1px solid #d4d4d4;
+    border-radius: 0.75rem;
+    background: #fafafa;
+  }
+  :global(.dark) .prose :global(table) {
+    border-color: #404040;
+    background: #1f1f1f;
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 0.7rem 0.85rem;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: left;
+    vertical-align: top;
+  }
+  :global(.dark) .prose :global(th),
+  :global(.dark) .prose :global(td) {
+    border-bottom-color: #3f3f46;
+  }
+
+  .prose :global(thead th) {
+    background: #f1f5f9;
+    color: #171717;
+    font-weight: 600;
+  }
+  :global(.dark) .prose :global(thead th) {
+    background: #27272a;
+    color: #f5f5f5;
+  }
+
+  .prose :global(tbody tr:nth-child(even)) {
+    background: #f5f5f5;
+  }
+  :global(.dark) .prose :global(tbody tr:nth-child(even)) {
+    background: #232326;
+  }
+
+  .prose :global(tbody tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .prose :global(.mark-check),
+  .prose :global(.mark-cross) {
+    display: inline-block;
+    min-width: 1.1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+    vertical-align: middle;
+  }
+  .prose :global(.mark-check) {
+    color: #15803d;
+  }
+  .prose :global(.mark-cross) {
+    color: #dc2626;
+  }
+  :global(.dark) .prose :global(.mark-check) {
+    color: #86efac;
+  }
+  :global(.dark) .prose :global(.mark-cross) {
+    color: #fca5a5;
+  }
+
   .prose :global(a) {
     text-decoration: underline;
     text-underline-offset: 2px;
