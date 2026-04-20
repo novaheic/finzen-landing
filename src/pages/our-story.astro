@@ -13,7 +13,7 @@
  */
 
 import Layout from '@/layouts/Layout.astro';
-import { pages, APP_URL, SITE_URL } from '@/data/pages';
+import { pages, APP_URL, SITE_URL, SITE_NAME } from '@/data/pages';
 import AngleHero from '@/components/AngleHero.astro';
 import Section from '@/components/Section.astro';
 import SiblingLinks from '@/components/SiblingLinks.astro';
@@ -21,18 +21,49 @@ import SiblingLinks from '@/components/SiblingLinks.astro';
 const meta = pages.ourStory;
 const aboutPageUrl = `${SITE_URL}/${meta.slug}`;
 
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${SITE_URL}/our-story#nova`,
+  name: 'Nova Heidt',
+  givenName: 'Nova',
+  familyName: 'Heidt',
+  alternateName: 'Nova',
+  jobTitle: 'Founder & Developer',
+  description:
+    'Developer and founder of Finzen. Working at the intersection of technology and money. Built the all-in-one personal finance app — envelope budgeting, manual expense tracking, and portfolio management — by hand.',
+  image: `${SITE_URL}/images/our-story/nova1.png`,
+  url: 'https://novaheic.github.io/',
+  sameAs: [
+    'https://novaheic.github.io/',
+    'https://github.com/novaheic',
+    'https://www.linkedin.com/in/nova-heidt/',
+  ],
+  knowsAbout: [
+    'Personal finance',
+    'Envelope budgeting',
+    'Zero-based budgeting',
+    'Portfolio management',
+    'Financial technology',
+    'Privacy engineering',
+    'End-to-end encryption',
+    'Software development',
+    'Web development',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+};
+
 const aboutPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
   name: meta.title,
   description: meta.description,
   url: aboutPageUrl,
-  mainEntity: {
-    '@type': 'Person',
-    name: 'Nova',
-    description: 'Developer and founder of Finzen. Built the all-in-one personal finance app—budgeting, spending tracking, and portfolio management—by hand.',
-    url: aboutPageUrl,
-  },
+  mainEntity: { '@id': `${SITE_URL}/our-story#nova` },
 };
 ---
 
@@ -44,6 +75,7 @@ const aboutPageSchema = {
   keywords={meta.keywords}
 >
 
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
   <script
     type="application/ld+json"

@@ -108,6 +108,9 @@ const organizationSchema = {
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 
+<!-- RSS feed auto-discovery -->
+<link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} Blog`} href={`${SITE_URL}/rss.xml`} />
+
 <!-- Favicon: in Layout (matches browser tab color: light/dark) -->
 
 <!-- Montserrat Extrabold for logo (non-blocking) -->

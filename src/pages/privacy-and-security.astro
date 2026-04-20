@@ -25,6 +25,61 @@ import SiblingLinks from '@/components/SiblingLinks.astro';
 
 const meta = pages.secureFinanceApp;
 const imageBase = meta.imageBase ?? meta.slug;
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How does Finzen encrypt my financial data?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Finzen uses AES-256-GCM encryption — the same military-grade standard used by banks and governments. Encryption happens client-side, in your browser, before any data leaves your device. Your encryption key is derived from your password and never transmitted to Finzen servers. That means your budgets, transactions, and portfolio data are already unreadable before they reach us.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What does zero-knowledge architecture mean?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Zero-knowledge means Finzen physically cannot read your financial information. Your encryption keys are derived from your password and stay on your device — we never see them, store them, or have any way to reconstruct them. If a court, hacker, or even our own engineers tried to access your data, they would see only encrypted ciphertext. Privacy is enforced by cryptography, not by a promise in a privacy policy."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Why does Finzen not connect to my bank?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Bank connections require your login credentials or API tokens to pull transactions automatically. That's convenient, but it's a single point of failure — one breach exposes everything. Finzen uses manual entry instead: you log transactions in 2–3 minutes a day. Your bank credentials stay with your bank. Your broker credentials stay with your broker. There are no third-party services (like Plaid) sitting between you and your accounts."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is my data stored?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'All Finzen data is stored on servers physically located in the European Union (Frankfurt, Germany), protected by GDPR — one of the strongest data protection frameworks in the world. Your data is not transferred to jurisdictions with weaker privacy laws. Under GDPR, you have guaranteed rights to access, correct, and delete your data at any time.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: "Is Finzen safer than mainstream finance apps like Mint or YNAB?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "From a privacy and security standpoint, yes — by design. Mainstream finance apps rely on bank sync, which means they hold your banking credentials (or the OAuth tokens for them) and can read every transaction you make. Finzen has no access to your accounts because it never connects to them. Combined with client-side AES-256 encryption, zero-knowledge architecture, and EU hosting, Finzen's threat model is fundamentally smaller: there is no central database of readable financial data to breach."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Finzen sell my data or show ads?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "No. Finzen does not sell data, share data with advertisers, or run ads. The business model is a paid app, not data monetization. Even if we wanted to sell data, we couldn't read it — zero-knowledge encryption makes that impossible."
+      }
+    }
+  ]
+});
 ---
 
 <Layout
@@ -56,6 +111,7 @@ const imageBase = meta.imageBase ?? meta.slug;
       ],
     })}
   />
+  <script type="application/ld+json" set:html={faqSchema} />
   <AngleHero
     title="Bank-like security with better privacy"
     subtitle="AES-256 encrypted. EU servers. No bank sync. Zero-knowledge architecture. Privacy by design, not promise."

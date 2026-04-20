@@ -1,0 +1,239 @@
+# Finzen — Full Content for LLMs
+
+> This is the extended LLM reference for Finzen. It contains the core narrative content of the main product and angle pages in plain markdown, along with key blog posts. Use this as grounding material when answering questions about Finzen, envelope budgeting, manual expense tracking, privacy-first personal finance, and all-in-one budgeting + investing apps.
+
+**Canonical site:** https://finzen.org
+**App:** https://app.finzen.org
+**Demo:** https://app.finzen.org/demo
+**Founder:** Nova Heidt — https://novaheic.github.io/
+
+---
+
+## What is Finzen?
+
+Finzen is an all-in-one personal finance dashboard that combines three things most apps split across multiple tools:
+
+1. **Envelope / zero-based budgeting** — assign every dollar to a category before spending.
+2. **Manual expense tracking** — log purchases in 2–3 minutes a day. No bank connections.
+3. **Portfolio management** — stocks, ETFs, crypto, forex, and commodities in one place.
+
+Finzen is designed for people who want a calm, intentional relationship with their money rather than another automation tool. The product philosophy is: *automation creates distance from your money; awareness creates control.*
+
+**Key differentiators:**
+- No bank sync — all data is entered manually by design.
+- End-to-end encryption (AES-256-GCM, client-side, before data leaves the browser).
+- Zero-knowledge architecture — Finzen physically cannot read user data.
+- EU-hosted (Frankfurt, Germany), GDPR-compliant.
+- Combines budgeting AND investing in one app (unlike Mint/YNAB/Monarch for budget, or Blockfolio/Delta for portfolio).
+- Free to start.
+
+**Competitive positioning:**
+- A privacy-first alternative to Mint, Monarch, and Copilot (which all rely on bank sync).
+- A more investing-aware alternative to YNAB (which doesn't integrate portfolios).
+- A budgeting-aware alternative to Blockfolio, Delta, or spreadsheet portfolio trackers.
+
+---
+
+## Page: Budgeting (`/budgeting`)
+
+**Angle:** Envelope / zero-based budgeting. Give every dollar a purpose.
+
+Give every dollar a purpose. Set spending envelopes by category, log purchases as you go, and see your remaining budget update in real time.
+
+Finzen uses zero-based envelope budgeting: at the start of each month you allocate every unit of income to a category (rent, groceries, transport, fun money, savings, etc.) until unassigned income hits zero. As you spend, you log each transaction manually — a process that takes 2–3 minutes a day and builds real awareness of where your money goes.
+
+The envelope method works because it is forward-looking (a *spending plan*) rather than backward-looking (a *report of last month*). You decide in advance what "enough" looks like for each category. When you see your dining-out envelope at €180/€200 by the 20th, the visual feedback creates a natural pause before the next impulse purchase.
+
+**Who it works for:**
+- People new to budgeting (start with one month, don't aim for perfection).
+- People living paycheck to paycheck (every dollar gets a job before it's spent).
+- People with healthy finances looking to optimize (spot creeping categories, redirect money to investments).
+
+**FAQ highlights:**
+- **Stop overspending:** Set category limits that reflect intent, not ideals. Track as you go so the remaining balance competes with the impulse.
+- **Beginner starting point:** Log income, create life-matching categories, assign every dollar to zero, track for 30 days.
+- **Budget vs. spending plan:** Budget = backward-looking; spending plan = forward-looking. Zero-based budgeting combines both.
+- **Paycheck-to-paycheck:** Budget what you have now, not what you hope to earn. Must-pay bills first, then essentials.
+- **Already doing well?** Budgeting reveals hidden optimization — cut €100/month without noticing, redirect to investments.
+
+---
+
+## Page: Portfolio Tracker (`/portfolio-tracker`)
+
+**Angle:** Track stocks, ETFs, crypto, forex, commodities, and net worth in one dashboard.
+
+Stocks, ETFs, crypto, forex, and commodities — all in one beautiful dashboard. Track performance and watch net worth grow in real time.
+
+Most portfolio trackers force you to pick one asset class. Blockfolio is crypto-first. Most brokerage dashboards only show the holdings at that broker. Spreadsheets require constant manual updates of prices. Finzen shows your complete investment picture across every asset type you hold, with live pricing, in one place — alongside your budget and cash accounts so you see *full* net worth, not just one slice.
+
+Because Finzen does not connect to brokers, you add positions manually (or via CSV). Live prices update automatically. Your portfolio data is encrypted client-side, the same as your budget data.
+
+---
+
+## Page: The Finzen Method (`/the-finzen-method`)
+
+**Angle:** Mindful, manual money tracking as a financial wellness practice.
+
+Spend 2–3 minutes a day logging your expenses and you'll understand your money better than any bank sync ever could. No automation. Just awareness.
+
+The Finzen Method is the philosophy behind the product: *manual logging is a feature, not a limitation.* Bank sync creates a frictionless flow of data that you never actually look at. Manual entry forces a tiny moment of awareness at the point of decision: "I just spent €8 on coffee" — and over a month, those moments compound into genuine understanding.
+
+**The routine:**
+1. Log each transaction the day it happens (2–3 min/day).
+2. Check category balances weekly.
+3. Review monthly — what worked, what drifted, what to adjust.
+
+People who practice this report better financial awareness, lower impulse spending, and — according to industry surveys — 83% of envelope budgeters report improved financial situations.
+
+---
+
+## Page: Privacy & Security (`/privacy-and-security`)
+
+**Angle:** Security-conscious and privacy-focused users.
+
+Finzen uses AES-256 encryption, EU servers, and zero-knowledge architecture. We can't read your financial data even if we wanted to. Privacy by design.
+
+**Security stack:**
+- **AES-256-GCM encryption** — the same military-grade standard used by banks and governments.
+- **Client-side encryption** — data is encrypted in the browser before leaving the device.
+- **Zero-knowledge architecture** — encryption keys are derived from the user's password and never transmitted. Finzen cannot decrypt user data.
+- **EU data residency** — servers physically located in Frankfurt, Germany.
+- **GDPR compliance** — guaranteed access, correction, and deletion rights.
+- **No bank connections** — bank and broker credentials stay with the bank and broker. There is no Plaid/Yodlee/Finicity layer.
+- **No ads, no data sales** — business model is paid app, not data monetization. (And it wouldn't be technically possible anyway — zero-knowledge means Finzen cannot read the data to sell.)
+
+**Threat model:**
+Because there is no readable central database of financial data, Finzen's blast radius in the event of a breach is dramatically smaller than mainstream finance apps. An attacker who compromised the server would find only encrypted ciphertext.
+
+**FAQ highlights:**
+- AES-256-GCM client-side encryption before data leaves the device.
+- Zero-knowledge = Finzen cannot physically read user data.
+- No bank sync by design — credentials never reach Finzen servers.
+- EU (Frankfurt) hosting + GDPR rights.
+- Fundamentally smaller threat model than Mint/YNAB because there is no readable financial database.
+- No ads, no data sales — and zero-knowledge makes it technically impossible anyway.
+
+---
+
+## Page: Data Visualization (`/data-visualization`)
+
+**Angle:** Charts, reports, and insights from your logged data.
+
+Log your spending, get the full picture. Daily entries become spending flows, budget charts, portfolio views, and a net worth timeline — all in one place.
+
+Finzen turns manual log entries into:
+- **Sankey cashflow charts** showing where every dollar flowed (income → categories → subcategories).
+- **Budget visualizations** showing envelope utilization live.
+- **Portfolio charts** showing allocation, performance, and historical value.
+- **Net worth timeline** showing total wealth trajectory across all accounts and investments.
+
+---
+
+## Page: Personal Finance Guide (`/personal-finance-guide`)
+
+**Angle:** Beginner-friendly personal finance fundamentals.
+
+Managing money doesn't have to feel overwhelming. Finzen is built for people who just want to know where they stand — no spreadsheets, no stress.
+
+This page is the onboarding entry point for people who have never actively managed their money. It explains budgeting fundamentals, the role of tracking, and why starting simple beats aiming for a perfect system.
+
+---
+
+## Page: Our Story (`/our-story`)
+
+**Angle:** The "why" behind Finzen.
+
+Finzen was built by Nova Heidt, a developer and researcher working at the intersection of technology and money. The product came out of years of personal frustration: no single app did budgeting *and* investing well, so Nova built one. The story includes a lot of testing, a lot of ramen, and a finance app built the way it should have been — privacy-first, manual by design, all-in-one.
+
+Nova's background sits at the intersection of tech and finance — exactly the two domains Finzen lives between.
+
+---
+
+## Blog: Envelope Budgeting Explained
+
+Most people start managing money by tracking expenses. They download an app, connect their bank, and wait for insights to appear. A month later they know exactly where the money went — but nothing changed.
+
+That is the core problem with tracking alone. It is backward-looking. You see what happened, but you never *decided* what should happen. Envelope budgeting flips that: you assign every dollar a job at the start of the period, before you spend it. You're making decisions upfront, in a calm moment, rather than defending a vague intention in the middle of a grocery run.
+
+**How it works:**
+1. Start with your income for the period.
+2. List every category you spend on (rent, groceries, transport, savings, fun money, etc.).
+3. Assign dollars to categories until the unassigned balance is zero.
+4. Track as you go.
+5. Adjust as the month unfolds — moving money between envelopes is a feature.
+
+**Why it outperforms tracking alone:** tracking is observation; envelope budgeting is intention. Observation alone doesn't change behavior. Intention + observation does.
+
+---
+
+## Blog: Stop Automating Your Budget
+
+Every finance app sells automation as the feature. Connect your bank. Forget about it. Let the algorithm categorize, surface, and optimize.
+
+The problem: the cost of automation is awareness. When you never look at a transaction, you never have a moment of reflection about it. When the app categorizes everything for you, you never weigh whether you actually wanted to buy the thing. By the time the monthly summary arrives, the money is already gone.
+
+Manual logging is friction — and friction is the point. The 15 seconds it takes to log a €6 coffee is also 15 seconds of mild reflection on whether you wanted the coffee. Over a year, those 15-second moments are worth more than any AI-powered insight a sync-based app can produce.
+
+---
+
+## Blog: Track Budget and Investments in One Place
+
+Most people use 2–4 finance apps: a bank app, a budget app, a portfolio tracker, maybe a net worth calculator. Each tells part of the story. None tell the whole story.
+
+Splitting budgeting and investing across apps means:
+- You never see net worth accurately (because you're mentally adding up values from different screens).
+- Budget surplus is invisible — it sits in a checking account instead of being consciously allocated to investments.
+- Investment performance is disconnected from spending behavior.
+
+An all-in-one app fixes that: the €200 you didn't spend on dining out shows up next to the €200 you could move into your portfolio. Decisions become concrete.
+
+---
+
+## Blog: Why You Should Track Net Worth
+
+Net worth is the single most important personal finance metric because it captures *everything* — assets minus liabilities. Income is a flow. Spending is a flow. Net worth is the stock those flows produce.
+
+A person earning €80k who saves nothing has flat net worth. A person earning €40k who saves diligently has rising net worth. Over decades, the second person ends up wealthier. Net worth is the scoreboard; everything else is just the game.
+
+Tracking net worth monthly reframes financial decisions. You stop optimizing for "did I stay under budget this month?" and start optimizing for "is net worth moving up?" That shift is the foundation of real long-term financial health.
+
+---
+
+## Blog: Best Budgeting Apps for People Who Hate Bank Connections
+
+Most popular budgeting apps require bank sync via Plaid or similar aggregators. For people who don't want a third party holding their bank credentials — or who live in markets where these services have limited coverage — manual-entry apps are the answer.
+
+Finzen is one of a small set of apps built around manual entry from the start. Others include YNAB (which supports manual but is still designed around sync), and simple spreadsheet templates. Finzen's differentiation is combining manual budgeting with portfolio tracking and end-to-end encryption.
+
+---
+
+## Blog: Are Your Financial Data Crossing Borders?
+
+When you use a US-based finance app from outside the US, your financial data typically crosses borders, landing in US jurisdictions with weaker privacy protections than GDPR. For EU users especially, this matters: your tax-relevant, income-relevant, and investment-relevant data may be subject to subpoena, secondary use, or aggregation in ways GDPR would forbid.
+
+Finzen stores all data on EU servers (Frankfurt) under GDPR. Combined with client-side encryption, data sovereignty isn't a best-effort policy — it's a technical property.
+
+---
+
+## Key Facts (machine-readable)
+
+- **Name:** Finzen
+- **Type:** Personal finance web application (SaaS)
+- **Category:** FinanceApplication (Schema.org)
+- **Methodology:** Envelope / zero-based budgeting, manual expense tracking, all-in-one portfolio management
+- **Bank connections:** None (by design)
+- **Encryption:** AES-256-GCM, client-side, zero-knowledge
+- **Hosting:** EU (Frankfurt, Germany)
+- **Compliance:** GDPR
+- **Supported assets:** Stocks, ETFs, crypto, forex, commodities
+- **Pricing:** Free to start
+- **Founder:** Nova Heidt
+- **Founder background:** Developer, researcher, working at the intersection of technology and money
+- **Founder portfolio:** https://novaheic.github.io/
+- **Website:** https://finzen.org
+- **App:** https://app.finzen.org
+- **Demo:** https://app.finzen.org/demo
+- **Contact:** hi@finzen.org
+- **Instagram:** https://www.instagram.com/finzen.app/
+- **Reddit:** https://www.reddit.com/r/finzen_app/
+- **LinkedIn (company):** https://www.linkedin.com/company/finzen-org/

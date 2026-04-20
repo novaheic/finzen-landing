@@ -37,6 +37,69 @@ import CTABlock from '@/components/CTABlock.astro';
 
 const meta = pages.home;
 
+const homeFaqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is Finzen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Finzen is an all-in-one personal finance app that combines envelope budgeting, manual expense tracking, and portfolio management in one dashboard. It is designed for people who want a calm, intentional relationship with their money — not another bank-syncing automation tool. Finzen is AES-256 encrypted, EU-hosted, and requires no bank connections.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How is Finzen different from Mint, YNAB, or Monarch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Three main differences. (1) Finzen has no bank sync — all transactions are entered manually (2–3 minutes a day), which keeps your bank credentials entirely out of the system and builds real spending awareness. (2) Finzen combines budgeting and investing in a single app, so your net worth includes stocks, ETFs, crypto, forex, and commodities alongside your cash and budget. (3) Finzen is encrypted client-side with a zero-knowledge architecture, hosted on EU servers under GDPR — Mint, YNAB, and Monarch all rely on US-based bank aggregators."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Finzen connect to my bank?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "No. Finzen does not connect to banks or brokerages. All transactions are entered manually. This is an intentional design choice: your bank credentials never leave your bank, there is no third-party aggregator like Plaid in the middle, and the manual entry habit (2–3 minutes a day) creates the financial awareness that drives better decisions."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Finzen free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Finzen is free to start. The business model is a paid app — not ads, not data sales. Even if we wanted to sell data, we couldn\'t read it: zero-knowledge encryption makes that technically impossible.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What assets can I track in Finzen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Finzen tracks stocks, ETFs, crypto, forex, and commodities in a single portfolio view. Live prices update automatically. Because Finzen does not connect to brokerages, you add positions manually or via CSV import. Your complete net worth (cash + investments) is visible alongside your budget.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Is my data private?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Yes. Finzen uses AES-256-GCM client-side encryption — your data is encrypted in your browser before it leaves your device. Encryption keys are derived from your password and never transmitted to Finzen. This is called zero-knowledge architecture: Finzen physically cannot read your budgets, transactions, or portfolio data. All data is stored on EU servers in Frankfurt, Germany, under GDPR."
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does it take to use Finzen each day?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'About 2–3 minutes a day. You log each transaction as it happens, check your category balances occasionally, and review monthly. The small daily friction is intentional — it creates the awareness that automation removes.'
+      }
+    }
+  ]
+});
+
 // Donut rings for "One app. The full picture." (same as mindful-money-tracking disconnect section)
 const R = 48;
 const C = 2 * Math.PI * R;
@@ -55,6 +118,7 @@ const fullPictureRings = [
   keywords={meta.keywords}
 >
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={homeFaqSchema} />
     <link
       rel="preload"
       as="image"
